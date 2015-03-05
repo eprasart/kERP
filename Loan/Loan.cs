@@ -246,13 +246,13 @@ namespace kERP
             LockFacade.Delete(TableName, Id);
         }
 
-        public static bool Exists(string account_no, long Id = 0)
+        public static bool Exists(string code, long Id = 0)
         {
-            var sql = SqlFacade.SqlExists(TableName, "id <> :id and status <> :status and account_no = :account_no");
+            var sql = SqlFacade.SqlExists(TableName, "id <> :id and status <> :status and code = :code");
             var bExists = false;
             try
             {
-                bExists = SqlFacade.Connection.ExecuteScalar<bool>(sql, new { Id, Status = Constant.RecordStatus_Deleted, No = account_no });
+                bExists = SqlFacade.Connection.ExecuteScalar<bool>(sql, new { Id, Status = Constant.RecordStatus_Deleted, code });
             }
             catch (Exception ex)
             {

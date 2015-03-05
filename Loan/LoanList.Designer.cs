@@ -626,7 +626,6 @@
             this.btnBrowse.TabIndex = 5;
             this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // glbGeneral
             // 

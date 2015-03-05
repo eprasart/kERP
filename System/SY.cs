@@ -365,7 +365,7 @@ namespace kERP
         public static string sys_branch;
         public static string sys_product;
         public static string sys_holiday;
-        public static string sys_customer;
+        public static string ic_location;
         public static string sys_loan;
 
         // Button
@@ -441,7 +441,7 @@ namespace kERP
             sys_branch = Get("sys_branch");
             sys_product = Get("sys_product");
             sys_product = Get("sys_holiday");
-            sys_customer = Get("sys_customer");
+            ic_location = Get("ic_location");
             sys_loan = Get("sys_loan");
 
 

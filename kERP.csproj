@@ -109,11 +109,11 @@
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\Security.cs" />
     <Compile Include="Common\Setting.cs" />
-    <Compile Include="Customer\CustomerList.cs">
+    <Compile Include="IC\LocationList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customer\CustomerList.Designer.cs">
-      <DependentUpon>CustomerList.cs</DependentUpon>
+    <Compile Include="IC\LocationList.Designer.cs">
+      <DependentUpon>LocationList.cs</DependentUpon>
     </Compile>
     <Compile Include="General\BranchList.cs">
       <SubType>Form</SubType>
@@ -121,7 +121,7 @@
     <Compile Include="General\BranchList.Designer.cs">
       <DependentUpon>BranchList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer\Customer.cs" />
+    <Compile Include="IC\Location.cs" />
     <Compile Include="General\Branch.cs" />
     <Compile Include="Loan\Loan.cs" />
     <Compile Include="General\LoanDS.cs">
@@ -200,12 +200,11 @@
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Validator.cs" />
-    <EmbeddedResource Include="bin\Debug\Report\Schedule.rdlc" />
     <EmbeddedResource Include="Common\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customer\CustomerList.resx">
-      <DependentUpon>CustomerList.cs</DependentUpon>
+    <EmbeddedResource Include="IC\LocationList.resx">
+      <DependentUpon>LocationList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="General\BranchList.resx">
       <DependentUpon>BranchList.cs</DependentUpon>
@@ -371,7 +370,9 @@
   <ItemGroup>
     <None Include="Resources\Preview.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\Debug\Report\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace kERP
 {
-    class Branch
+    class Location
     {
         public long Id { get; set; }
+        public string Branch_Code { get; set; }
         public string Code { get; set; }
-        public string Name { get; set; }
-        public string Parent_Branch { get; set; }
-        public string Currency { get; set; }
+        public string Description { get; set; }
+        public string Type { get; set; }
         public string Address { get; set; }
-        public string Province { get; set; }
-        public string District { get; set; }
-        public string Commune { get; set; }
-        public string Village { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
+        public string Email { get; set; }
         public string Note { get; set; }
         public string Status { get; set; }
         public string Insert_By { get; set; }
@@ -30,20 +30,21 @@ namespace kERP
         public DateTime? Change_At { get; set; }
     }
 
-    static class BranchFacade
+    static class LocationFacade
     {
-        public static readonly string TableName = "branch";
+        public static readonly string TableName = "ic_location";
+        public static readonly string TitleLabel = LabelFacade.ic_location;
 
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
-            var sql = SqlFacade.SqlSelect(TableName, "id, code, name", "1 = 1");
+            var sql = SqlFacade.SqlSelect(TableName, "id, branch_code, code, description, type, name, phone, fax, email, address", "1 = 1");
             if (status.Length == 0)
                 sql += " and status <> '" + Constant.RecordStatus_Deleted + "'";
             else
                 sql += " and status = '" + status + "'";
             if (filter.Length > 0)
-                sql += " and (" + SqlFacade.SqlILike("code, name") + ")";
-            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit;
+                sql += " and (" + SqlFacade.SqlILike("code, description, phone, fax, email, address, note") + ")";
+            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit; //ConfigFacade.sy_select_limit;
 
             var cmd = new NpgsqlCommand(sql);
             if (filter.Length > 0)
@@ -52,29 +53,31 @@ namespace kERP
             return SqlFacade.GetDataTable(cmd);
         }
 
-        public static long Save(Branch m)
+        public static long Save(Location m)
         {
             string sql = "";
             if (m.Id == 0)
             {
                 m.Insert_By = App.session.Username;
-                sql = SqlFacade.SqlInsert(TableName, "code, name, parent_branch, currency, address, province, district, commune, village, note, insert_by", "", true);
+                sql = "code, description, type, address, name, phone, fax, email, note, insert_by";
+                sql = SqlFacade.SqlInsert(TableName, sql, "", true);
                 m.Id = SqlFacade.Connection.ExecuteScalar<long>(sql, m);
             }
             else
             {
                 m.Change_By = App.session.Username;
-                sql = SqlFacade.SqlUpdate(TableName, "code, name, parent_branch, currency, address, province, district, commune, village, note, change_by, change_at, change_no", "change_at = now(), change_no = change_no + 1", "id = :id");
+                sql = "code, description, type, address, name, phone, fax, email, note, change_by, change_at, change_no";
+                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id");
                 SqlFacade.Connection.Execute(sql, m);
                 ReleaseLock(m.Id);  // Unlock
             }
             return m.Id;
         }
 
-        public static Branch Select(long Id)
+        public static Location Select(long Id)
         {
             var sql = SqlFacade.SqlSelect(TableName, "*", "id = :id");
-            return SqlFacade.Connection.Query<Branch>(sql, new { Id }).FirstOrDefault();
+            return SqlFacade.Connection.Query<Location>(sql, new { Id }).FirstOrDefault();
         }
 
         public static void SetStatus(long Id, string status)
@@ -99,17 +102,17 @@ namespace kERP
             LockFacade.Delete(TableName, Id);
         }
 
-        public static bool Exists(string Code, long Id = 0)
+        public static bool Exists(string code, long Id = 0)
         {
             var sql = SqlFacade.SqlExists(TableName, "id <> :id and status <> :status and code = :code");
             var bExists = false;
             try
             {
-                bExists = SqlFacade.Connection.ExecuteScalar<bool>(sql, new { Id, Status = Constant.RecordStatus_Deleted, Code });
+                bExists = SqlFacade.Connection.ExecuteScalar<bool>(sql, new { Id, Status = Constant.RecordStatus_Deleted, code });
             }
             catch (Exception ex)
             {
-                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, LabelFacade.sys_branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogFacade.Log(ex, "Exists");
             }
             return bExists;

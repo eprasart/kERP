@@ -82,12 +82,12 @@ namespace kERP.SYS
                 return;
             }
             Cursor = Cursors.WaitCursor;
-            if (App.fCustomer == null || App.fCustomer.IsDisposed == true)
+            if (App.fLocation == null || App.fLocation.IsDisposed == true)
             {
                 //App.fCategoryList = new IC.frmCategoryList();
-                App.fCustomer.Show();
+                App.fLocation.Show();
             }
-            App.fCustomer.Focus();
+            App.fLocation.Focus();
             Cursor = Cursors.Default;
         }
 
@@ -108,7 +108,7 @@ namespace kERP.SYS
             Cursor = Cursors.Default;
         }
 
-        private void btnCustomer_Click(object sender, EventArgs e)
+        private void btnLocation_Click(object sender, EventArgs e)
         {
             if (!SM.Privilege.CanAccess("CUS", "V")) // todo: not hard code
             {
@@ -116,12 +116,12 @@ namespace kERP.SYS
                 return;
             }
             Cursor = Cursors.WaitCursor;
-            if (App.fCustomer == null || App.fCustomer.IsDisposed == true)
+            if (App.fLocation == null || App.fLocation.IsDisposed == true)
             {
-                App.fCustomer = new frmCustomer();
-                App.fCustomer.Show();
+                App.fLocation = new frmLocation();
+                App.fLocation.Show();
             }
-            App.fCustomer.Focus();
+            App.fLocation.Focus();
             Cursor = Cursors.Default;
         }
 
@@ -183,5 +183,7 @@ namespace kERP.SYS
             f.Focus();
             Cursor = Cursors.Default;
         }
+
+       
     }
 }

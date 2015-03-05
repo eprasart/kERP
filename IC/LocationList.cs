@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace kERP
 {
-    public partial class frmCustomer : Form
+    public partial class frmLocation : Form
     {
         long Id = 0;
         int RowIndex = 0;   // Current gird selected row
@@ -15,22 +15,11 @@ namespace kERP
         bool IsDirty = false;
         bool IsIgnore = true;
 
-        public bool IsDlg = false; // Show dialog box for selecting one 
-        public string CustomerNo = ""; // Selected customer no
-        public string FullName = "";    // Customer Full name
-
         frmMsg fMsg = null;
-        string ModuleName = "Customer";
-        string TitleLabel = CustomerFacade.TitleLabel;
+        string ModuleName = "Location";
+        string TitleLabel = LocationFacade.TitleLabel;
 
-        StringFormat headerCellFormat = new StringFormat()
-        {
-            // right alignment might actually make more sense for numbers
-            Alignment = StringAlignment.Near,
-            LineAlignment = StringAlignment.Center
-        };
-
-        public frmCustomer()
+        public frmLocation()
         {
             InitializeComponent();
         }
@@ -52,7 +41,7 @@ namespace kERP
             if (dgvList.SelectedRows.Count > 0) RowIndex = dgvList.SelectedRows[0].Index;
             try
             {
-                dgvList.DataSource = CustomerFacade.GetDataTable(txtFind.Text, GetStatus());
+                dgvList.DataSource = LocationFacade.GetDataTable(txtFind.Text, GetStatus());
             }
             catch (Exception ex)
             {
@@ -91,38 +80,18 @@ namespace kERP
 
         private void LockControls(bool l = true)
         {
-            //if (Id != 0 && l == false)
-            //    txtNo.ReadOnly = true;
-            //else
-            //    txtNo.ReadOnly = l;
-            txtFirstName.ReadOnly = l;
-            txtLastName.ReadOnly = l;
-            cboBranch.Enabled = !l;
+            if (Id != 0 && l == false)
+                txtCode.ReadOnly = true;
+            else
+                txtCode.ReadOnly = l;
+            txtDescription.ReadOnly = l;
             cboType.Enabled = !l;
-            cboCategory.Enabled = !l;
-            cboGender.Enabled = !l;
-            dtpDOB.Enabled = !l;
-            cboProvince.Enabled = !l;
-            cboDistrict.Enabled = !l;
-            cboCommune.Enabled = !l;
-            cboVillage.Enabled = !l;
             txtAddress.ReadOnly = l;
-            cboIDType1.Enabled = !l;
-            txtIDValue1.ReadOnly = l;
-            cboIDType2.Enabled = !l;
-            txtIDValue2.ReadOnly = l;
-            cboIDType3.Enabled = !l;
-            txtIDValue3.ReadOnly = l;
-            cboContactType1.Enabled = !l;
-            txtContactValue1.ReadOnly = l;
-            cboContactType2.Enabled = !l;
-            txtContactValue2.ReadOnly = l;
-            cboContactType3.Enabled = !l;
-            txtContactValue3.ReadOnly = l;
-            cboContactType4.Enabled = !l;
-            txtContactValue4.ReadOnly = l;
+            txtName.ReadOnly = l;
+            txtPhone.ReadOnly = l;
+            txtFax.ReadOnly = l;
+            txtEmail.ReadOnly = l;
             txtNote.ReadOnly = l;
-
             btnNew.Enabled = l;
             btnCopy.Enabled = dgvList.Id != 0 && l;
             btnSave.Enabled = !l;
@@ -159,32 +128,27 @@ namespace kERP
 
         private bool IsValidated()
         {
-            var valid = new Validator(this, "customer");
-            //string No = txtCustomerNo.Text.Trim();
-            //if (No.Length == 0) 
-            //    validator.Add(txtCustomerNo, "code_blank");
-            //else if (CustomerFacade.Exists(No, Id))
-                //validator.Add(txtCustomerNo, "code_exists");
+            var valid = new Validator(this, "ic_location");
+            string sCode = txtCode.Text.Trim();
+            if (sCode.Length == 0)
+                valid.Add(txtCode, "code_blank");
+            else if (LocationFacade.Exists(sCode, Id))
+                valid.Add(txtCode, "code_exists");
+            if (txtDescription.IsEmptyTrim) valid.Add(txtDescription, "description_blank");
             if (cboType.Unspecified) valid.Add(cboType, "type_unspecified");
-            if (txtLastName.IsEmptyTrim) valid.Add(txtLastName, "first_name_blank");
-            if (txtFirstName.IsEmptyTrim) valid.Add(txtFirstName, "first_name_blank");
-            if (cboGender.Unspecified) valid.Add(cboGender, "gender_unspecified");
-            if (DateTime.Today.Year - dtpDOB.Value.Year < 15) valid.Add(dtpDOB, "date_of_birth_invalid");
-            if (cboProvince.Unspecified) valid.Add(cboProvince, "province_unspecified");
-            if (cboDistrict.Unspecified) valid.Add(cboDistrict, "district_unspecified");
-            if (cboCommune.Unspecified) valid.Add(cboCommune, "commune_unspecified");
-            if (cboVillage.Unspecified) valid.Add(cboVillage, "village_unspecified");
-            //todo: Additional tab: when number is not blank but type is blank
-            return valid.Show();           
+            return valid.Show();
         }
 
         private void ClearAllBoxes()
         {
-            txtCustomerNo.Text = "";
-            txtCustomerNo.Focus();
-            txtLastName.Text = "";
-            txtFirstName.Text = "";
+            txtCode.Text = "";
+            txtCode.Focus();
+            txtDescription.Text = "";
             txtAddress.Text = "";
+            txtName.Text = "";
+            txtPhone.Text = "";
+            txtFax.Text = "";
+            txtEmail.Text = "";
             txtNote.Text = "";
             IsDirty = false;
         }
@@ -195,39 +159,20 @@ namespace kERP
             if (Id != 0)
                 try
                 {
-                    var m = CustomerFacade.Select(Id);
-                    txtCustomerNo.Text = m.Customer_No;
-                    txtFirstName.Text = m.First_Name;
-                    txtLastName.Text = m.Last_Name;
-                    cboGender.Value = m.Gender;
-                    dtpDOB.Value = m.Date_of_Birth;
+                    var m = LocationFacade.Select(Id);
+                    txtCode.Text = m.Code;
+                    txtDescription.Text = m.Description;
                     cboType.Value = m.Type;
-                    cboCategory.Value = m.Category;
-                    cboBranch.Value = m.Branch_Code;
-                    cboIDType1.Value = m.Id_Type1;
-                    txtIDValue1.Text = m.Id_Value1;
-                    cboIDType2.Value = m.Id_Type2;
-                    txtIDValue2.Text = m.Id_Value2;
-                    cboIDType3.Value = m.Id_Type3;
-                    txtIDValue3.Text = m.Id_Value3;
-                    cboContactType1.Value = m.Contact_Type1;
-                    txtContactValue1.Text = m.Contact_Value1;
-                    cboContactType2.Value = m.Contact_Type2;
-                    txtContactValue2.Text = m.Contact_Value2;
-                    cboContactType3.Value = m.Contact_Type3;
-                    txtContactValue3.Text = m.Contact_Value3;
-                    cboContactType4.Value = m.Contact_Type4;
-                    txtContactValue4.Text = m.Contact_Value4;
                     txtAddress.Text = m.Address;
-                    cboProvince.Value = m.Province;
-                    cboDistrict.Value = m.District;
-                    cboCommune.Value = m.Commune;
-                    cboVillage.Value = m.Village;
+                    txtName.Text = m.Name;
+                    txtPhone.Text = m.Phone;
+                    txtFax.Text = m.Fax;
+                    txtEmail.Text = m.Email;
                     txtNote.Text = m.Note;
                     SetStatus(m.Status);
                     LockControls();
                     IsDirty = false;
-                    SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_View, "View. Id=" + m.Id + ", No=" + m.Customer_No);
+                    SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_View, "View. Id=" + m.Id + ", Code=" + m.Code);
                 }
                 catch (Exception ex)
                 {
@@ -270,7 +215,7 @@ namespace kERP
         private void SetCodeCasing()
         {
             CharacterCasing cs;
-            switch (ConfigFacade.Export_Delimiter)
+            switch (ConfigFacade.Code_Casing)
             {
                 case "U":
                     cs = CharacterCasing.Upper;
@@ -282,7 +227,7 @@ namespace kERP
                     cs = CharacterCasing.Normal;
                     break;
             }
-            txtCustomerNo.CharacterCasing = cs;
+            txtCode.CharacterCasing = cs;
         }
 
         private void SetSettings()
@@ -293,7 +238,7 @@ namespace kERP
                 splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
 
                 SetCodeCasing();
-                //txtCustomerNo.MaxLength = ConfigFacade.Code_Max_Length;
+                txtCode.MaxLength = ConfigFacade.Code_Max_Length;
                 FormFacade.SetFormState(this);
             }
             catch (Exception ex)
@@ -304,7 +249,7 @@ namespace kERP
 
         private void SetLabels()
         {
-            var prefix = "customer_";
+            var prefix = "ic_location_";
             btnNew.Text = LabelFacade.sys_button_new ?? btnNew.Text;
             btnCopy.Text = LabelFacade.sys_button_copy ?? btnCopy.Text;
             btnUnlock.Text = LabelFacade.sys_button_unlock ?? btnUnlock.Text;
@@ -319,9 +264,8 @@ namespace kERP
             btnClear.Text = "     " + (LabelFacade.sys_button_clear ?? btnClear.Text.Replace(" ", ""));
             btnFilter.Text = "     " + (LabelFacade.sys_button_filter ?? btnFilter.Text.Replace(" ", ""));
 
-            colCustomerNo.HeaderText = LabelFacade.Get(prefix + "code") ?? colCustomerNo.HeaderText;
-            lblCode.Text = colCustomerNo.HeaderText;
-            lblName.Text = LabelFacade.Get(prefix + "default_factor") ?? lblName.Text;
+            colCode.HeaderText = LabelFacade.Get(prefix + "code") ?? colCode.HeaderText;
+            lblCode.Text = colCode.HeaderText;
             glbGeneral.Caption = LabelFacade.Get(prefix + "general") ?? glbGeneral.Caption;
             glbNote.Caption = LabelFacade.Get(prefix + "note") ?? glbNote.Caption;
             //todo: load the rest
@@ -331,36 +275,17 @@ namespace kERP
         {
             if (!IsValidated()) return false;
             Cursor = Cursors.WaitCursor;
-            var m = new Customer();
+            var m = new Location();
             var log = new SessionLog { Module = ModuleName };
             m.Id = Id;
-            m.Customer_No = txtCustomerNo.Text.Trim();
-            m.First_Name = txtFirstName.Text;
-            m.Last_Name = txtLastName.Text;
-            m.Gender = cboGender.Value;
-            m.Date_of_Birth = dtpDOB.Value;
+            m.Code = txtCode.Text.Trim();
+            m.Description = txtDescription.Text;
             m.Type = cboType.Value;
-            m.Category = cboCategory.Value;
-            m.Branch_Code = cboBranch.Value;
-            m.Id_Type1 = cboIDType1.Value;
-            m.Id_Value1 = txtIDValue1.Text;
-            m.Id_Type2 = cboIDType2.Value;
-            m.Id_Value2 = txtIDValue2.Text;
-            m.Id_Type3 = cboIDType3.Value;
-            m.Id_Value3 = txtIDValue3.Text;
-            m.Contact_Type1 = cboContactType1.Value;
-            m.Contact_Value1 = txtContactValue1.Text;
-            m.Contact_Type2 = cboContactType2.Value;
-            m.Contact_Value2 = txtContactValue2.Text;
-            m.Contact_Type3 = cboContactType3.Value;
-            m.Contact_Value3 = txtContactValue3.Text;
-            m.Contact_Type4 = cboContactType4.Value;
-            m.Contact_Value4 = txtContactValue4.Text;
             m.Address = txtAddress.Text;
-            m.Province = cboProvince.Value;
-            m.District = cboDistrict.Value;
-            m.Commune = cboCommune.Value;
-            m.Village = cboVillage.Value;
+            m.Name = txtName.Text;
+            m.Phone = txtPhone.Text;
+            m.Fax = txtFax.Text;
+            m.Email = txtEmail.Text;
             m.Note = txtNote.Text;
             if (m.Id == 0)
             {
@@ -374,7 +299,7 @@ namespace kERP
             }
             try
             {
-                m.Id = CustomerFacade.Save(m);
+                m.Id = LocationFacade.Save(m);
             }
             catch (Exception ex)
             {
@@ -385,13 +310,13 @@ namespace kERP
             RefreshGrid(m.Id);
             LockControls();
             Cursor = Cursors.Default;
-            log.Message = "Saved. Id=" + m.Id + ", Code=" + txtCustomerNo.Text;
+            log.Message = "Saved. Id=" + m.Id + ", Code=" + txtCode.Text;
             SessionLogFacade.Log(log);
             IsDirty = false;
             return true;
         }
 
-        private void frmCustomerList_Load(object sender, EventArgs e)
+        private void frmLocationList_Load(object sender, EventArgs e)
         {
             Icon = Properties.Resources.Icon;
             try
@@ -399,19 +324,7 @@ namespace kERP
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
-                Data.LoadBranch(cboBranch, false);
-                Data.LoadList(cboType, "customer");
-                Data.LoadList(cboCategory, "customer_category");
-                Data.LoadList(cboGender, "gender");
-                Data.LoadList(cboIDType1, "id");
-                Data.LoadList(cboIDType2, "id");
-                Data.LoadList(cboIDType3, "id");
-                Data.LoadList(cboContactType1, "contact");
-                Data.LoadList(cboContactType2, "contact");
-                Data.LoadList(cboContactType3, "contact");
-                Data.LoadList(cboContactType4, "contact");
-                Data.LoadRegional(cboProvince, "'P', 'M'"); // Province and Municipality                
-
+                Data.LoadList(cboType, "ic_location_type");
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();
 
@@ -421,13 +334,6 @@ namespace kERP
             {
                 ErrorLogFacade.Log(ex, "Form_Load");
                 MessageFacade.Show(MessageFacade.error_load_form + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            // ShowDialog; Select a customer
-            btnSelect.Visible = IsDlg;
-            if (IsDlg)
-            {
-                btnMode_Click(null, null);
-                toolStrip1.Refresh();
             }
         }
 
@@ -444,9 +350,7 @@ namespace kERP
             if (dgvList.CurrentRow != null)
                 dgvList.CurrentRow.Selected = false;
             Id = 0;
-            LockControls(false);
-            cboType.Focus();
-            cboBranch_SelectedIndexChanged(null, null);
+            LockControls(false);            
             if (dgvList.CurrentRow != null) RowIndex = dgvList.CurrentRow.Index;
             SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_New, "New clicked");
             IsDirty = false;
@@ -474,7 +378,7 @@ namespace kERP
 
         private void btnSaveNew_Click(object sender, EventArgs e)
         {
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_SaveAndNew, "Saved and new. Id=" + dgvList.Id + ", Code=" + txtCustomerNo.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_SaveAndNew, "Saved and new. Id=" + dgvList.Id + ", Code=" + txtAddress.Text);
             btnSave_Click(sender, e);
             if (btnSaveNew.Enabled) return;
             btnNew_Click(sender, e);
@@ -489,7 +393,7 @@ namespace kERP
                 // If referenced
                 //todo: check if exist in ic_item
                 // If locked
-                var lInfo = CustomerFacade.GetLock(Id);
+                var lInfo = LocationFacade.GetLock(Id);
                 string msg = "";
                 if (lInfo.Locked)
                 {
@@ -497,7 +401,7 @@ namespace kERP
                     if (!Privilege.CanAccess(Constant.Function_IC_Unit_Measure, "O"))
                     {
                         MessageFacade.Show(msg, LabelFacade.sys_delete, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Delete, "Cannot delete. Currently locked by '" + lInfo.Lock_By + "' since '" + lInfo.Lock_At + "' . Id=" + dgvList.Id + ", Code=" + txtCustomerNo.Text);
+                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Delete, "Cannot delete. Currently locked by '" + lInfo.Lock_By + "' since '" + lInfo.Lock_At + "' . Id=" + dgvList.Id + ", Code=" + txtAddress.Text);
                         return;
                     }
                 }
@@ -508,7 +412,7 @@ namespace kERP
                     return;
                 try
                 {
-                    CustomerFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
+                    LocationFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
                 }
                 catch (Exception ex)
                 {
@@ -517,7 +421,7 @@ namespace kERP
                 }
                 RefreshGrid();
                 // log
-                SessionLogFacade.Log(Constant.Priority_Warning, ModuleName, Constant.Log_Delete, "Deleted. Id=" + dgvList.Id + ", Code=" + txtCustomerNo.Text);
+                SessionLogFacade.Log(Constant.Priority_Warning, ModuleName, Constant.Log_Delete, "Deleted. Id=" + dgvList.Id + ", Code=" + txtAddress.Text);
             }
             catch (Exception ex)
             {
@@ -536,10 +440,9 @@ namespace kERP
             }
             Id = 0;
             if (IsExpand) picExpand_Click(sender, e);
-            txtCustomerNo.Focus();
+            txtAddress.Focus();
             LockControls(false);
-            cboBranch_SelectedIndexChanged(null, null);
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Copy, "Copy from Id=" + dgvList.Id + "Code=" + txtCustomerNo.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Copy, "Copy from Id=" + dgvList.Id + "Code=" + txtAddress.Text);
             IsDirty = false;
         }
 
@@ -563,13 +466,8 @@ namespace kERP
         private void dgvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            if (!IsDlg)
-            {
-                if (IsExpand) picExpand_Click(sender, e);
-                dgvList_SelectionChanged(sender, e);    // reload data since SelectionChanged will not occured on current row
-            }
-            else
-                btnSelect_Click(null, null);
+            if (IsExpand) picExpand_Click(sender, e);
+            dgvList_SelectionChanged(sender, e);    // reload data since SelectionChanged will not occured on current row            
         }
 
         private void btnActive_Click(object sender, EventArgs e)
@@ -582,7 +480,7 @@ namespace kERP
             //todo: check if already used in ic_item
 
             //If locked
-            var lInfo = CustomerFacade.GetLock(Id);
+            var lInfo = LocationFacade.GetLock(Id);
             if (lInfo.Locked)
             {
                 string msg = string.Format(MessageFacade.lock_currently, lInfo.Lock_By, lInfo.Lock_At);
@@ -597,7 +495,7 @@ namespace kERP
             }
             try
             {
-                CustomerFacade.SetStatus(Id, status);
+                LocationFacade.SetStatus(Id, status);
             }
             catch (Exception ex)
             {
@@ -605,7 +503,7 @@ namespace kERP
                 ErrorLogFacade.Log(ex);
             }
             RefreshGrid();
-            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, status == Constant.RecordStatus_InActive ? Constant.Log_Inactive : Constant.Log_Active, "Id=" + dgvList.Id + ", Code=" + txtCustomerNo.Text);
+            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, status == Constant.RecordStatus_InActive ? Constant.Log_Inactive : Constant.Log_Active, "Id=" + dgvList.Id + ", Code=" + txtAddress.Text);
         }
 
         private void btnUnlock_Click(object sender, EventArgs e)
@@ -631,12 +529,11 @@ namespace kERP
                     else if (result == System.Windows.Forms.DialogResult.Cancel)
                         return;
                 }
-                CustomerFacade.DecrementSrNo(cboBranch.Value);
                 LockControls(true);
                 dgvList.Focus();
                 try
                 {
-                    CustomerFacade.ReleaseLock(dgvList.Id);
+                    LocationFacade.ReleaseLock(dgvList.Id);
                 }
                 catch (Exception ex)
                 {
@@ -646,7 +543,7 @@ namespace kERP
                 }
                 if (dgvList.CurrentRow != null && !dgvList.CurrentRow.Selected)
                     dgvList.CurrentRow.Selected = true;
-                SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Unlock, "Unlock cancel. Id=" + dgvList.Id + ", Code=" + txtCustomerNo.Text);
+                SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Unlock, "Unlock cancel. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
                 btnUnlock.ToolTipText = "Unlock (Ctrl+L)";
                 IsDirty = false;
                 return;
@@ -655,7 +552,7 @@ namespace kERP
             if (Id == 0) return;
             try
             {
-                var lInfo = CustomerFacade.GetLock(Id);
+                var lInfo = LocationFacade.GetLock(Id);
 
                 if (lInfo.Locked) // Check if record is locked
                 {
@@ -667,12 +564,12 @@ namespace kERP
                     }
                     else
                         if (MessageFacade.Show(msg + "\r\n" + MessageFacade.lock_override, LabelFacade.sys_unlock, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtCustomerNo.Text);
+                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
                         else
                             return;
                 }
-                txtAddress.SelectionStart = txtAddress.Text.Length;
-                txtAddress.Focus();
+                txtName.SelectionStart = txtName.Text.Length;
+                txtName.Focus();
                 LockControls(false);
             }
             catch (Exception ex)
@@ -683,7 +580,7 @@ namespace kERP
             }
             try
             {
-                CustomerFacade.Lock(dgvList.Id, txtCustomerNo.Text);
+                LocationFacade.Lock(dgvList.Id, txtAddress.Text);
             }
             catch (Exception ex)
             {
@@ -691,7 +588,7 @@ namespace kERP
                 ErrorLogFacade.Log(ex);
                 return;
             }
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Lock, "Locked. Id=" + dgvList.Id + ", Code=" + txtCustomerNo.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Lock, "Locked. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
             btnUnlock.ToolTipText = "Cancel (Esc or Ctrl+L)";
         }
 
@@ -788,12 +685,12 @@ namespace kERP
 
         private void txtCode_Leave(object sender, EventArgs e)
         {
-            //// Check if entered code already exists
-            //if (txtNo.ReadOnly) return;
-            //if (CustomerFacade.Exists(txtNo.Text.Trim()))
-            //{
-            //    MessageFacade.Show(this, ref fMsg, LabelFacade.sy_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sy_customer);
-            //}
+            // Check if entered code already exists
+            if (txtCode.ReadOnly) return;
+            if (LocationFacade.Exists(txtCode.Text.Trim()))
+            {
+                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sys_branch);
+            }
         }
 
         private void btnMode_Click(object sender, EventArgs e)
@@ -807,7 +704,7 @@ namespace kERP
             }
             else
             {
-                splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name );
+                splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
                 splitContainer1.FixedPanel = FixedPanel.Panel1;
             }
             dgvList.ShowLessColumns(IsExpand);
@@ -843,7 +740,7 @@ namespace kERP
         {
             Cursor = Cursors.WaitCursor;
             Application.DoEvents();
-            CustomerFacade.Export();
+            LocationFacade.Export();
             Cursor = Cursors.Default;
         }
 
@@ -860,37 +757,6 @@ namespace kERP
         private void txtFind_Leave(object sender, EventArgs e)
         {
             lblSearch.Visible = (txtFind.IsEmpty);
-        }
-
-        private void cboProvince_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Data.LoadRegional(cboDistrict, "'D'", cboProvince.Value);
-            cboDistrict.SelectedIndex = -1;
-        }
-
-        private void cboDistrict_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Data.LoadRegional(cboCommune, "'C'", cboDistrict.Value);
-            cboCommune.SelectedIndex = -1;
-        }
-
-        private void cboCommune_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Data.LoadRegional(cboVillage, "'V'", cboCommune.Value);
-            cboVillage.SelectedIndex = -1;
-        }
-
-        private void cboBranch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboBranch.Unspecified || btnNew.Enabled) return;
-            txtCustomerNo.Text = CustomerFacade.GetNextCustomerNo(cboBranch.Value); //todo: Format No; from table
-        }
-
-        private void btnSelect_Click(object sender, EventArgs e)
-        {
-            CustomerNo = dgvList.CurrentRow.Cells["colCustomerNo"].Value.ToString();
-            FullName = dgvList.CurrentRow.Cells["colName"].Value.ToString();
-            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
     }
 }

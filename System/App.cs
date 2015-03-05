@@ -24,7 +24,7 @@ namespace kERP
         public static frmProduct fProduct;
         public static frmHoliday fHoliday;
         public static frmBranch fBranch;
-        public static frmCustomer fCustomer;
+        public static frmLocation fLocation;
         public static frmLoan fLoan;
 
         public static SM.frmUserList fUserList;

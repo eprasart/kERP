@@ -29,179 +29,45 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.groupLabel5 = new kBit.UI.GroupLabel();
-            this.groupLabel3 = new kBit.UI.GroupLabel();
-            this.groupLabel8 = new kBit.UI.GroupLabel();
-            this.groupLabel6 = new kBit.UI.GroupLabel();
-            this.groupLabel4 = new kBit.UI.GroupLabel();
-            this.groupLabel2 = new kBit.UI.GroupLabel();
-            this.btnLoan = new kBit.UI.ButtonFlat();
-            this.btnCustomer = new kBit.UI.ButtonFlat();
-            this.buttonFlat18 = new kBit.UI.ButtonFlat();
-            this.buttonFlat13 = new kBit.UI.ButtonFlat();
             this.btnBranch = new kBit.UI.ButtonFlat();
             this.btnCompany = new kBit.UI.ButtonFlat();
-            this.buttonFlat6 = new kBit.UI.ButtonFlat();
-            this.buttonFlat9 = new kBit.UI.ButtonFlat();
-            this.buttonFlat11 = new kBit.UI.ButtonFlat();
-            this.btnCategory = new kBit.UI.ButtonFlat();
-            this.buttonFlat16 = new kBit.UI.ButtonFlat();
-            this.btnAuditLog = new kBit.UI.ButtonFlat();
-            this.buttonFlat12 = new kBit.UI.ButtonFlat();
-            this.btnRepayment = new kBit.UI.ButtonFlat();
-            this.buttonFlat5 = new kBit.UI.ButtonFlat();
-            this.btnUser = new kBit.UI.ButtonFlat();
-            this.groupLabel9 = new kBit.UI.GroupLabel();
-            this.btnUnitMeasure = new kBit.UI.ButtonFlat();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.btnProduct = new kBit.UI.ButtonFlat();
             this.btnHoliday = new kBit.UI.ButtonFlat();
+            this.groupLabel1 = new kBit.UI.GroupLabel();
+            this.groupLabel7 = new kBit.UI.GroupLabel();
+            this.groupLabel10 = new kBit.UI.GroupLabel();
+            this.groupLabel11 = new kBit.UI.GroupLabel();
+            this.groupLabel12 = new kBit.UI.GroupLabel();
+            this.groupLabel13 = new kBit.UI.GroupLabel();
+            this.groupLabel14 = new kBit.UI.GroupLabel();
+            this.groupLabel15 = new kBit.UI.GroupLabel();
+            this.btnPO = new kBit.UI.ButtonFlat();
+            this.btnVendor = new kBit.UI.ButtonFlat();
+            this.buttonFlat1 = new kBit.UI.ButtonFlat();
+            this.buttonFlat2 = new kBit.UI.ButtonFlat();
+            this.btnLabelMessage = new kBit.UI.ButtonFlat();
+            this.buttonFlat17 = new kBit.UI.ButtonFlat();
+            this.buttonFlat4 = new kBit.UI.ButtonFlat();
+            this.btnTransfer = new kBit.UI.ButtonFlat();
+            this.btnAdjustment = new kBit.UI.ButtonFlat();
+            this.btnUnitMeasure = new kBit.UI.ButtonFlat();
+            this.btnReceive = new kBit.UI.ButtonFlat();
+            this.btnCategory = new kBit.UI.ButtonFlat();
+            this.buttonFlat21 = new kBit.UI.ButtonFlat();
+            this.buttonFlat22 = new kBit.UI.ButtonFlat();
+            this.buttonFlat23 = new kBit.UI.ButtonFlat();
+            this.buttonFlat24 = new kBit.UI.ButtonFlat();
+            this.btnLocation = new kBit.UI.ButtonFlat();
+            this.buttonFlat25 = new kBit.UI.ButtonFlat();
+            this.btnItem = new kBit.UI.ButtonFlat();
+            this.buttonFlat26 = new kBit.UI.ButtonFlat();
             this.SuspendLayout();
-            // 
-            // groupLabel5
-            // 
-            this.groupLabel5.Caption = "Loan";
-            this.groupLabel5.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
-            this.groupLabel5.Location = new System.Drawing.Point(12, 19);
-            this.groupLabel5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupLabel5.Name = "groupLabel5";
-            this.groupLabel5.Size = new System.Drawing.Size(199, 17);
-            this.groupLabel5.TabIndex = 3;
-            this.groupLabel5.TabStop = false;
-            // 
-            // groupLabel3
-            // 
-            this.groupLabel3.Caption = "System";
-            this.groupLabel3.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
-            this.groupLabel3.Location = new System.Drawing.Point(742, 123);
-            this.groupLabel3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupLabel3.Name = "groupLabel3";
-            this.groupLabel3.Size = new System.Drawing.Size(199, 17);
-            this.groupLabel3.TabIndex = 3;
-            this.groupLabel3.TabStop = false;
-            // 
-            // groupLabel8
-            // 
-            this.groupLabel8.Caption = "GL - General Leader";
-            this.groupLabel8.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
-            this.groupLabel8.Location = new System.Drawing.Point(501, 123);
-            this.groupLabel8.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupLabel8.Name = "groupLabel8";
-            this.groupLabel8.Size = new System.Drawing.Size(199, 17);
-            this.groupLabel8.TabIndex = 3;
-            this.groupLabel8.TabStop = false;
-            // 
-            // groupLabel6
-            // 
-            this.groupLabel6.Caption = "Money Exchange";
-            this.groupLabel6.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
-            this.groupLabel6.Location = new System.Drawing.Point(255, 123);
-            this.groupLabel6.Margin = new System.Windows.Forms.Padding(2, 10, 2, 3);
-            this.groupLabel6.Name = "groupLabel6";
-            this.groupLabel6.Size = new System.Drawing.Size(199, 18);
-            this.groupLabel6.TabIndex = 3;
-            this.groupLabel6.TabStop = false;
-            // 
-            // groupLabel4
-            // 
-            this.groupLabel4.Caption = "Money Transfer";
-            this.groupLabel4.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
-            this.groupLabel4.Location = new System.Drawing.Point(255, 19);
-            this.groupLabel4.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupLabel4.Name = "groupLabel4";
-            this.groupLabel4.Size = new System.Drawing.Size(199, 17);
-            this.groupLabel4.TabIndex = 3;
-            this.groupLabel4.TabStop = false;
-            // 
-            // groupLabel2
-            // 
-            this.groupLabel2.Caption = "Security Management";
-            this.groupLabel2.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
-            this.groupLabel2.Location = new System.Drawing.Point(742, 19);
-            this.groupLabel2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupLabel2.Name = "groupLabel2";
-            this.groupLabel2.Size = new System.Drawing.Size(199, 17);
-            this.groupLabel2.TabIndex = 3;
-            this.groupLabel2.TabStop = false;
-            // 
-            // btnLoan
-            // 
-            this.btnLoan.BackColor = System.Drawing.Color.White;
-            this.btnLoan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLoan.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnLoan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoan.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.btnLoan.Image = ((System.Drawing.Image)(resources.GetObject("btnLoan.Image")));
-            this.btnLoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoan.Location = new System.Drawing.Point(25, 79);
-            this.btnLoan.Name = "btnLoan";
-            this.btnLoan.Size = new System.Drawing.Size(186, 31);
-            this.btnLoan.TabIndex = 2;
-            this.btnLoan.Text = "         Loan";
-            this.btnLoan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoan.UseVisualStyleBackColor = false;
-            this.btnLoan.Click += new System.EventHandler(this.btnLoan_Click);
-            // 
-            // btnCustomer
-            // 
-            this.btnCustomer.BackColor = System.Drawing.Color.White;
-            this.btnCustomer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCustomer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCustomer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCustomer.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.btnCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomer.Image")));
-            this.btnCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomer.Location = new System.Drawing.Point(25, 42);
-            this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(186, 31);
-            this.btnCustomer.TabIndex = 2;
-            this.btnCustomer.Text = "         Customer";
-            this.btnCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomer.UseVisualStyleBackColor = false;
-            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
-            // 
-            // buttonFlat18
-            // 
-            this.buttonFlat18.BackColor = System.Drawing.Color.White;
-            this.buttonFlat18.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFlat18.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonFlat18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.buttonFlat18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat18.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.buttonFlat18.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat18.Image")));
-            this.buttonFlat18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat18.Location = new System.Drawing.Point(514, 183);
-            this.buttonFlat18.Name = "buttonFlat18";
-            this.buttonFlat18.Size = new System.Drawing.Size(186, 31);
-            this.buttonFlat18.TabIndex = 2;
-            this.buttonFlat18.Text = "         Location";
-            this.buttonFlat18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat18.UseVisualStyleBackColor = false;
-            // 
-            // buttonFlat13
-            // 
-            this.buttonFlat13.BackColor = System.Drawing.Color.White;
-            this.buttonFlat13.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFlat13.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonFlat13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.buttonFlat13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat13.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.buttonFlat13.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat13.Image")));
-            this.buttonFlat13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat13.Location = new System.Drawing.Point(268, 184);
-            this.buttonFlat13.Name = "buttonFlat13";
-            this.buttonFlat13.Size = new System.Drawing.Size(186, 31);
-            this.buttonFlat13.TabIndex = 2;
-            this.buttonFlat13.Text = "         Sell";
-            this.buttonFlat13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat13.UseVisualStyleBackColor = false;
             // 
             // btnBranch
             // 
             this.btnBranch.BackColor = System.Drawing.Color.White;
             this.btnBranch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBranch.Enabled = false;
             this.btnBranch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnBranch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnBranch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -210,7 +76,7 @@
             this.btnBranch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBranch.Location = new System.Drawing.Point(755, 183);
             this.btnBranch.Name = "btnBranch";
-            this.btnBranch.Size = new System.Drawing.Size(186, 31);
+            this.btnBranch.Size = new System.Drawing.Size(217, 31);
             this.btnBranch.TabIndex = 2;
             this.btnBranch.Text = "         Branch";
             this.btnBranch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -221,6 +87,7 @@
             // 
             this.btnCompany.BackColor = System.Drawing.Color.White;
             this.btnCompany.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCompany.Enabled = false;
             this.btnCompany.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCompany.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnCompany.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -229,212 +96,303 @@
             this.btnCompany.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCompany.Location = new System.Drawing.Point(755, 146);
             this.btnCompany.Name = "btnCompany";
-            this.btnCompany.Size = new System.Drawing.Size(186, 31);
+            this.btnCompany.Size = new System.Drawing.Size(217, 31);
             this.btnCompany.TabIndex = 2;
             this.btnCompany.Text = "         Company";
             this.btnCompany.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCompany.UseVisualStyleBackColor = false;
             // 
-            // buttonFlat6
+            // lblVersion
             // 
-            this.buttonFlat6.BackColor = System.Drawing.Color.White;
-            this.buttonFlat6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFlat6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonFlat6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.buttonFlat6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat6.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.buttonFlat6.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat6.Image")));
-            this.buttonFlat6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat6.Location = new System.Drawing.Point(268, 79);
-            this.buttonFlat6.Name = "buttonFlat6";
-            this.buttonFlat6.Size = new System.Drawing.Size(186, 31);
-            this.buttonFlat6.TabIndex = 2;
-            this.buttonFlat6.Text = "         Withdraw";
-            this.buttonFlat6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat6.UseVisualStyleBackColor = false;
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersion.Location = new System.Drawing.Point(783, 309);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(191, 17);
+            this.lblVersion.TabIndex = 5;
+            this.lblVersion.Text = "v 0.1.2";
+            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
-            // buttonFlat9
+            // btnHoliday
             // 
-            this.buttonFlat9.BackColor = System.Drawing.Color.White;
-            this.buttonFlat9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFlat9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonFlat9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.buttonFlat9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat9.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.buttonFlat9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonFlat9.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat9.Image")));
-            this.buttonFlat9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat9.Location = new System.Drawing.Point(514, 79);
-            this.buttonFlat9.Name = "buttonFlat9";
-            this.buttonFlat9.Size = new System.Drawing.Size(186, 31);
-            this.buttonFlat9.TabIndex = 2;
-            this.buttonFlat9.Text = "         Sell";
-            this.buttonFlat9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat9.UseVisualStyleBackColor = false;
+            this.btnHoliday.BackColor = System.Drawing.Color.White;
+            this.btnHoliday.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHoliday.Enabled = false;
+            this.btnHoliday.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnHoliday.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHoliday.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.btnHoliday.Image = ((System.Drawing.Image)(resources.GetObject("btnHoliday.Image")));
+            this.btnHoliday.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHoliday.Location = new System.Drawing.Point(755, 220);
+            this.btnHoliday.Name = "btnHoliday";
+            this.btnHoliday.Size = new System.Drawing.Size(217, 31);
+            this.btnHoliday.TabIndex = 2;
+            this.btnHoliday.Text = "         Holiday";
+            this.btnHoliday.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHoliday.UseVisualStyleBackColor = false;
+            this.btnHoliday.Click += new System.EventHandler(this.btnHoliday_Click);
             // 
-            // buttonFlat11
+            // groupLabel1
             // 
-            this.buttonFlat11.BackColor = System.Drawing.Color.White;
-            this.buttonFlat11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFlat11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonFlat11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.buttonFlat11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat11.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.buttonFlat11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonFlat11.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat11.Image")));
-            this.buttonFlat11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat11.Location = new System.Drawing.Point(514, 42);
-            this.buttonFlat11.Name = "buttonFlat11";
-            this.buttonFlat11.Size = new System.Drawing.Size(186, 31);
-            this.buttonFlat11.TabIndex = 2;
-            this.buttonFlat11.Text = "         Buy";
-            this.buttonFlat11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat11.UseVisualStyleBackColor = false;
+            this.groupLabel1.Caption = "IC - Inventory Control";
+            this.groupLabel1.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupLabel1.Location = new System.Drawing.Point(12, 19);
+            this.groupLabel1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.groupLabel1.Name = "groupLabel1";
+            this.groupLabel1.Size = new System.Drawing.Size(230, 17);
+            this.groupLabel1.TabIndex = 34;
+            this.groupLabel1.TabStop = false;
             // 
-            // btnCategory
+            // groupLabel7
             // 
-            this.btnCategory.BackColor = System.Drawing.Color.White;
-            this.btnCategory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCategory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategory.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnCategory.Image")));
-            this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategory.Location = new System.Drawing.Point(25, 153);
-            this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(186, 31);
-            this.btnCategory.TabIndex = 2;
-            this.btnCategory.Text = "         Adjustment";
-            this.btnCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategory.UseVisualStyleBackColor = false;
-            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
+            this.groupLabel7.Caption = "PO - Purchase Order";
+            this.groupLabel7.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel7.Location = new System.Drawing.Point(255, 19);
+            this.groupLabel7.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.groupLabel7.Name = "groupLabel7";
+            this.groupLabel7.Size = new System.Drawing.Size(230, 17);
+            this.groupLabel7.TabIndex = 33;
+            this.groupLabel7.TabStop = false;
             // 
-            // buttonFlat16
+            // groupLabel10
             // 
-            this.buttonFlat16.BackColor = System.Drawing.Color.White;
-            this.buttonFlat16.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFlat16.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonFlat16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.buttonFlat16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat16.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.buttonFlat16.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat16.Image")));
-            this.buttonFlat16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat16.Location = new System.Drawing.Point(514, 146);
-            this.buttonFlat16.Name = "buttonFlat16";
-            this.buttonFlat16.Size = new System.Drawing.Size(186, 31);
-            this.buttonFlat16.TabIndex = 2;
-            this.buttonFlat16.Text = "         User";
-            this.buttonFlat16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat16.UseVisualStyleBackColor = false;
-            this.buttonFlat16.Click += new System.EventHandler(this.btnUser_Click);
+            this.groupLabel10.Caption = "SYS - System";
+            this.groupLabel10.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel10.Location = new System.Drawing.Point(742, 123);
+            this.groupLabel10.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.groupLabel10.Name = "groupLabel10";
+            this.groupLabel10.Size = new System.Drawing.Size(230, 17);
+            this.groupLabel10.TabIndex = 32;
+            this.groupLabel10.TabStop = false;
             // 
-            // btnAuditLog
+            // groupLabel11
             // 
-            this.btnAuditLog.BackColor = System.Drawing.Color.White;
-            this.btnAuditLog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAuditLog.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAuditLog.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnAuditLog.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAuditLog.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.btnAuditLog.Image = ((System.Drawing.Image)(resources.GetObject("btnAuditLog.Image")));
-            this.btnAuditLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAuditLog.Location = new System.Drawing.Point(755, 79);
-            this.btnAuditLog.Name = "btnAuditLog";
-            this.btnAuditLog.Size = new System.Drawing.Size(186, 31);
-            this.btnAuditLog.TabIndex = 2;
-            this.btnAuditLog.Text = "         Audit Log";
-            this.btnAuditLog.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAuditLog.UseVisualStyleBackColor = false;
-            this.btnAuditLog.Click += new System.EventHandler(this.btnAuditLog_Click);
+            this.groupLabel11.Caption = "GL - General Leader";
+            this.groupLabel11.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel11.Location = new System.Drawing.Point(499, 123);
+            this.groupLabel11.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.groupLabel11.Name = "groupLabel11";
+            this.groupLabel11.Size = new System.Drawing.Size(230, 17);
+            this.groupLabel11.TabIndex = 31;
+            this.groupLabel11.TabStop = false;
             // 
-            // buttonFlat12
+            // groupLabel12
             // 
-            this.buttonFlat12.BackColor = System.Drawing.Color.White;
-            this.buttonFlat12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFlat12.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonFlat12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.buttonFlat12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat12.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.buttonFlat12.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat12.Image")));
-            this.buttonFlat12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat12.Location = new System.Drawing.Point(268, 147);
-            this.buttonFlat12.Name = "buttonFlat12";
-            this.buttonFlat12.Size = new System.Drawing.Size(186, 31);
-            this.buttonFlat12.TabIndex = 2;
-            this.buttonFlat12.Text = "         Buy";
-            this.buttonFlat12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat12.UseVisualStyleBackColor = false;
-            this.buttonFlat12.Click += new System.EventHandler(this.btnUser_Click);
+            this.groupLabel12.Caption = "AR - Account Receivable";
+            this.groupLabel12.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel12.Location = new System.Drawing.Point(255, 227);
+            this.groupLabel12.Margin = new System.Windows.Forms.Padding(2, 10, 2, 3);
+            this.groupLabel12.Name = "groupLabel12";
+            this.groupLabel12.Size = new System.Drawing.Size(230, 18);
+            this.groupLabel12.TabIndex = 30;
+            this.groupLabel12.TabStop = false;
             // 
-            // btnRepayment
+            // groupLabel13
             // 
-            this.btnRepayment.BackColor = System.Drawing.Color.White;
-            this.btnRepayment.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRepayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnRepayment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnRepayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRepayment.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.btnRepayment.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnRepayment.Image = ((System.Drawing.Image)(resources.GetObject("btnRepayment.Image")));
-            this.btnRepayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRepayment.Location = new System.Drawing.Point(25, 116);
-            this.btnRepayment.Name = "btnRepayment";
-            this.btnRepayment.Size = new System.Drawing.Size(186, 31);
-            this.btnRepayment.TabIndex = 2;
-            this.btnRepayment.Text = "         Payment";
-            this.btnRepayment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRepayment.UseVisualStyleBackColor = false;
+            this.groupLabel13.Caption = "SO - Sale Order";
+            this.groupLabel13.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel13.Location = new System.Drawing.Point(499, 19);
+            this.groupLabel13.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.groupLabel13.Name = "groupLabel13";
+            this.groupLabel13.Size = new System.Drawing.Size(230, 17);
+            this.groupLabel13.TabIndex = 29;
+            this.groupLabel13.TabStop = false;
             // 
-            // buttonFlat5
+            // groupLabel14
             // 
-            this.buttonFlat5.BackColor = System.Drawing.Color.White;
-            this.buttonFlat5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonFlat5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonFlat5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.buttonFlat5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat5.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.buttonFlat5.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat5.Image")));
-            this.buttonFlat5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat5.Location = new System.Drawing.Point(268, 42);
-            this.buttonFlat5.Name = "buttonFlat5";
-            this.buttonFlat5.Size = new System.Drawing.Size(186, 31);
-            this.buttonFlat5.TabIndex = 2;
-            this.buttonFlat5.Text = "         Transfer";
-            this.buttonFlat5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat5.UseVisualStyleBackColor = false;
-            this.buttonFlat5.Click += new System.EventHandler(this.btnUser_Click);
+            this.groupLabel14.Caption = "AP - Account Payable";
+            this.groupLabel14.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel14.Location = new System.Drawing.Point(255, 123);
+            this.groupLabel14.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.groupLabel14.Name = "groupLabel14";
+            this.groupLabel14.Size = new System.Drawing.Size(230, 17);
+            this.groupLabel14.TabIndex = 28;
+            this.groupLabel14.TabStop = false;
             // 
-            // btnUser
+            // groupLabel15
             // 
-            this.btnUser.BackColor = System.Drawing.Color.White;
-            this.btnUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUser.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.btnUser.Image = ((System.Drawing.Image)(resources.GetObject("btnUser.Image")));
-            this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUser.Location = new System.Drawing.Point(755, 42);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Size = new System.Drawing.Size(186, 31);
-            this.btnUser.TabIndex = 2;
-            this.btnUser.Text = "         User";
-            this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUser.UseVisualStyleBackColor = false;
-            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            this.groupLabel15.Caption = "SM - Security Management";
+            this.groupLabel15.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel15.Location = new System.Drawing.Point(742, 19);
+            this.groupLabel15.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.groupLabel15.Name = "groupLabel15";
+            this.groupLabel15.Size = new System.Drawing.Size(230, 17);
+            this.groupLabel15.TabIndex = 27;
+            this.groupLabel15.TabStop = false;
             // 
-            // groupLabel9
+            // btnPO
             // 
-            this.groupLabel9.Caption = "Pawn";
-            this.groupLabel9.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupLabel9.Location = new System.Drawing.Point(501, 19);
-            this.groupLabel9.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupLabel9.Name = "groupLabel9";
-            this.groupLabel9.Size = new System.Drawing.Size(199, 17);
-            this.groupLabel9.TabIndex = 4;
-            this.groupLabel9.TabStop = false;
+            this.btnPO.BackColor = System.Drawing.Color.White;
+            this.btnPO.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPO.Enabled = false;
+            this.btnPO.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnPO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnPO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPO.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.btnPO.Image = ((System.Drawing.Image)(resources.GetObject("btnPO.Image")));
+            this.btnPO.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPO.Location = new System.Drawing.Point(268, 79);
+            this.btnPO.Name = "btnPO";
+            this.btnPO.Size = new System.Drawing.Size(217, 31);
+            this.btnPO.TabIndex = 25;
+            this.btnPO.Text = "         Purchase Order";
+            this.btnPO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPO.UseVisualStyleBackColor = false;
+            // 
+            // btnVendor
+            // 
+            this.btnVendor.BackColor = System.Drawing.Color.White;
+            this.btnVendor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVendor.Enabled = false;
+            this.btnVendor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnVendor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVendor.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.btnVendor.Image = ((System.Drawing.Image)(resources.GetObject("btnVendor.Image")));
+            this.btnVendor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVendor.Location = new System.Drawing.Point(268, 42);
+            this.btnVendor.Name = "btnVendor";
+            this.btnVendor.Size = new System.Drawing.Size(217, 31);
+            this.btnVendor.TabIndex = 24;
+            this.btnVendor.Text = "         Vendor";
+            this.btnVendor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVendor.UseVisualStyleBackColor = false;
+            // 
+            // buttonFlat1
+            // 
+            this.buttonFlat1.BackColor = System.Drawing.Color.White;
+            this.buttonFlat1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFlat1.Enabled = false;
+            this.buttonFlat1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFlat1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.buttonFlat1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFlat1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.buttonFlat1.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat1.Image")));
+            this.buttonFlat1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat1.Location = new System.Drawing.Point(512, 183);
+            this.buttonFlat1.Name = "buttonFlat1";
+            this.buttonFlat1.Size = new System.Drawing.Size(217, 31);
+            this.buttonFlat1.TabIndex = 23;
+            this.buttonFlat1.Text = "         Location";
+            this.buttonFlat1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat1.UseVisualStyleBackColor = false;
+            // 
+            // buttonFlat2
+            // 
+            this.buttonFlat2.BackColor = System.Drawing.Color.White;
+            this.buttonFlat2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFlat2.Enabled = false;
+            this.buttonFlat2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFlat2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.buttonFlat2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFlat2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.buttonFlat2.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat2.Image")));
+            this.buttonFlat2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat2.Location = new System.Drawing.Point(268, 288);
+            this.buttonFlat2.Name = "buttonFlat2";
+            this.buttonFlat2.Size = new System.Drawing.Size(217, 31);
+            this.buttonFlat2.TabIndex = 22;
+            this.buttonFlat2.Text = "         Location";
+            this.buttonFlat2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat2.UseVisualStyleBackColor = false;
+            // 
+            // btnLabelMessage
+            // 
+            this.btnLabelMessage.BackColor = System.Drawing.Color.White;
+            this.btnLabelMessage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLabelMessage.Enabled = false;
+            this.btnLabelMessage.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnLabelMessage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnLabelMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLabelMessage.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.btnLabelMessage.Image = ((System.Drawing.Image)(resources.GetObject("btnLabelMessage.Image")));
+            this.btnLabelMessage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLabelMessage.Location = new System.Drawing.Point(755, 257);
+            this.btnLabelMessage.Name = "btnLabelMessage";
+            this.btnLabelMessage.Size = new System.Drawing.Size(217, 31);
+            this.btnLabelMessage.TabIndex = 21;
+            this.btnLabelMessage.Text = "         Label && Message";
+            this.btnLabelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLabelMessage.UseVisualStyleBackColor = false;
+            // 
+            // buttonFlat17
+            // 
+            this.buttonFlat17.BackColor = System.Drawing.Color.White;
+            this.buttonFlat17.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFlat17.Enabled = false;
+            this.buttonFlat17.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFlat17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.buttonFlat17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFlat17.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.buttonFlat17.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat17.Image")));
+            this.buttonFlat17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat17.Location = new System.Drawing.Point(512, 79);
+            this.buttonFlat17.Name = "buttonFlat17";
+            this.buttonFlat17.Size = new System.Drawing.Size(217, 31);
+            this.buttonFlat17.TabIndex = 26;
+            this.buttonFlat17.Text = "         Location";
+            this.buttonFlat17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat17.UseVisualStyleBackColor = false;
+            // 
+            // buttonFlat4
+            // 
+            this.buttonFlat4.BackColor = System.Drawing.Color.White;
+            this.buttonFlat4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFlat4.Enabled = false;
+            this.buttonFlat4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFlat4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.buttonFlat4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFlat4.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.buttonFlat4.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat4.Image")));
+            this.buttonFlat4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat4.Location = new System.Drawing.Point(268, 183);
+            this.buttonFlat4.Name = "buttonFlat4";
+            this.buttonFlat4.Size = new System.Drawing.Size(217, 31);
+            this.buttonFlat4.TabIndex = 18;
+            this.buttonFlat4.Text = "         Location";
+            this.buttonFlat4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat4.UseVisualStyleBackColor = false;
+            // 
+            // btnTransfer
+            // 
+            this.btnTransfer.BackColor = System.Drawing.Color.White;
+            this.btnTransfer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTransfer.Enabled = false;
+            this.btnTransfer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnTransfer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransfer.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.btnTransfer.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnTransfer.Image = ((System.Drawing.Image)(resources.GetObject("btnTransfer.Image")));
+            this.btnTransfer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTransfer.Location = new System.Drawing.Point(25, 79);
+            this.btnTransfer.Name = "btnTransfer";
+            this.btnTransfer.Size = new System.Drawing.Size(217, 31);
+            this.btnTransfer.TabIndex = 17;
+            this.btnTransfer.Text = "         Transfer";
+            this.btnTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTransfer.UseVisualStyleBackColor = false;
+            // 
+            // btnAdjustment
+            // 
+            this.btnAdjustment.BackColor = System.Drawing.Color.White;
+            this.btnAdjustment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdjustment.Enabled = false;
+            this.btnAdjustment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAdjustment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnAdjustment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdjustment.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.btnAdjustment.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAdjustment.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjustment.Image")));
+            this.btnAdjustment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdjustment.Location = new System.Drawing.Point(25, 116);
+            this.btnAdjustment.Name = "btnAdjustment";
+            this.btnAdjustment.Size = new System.Drawing.Size(217, 31);
+            this.btnAdjustment.TabIndex = 16;
+            this.btnAdjustment.Text = "         Adjustment";
+            this.btnAdjustment.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdjustment.UseVisualStyleBackColor = false;
             // 
             // btnUnitMeasure
             // 
@@ -447,96 +405,245 @@
             this.btnUnitMeasure.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnUnitMeasure.Image = ((System.Drawing.Image)(resources.GetObject("btnUnitMeasure.Image")));
             this.btnUnitMeasure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUnitMeasure.Location = new System.Drawing.Point(25, 190);
+            this.btnUnitMeasure.Location = new System.Drawing.Point(25, 264);
             this.btnUnitMeasure.Name = "btnUnitMeasure";
-            this.btnUnitMeasure.Size = new System.Drawing.Size(186, 31);
-            this.btnUnitMeasure.TabIndex = 2;
-            this.btnUnitMeasure.Text = "         Write Off";
+            this.btnUnitMeasure.Size = new System.Drawing.Size(217, 31);
+            this.btnUnitMeasure.TabIndex = 15;
+            this.btnUnitMeasure.Text = "         Unit of Measure";
             this.btnUnitMeasure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUnitMeasure.UseVisualStyleBackColor = false;
             // 
-            // lblVersion
+            // btnReceive
             // 
-            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(754, 304);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(191, 17);
-            this.lblVersion.TabIndex = 5;
-            this.lblVersion.Text = "v 0.1.2";
-            this.lblVersion.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnReceive.BackColor = System.Drawing.Color.White;
+            this.btnReceive.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReceive.Enabled = false;
+            this.btnReceive.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnReceive.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnReceive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReceive.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.btnReceive.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnReceive.Image = ((System.Drawing.Image)(resources.GetObject("btnReceive.Image")));
+            this.btnReceive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReceive.Location = new System.Drawing.Point(25, 42);
+            this.btnReceive.Name = "btnReceive";
+            this.btnReceive.Size = new System.Drawing.Size(217, 31);
+            this.btnReceive.TabIndex = 14;
+            this.btnReceive.Text = "         Receive";
+            this.btnReceive.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReceive.UseVisualStyleBackColor = false;
             // 
-            // btnProduct
+            // btnCategory
             // 
-            this.btnProduct.BackColor = System.Drawing.Color.White;
-            this.btnProduct.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnProduct.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduct.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
-            this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.Location = new System.Drawing.Point(755, 220);
-            this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(186, 31);
-            this.btnProduct.TabIndex = 2;
-            this.btnProduct.Text = "         Product";
-            this.btnProduct.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.UseVisualStyleBackColor = false;
-            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
+            this.btnCategory.BackColor = System.Drawing.Color.White;
+            this.btnCategory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCategory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategory.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnCategory.Image")));
+            this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategory.Location = new System.Drawing.Point(25, 227);
+            this.btnCategory.Name = "btnCategory";
+            this.btnCategory.Size = new System.Drawing.Size(217, 31);
+            this.btnCategory.TabIndex = 13;
+            this.btnCategory.Text = "         Category";
+            this.btnCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategory.UseVisualStyleBackColor = false;
             // 
-            // btnHoliday
+            // buttonFlat21
             // 
-            this.btnHoliday.BackColor = System.Drawing.Color.White;
-            this.btnHoliday.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHoliday.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnHoliday.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHoliday.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
-            this.btnHoliday.Image = ((System.Drawing.Image)(resources.GetObject("btnHoliday.Image")));
-            this.btnHoliday.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHoliday.Location = new System.Drawing.Point(755, 257);
-            this.btnHoliday.Name = "btnHoliday";
-            this.btnHoliday.Size = new System.Drawing.Size(186, 31);
-            this.btnHoliday.TabIndex = 2;
-            this.btnHoliday.Text = "         Holiday";
-            this.btnHoliday.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHoliday.UseVisualStyleBackColor = false;
-            this.btnHoliday.Click += new System.EventHandler(this.btnHoliday_Click);
+            this.buttonFlat21.BackColor = System.Drawing.Color.White;
+            this.buttonFlat21.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFlat21.Enabled = false;
+            this.buttonFlat21.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFlat21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.buttonFlat21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFlat21.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.buttonFlat21.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat21.Image")));
+            this.buttonFlat21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat21.Location = new System.Drawing.Point(512, 146);
+            this.buttonFlat21.Name = "buttonFlat21";
+            this.buttonFlat21.Size = new System.Drawing.Size(217, 31);
+            this.buttonFlat21.TabIndex = 12;
+            this.buttonFlat21.Text = "         User";
+            this.buttonFlat21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat21.UseVisualStyleBackColor = false;
+            // 
+            // buttonFlat22
+            // 
+            this.buttonFlat22.BackColor = System.Drawing.Color.White;
+            this.buttonFlat22.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFlat22.Enabled = false;
+            this.buttonFlat22.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFlat22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.buttonFlat22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFlat22.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.buttonFlat22.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat22.Image")));
+            this.buttonFlat22.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat22.Location = new System.Drawing.Point(755, 79);
+            this.buttonFlat22.Name = "buttonFlat22";
+            this.buttonFlat22.Size = new System.Drawing.Size(217, 31);
+            this.buttonFlat22.TabIndex = 11;
+            this.buttonFlat22.Text = "         Audit Log";
+            this.buttonFlat22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat22.UseVisualStyleBackColor = false;
+            // 
+            // buttonFlat23
+            // 
+            this.buttonFlat23.BackColor = System.Drawing.Color.White;
+            this.buttonFlat23.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFlat23.Enabled = false;
+            this.buttonFlat23.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFlat23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.buttonFlat23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFlat23.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.buttonFlat23.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat23.Image")));
+            this.buttonFlat23.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat23.Location = new System.Drawing.Point(268, 251);
+            this.buttonFlat23.Name = "buttonFlat23";
+            this.buttonFlat23.Size = new System.Drawing.Size(217, 31);
+            this.buttonFlat23.TabIndex = 10;
+            this.buttonFlat23.Text = "         User";
+            this.buttonFlat23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat23.UseVisualStyleBackColor = false;
+            // 
+            // buttonFlat24
+            // 
+            this.buttonFlat24.BackColor = System.Drawing.Color.White;
+            this.buttonFlat24.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFlat24.Enabled = false;
+            this.buttonFlat24.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFlat24.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.buttonFlat24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFlat24.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.buttonFlat24.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat24.Image")));
+            this.buttonFlat24.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat24.Location = new System.Drawing.Point(512, 42);
+            this.buttonFlat24.Name = "buttonFlat24";
+            this.buttonFlat24.Size = new System.Drawing.Size(217, 31);
+            this.buttonFlat24.TabIndex = 9;
+            this.buttonFlat24.Text = "         User";
+            this.buttonFlat24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat24.UseVisualStyleBackColor = false;
+            // 
+            // btnLocation
+            // 
+            this.btnLocation.BackColor = System.Drawing.Color.White;
+            this.btnLocation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLocation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnLocation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLocation.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.btnLocation.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnLocation.Image")));
+            this.btnLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLocation.Location = new System.Drawing.Point(25, 190);
+            this.btnLocation.Name = "btnLocation";
+            this.btnLocation.Size = new System.Drawing.Size(217, 31);
+            this.btnLocation.TabIndex = 8;
+            this.btnLocation.Text = "         Location";
+            this.btnLocation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLocation.UseVisualStyleBackColor = false;
+            this.btnLocation.Click += new System.EventHandler(this.btnLocation_Click);
+            // 
+            // buttonFlat25
+            // 
+            this.buttonFlat25.BackColor = System.Drawing.Color.White;
+            this.buttonFlat25.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFlat25.Enabled = false;
+            this.buttonFlat25.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFlat25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.buttonFlat25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFlat25.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.buttonFlat25.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat25.Image")));
+            this.buttonFlat25.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat25.Location = new System.Drawing.Point(268, 146);
+            this.buttonFlat25.Name = "buttonFlat25";
+            this.buttonFlat25.Size = new System.Drawing.Size(217, 31);
+            this.buttonFlat25.TabIndex = 7;
+            this.buttonFlat25.Text = "         User";
+            this.buttonFlat25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat25.UseVisualStyleBackColor = false;
+            // 
+            // btnItem
+            // 
+            this.btnItem.BackColor = System.Drawing.Color.White;
+            this.btnItem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnItem.Enabled = false;
+            this.btnItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnItem.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.btnItem.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnItem.Image = ((System.Drawing.Image)(resources.GetObject("btnItem.Image")));
+            this.btnItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnItem.Location = new System.Drawing.Point(25, 153);
+            this.btnItem.Name = "btnItem";
+            this.btnItem.Size = new System.Drawing.Size(217, 31);
+            this.btnItem.TabIndex = 19;
+            this.btnItem.Text = "         Item";
+            this.btnItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnItem.UseVisualStyleBackColor = false;
+            // 
+            // buttonFlat26
+            // 
+            this.buttonFlat26.BackColor = System.Drawing.Color.White;
+            this.buttonFlat26.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonFlat26.Enabled = false;
+            this.buttonFlat26.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonFlat26.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.buttonFlat26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFlat26.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
+            this.buttonFlat26.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat26.Image")));
+            this.buttonFlat26.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat26.Location = new System.Drawing.Point(755, 42);
+            this.buttonFlat26.Name = "buttonFlat26";
+            this.buttonFlat26.Size = new System.Drawing.Size(217, 31);
+            this.buttonFlat26.TabIndex = 20;
+            this.buttonFlat26.Text = "         User";
+            this.buttonFlat26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFlat26.UseVisualStyleBackColor = false;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(957, 330);
+            this.ClientSize = new System.Drawing.Size(986, 335);
+            this.Controls.Add(this.groupLabel1);
+            this.Controls.Add(this.groupLabel7);
+            this.Controls.Add(this.groupLabel10);
+            this.Controls.Add(this.groupLabel11);
+            this.Controls.Add(this.groupLabel12);
+            this.Controls.Add(this.groupLabel13);
+            this.Controls.Add(this.groupLabel14);
+            this.Controls.Add(this.groupLabel15);
+            this.Controls.Add(this.btnPO);
+            this.Controls.Add(this.btnVendor);
+            this.Controls.Add(this.buttonFlat1);
+            this.Controls.Add(this.buttonFlat2);
+            this.Controls.Add(this.btnLabelMessage);
+            this.Controls.Add(this.buttonFlat17);
+            this.Controls.Add(this.buttonFlat4);
+            this.Controls.Add(this.btnTransfer);
+            this.Controls.Add(this.btnAdjustment);
+            this.Controls.Add(this.btnUnitMeasure);
+            this.Controls.Add(this.btnReceive);
+            this.Controls.Add(this.btnCategory);
+            this.Controls.Add(this.buttonFlat21);
+            this.Controls.Add(this.buttonFlat22);
+            this.Controls.Add(this.buttonFlat23);
+            this.Controls.Add(this.buttonFlat24);
+            this.Controls.Add(this.btnLocation);
+            this.Controls.Add(this.buttonFlat25);
+            this.Controls.Add(this.btnItem);
+            this.Controls.Add(this.buttonFlat26);
             this.Controls.Add(this.lblVersion);
-            this.Controls.Add(this.groupLabel9);
-            this.Controls.Add(this.groupLabel5);
-            this.Controls.Add(this.groupLabel3);
-            this.Controls.Add(this.groupLabel8);
-            this.Controls.Add(this.groupLabel6);
-            this.Controls.Add(this.groupLabel4);
-            this.Controls.Add(this.groupLabel2);
-            this.Controls.Add(this.btnLoan);
-            this.Controls.Add(this.btnCustomer);
-            this.Controls.Add(this.buttonFlat18);
-            this.Controls.Add(this.buttonFlat13);
             this.Controls.Add(this.btnHoliday);
-            this.Controls.Add(this.btnProduct);
             this.Controls.Add(this.btnBranch);
             this.Controls.Add(this.btnCompany);
-            this.Controls.Add(this.buttonFlat6);
-            this.Controls.Add(this.buttonFlat9);
-            this.Controls.Add(this.btnUnitMeasure);
-            this.Controls.Add(this.buttonFlat11);
-            this.Controls.Add(this.btnCategory);
-            this.Controls.Add(this.buttonFlat16);
-            this.Controls.Add(this.btnAuditLog);
-            this.Controls.Add(this.buttonFlat12);
-            this.Controls.Add(this.btnRepayment);
-            this.Controls.Add(this.buttonFlat5);
-            this.Controls.Add(this.btnUser);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -551,32 +658,37 @@
 
         #endregion
 
-        private kBit.UI.ButtonFlat btnUser;
-        private kBit.UI.GroupLabel groupLabel2;
-        private kBit.UI.GroupLabel groupLabel3;
-        private kBit.UI.ButtonFlat btnRepayment;
-        private kBit.UI.ButtonFlat btnCategory;
-        private kBit.UI.ButtonFlat btnAuditLog;
         private kBit.UI.ButtonFlat btnCompany;
-        private kBit.UI.ButtonFlat buttonFlat5;
-        private kBit.UI.ButtonFlat buttonFlat6;
-        private kBit.UI.GroupLabel groupLabel4;
-        private kBit.UI.ButtonFlat btnCustomer;
-        private kBit.UI.GroupLabel groupLabel5;
-        private kBit.UI.ButtonFlat buttonFlat9;
-        private kBit.UI.ButtonFlat btnLoan;
-        private kBit.UI.ButtonFlat buttonFlat11;
-        private kBit.UI.ButtonFlat buttonFlat12;
-        private kBit.UI.ButtonFlat buttonFlat13;
-        private kBit.UI.GroupLabel groupLabel6;
         private kBit.UI.ButtonFlat btnBranch;
-        private kBit.UI.ButtonFlat buttonFlat16;
-        private kBit.UI.ButtonFlat buttonFlat18;
-        private kBit.UI.GroupLabel groupLabel8;
-        private kBit.UI.GroupLabel groupLabel9;
-        private kBit.UI.ButtonFlat btnUnitMeasure;
         private System.Windows.Forms.Label lblVersion;
-        private kBit.UI.ButtonFlat btnProduct;
         private kBit.UI.ButtonFlat btnHoliday;
+        private kBit.UI.GroupLabel groupLabel1;
+        private kBit.UI.GroupLabel groupLabel7;
+        private kBit.UI.GroupLabel groupLabel10;
+        private kBit.UI.GroupLabel groupLabel11;
+        private kBit.UI.GroupLabel groupLabel12;
+        private kBit.UI.GroupLabel groupLabel13;
+        private kBit.UI.GroupLabel groupLabel14;
+        private kBit.UI.GroupLabel groupLabel15;
+        private kBit.UI.ButtonFlat btnPO;
+        private kBit.UI.ButtonFlat btnVendor;
+        private kBit.UI.ButtonFlat buttonFlat1;
+        private kBit.UI.ButtonFlat buttonFlat2;
+        private kBit.UI.ButtonFlat btnLabelMessage;
+        private kBit.UI.ButtonFlat buttonFlat17;
+        private kBit.UI.ButtonFlat buttonFlat4;
+        private kBit.UI.ButtonFlat btnTransfer;
+        private kBit.UI.ButtonFlat btnAdjustment;
+        private kBit.UI.ButtonFlat btnUnitMeasure;
+        private kBit.UI.ButtonFlat btnReceive;
+        private kBit.UI.ButtonFlat btnCategory;
+        private kBit.UI.ButtonFlat buttonFlat21;
+        private kBit.UI.ButtonFlat buttonFlat22;
+        private kBit.UI.ButtonFlat buttonFlat23;
+        private kBit.UI.ButtonFlat buttonFlat24;
+        private kBit.UI.ButtonFlat btnLocation;
+        private kBit.UI.ButtonFlat buttonFlat25;
+        private kBit.UI.ButtonFlat btnItem;
+        private kBit.UI.ButtonFlat buttonFlat26;
     }
 }

@@ -1033,16 +1033,6 @@ namespace kERP
             GenerateSchedule();
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
-        {
-            var fCustomer = new frmCustomer();
-            fCustomer.IsDlg = true;
-            if (fCustomer.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
-            customerNo = fCustomer.CustomerNo;
-            txtAccountNo.Text = LoanFacade.GetNextAccountNo(customerNo);
-            txtCustomerName.Text = fCustomer.FullName;
-        }
-
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             GenerateSchedule();
