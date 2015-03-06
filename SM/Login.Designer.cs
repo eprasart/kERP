@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            this.txtUsername = new kBit.UI.TextBox(this.components);
+            this.txtUsername = new kUI.TextBox(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.txtPassword = new kBit.UI.TextBox(this.components);
+            this.txtPassword = new kUI.TextBox(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.line1 = new kBit.UI.Line();
-            this.lblMsg = new kBit.UI.TextBox(this.components);
+            this.line1 = new kUI.Line();
+            this.lblMsg = new kUI.TextBox(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,15 +174,15 @@
 
         #endregion
 
-        private kBit.UI.TextBox txtUsername;
+        private kUI.TextBox txtUsername;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnExit;
-        private kBit.UI.TextBox txtPassword;
+        private kUI.TextBox txtPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
-        private kBit.UI.Line line1;
-        private kBit.UI.TextBox lblMsg;
+        private kUI.Line line1;
+        private kUI.TextBox lblMsg;
     }
 }

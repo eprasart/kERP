@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22310.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kERP", "kERP.csproj", "{B2F73C4A-6440-462E-89D5-5F9EC8970CD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kBit.UI", "..\kBit.UI\kBit.UI.csproj", "{30E4439A-C188-479F-852B-A58CBF8B0AB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kUI", "..\kUI\kUI.csproj", "{30E4439A-C188-479F-852B-A58CBF8B0AB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

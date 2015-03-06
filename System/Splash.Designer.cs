@@ -35,10 +35,10 @@
             this.btnQuit = new System.Windows.Forms.Button();
             this.lblMsg = new System.Windows.Forms.Label();
             this.lblError = new System.Windows.Forms.Label();
-            this.line1 = new kBit.UI.Line();
-            this.line2 = new kBit.UI.Line();
-            this.line3 = new kBit.UI.Line();
-            this.line4 = new kBit.UI.Line();
+            this.line1 = new kUI.Line();
+            this.line2 = new kUI.Line();
+            this.line3 = new kUI.Line();
+            this.line4 = new kUI.Line();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -186,10 +186,10 @@
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.Label lblMsg;
         private System.Windows.Forms.Label lblError;
-        private kBit.UI.Line line1;
-        private kBit.UI.Line line2;
-        private kBit.UI.Line line3;
-        private kBit.UI.Line line4;
+        private kUI.Line line1;
+        private kUI.Line line2;
+        private kUI.Line line3;
+        private kUI.Line line4;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
     }

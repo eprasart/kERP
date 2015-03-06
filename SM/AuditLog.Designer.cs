@@ -40,12 +40,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.txtSearch = new kBit.UI.TextBox(this.components);
-            this.dateTimePicker2 = new kBit.UI.DateTimePicker(this.components);
-            this.dtpFrom = new kBit.UI.DateTimePicker(this.components);
-            this.cboType = new kBit.UI.ComboBox(this.components);
-            this.cboPriority = new kBit.UI.ComboBox(this.components);
-            this.dgvList = new kBit.UI.DataGridView();
+            this.txtSearch = new kUI.TextBox(this.components);
+            this.dateTimePicker2 = new kUI.DateTimePicker(this.components);
+            this.dtpFrom = new kUI.DateTimePicker(this.components);
+            this.cboType = new kUI.ComboBox(this.components);
+            this.cboPriority = new kUI.ComboBox(this.components);
+            this.dgvList = new kUI.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -363,18 +363,18 @@
 
         #endregion
 
-        private kBit.UI.ComboBox cboPriority;
-        private kBit.UI.DateTimePicker dtpFrom;
-        private kBit.UI.TextBox txtSearch;
+        private kUI.ComboBox cboPriority;
+        private kUI.DateTimePicker dtpFrom;
+        private kUI.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
-        private kBit.UI.DateTimePicker dateTimePicker2;
+        private kUI.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label dtpTo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private kBit.UI.ComboBox cboType;
+        private kUI.ComboBox cboType;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnRefresh;
-        private kBit.UI.DataGridView dgvList;
+        private kUI.DataGridView dgvList;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

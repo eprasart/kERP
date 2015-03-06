@@ -126,6 +126,7 @@
     <Compile Include="Loan\Loan.cs" />
     <Compile Include="General\LoanDS.cs">
       <DependentUpon>LoanDS.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="General\LoanDS.Designer.cs">
       <DependentUpon>LoanDS.xsd</DependentUpon>
@@ -359,12 +360,6 @@
     <None Include="Resources\Information.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\kBit.UI\kBit.UI.csproj">
-      <Project>{30e4439a-c188-479f-852b-a58cbf8b0ab6}</Project>
-      <Name>kBit.UI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Refresh.png" />
   </ItemGroup>
   <ItemGroup>
@@ -372,6 +367,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\Report\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kUI\kUI.csproj">
+      <Project>{30e4439a-c188-479f-852b-a58cbf8b0ab6}</Project>
+      <Name>kUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
