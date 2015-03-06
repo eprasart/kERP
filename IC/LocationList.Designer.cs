@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnNew = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
@@ -327,21 +327,21 @@
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.Honeydew;
-            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Honeydew;
+            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
             this.dgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -352,14 +352,14 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvList.Location = new System.Drawing.Point(1, 51);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
@@ -397,8 +397,8 @@
             // 
             this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.colDescription.DataPropertyName = "description";
-            dataGridViewCellStyle18.NullValue = null;
-            this.colDescription.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle13.NullValue = null;
+            this.colDescription.DefaultCellStyle = dataGridViewCellStyle13;
             this.colDescription.HeaderText = "Description";
             this.colDescription.Name = "colDescription";
             this.colDescription.ReadOnly = true;
@@ -417,8 +417,8 @@
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column3.DataPropertyName = "phone";
-            dataGridViewCellStyle19.Format = "dd-MM-yy";
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle14.Format = "dd-MM-yy";
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle14;
             this.Column3.HeaderText = "Phone";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -485,7 +485,7 @@
             this.glbNote.Location = new System.Drawing.Point(12, 195);
             this.glbNote.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
             this.glbNote.Name = "glbNote";
-            this.glbNote.Size = new System.Drawing.Size(731, 21);
+            this.glbNote.Size = new System.Drawing.Size(730, 21);
             this.glbNote.TabIndex = 28;
             this.glbNote.TabStop = false;
             // 
@@ -499,8 +499,8 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
-            this.txtNote.Size = new System.Drawing.Size(731, 170);
-            this.txtNote.TabIndex = 29;
+            this.txtNote.Size = new System.Drawing.Size(730, 170);
+            this.txtNote.TabIndex = 16;
             this.txtNote.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // label10
@@ -521,7 +521,7 @@
             this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(88, 17);
-            this.lblDescription.TabIndex = 18;
+            this.lblDescription.TabIndex = 8;
             this.lblDescription.Text = "Name";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -556,7 +556,7 @@
             this.lblCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(99, 17);
-            this.lblCode.TabIndex = 6;
+            this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Code";
             this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -570,7 +570,7 @@
             this.txtEmail.Numeric = false;
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(230, 25);
-            this.txtEmail.TabIndex = 19;
+            this.txtEmail.TabIndex = 15;
             this.txtEmail.TabOnEnter = true;
             this.txtEmail.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
@@ -595,7 +595,7 @@
             this.txtFax.Numeric = false;
             this.txtFax.ReadOnly = true;
             this.txtFax.Size = new System.Drawing.Size(230, 25);
-            this.txtFax.TabIndex = 19;
+            this.txtFax.TabIndex = 13;
             this.txtFax.TabOnEnter = true;
             this.txtFax.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
@@ -606,7 +606,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 17);
-            this.label5.TabIndex = 0;
+            this.label5.TabIndex = 6;
             this.label5.Text = "Address";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -620,7 +620,7 @@
             this.txtPhone.Numeric = false;
             this.txtPhone.ReadOnly = true;
             this.txtPhone.Size = new System.Drawing.Size(230, 25);
-            this.txtPhone.TabIndex = 19;
+            this.txtPhone.TabIndex = 11;
             this.txtPhone.TabOnEnter = true;
             this.txtPhone.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
@@ -631,7 +631,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 17);
-            this.label2.TabIndex = 22;
+            this.label2.TabIndex = 12;
             this.label2.Text = "Fax";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -645,7 +645,7 @@
             this.txtName.Numeric = false;
             this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(230, 25);
-            this.txtName.TabIndex = 19;
+            this.txtName.TabIndex = 9;
             this.txtName.TabOnEnter = true;
             this.txtName.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
@@ -656,7 +656,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 17);
-            this.label3.TabIndex = 24;
+            this.label3.TabIndex = 14;
             this.label3.Text = "Email";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -667,12 +667,13 @@
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 17);
-            this.label1.TabIndex = 20;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Phone";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtAddress
             // 
+            this.txtAddress.AcceptsReturn = true;
             this.txtAddress.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Format = null;
             this.txtAddress.Location = new System.Drawing.Point(129, 137);
@@ -683,7 +684,7 @@
             this.txtAddress.ReadOnly = true;
             this.txtAddress.Size = new System.Drawing.Size(230, 42);
             this.txtAddress.TabIndex = 7;
-            this.txtAddress.TabOnEnter = true;
+            this.txtAddress.TabOnEnter = false;
             this.txtAddress.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtAddress.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
@@ -697,7 +698,7 @@
             this.txtDescription.Numeric = false;
             this.txtDescription.ReadOnly = true;
             this.txtDescription.Size = new System.Drawing.Size(230, 25);
-            this.txtDescription.TabIndex = 7;
+            this.txtDescription.TabIndex = 3;
             this.txtDescription.TabOnEnter = true;
             this.txtDescription.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtDescription.Leave += new System.EventHandler(this.txtCode_Leave);
@@ -712,7 +713,7 @@
             this.txtCode.Numeric = false;
             this.txtCode.ReadOnly = true;
             this.txtCode.Size = new System.Drawing.Size(230, 25);
-            this.txtCode.TabIndex = 7;
+            this.txtCode.TabIndex = 1;
             this.txtCode.TabOnEnter = true;
             this.txtCode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);

@@ -126,7 +126,7 @@ namespace kERP
             frm.Icon = Properties.Resources.Icon;
             if (prefix.Length == 0) prefix = frm.Name;
             var lo = ConfigFacade.GetPoint(prefix + Constant.Location);
-            if (lo != new Point(-1, -1) && !isPointVisibleOnAScreen(lo))
+            if (lo != new Point(-1, -1) && isPointVisibleOnAScreen(lo))
                 frm.Location = lo;
             //else
             //todo: record for future find out
