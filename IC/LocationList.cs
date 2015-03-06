@@ -144,6 +144,7 @@ namespace kERP
             txtCode.Text = "";
             txtCode.Focus();
             txtDescription.Text = "";
+            Data.LoadList(cboType, "ic_location_type"); // Reload & set default
             txtAddress.Text = "";
             txtName.Text = "";
             txtPhone.Text = "";
@@ -318,7 +319,6 @@ namespace kERP
 
         private void frmLocationList_Load(object sender, EventArgs e)
         {
-            Icon = Properties.Resources.Icon;
             try
             {
                 dgvList.ShowLessColumns(true);
@@ -568,8 +568,8 @@ namespace kERP
                         else
                             return;
                 }
-                txtName.SelectionStart = txtName.Text.Length;
-                txtName.Focus();
+                txtDescription.SelectionStart = txtDescription.Text.Length;
+                txtDescription.Focus();
                 LockControls(false);
             }
             catch (Exception ex)
