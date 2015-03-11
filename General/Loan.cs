@@ -10,17 +10,10 @@ using System.Windows.Forms;
 
 namespace kERP
 {
-    class Holiday
+    class Holiday:BaseTable
     {
-        public long Id { get; set; }
         public string Event { get; set; }
         public DateTime Date { get; set; }
-        public string Note { get; set; }
-        public string Status { get; set; }
-        public string Insert_By { get; set; }
-        public DateTime? Insert_At { get; set; }
-        public string Change_By { get; set; }
-        public DateTime? Change_At { get; set; }
     }
 
     static class HolidayFacade
@@ -119,7 +112,7 @@ namespace kERP
             var cols = "*";
             cols = ConfigFacade.Get(Constant.Sql_Export + TableName, cols);
             string sql = SqlFacade.SqlSelect(TableName, cols, "status <> '" + Constant.RecordStatus_Deleted + "'", "name");
-            SqlFacade.ExportToCSV(sql);
+            SqlFacade.ExportToCSV(sql, TableName);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace kERP
         bool IsIgnore = true;
 
         frmMsg fMsg = null;
-        string ModuleName = "Location";
+        string ModuleName = "IC Location";
         string TitleLabel = LocationFacade.TitleLabel;
 
         public frmLocation()
@@ -378,7 +378,7 @@ namespace kERP
 
         private void btnSaveNew_Click(object sender, EventArgs e)
         {
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_SaveAndNew, "Saved and new. Id=" + dgvList.Id + ", Code=" + txtAddress.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_SaveAndNew, "Saved and new. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
             btnSave_Click(sender, e);
             if (btnSaveNew.Enabled) return;
             btnNew_Click(sender, e);
@@ -401,7 +401,7 @@ namespace kERP
                     if (!Privilege.CanAccess(Constant.Function_IC_Unit_Measure, "O"))
                     {
                         MessageFacade.Show(msg, LabelFacade.sys_delete, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Delete, "Cannot delete. Currently locked by '" + lInfo.Lock_By + "' since '" + lInfo.Lock_At + "' . Id=" + dgvList.Id + ", Code=" + txtAddress.Text);
+                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Delete, "Cannot delete. Currently locked by '" + lInfo.Lock_By + "' since '" + lInfo.Lock_At + "' . Id=" + dgvList.Id + ", Code=" + txtCode.Text);
                         return;
                     }
                 }
@@ -421,7 +421,7 @@ namespace kERP
                 }
                 RefreshGrid();
                 // log
-                SessionLogFacade.Log(Constant.Priority_Warning, ModuleName, Constant.Log_Delete, "Deleted. Id=" + dgvList.Id + ", Code=" + txtAddress.Text);
+                SessionLogFacade.Log(Constant.Priority_Warning, ModuleName, Constant.Log_Delete, "Deleted. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
             }
             catch (Exception ex)
             {
@@ -440,9 +440,9 @@ namespace kERP
             }
             Id = 0;
             if (IsExpand) picExpand_Click(sender, e);
-            txtAddress.Focus();
+            txtCode.Focus();
             LockControls(false);
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Copy, "Copy from Id=" + dgvList.Id + "Code=" + txtAddress.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Copy, "Copy from Id=" + dgvList.Id + "Code=" + txtCode.Text);
             IsDirty = false;
         }
 
@@ -503,7 +503,7 @@ namespace kERP
                 ErrorLogFacade.Log(ex);
             }
             RefreshGrid();
-            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, status == Constant.RecordStatus_InActive ? Constant.Log_Inactive : Constant.Log_Active, "Id=" + dgvList.Id + ", Code=" + txtAddress.Text);
+            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, status == Constant.RecordStatus_InActive ? Constant.Log_Inactive : Constant.Log_Active, "Id=" + dgvList.Id + ", Code=" + txtCode.Text);
         }
 
         private void btnUnlock_Click(object sender, EventArgs e)
@@ -580,7 +580,7 @@ namespace kERP
             }
             try
             {
-                LocationFacade.Lock(dgvList.Id, txtAddress.Text);
+                LocationFacade.Lock(dgvList.Id, txtCode.Text);
             }
             catch (Exception ex)
             {

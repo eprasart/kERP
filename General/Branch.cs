@@ -10,9 +10,8 @@ using System.Windows.Forms;
 
 namespace kERP
 {
-    class Branch
+    class Branch:BaseTable
     {
-        public long Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Parent_Branch { get; set; }
@@ -22,12 +21,6 @@ namespace kERP
         public string District { get; set; }
         public string Commune { get; set; }
         public string Village { get; set; }
-        public string Note { get; set; }
-        public string Status { get; set; }
-        public string Insert_By { get; set; }
-        public DateTime? Insert_At { get; set; }
-        public string Change_By { get; set; }
-        public DateTime? Change_At { get; set; }
     }
 
     static class BranchFacade
@@ -120,7 +113,7 @@ namespace kERP
             var cols = "*";
             cols = ConfigFacade.Get(Constant.Sql_Export + TableName, cols);
             string sql = SqlFacade.SqlSelect(TableName, cols, "status <> '" + Constant.RecordStatus_Deleted + "'", "code");
-            SqlFacade.ExportToCSV(sql);
+            SqlFacade.ExportToCSV(sql,TableName);
         }
     }
 }

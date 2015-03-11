@@ -221,7 +221,7 @@ namespace kERP.SM
             string sql = SqlFacade.SqlSelect(TableName, "id \"Id\", code \"Code\", description \"Description\", address \"Address\", name \"Contact Name\", phone \"Phone\", fax \"Fax\", " +
                 "email \"Email\", note \"Note\", status \"Status\", insert_by \"Inserted By\", insert_at \"Inserted At\", change_by \"Changed By\", change_at \"Changed At\"",
                 "status <> '" + Constant.RecordStatus_Deleted + "'", "code");
-            SqlFacade.ExportToCSV(sql);
+            SqlFacade.ExportToCSV(sql, TableName);
         }
     }
 }

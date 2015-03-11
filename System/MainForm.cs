@@ -74,23 +74,6 @@ namespace kERP.SYS
             App.Close();
         }
 
-        private void btnCategory_Click(object sender, EventArgs e)
-        {
-            if (!SM.Privilege.CanAccess("ICCAT", "V")) // todo: not hard code
-            {
-                MessageBox.Show("You don't have the privilege to access this function.");
-                return;
-            }
-            Cursor = Cursors.WaitCursor;
-            if (App.fLocation == null || App.fLocation.IsDisposed == true)
-            {
-                //App.fCategoryList = new IC.frmCategoryList();
-                App.fLocation.Show();
-            }
-            App.fLocation.Focus();
-            Cursor = Cursors.Default;
-        }
-
         private void btnBranch_Click(object sender, EventArgs e)
         {
             if (!SM.Privilege.CanAccess("BRN", "V")) // todo: not hard code
@@ -125,7 +108,7 @@ namespace kERP.SYS
             Cursor = Cursors.Default;
         }
 
-        private void btnLoan_Click(object sender, EventArgs e)
+        private void btnUnitMeasure_Click(object sender, EventArgs e)
         {
             if (!SM.Privilege.CanAccess("LON", "V")) // todo: not hard code
             {
@@ -133,20 +116,20 @@ namespace kERP.SYS
                 return;
             }
             Cursor = Cursors.WaitCursor;
-            if (App.fLoan == null || App.fLoan.IsDisposed == true)
+            if (App.fUnitMeasure == null || App.fUnitMeasure.IsDisposed == true)
             {
-                App.fLoan = new frmLoan();
-                App.fLoan.Show();
+                App.fUnitMeasure = new frmUnitMeasure();
+                App.fUnitMeasure.Show();
             }
-            if (App.fLoan.WindowState == FormWindowState.Minimized) //todo: do this with the rest
-                App.fLoan.WindowState = FormWindowState.Normal;
-            App.fLoan.Focus();
+            if (App.fUnitMeasure.WindowState == FormWindowState.Minimized) //todo: do this with the rest
+                App.fUnitMeasure.WindowState = FormWindowState.Normal;
+            App.fUnitMeasure.Focus();
             Cursor = Cursors.Default;
         }
 
-        private void btnProduct_Click(object sender, EventArgs e)
+        private void btnCategory_Click(object sender, EventArgs e)
         {
-            var f = App.fProduct;
+            var f = App.fCategory;
             if (!SM.Privilege.CanAccess("PRD", "V")) // todo: not hard code
             {
                 MessageBox.Show("You don't have the privilege to access this function.");
@@ -155,7 +138,7 @@ namespace kERP.SYS
             Cursor = Cursors.WaitCursor;
             if (f == null || f.IsDisposed == true)
             {
-                f = new frmProduct();
+                f = new frmCategory();
                 f.Show();
             }
             if (f.WindowState == FormWindowState.Minimized) //todo: do this with the rest
@@ -182,8 +165,6 @@ namespace kERP.SYS
                 f.WindowState = FormWindowState.Normal;
             f.Focus();
             Cursor = Cursors.Default;
-        }
-
-       
+        }       
     }
 }

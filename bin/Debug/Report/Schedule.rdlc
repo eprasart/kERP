@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>0.4375in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.02083in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.16667in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.95833in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.22917in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>ល.រ</Value>
+                              <Style>
+                                <FontFamily>Khmer OS Battambang</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox4">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>ថ្ងៃ ខែ ឆ្នាំ</Value>
+                              <Style>
+                                <FontFamily>Khmer OS Battambang</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox15">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>ប្រាក់ដើម</Value>
+                              <Style>
+                                <FontFamily>Khmer OS Battambang</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox16">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>ការប្រាក់</Value>
+                              <Style>
+                                <FontFamily>Khmer OS Battambang</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox16</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox17">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>ប្រាក់​សរុប</Value>
+                              <Style>
+                                <FontFamily>Khmer OS Battambang</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox18">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>ប្រាក់​ដើមនៅជំពាក់</Value>
+                              <Style>
+                                <FontFamily>Khmer OS Battambang</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox18</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox6">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Khmer OS Battambang</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox6</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="no">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!no.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>no</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>Gray</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="date">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Label>date</Label>
+                              <Value>=Fields!date.Value</Value>
+                              <Style>
+                                <FontFamily>Khmer OS Battambang</FontFamily>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>date</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>Gray</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="principal">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!principal.Value</Value>
+                              <Style>
+                                <Format>=Fields!format.Value</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>principal</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>Gray</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="interest">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!interest.Value</Value>
+                              <Style>
+                                <Format>=Fields!format.Value</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>interest</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>Gray</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="total">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!total.Value</Value>
+                              <Style>
+                                <Format>=Fields!format.Value</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>total</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>Gray</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="outstanding">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!outstanding.Value</Value>
+                              <Style>
+                                <Format>=Fields!format.Value</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>outstanding</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>Gray</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox7">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>Gray</Color>
+                          <Style>Solid</Style>
+                        </BottomBorder>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Details" />
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>DataSet1</DataSetName>
+        <Top>2.24875in</Top>
+        <Left>0.125in</Left>
+        <Height>0.47917in</Height>
+        <Width>7.58333in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Textbox Name="customer_name2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>លេខ​គណនី</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>: </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!account_no.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ឈ្មោះ​អតិថិជន</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>: </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!customer_name.Value</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ចំនួន​ប្រាក់​ឲ្យ​ខ្ចី</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>: </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!amount.Value</Value>
+                <Style>
+                  <Format>#,0</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!currency.Value</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>អត្រា​ការប្រាក់</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                  <Format>0.00</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>: </Value>
+                <Style>
+                  <Format>0.00</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!interest_rate.Value</Value>
+                <Style>
+                  <Format>0.00</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>customer_name</rd:DefaultName>
+        <Top>1.05063in</Top>
+        <Left>0.125in</Left>
+        <Height>1.05229in</Height>
+        <Width>3.45833in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>កាលវិភាគ​សង​ប្រាក់</Value>
+                <Style>
+                  <FontFamily>Khmer OS Muol Light</FontFamily>
+                  <FontSize>14pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>0.68833cm</Top>
+        <Left>9.10167cm</Left>
+        <Height>1.12917cm</Height>
+        <Width>10.4775cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Image Name="Logo">
+        <Source>External</Source>
+        <Value>=Parameters!Path.Value &amp; "Logo.png"</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.3175cm</Top>
+        <Left>0.3175cm</Left>
+        <Height>1.5cm</Height>
+        <Width>1.5cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Textbox Name="Textbox3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>អង្គការ​អភិវឌ្ឍន៌​អរុណរះ</Value>
+                <Style>
+                  <FontFamily>Khmer OS</FontFamily>
+                  <FontSize>14pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>0.68833cm</Top>
+        <Left>1.99389cm</Left>
+        <Height>0.92164cm</Height>
+        <Width>7.10778cm</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>រៀនសូត្រ ភាពវិជ្ជា​ជីវៈ តម្លាភាព និង​គណនយ្យភាព</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>1.64111cm</Top>
+        <Left>0.3175cm</Left>
+        <Height>0.70998cm</Height>
+        <Width>8.78417cm</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="customer_name3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>មន្ត្រីឥណទាន</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>: </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!credit_agent_name.Value</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ទូរស័ព្ទ</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>: </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!credit_agent_phone.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ថ្ងៃផ្តល់​ទន់</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>: </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!disburse_date.Value</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>សង​ប្រាក់</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>: </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!frequency.Value</Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!frequency_unit.Value</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>ម្តង</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>កន្លែង​បង់​ប្រាក់</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>: </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!payment_site.Value</Value>
+                <Style>
+                  <FontFamily>Khmer OS Battambang</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>customer_name</rd:DefaultName>
+        <Top>0.80236in</Top>
+        <Left>4.58333in</Left>
+        <Height>1.30056in</Height>
+        <Width>3.125in</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+    </ReportItems>
+    <Height>7.14058cm</Height>
+    <Style />
+  </Body>
+  <Width>19.57917cm</Width>
+  <Page>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>0.5cm</LeftMargin>
+    <RightMargin>0.5cm</RightMargin>
+    <TopMargin>0.5cm</TopMargin>
+    <BottomMargin>0.5cm</BottomMargin>
+    <ColumnSpacing>1.27cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="Loan">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>58090e44-f338-4f3d-a283-2f49f77959c4</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>Loan</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="frequency_unit">
+          <DataField>frequency_unit</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="frequency">
+          <DataField>frequency</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="amount">
+          <DataField>amount</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="currency">
+          <DataField>currency</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="interest_rate">
+          <DataField>interest_rate</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="calculation_method">
+          <DataField>calculation_method</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="disburse_date">
+          <DataField>disburse_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="first_installment_date">
+          <DataField>first_installment_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="maturity_date">
+          <DataField>maturity_date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="account_no">
+          <DataField>account_no</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="customer_name">
+          <DataField>customer_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="purpose">
+          <DataField>purpose</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="payment_site">
+          <DataField>payment_site</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="credit_agent_name">
+          <DataField>credit_agent_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="no">
+          <DataField>no</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="date">
+          <DataField>date</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="principal">
+          <DataField>principal</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="interest">
+          <DataField>interest</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="total">
+          <DataField>total</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="outstanding">
+          <DataField>outstanding</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="credit_agent_phone">
+          <DataField>credit_agent_phone</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="format">
+          <DataField>format</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Loan</rd:DataSetName>
+        <rd:SchemaPath>D:\code\kCredit\General\LoanDS.xsd</rd:SchemaPath>
+        <rd:TableName>Schedule</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="Path">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <EmbeddedImages>
+    <EmbeddedImage Name="Logo">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>fe984b73-5757-4df0-8e1e-e55989d6cfcf</rd:ReportID>
+</Report>

@@ -93,7 +93,7 @@ namespace kERP
             return int.TryParse(value, out isNumber);
         }
 
-        public static bool IsDecimal(string value)
+        public static bool IsDouble(string value)
         {
             double isNumber = 0;
             return double.TryParse(value, out isNumber);
@@ -262,7 +262,7 @@ namespace kERP
             var cols = "*";
             cols = ConfigFacade.Get(Constant.Sql_Export + TableName, cols);
             string sql = SqlFacade.SqlSelect(TableName, cols, "status <> '" + Constant.RecordStatus_Deleted + "'", "code");
-            SqlFacade.ExportToCSV(sql);
+            SqlFacade.ExportToCSV(sql,TableName);
         }
     }
 

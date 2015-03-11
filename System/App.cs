@@ -21,11 +21,11 @@ namespace kERP
         public static Session session = new Session();
 
         //public static frmCompany fCompany;
-        public static frmProduct fProduct;
+        public static frmCategory fCategory;
         public static frmHoliday fHoliday;
         public static frmBranch fBranch;
         public static frmLocation fLocation;
-        public static frmLoan fLoan;
+        public static frmUnitMeasure fUnitMeasure;
 
         public static SM.frmUserList fUserList;
         public static SM.frmAuditLog fAuditLog;

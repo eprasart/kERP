@@ -217,7 +217,7 @@ namespace kERP
             return cmd.ExecuteReader(CommandBehavior.CloseConnection);
         }
 
-        public static int ExportToCSV(string sql)
+        public static int ExportToCSV(string sql, string tableName)
         {
             //sql = "COPY (" + sql + ") TO '" + path + "' DELIMITER '" + delimiter + "' CSV HEADER ENCODING 'UTF8';";
             //Connection.ExecuteNonQuery(sql);            
@@ -228,7 +228,9 @@ namespace kERP
                 CheckPathExists = true,
                 OverwritePrompt = true,
                 Filter = "CSV File (*.csv)|*.csv|All Files (*.*)|*.*",
-                Title = "Export to CSV"
+                Title = "Export to CSV",
+                FileName = tableName + "_" + DateTime.Now.ToString("yyMMdd_HHmm")
+
             };
             if (sfd.ShowDialog() != DialogResult.OK) return result;
             var path = sfd.FileName;

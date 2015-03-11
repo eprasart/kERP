@@ -98,6 +98,18 @@
       <DependentUpon>HolidayList.cs</DependentUpon>
     </Compile>
     <Compile Include="General\Loan.cs" />
+    <Compile Include="IC\CategoryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IC\CategoryList.Designer.cs">
+      <DependentUpon>CategoryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IC\UnitMeasureList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IC\UnitMeasureList.Designer.cs">
+      <DependentUpon>UnitMeasureList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Loan\Product.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,7 +133,7 @@
     <Compile Include="General\BranchList.Designer.cs">
       <DependentUpon>BranchList.cs</DependentUpon>
     </Compile>
-    <Compile Include="IC\Location.cs" />
+    <Compile Include="IC\IC.cs" />
     <Compile Include="General\Branch.cs" />
     <Compile Include="Loan\Loan.cs" />
     <Compile Include="General\LoanDS.cs">
@@ -201,8 +213,15 @@
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Validator.cs" />
+    <EmbeddedResource Include="bin\Debug\Report\Schedule.rdlc" />
     <EmbeddedResource Include="Common\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IC\CategoryList.resx">
+      <DependentUpon>CategoryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IC\UnitMeasureList.resx">
+      <DependentUpon>UnitMeasureList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IC\LocationList.resx">
       <DependentUpon>LocationList.cs</DependentUpon>
@@ -365,9 +384,7 @@
   <ItemGroup>
     <None Include="Resources\Preview.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\Report\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\kUI\kUI.csproj">
       <Project>{30e4439a-c188-479f-852b-a58cbf8b0ab6}</Project>

@@ -412,6 +412,7 @@
             this.btnUnitMeasure.Text = "         Unit of Measure";
             this.btnUnitMeasure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUnitMeasure.UseVisualStyleBackColor = false;
+            this.btnUnitMeasure.Click += new System.EventHandler(this.btnUnitMeasure_Click);
             // 
             // btnReceive
             // 
@@ -451,6 +452,7 @@
             this.btnCategory.Text = "         Category";
             this.btnCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCategory.UseVisualStyleBackColor = false;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
             // 
             // buttonFlat21
             // 

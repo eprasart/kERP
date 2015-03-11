@@ -134,7 +134,7 @@ namespace kERP
             var cols = "*";
             cols = ConfigFacade.Get(Constant.Sql_Export + TableName, cols);
             string sql = SqlFacade.SqlSelect(TableName, cols, "status <> '" + Constant.RecordStatus_Deleted + "'", "name");
-            SqlFacade.ExportToCSV(sql);
+            SqlFacade.ExportToCSV(sql, TableName);
         }
     }
 
@@ -267,7 +267,7 @@ namespace kERP
             var cols = "*";
             cols = ConfigFacade.Get(Constant.Sql_Export + TableName, cols);
             string sql = SqlFacade.SqlSelect(TableName, cols, "status <> '" + Constant.RecordStatus_Deleted + "'", "account_no");
-            SqlFacade.ExportToCSV(sql);
+            SqlFacade.ExportToCSV(sql, TableName);
         }
 
         public static void SaveSrNo(string branch_code, long running_no = 1)
