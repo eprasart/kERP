@@ -83,6 +83,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AP\AP.cs" />
+    <Compile Include="AP\VendorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AP\VendorList.Designer.cs">
+      <DependentUpon>VendorList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\Data.cs" />
     <Compile Include="Common\Identity.cs" />
     <Compile Include="Common\Report.cs">
@@ -103,6 +110,12 @@
     </Compile>
     <Compile Include="IC\CategoryList.Designer.cs">
       <DependentUpon>CategoryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IC\ItemList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IC\ItemList.Designer.cs">
+      <DependentUpon>ItemList.cs</DependentUpon>
     </Compile>
     <Compile Include="IC\UnitMeasureList.cs">
       <SubType>Form</SubType>
@@ -213,12 +226,18 @@
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Validator.cs" />
+    <EmbeddedResource Include="AP\VendorList.resx">
+      <DependentUpon>VendorList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="bin\Debug\Report\Schedule.rdlc" />
     <EmbeddedResource Include="Common\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IC\CategoryList.resx">
       <DependentUpon>CategoryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IC\ItemList.resx">
+      <DependentUpon>ItemList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IC\UnitMeasureList.resx">
       <DependentUpon>UnitMeasureList.cs</DependentUpon>

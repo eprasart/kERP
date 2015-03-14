@@ -229,8 +229,7 @@ namespace kERP
                 OverwritePrompt = true,
                 Filter = "CSV File (*.csv)|*.csv|All Files (*.*)|*.*",
                 Title = "Export to CSV",
-                FileName = tableName + "_" + DateTime.Now.ToString("yyMMdd_HHmm")
-
+                FileName = tableName + "_" + DateTime.Now.ToString("yyMMdd_HHmmss")
             };
             if (sfd.ShowDialog() != DialogResult.OK) return result;
             var path = sfd.FileName;

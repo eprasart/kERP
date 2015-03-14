@@ -4,11 +4,10 @@ using kERP.SM;
 using kERP.SYS;
 using System.Text;
 using System.Drawing;
-using Microsoft.Reporting.WinForms;
 
 namespace kERP
 {
-    public partial class frmHoliday : Form
+    public partial class frmItem : Form
     {
         long Id = 0;
         int RowIndex = 0;   // Current gird selected row
@@ -16,10 +15,11 @@ namespace kERP
         bool IsDirty = false;
         bool IsIgnore = true;
 
-        string ModuleName = "Holiday";
-        string TitleLabel = HolidayFacade.TitleLabel;
+        frmMsg fMsg = null;
+        string ModuleName = "IC Location";
+        string TitleLabel = LocationFacade.TitleLabel;
 
-        public frmHoliday()
+        public frmItem()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace kERP
             if (dgvList.SelectedRows.Count > 0) RowIndex = dgvList.SelectedRows[0].Index;
             try
             {
-                dgvList.DataSource = HolidayFacade.GetDataTable(txtFind.Text, GetStatus());
+                dgvList.DataSource = LocationFacade.GetDataTable(txtFind.Text, GetStatus());
             }
             catch (Exception ex)
             {
@@ -80,13 +80,18 @@ namespace kERP
 
         private void LockControls(bool l = true)
         {
-            txtEvent.ReadOnly = l;
-            chkRecuring.Enabled = !l;
-            dtpDate.Enabled = !l;
-            txtMonth.ReadOnly = l;
-            txtDay.ReadOnly = l;
+            if (Id != 0 && l == false)
+                txtCode.ReadOnly = true;
+            else
+                txtCode.ReadOnly = l;
+            txtDescription.ReadOnly = l;
+            cboType.Enabled = !l;
+            txtAddress.ReadOnly = l;
+            txtName.ReadOnly = l;
+            txtPhone.ReadOnly = l;
+            txtFax.ReadOnly = l;
+            txtEmail.ReadOnly = l;
             txtNote.ReadOnly = l;
-
             btnNew.Enabled = l;
             btnCopy.Enabled = dgvList.Id != 0 && l;
             btnSave.Enabled = !l;
@@ -100,8 +105,7 @@ namespace kERP
             btnFind.Enabled = l;
             btnClear.Enabled = l;
             btnFilter.Enabled = l;
-
-            Validator.Close(this);
+            if (fMsg != null && !fMsg.IsDisposed) fMsg.Close();
         }
 
         private void SetStatus(string stat)
@@ -124,49 +128,28 @@ namespace kERP
 
         private bool IsValidated()
         {
-            int m = 0, d = 0;
-            var valid = new Validator(this, "holiday");
-            DateTime dt = dtpDate.Value;
-            if (chkRecuring.Checked)
-            {
-                if (!Util.IsInteger(txtMonth.Text))
-                    valid.Add(txtMonth, "month_invalid");
-                else
-                {
-                    m = int.Parse(txtMonth.Text);
-                    if (m < 1 || m > 12) valid.Add(txtMonth, "month_invalid");
-                }
-                if (!Util.IsInteger(txtDay.Text))
-                    valid.Add(txtDay, "installment_no_invalid");
-                else
-                {
-                    d = int.Parse(txtDay.Text);
-                    if (d < 0 || d > DateTime.DaysInMonth(2000, m)) // year=2000, so that Feb can have 29
-                        valid.Add(txtDay, "day_invalid");
-
-                }
-                dt = new DateTime(1900, m, d);
-            }
-            if (HolidayFacade.Exists(dt, Id))
-            {
-                Control c;
-                if (chkRecuring.Checked)
-                    c = txtMonth;
-                else 
-                    c=dtpDate;
-                valid.Add(c, "date_exists");
-            }
+            var valid = new Validator(this, "ic_location");
+            string sCode = txtCode.Text.Trim();
+            if (sCode.Length == 0)
+                valid.Add(txtCode, "code_blank");
+            else if (LocationFacade.Exists(sCode, Id))
+                valid.Add(txtCode, "code_exists");
+            if (txtDescription.IsEmptyTrim) valid.Add(txtDescription, "description_blank");
+            if (cboType.Unspecified) valid.Add(cboType, "type_unspecified");
             return valid.Show();
         }
 
         private void ClearAllBoxes()
         {
-            txtEvent.Text = "";
-            txtEvent.Focus();
-            chkRecuring.Checked = false;
-            dtpDate.Value = DateTime.Today;
-            txtMonth.Text = "";
-            txtDay.Text = "";
+            txtCode.Text = "";
+            txtCode.Focus();
+            txtDescription.Text = "";
+            Data.LoadList(cboType, "ic_location_type"); // Reload & set default
+            txtAddress.Text = "";
+            txtName.Text = "";
+            txtPhone.Text = "";
+            txtFax.Text = "";
+            txtEmail.Text = "";
             txtNote.Text = "";
             IsDirty = false;
         }
@@ -177,21 +160,20 @@ namespace kERP
             if (Id != 0)
                 try
                 {
-                    var m = HolidayFacade.Select(Id);
-                    txtEvent.Text = m.Event;
-                    chkRecuring.Checked = (m.Date.Year == 1900);
-                    if (!chkRecuring.Checked)
-                        dtpDate.Value = m.Date;
-                    else
-                    {
-                        txtMonth.Text = m.Date.Month.ToString();
-                        txtDay.Text = m.Date.Day.ToString(); ;
-                    }
+                    var m = LocationFacade.Select(Id);
+                    txtCode.Text = m.Code;
+                    txtDescription.Text = m.Description;
+                    cboType.Value = m.Type;
+                    txtAddress.Text = m.Address;
+                    txtName.Text = m.Name;
+                    txtPhone.Text = m.Phone;
+                    txtFax.Text = m.Fax;
+                    txtEmail.Text = m.Email;
                     txtNote.Text = m.Note;
                     SetStatus(m.Status);
                     LockControls();
                     IsDirty = false;
-                    SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_View, "View. Id=" + m.Id + ", Event=" + m.Event);
+                    SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_View, "View. Id=" + m.Id + ", Code=" + m.Code);
                 }
                 catch (Exception ex)
                 {
@@ -231,6 +213,24 @@ namespace kERP
             }
         }
 
+        private void SetCodeCasing()
+        {
+            CharacterCasing cs;
+            switch (ConfigFacade.Code_Casing)
+            {
+                case "U":
+                    cs = CharacterCasing.Upper;
+                    break;
+                case "L":
+                    cs = CharacterCasing.Lower;
+                    break;
+                default:
+                    cs = CharacterCasing.Normal;
+                    break;
+            }
+            txtCode.CharacterCasing = cs;
+        }
+
         private void SetSettings()
         {
             try
@@ -238,9 +238,8 @@ namespace kERP
                 SetIconDisplayType(ConfigFacade.Toolbar_Icon_Display_Type);
                 splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
 
-                //SetCodeCasing();
-                //txtAccountNo.MaxLength = ConfigFacade.sy_code_max_length;
-
+                SetCodeCasing();
+                txtCode.MaxLength = ConfigFacade.Code_Max_Length;
                 FormFacade.SetFormState(this);
             }
             catch (Exception ex)
@@ -251,7 +250,7 @@ namespace kERP
 
         private void SetLabels()
         {
-            var prefix = "holiday_";
+            var prefix = "ic_location_";
             btnNew.Text = LabelFacade.sys_button_new ?? btnNew.Text;
             btnCopy.Text = LabelFacade.sys_button_copy ?? btnCopy.Text;
             btnUnlock.Text = LabelFacade.sys_button_unlock ?? btnUnlock.Text;
@@ -266,21 +265,28 @@ namespace kERP
             btnClear.Text = "     " + (LabelFacade.sys_button_clear ?? btnClear.Text.Replace(" ", ""));
             btnFilter.Text = "     " + (LabelFacade.sys_button_filter ?? btnFilter.Text.Replace(" ", ""));
 
-            colAccountNo.HeaderText = LabelFacade.Get(prefix + "code") ?? colAccountNo.HeaderText;
-            lblMonth.Text = LabelFacade.Get(prefix + "default_factor") ?? lblMonth.Text;
+            colCode.HeaderText = LabelFacade.Get(prefix + "code") ?? colCode.HeaderText;
+            lblCode.Text = colCode.HeaderText;
+            glbGeneral.Caption = LabelFacade.Get(prefix + "general") ?? glbGeneral.Caption;
             glbNote.Caption = LabelFacade.Get(prefix + "note") ?? glbNote.Caption;
-            //todo: Label for the rest
+            //todo: load the rest
         }
 
         private bool Save()
         {
             if (!IsValidated()) return false;
             Cursor = Cursors.WaitCursor;
-            var m = new Holiday();
+            var m = new Location();
             var log = new SessionLog { Module = ModuleName };
             m.Id = Id;
-            m.Event = txtEvent.Text;
-            m.Date = chkRecuring.Checked ? new DateTime(1900, int.Parse(txtMonth.Text), int.Parse(txtDay.Text)) : dtpDate.Value;
+            m.Code = txtCode.Text.Trim();
+            m.Description = txtDescription.Text;
+            m.Type = cboType.Value;
+            m.Address = txtAddress.Text;
+            m.Name = txtName.Text;
+            m.Phone = txtPhone.Text;
+            m.Fax = txtFax.Text;
+            m.Email = txtEmail.Text;
             m.Note = txtNote.Text;
             if (m.Id == 0)
             {
@@ -294,7 +300,7 @@ namespace kERP
             }
             try
             {
-                m.Id = HolidayFacade.Save(m);
+                m.Id = LocationFacade.Save(m);
             }
             catch (Exception ex)
             {
@@ -305,21 +311,23 @@ namespace kERP
             RefreshGrid(m.Id);
             LockControls();
             Cursor = Cursors.Default;
-            log.Message = "Saved. Id=" + m.Id + ", Event=" + m.Event;
+            log.Message = "Saved. Id=" + m.Id + ", Code=" + txtCode.Text;
             SessionLogFacade.Log(log);
             IsDirty = false;
             return true;
         }
 
-        private void frmHolidayList_Load(object sender, EventArgs e)
+        private void frmLocationList_Load(object sender, EventArgs e)
         {
             try
             {
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
+                Data.LoadList(cboType, "ic_location_type");
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();
+
                 LoadData();
             }
             catch (Exception ex)
@@ -342,8 +350,7 @@ namespace kERP
             if (dgvList.CurrentRow != null)
                 dgvList.CurrentRow.Selected = false;
             Id = 0;
-            LockControls(false);
-            cboFrequencyUnit_SelectedIndexChanged(null, null);
+            LockControls(false);            
             if (dgvList.CurrentRow != null) RowIndex = dgvList.CurrentRow.Index;
             SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_New, "New clicked");
             IsDirty = false;
@@ -371,7 +378,7 @@ namespace kERP
 
         private void btnSaveNew_Click(object sender, EventArgs e)
         {
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_SaveAndNew, "Saved and new. Id=" + dgvList.Id + ", Event=" + txtEvent.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_SaveAndNew, "Saved and new. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
             btnSave_Click(sender, e);
             if (btnSaveNew.Enabled) return;
             btnNew_Click(sender, e);
@@ -386,7 +393,7 @@ namespace kERP
                 // If referenced
                 //todo: check if exist in ic_item
                 // If locked
-                var lInfo = HolidayFacade.GetLock(Id);
+                var lInfo = LocationFacade.GetLock(Id);
                 string msg = "";
                 if (lInfo.Locked)
                 {
@@ -394,7 +401,7 @@ namespace kERP
                     if (!Privilege.CanAccess(Constant.Function_IC_Unit_Measure, "O"))
                     {
                         MessageFacade.Show(msg, LabelFacade.sys_delete, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Delete, "Cannot delete. Currently locked by '" + lInfo.Lock_By + "' since '" + lInfo.Lock_At + "' . Id=" + dgvList.Id + ", Event=" + txtEvent.Text);
+                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Delete, "Cannot delete. Currently locked by '" + lInfo.Lock_By + "' since '" + lInfo.Lock_At + "' . Id=" + dgvList.Id + ", Code=" + txtCode.Text);
                         return;
                     }
                 }
@@ -405,7 +412,7 @@ namespace kERP
                     return;
                 try
                 {
-                    HolidayFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
+                    LocationFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
                 }
                 catch (Exception ex)
                 {
@@ -414,7 +421,7 @@ namespace kERP
                 }
                 RefreshGrid();
                 // log
-                SessionLogFacade.Log(Constant.Priority_Warning, ModuleName, Constant.Log_Delete, "Deleted. Id=" + dgvList.Id + ", Event=" + txtEvent.Text);
+                SessionLogFacade.Log(Constant.Priority_Warning, ModuleName, Constant.Log_Delete, "Deleted. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
             }
             catch (Exception ex)
             {
@@ -433,9 +440,9 @@ namespace kERP
             }
             Id = 0;
             if (IsExpand) picExpand_Click(sender, e);
+            txtCode.Focus();
             LockControls(false);
-            cboFrequencyUnit_SelectedIndexChanged(null, null);
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Copy, "Copy from Id=" + dgvList.Id + "Event=" + txtEvent.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Copy, "Copy from Id=" + dgvList.Id + "Code=" + txtCode.Text);
             IsDirty = false;
         }
 
@@ -460,7 +467,7 @@ namespace kERP
         {
             if (e.RowIndex == -1) return;
             if (IsExpand) picExpand_Click(sender, e);
-            dgvList_SelectionChanged(sender, e);    // reload data since SelectionChanged will not occured on current row
+            dgvList_SelectionChanged(sender, e);    // reload data since SelectionChanged will not occured on current row            
         }
 
         private void btnActive_Click(object sender, EventArgs e)
@@ -473,7 +480,7 @@ namespace kERP
             //todo: check if already used in ic_item
 
             //If locked
-            var lInfo = HolidayFacade.GetLock(Id);
+            var lInfo = LocationFacade.GetLock(Id);
             if (lInfo.Locked)
             {
                 string msg = string.Format(MessageFacade.lock_currently, lInfo.Lock_By, lInfo.Lock_At);
@@ -488,7 +495,7 @@ namespace kERP
             }
             try
             {
-                HolidayFacade.SetStatus(Id, status);
+                LocationFacade.SetStatus(Id, status);
             }
             catch (Exception ex)
             {
@@ -496,7 +503,7 @@ namespace kERP
                 ErrorLogFacade.Log(ex);
             }
             RefreshGrid();
-            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, status == Constant.RecordStatus_InActive ? Constant.Log_Inactive : Constant.Log_Active, "Id=" + dgvList.Id + ", Event=" + txtEvent.Text);
+            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, status == Constant.RecordStatus_InActive ? Constant.Log_Inactive : Constant.Log_Active, "Id=" + dgvList.Id + ", Code=" + txtCode.Text);
         }
 
         private void btnUnlock_Click(object sender, EventArgs e)
@@ -526,7 +533,7 @@ namespace kERP
                 dgvList.Focus();
                 try
                 {
-                    HolidayFacade.ReleaseLock(dgvList.Id);
+                    LocationFacade.ReleaseLock(dgvList.Id);
                 }
                 catch (Exception ex)
                 {
@@ -536,7 +543,7 @@ namespace kERP
                 }
                 if (dgvList.CurrentRow != null && !dgvList.CurrentRow.Selected)
                     dgvList.CurrentRow.Selected = true;
-                SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Unlock, "Unlock cancel. Id=" + dgvList.Id + ", Event=" + txtEvent.Text);
+                SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Unlock, "Unlock cancel. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
                 btnUnlock.ToolTipText = "Unlock (Ctrl+L)";
                 IsDirty = false;
                 return;
@@ -545,7 +552,7 @@ namespace kERP
             if (Id == 0) return;
             try
             {
-                var lInfo = HolidayFacade.GetLock(Id);
+                var lInfo = LocationFacade.GetLock(Id);
 
                 if (lInfo.Locked) // Check if record is locked
                 {
@@ -557,10 +564,12 @@ namespace kERP
                     }
                     else
                         if (MessageFacade.Show(msg + "\r\n" + MessageFacade.lock_override, LabelFacade.sys_unlock, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Event=" + txtEvent.Text);
+                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
                         else
                             return;
                 }
+                txtDescription.SelectionStart = txtDescription.Text.Length;
+                txtDescription.Focus();
                 LockControls(false);
             }
             catch (Exception ex)
@@ -571,7 +580,7 @@ namespace kERP
             }
             try
             {
-                HolidayFacade.Lock(dgvList.Id, txtEvent.Text);
+                LocationFacade.Lock(dgvList.Id, txtCode.Text);
             }
             catch (Exception ex)
             {
@@ -579,9 +588,8 @@ namespace kERP
                 ErrorLogFacade.Log(ex);
                 return;
             }
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Lock, "Locked. Id=" + dgvList.Id + ", Event=" + txtEvent.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Lock, "Locked. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
             btnUnlock.ToolTipText = "Cancel (Esc or Ctrl+L)";
-            IsDirty = false;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -651,7 +659,7 @@ namespace kERP
             IsDirty = true;
         }
 
-        private void frmHolidayList_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmUnitMeasureList_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (IsDirty)
             {
@@ -677,12 +685,12 @@ namespace kERP
 
         private void txtCode_Leave(object sender, EventArgs e)
         {
-            //// Check if entered code already exists
-            //if (txtNo.ReadOnly) return;
-            //if (HolidayFacade.Exists(txtNo.Text.Trim()))
-            //{
-            //    MessageFacade.Show(this, ref fMsg, LabelFacade.sy_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sy_customer);
-            //}
+            // Check if entered code already exists
+            if (txtCode.ReadOnly) return;
+            if (LocationFacade.Exists(txtCode.Text.Trim()))
+            {
+                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sys_branch);
+            }
         }
 
         private void btnMode_Click(object sender, EventArgs e)
@@ -696,7 +704,7 @@ namespace kERP
             }
             else
             {
-                splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name); //ConfigFacade.ic_unit_measure_splitter_distance;
+                splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
                 splitContainer1.FixedPanel = FixedPanel.Panel1;
             }
             dgvList.ShowLessColumns(IsExpand);
@@ -732,7 +740,7 @@ namespace kERP
         {
             Cursor = Cursors.WaitCursor;
             Application.DoEvents();
-            HolidayFacade.Export();
+            LocationFacade.Export();
             Cursor = Cursors.Default;
         }
 
@@ -749,25 +757,6 @@ namespace kERP
         private void txtFind_Leave(object sender, EventArgs e)
         {
             lblSearch.Visible = (txtFind.IsEmpty);
-        }
-
-        private void cboFrequencyUnit_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (cboFrequencyUnit.UnSpecified || btnNew.Enabled) return;
-            //txtAccountNo.Text = HolidayFacade.GetNextAccountNo(cboFrequencyUnit.Value); //todo: Format No; from table
-        }
-
-        private void chkRecuring_CheckedChanged(object sender, EventArgs e)
-        {
-            var bRecuring = chkRecuring.Checked;
-
-            lblDate.Visible = !bRecuring;
-            dtpDate.Visible = !bRecuring;
-
-            lblMonth.Visible = bRecuring;
-            txtMonth.Visible = bRecuring;
-            lblDay.Visible = bRecuring;
-            txtDay.Visible = bRecuring;
         }
     }
 }

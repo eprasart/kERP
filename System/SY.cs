@@ -366,6 +366,7 @@ namespace kERP
         public static string sys_product;
         public static string IC_Category;
         public static string IC_Location;
+        public static string AP_Vendor;
         public static string sys_loan;
 
         // Button
@@ -442,6 +443,7 @@ namespace kERP
             sys_product = Get("sys_product");
             IC_Category = Get("ic_category");
             IC_Location = Get("ic_location");
+            AP_Vendor = Get("ap_vendor");
             sys_loan = Get("sys_loan");
 
 

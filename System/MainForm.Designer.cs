@@ -244,20 +244,20 @@
             // 
             this.btnVendor.BackColor = System.Drawing.Color.White;
             this.btnVendor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVendor.Enabled = false;
             this.btnVendor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnVendor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVendor.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnVendor.Image = ((System.Drawing.Image)(resources.GetObject("btnVendor.Image")));
             this.btnVendor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVendor.Location = new System.Drawing.Point(268, 42);
+            this.btnVendor.Location = new System.Drawing.Point(268, 146);
             this.btnVendor.Name = "btnVendor";
             this.btnVendor.Size = new System.Drawing.Size(217, 31);
             this.btnVendor.TabIndex = 24;
             this.btnVendor.Text = "         Vendor";
             this.btnVendor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVendor.UseVisualStyleBackColor = false;
+            this.btnVendor.Click += new System.EventHandler(this.btnVendor_Click);
             // 
             // buttonFlat1
             // 
@@ -503,7 +503,7 @@
             this.buttonFlat23.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat23.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat23.Image")));
             this.buttonFlat23.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat23.Location = new System.Drawing.Point(268, 251);
+            this.buttonFlat23.Location = new System.Drawing.Point(268, 42);
             this.buttonFlat23.Name = "buttonFlat23";
             this.buttonFlat23.Size = new System.Drawing.Size(217, 31);
             this.buttonFlat23.TabIndex = 10;
@@ -561,7 +561,7 @@
             this.buttonFlat25.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat25.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat25.Image")));
             this.buttonFlat25.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFlat25.Location = new System.Drawing.Point(268, 146);
+            this.buttonFlat25.Location = new System.Drawing.Point(268, 251);
             this.buttonFlat25.Name = "buttonFlat25";
             this.buttonFlat25.Size = new System.Drawing.Size(217, 31);
             this.buttonFlat25.TabIndex = 7;

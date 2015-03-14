@@ -29,11 +29,6 @@ namespace kERP.SYS
             App.fSplash.StartTimer();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
@@ -165,6 +160,26 @@ namespace kERP.SYS
                 f.WindowState = FormWindowState.Normal;
             f.Focus();
             Cursor = Cursors.Default;
-        }       
+        }
+
+        private void btnVendor_Click(object sender, EventArgs e)
+        {
+            var f = App.fVendor;
+            if (!SM.Privilege.CanAccess("PRD", "V")) // todo: not hard code
+            {
+                MessageBox.Show("You don't have the privilege to access this function.");
+                return;
+            }
+            Cursor = Cursors.WaitCursor;
+            if (f == null || f.IsDisposed == true)
+            {
+                f = new frmVendor();
+                f.Show();
+            }
+            if (f.WindowState == FormWindowState.Minimized) //todo: do this with the rest
+                f.WindowState = FormWindowState.Normal;
+            f.Focus();
+            Cursor = Cursors.Default;
+        }
     }
 }

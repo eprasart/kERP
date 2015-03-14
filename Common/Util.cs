@@ -112,7 +112,7 @@ namespace kERP
             return false;
         }
 
-        public static void SaveFormSate(Form frm, string prefix = "")
+        public static void SaveFormSate(Form frm, string prefix = "") 
         {
             if (prefix.Length == 0) prefix = frm.Name;
             ConfigFacade.Set(prefix + Constant.Location, frm.Location);
