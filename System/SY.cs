@@ -365,7 +365,9 @@ namespace kERP
         public static string sys_branch;
         public static string sys_product;
         public static string IC_Category;
+        public static string IC_Classification;
         public static string IC_Location;
+        public static string IC_Item;
         public static string AP_Vendor;
         public static string sys_loan;
 
@@ -442,7 +444,9 @@ namespace kERP
             sys_branch = Get("sys_branch");
             sys_product = Get("sys_product");
             IC_Category = Get("ic_category");
+            IC_Classification = Get("ic_classification");
             IC_Location = Get("ic_location");
+            IC_Item= Get("ic_item");
             AP_Vendor = Get("ap_vendor");
             sys_loan = Get("sys_loan");
 

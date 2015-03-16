@@ -181,5 +181,45 @@ namespace kERP.SYS
             f.Focus();
             Cursor = Cursors.Default;
         }
+
+        private void btnItem_Click(object sender, EventArgs e)
+        {
+            var f = App.fItem;
+            if (!SM.Privilege.CanAccess("PRD", "V")) // todo: not hard code
+            {
+                MessageBox.Show("You don't have the privilege to access this function.");
+                return;
+            }
+            Cursor = Cursors.WaitCursor;
+            if (f == null || f.IsDisposed == true)
+            {
+                f = new frmItem();
+                f.Show();
+            }
+            if (f.WindowState == FormWindowState.Minimized) //todo: do this with the rest
+                f.WindowState = FormWindowState.Normal;
+            f.Focus();
+            Cursor = Cursors.Default;
+        }
+
+        private void btnClassification_Click(object sender, EventArgs e)
+        {
+            var f = App.fClassification;
+            if (!SM.Privilege.CanAccess("PRD", "V")) // todo: not hard code
+            {
+                MessageBox.Show("You don't have the privilege to access this function.");
+                return;
+            }
+            Cursor = Cursors.WaitCursor;
+            if (f == null || f.IsDisposed == true)
+            {
+                f = new frmClassification();
+                f.Show();
+            }
+            if (f.WindowState == FormWindowState.Minimized) //todo: do this with the rest
+                f.WindowState = FormWindowState.Normal;
+            f.Focus();
+            Cursor = Cursors.Default;
+        }
     }
 }

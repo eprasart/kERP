@@ -112,7 +112,7 @@ namespace kERP
             return false;
         }
 
-        public static void SaveFormSate(Form frm, string prefix = "") 
+        public static void SaveFormSate(Form frm, string prefix = "")
         {
             if (prefix.Length == 0) prefix = frm.Name;
             ConfigFacade.Set(prefix + Constant.Location, frm.Location);
@@ -262,7 +262,7 @@ namespace kERP
             var cols = "*";
             cols = ConfigFacade.Get(Constant.Sql_Export + TableName, cols);
             string sql = SqlFacade.SqlSelect(TableName, cols, "status <> '" + Constant.RecordStatus_Deleted + "'", "code");
-            SqlFacade.ExportToCSV(sql,TableName);
+            SqlFacade.ExportToCSV(sql, TableName);
         }
     }
 
@@ -300,6 +300,19 @@ namespace kERP
                 date = date.AddDays(direction);
             }
             return date;
+        }
+    }
+
+    public static class ImageFacade
+    {
+        public static byte[] GetBytes(string path)
+        {
+            var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            var br = new BinaryReader(fs);
+            byte[] bytes = br.ReadBytes((int)fs.Length);
+            br.Close();
+            fs.Close();
+            return bytes;
         }
     }
 }

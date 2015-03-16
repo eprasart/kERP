@@ -105,6 +105,12 @@
       <DependentUpon>HolidayList.cs</DependentUpon>
     </Compile>
     <Compile Include="General\Loan.cs" />
+    <Compile Include="IC\Classification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IC\Classification.Designer.cs">
+      <DependentUpon>Classification.cs</DependentUpon>
+    </Compile>
     <Compile Include="IC\CategoryList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,9 @@
     <EmbeddedResource Include="bin\Debug\Report\Schedule.rdlc" />
     <EmbeddedResource Include="Common\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IC\Classification.resx">
+      <DependentUpon>Classification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IC\CategoryList.resx">
       <DependentUpon>CategoryList.cs</DependentUpon>

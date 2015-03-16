@@ -4,6 +4,7 @@ using kERP.SM;
 using kERP.SYS;
 using System.Text;
 using System.Drawing;
+using System.IO;
 
 namespace kERP
 {
@@ -16,8 +17,10 @@ namespace kERP
         bool IsIgnore = true;
 
         frmMsg fMsg = null;
-        string ModuleName = "IC Location";
-        string TitleLabel = LocationFacade.TitleLabel;
+        string ModuleName = "IC Item";
+        string TitleLabel = ItemFacade.TitleLabel;
+
+        string imgPath = "";
 
         public frmItem()
         {
@@ -41,7 +44,7 @@ namespace kERP
             if (dgvList.SelectedRows.Count > 0) RowIndex = dgvList.SelectedRows[0].Index;
             try
             {
-                dgvList.DataSource = LocationFacade.GetDataTable(txtFind.Text, GetStatus());
+                dgvList.DataSource = ItemFacade.GetDataTable(txtFind.Text, GetStatus());
             }
             catch (Exception ex)
             {
@@ -85,13 +88,18 @@ namespace kERP
             else
                 txtCode.ReadOnly = l;
             txtDescription.ReadOnly = l;
+            cboCategory.Enabled = !l;
+            txtDescription2.ReadOnly = l;
+            txtBarcode.ReadOnly = l;
+            txtVendor.ReadOnly = l;
+            txtPrice.ReadOnly = l;
+            txtUPC.ReadOnly = l;
             cboType.Enabled = !l;
-            txtAddress.ReadOnly = l;
-            txtName.ReadOnly = l;
-            txtPhone.ReadOnly = l;
-            txtFax.ReadOnly = l;
-            txtEmail.ReadOnly = l;
+            cboDiscount.Enabled = !l;
+            cboABC.Enabled = !l;
             txtNote.ReadOnly = l;
+            lblBrowse.Enabled = !l;
+            lblClear.Enabled = !l;
             btnNew.Enabled = l;
             btnCopy.Enabled = dgvList.Id != 0 && l;
             btnSave.Enabled = !l;
@@ -128,14 +136,14 @@ namespace kERP
 
         private bool IsValidated()
         {
-            var valid = new Validator(this, "ic_location");
+            var valid = new Validator(this, "ic_item");
             string sCode = txtCode.Text.Trim();
             if (sCode.Length == 0)
                 valid.Add(txtCode, "code_blank");
-            else if (LocationFacade.Exists(sCode, Id))
+            else if (ItemFacade.Exists(sCode, Id))
                 valid.Add(txtCode, "code_exists");
             if (txtDescription.IsEmptyTrim) valid.Add(txtDescription, "description_blank");
-            if (cboType.Unspecified) valid.Add(cboType, "type_unspecified");
+            if (cboCategory.Unspecified) valid.Add(cboCategory, "type_unspecified");
             return valid.Show();
         }
 
@@ -143,13 +151,14 @@ namespace kERP
         {
             txtCode.Text = "";
             txtCode.Focus();
+            picItem.Image = null;
             txtDescription.Text = "";
-            Data.LoadList(cboType, "ic_location_type"); // Reload & set default
-            txtAddress.Text = "";
-            txtName.Text = "";
-            txtPhone.Text = "";
-            txtFax.Text = "";
-            txtEmail.Text = "";
+            Data.LoadList(cboCategory, "ic_item_type"); // Reload & set default
+            txtDescription2.Text = "";
+            txtBarcode.Text = "";
+            txtVendor.Text = "";
+            txtPrice.Text = "";
+            txtUPC.Text = "";
             txtNote.Text = "";
             IsDirty = false;
         }
@@ -160,16 +169,25 @@ namespace kERP
             if (Id != 0)
                 try
                 {
-                    var m = LocationFacade.Select(Id);
+                    var m = ItemFacade.Select(Id);
                     txtCode.Text = m.Code;
                     txtDescription.Text = m.Description;
-                    cboType.Value = m.Type;
-                    txtAddress.Text = m.Address;
-                    txtName.Text = m.Name;
-                    txtPhone.Text = m.Phone;
-                    txtFax.Text = m.Fax;
-                    txtEmail.Text = m.Email;
+                    cboCategory.Value = m.Type;
+                    txtDescription2.Text = m.Address;
+                    txtBarcode.Text = m.Name;
+                    txtVendor.Text = m.Phone;
+                    txtPrice.Text = m.Fax;
+                    txtUPC.Text = m.Email;
                     txtNote.Text = m.Note;
+                    byte[] imga = m.Picture;
+                    if (imga != null)
+                    {
+                        Stream s = new MemoryStream(imga);
+                        picItem.Image = Image.FromStream(s);
+
+                    }
+                    else
+                        picItem.Image = null;
                     SetStatus(m.Status);
                     LockControls();
                     IsDirty = false;
@@ -229,6 +247,7 @@ namespace kERP
                     break;
             }
             txtCode.CharacterCasing = cs;
+            txtUPC.CharacterCasing = cs;
         }
 
         private void SetSettings()
@@ -250,7 +269,7 @@ namespace kERP
 
         private void SetLabels()
         {
-            var prefix = "ic_location_";
+            var prefix = "ic_item_";
             btnNew.Text = LabelFacade.sys_button_new ?? btnNew.Text;
             btnCopy.Text = LabelFacade.sys_button_copy ?? btnCopy.Text;
             btnUnlock.Text = LabelFacade.sys_button_unlock ?? btnUnlock.Text;
@@ -276,18 +295,19 @@ namespace kERP
         {
             if (!IsValidated()) return false;
             Cursor = Cursors.WaitCursor;
-            var m = new Location();
+            var m = new Item();
             var log = new SessionLog { Module = ModuleName };
             m.Id = Id;
             m.Code = txtCode.Text.Trim();
             m.Description = txtDescription.Text;
-            m.Type = cboType.Value;
-            m.Address = txtAddress.Text;
-            m.Name = txtName.Text;
-            m.Phone = txtPhone.Text;
-            m.Fax = txtFax.Text;
-            m.Email = txtEmail.Text;
+            m.Type = cboCategory.Value;
+            m.Address = txtDescription2.Text;
+            m.Name = txtBarcode.Text;
+            m.Phone = txtVendor.Text;
+            m.Fax = txtPrice.Text;
+            m.Email = txtUPC.Text;
             m.Note = txtNote.Text;
+            if (imgPath.Length > 0) m.Picture = ImageFacade.GetBytes(imgPath);
             if (m.Id == 0)
             {
                 log.Priority = Constant.Priority_Information;
@@ -300,7 +320,7 @@ namespace kERP
             }
             try
             {
-                m.Id = LocationFacade.Save(m);
+                m.Id = ItemFacade.Save(m);
             }
             catch (Exception ex)
             {
@@ -317,14 +337,16 @@ namespace kERP
             return true;
         }
 
-        private void frmLocationList_Load(object sender, EventArgs e)
+        private void frmItem_Load(object sender, EventArgs e)
         {
             try
             {
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
-                Data.LoadList(cboType, "ic_location_type");
+                Data.LoadList(cboType, "ic_item_type");
+                Data.LoadList(cboDiscount, "ic_item_discount");
+                Data.LoadList(cboABC, "ic_item_abc");
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();
 
@@ -332,7 +354,7 @@ namespace kERP
             }
             catch (Exception ex)
             {
-                ErrorLogFacade.Log(ex, "Form_Load");
+                ErrorLogFacade.Log(ex, "Form_Load");    //todo: in a gobal var
                 MessageFacade.Show(MessageFacade.error_load_form + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -350,7 +372,7 @@ namespace kERP
             if (dgvList.CurrentRow != null)
                 dgvList.CurrentRow.Selected = false;
             Id = 0;
-            LockControls(false);            
+            LockControls(false);
             if (dgvList.CurrentRow != null) RowIndex = dgvList.CurrentRow.Index;
             SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_New, "New clicked");
             IsDirty = false;
@@ -393,7 +415,7 @@ namespace kERP
                 // If referenced
                 //todo: check if exist in ic_item
                 // If locked
-                var lInfo = LocationFacade.GetLock(Id);
+                var lInfo = ItemFacade.GetLock(Id);
                 string msg = "";
                 if (lInfo.Locked)
                 {
@@ -412,7 +434,7 @@ namespace kERP
                     return;
                 try
                 {
-                    LocationFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
+                    ItemFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
                 }
                 catch (Exception ex)
                 {
@@ -480,7 +502,7 @@ namespace kERP
             //todo: check if already used in ic_item
 
             //If locked
-            var lInfo = LocationFacade.GetLock(Id);
+            var lInfo = ItemFacade.GetLock(Id);
             if (lInfo.Locked)
             {
                 string msg = string.Format(MessageFacade.lock_currently, lInfo.Lock_By, lInfo.Lock_At);
@@ -495,7 +517,7 @@ namespace kERP
             }
             try
             {
-                LocationFacade.SetStatus(Id, status);
+                ItemFacade.SetStatus(Id, status);
             }
             catch (Exception ex)
             {
@@ -533,7 +555,7 @@ namespace kERP
                 dgvList.Focus();
                 try
                 {
-                    LocationFacade.ReleaseLock(dgvList.Id);
+                    ItemFacade.ReleaseLock(dgvList.Id);
                 }
                 catch (Exception ex)
                 {
@@ -552,7 +574,7 @@ namespace kERP
             if (Id == 0) return;
             try
             {
-                var lInfo = LocationFacade.GetLock(Id);
+                var lInfo = ItemFacade.GetLock(Id);
 
                 if (lInfo.Locked) // Check if record is locked
                 {
@@ -580,7 +602,7 @@ namespace kERP
             }
             try
             {
-                LocationFacade.Lock(dgvList.Id, txtCode.Text);
+                ItemFacade.Lock(dgvList.Id, txtCode.Text);
             }
             catch (Exception ex)
             {
@@ -687,7 +709,7 @@ namespace kERP
         {
             // Check if entered code already exists
             if (txtCode.ReadOnly) return;
-            if (LocationFacade.Exists(txtCode.Text.Trim()))
+            if (ItemFacade.Exists(txtCode.Text.Trim()))
             {
                 MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sys_branch);
             }
@@ -740,7 +762,7 @@ namespace kERP
         {
             Cursor = Cursors.WaitCursor;
             Application.DoEvents();
-            LocationFacade.Export();
+            ItemFacade.Export();
             Cursor = Cursors.Default;
         }
 
@@ -757,6 +779,29 @@ namespace kERP
         private void txtFind_Leave(object sender, EventArgs e)
         {
             lblSearch.Visible = (txtFind.IsEmpty);
+        }
+
+        private void lblBrowse_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var f = new OpenFileDialog
+            {
+                Filter = "Picture Files (*.jpg; *.png; *.bmp) | *.jpg;*.png;*.bmp|All Files (*) | *.*"
+            };
+            if (f.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                imgPath = f.FileName;
+                //pictureBox1.Image = new Bitmap(imgPath); //Image.FromFile(imgPath);
+                picItem.Load(imgPath);
+            }
+        }
+
+        private void lblClear_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            picItem.Image = null;
+            imgPath = "";
+            if (Id == 0) return;
+            // set picture to null
+            ItemFacade.ClearPicture(Id);
         }
     }
 }

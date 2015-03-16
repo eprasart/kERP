@@ -61,43 +61,61 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtFind = new kUI.TextBox(this.components);
-            this.glbGeneral = new kUI.GroupLabel();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.glbNote = new kUI.GroupLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cboType = new kUI.ComboBox(this.components);
-            this.lblCode = new System.Windows.Forms.Label();
-            this.txtEmail = new kUI.TextBox(this.components);
-            this.groupLabel1 = new kUI.GroupLabel();
-            this.txtFax = new kUI.TextBox(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPhone = new kUI.TextBox(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new kUI.TextBox(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtAddress = new kUI.TextBox(this.components);
-            this.txtDescription = new kUI.TextBox(this.components);
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.lblBrowse = new System.Windows.Forms.LinkLabel();
+            this.glbGeneral = new kUI.GroupLabel();
+            this.lblClear = new System.Windows.Forms.LinkLabel();
             this.txtCode = new kUI.TextBox(this.components);
+            this.picItem = new System.Windows.Forms.PictureBox();
+            this.txtDescription2 = new kUI.TextBox(this.components);
+            this.txtDescription = new kUI.TextBox(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtBarcode = new kUI.TextBox(this.components);
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtVendor = new kUI.TextBox(this.components);
+            this.cboDiscount = new kUI.ComboBox(this.components);
+            this.cboType = new kUI.ComboBox(this.components);
+            this.cboCategory = new kUI.ComboBox(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblCode = new System.Windows.Forms.Label();
+            this.txtPrice = new kUI.TextBox(this.components);
+            this.txtUPC = new kUI.TextBox(this.components);
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.mnuShow = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuShowA = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowI = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cboABC = new kUI.ComboBox(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picItem)).BeginInit();
             this.mnuShow.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.White;
-            this.toolStrip1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnNew,
             this.btnCopy,
@@ -112,7 +130,7 @@
             this.btnExport});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(993, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1008, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -207,7 +225,7 @@
             this.btnMode.Image = global::kERP.Properties.Resources.Expand;
             this.btnMode.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMode.Name = "btnMode";
-            this.btnMode.Size = new System.Drawing.Size(88, 22);
+            this.btnMode.Size = new System.Drawing.Size(87, 22);
             this.btnMode.Text = "List/Detail";
             this.btnMode.ToolTipText = "Toggle between list and detail mode (F9)";
             this.btnMode.Click += new System.EventHandler(this.btnMode_Click);
@@ -242,30 +260,11 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.glbGeneral);
-            this.splitContainer1.Panel2.Controls.Add(this.glbNote);
-            this.splitContainer1.Panel2.Controls.Add(this.txtNote);
-            this.splitContainer1.Panel2.Controls.Add(this.label10);
-            this.splitContainer1.Panel2.Controls.Add(this.lblDescription);
-            this.splitContainer1.Panel2.Controls.Add(this.label11);
-            this.splitContainer1.Panel2.Controls.Add(this.cboType);
-            this.splitContainer1.Panel2.Controls.Add(this.lblCode);
-            this.splitContainer1.Panel2.Controls.Add(this.txtEmail);
-            this.splitContainer1.Panel2.Controls.Add(this.groupLabel1);
-            this.splitContainer1.Panel2.Controls.Add(this.txtFax);
-            this.splitContainer1.Panel2.Controls.Add(this.label5);
-            this.splitContainer1.Panel2.Controls.Add(this.txtPhone);
-            this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.txtName);
-            this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Panel2.Controls.Add(this.txtAddress);
-            this.splitContainer1.Panel2.Controls.Add(this.txtDescription);
-            this.splitContainer1.Panel2.Controls.Add(this.txtCode);
-            this.splitContainer1.Panel2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer1.Panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(8, 4, 8, 8);
             this.splitContainer1.Panel2MinSize = 0;
-            this.splitContainer1.Size = new System.Drawing.Size(993, 408);
+            this.splitContainer1.Size = new System.Drawing.Size(1008, 531);
             this.splitContainer1.SplitterDistance = 228;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 1;
@@ -274,11 +273,11 @@
             // 
             this.lblSearch.AutoSize = true;
             this.lblSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.lblSearch.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearch.ForeColor = System.Drawing.Color.DimGray;
             this.lblSearch.Location = new System.Drawing.Point(6, 5);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(51, 17);
+            this.lblSearch.Size = new System.Drawing.Size(51, 16);
             this.lblSearch.TabIndex = 6;
             this.lblSearch.Text = "Search";
             this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
@@ -336,7 +335,7 @@
             this.dgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -354,7 +353,7 @@
             this.Column6});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -370,7 +369,7 @@
             this.dgvList.RowHeadersWidth = 35;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvList.ShowEditingIcon = false;
-            this.dgvList.Size = new System.Drawing.Size(223, 353);
+            this.dgvList.Size = new System.Drawing.Size(223, 476);
             this.dgvList.TabIndex = 1;
             this.dgvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellDoubleClick);
             this.dgvList.SelectionChanged += new System.EventHandler(this.dgvList_SelectionChanged);
@@ -450,13 +449,13 @@
             // 
             this.txtFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFind.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFind.Format = null;
             this.txtFind.Location = new System.Drawing.Point(1, 1);
             this.txtFind.Margin = new System.Windows.Forms.Padding(4);
             this.txtFind.Name = "txtFind";
             this.txtFind.Numeric = false;
-            this.txtFind.Size = new System.Drawing.Size(224, 25);
+            this.txtFind.Size = new System.Drawing.Size(224, 22);
             this.txtFind.TabIndex = 4;
             this.txtFind.TabOnEnter = false;
             this.toolTip1.SetToolTip(this.txtFind, "Enter query to search for");
@@ -465,28 +464,82 @@
             this.txtFind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             this.txtFind.Leave += new System.EventHandler(this.txtFind_Leave);
             // 
-            // glbGeneral
+            // tabControl1
             // 
-            this.glbGeneral.Caption = "General";
-            this.glbGeneral.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.glbGeneral.Location = new System.Drawing.Point(12, 11);
-            this.glbGeneral.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
-            this.glbGeneral.Name = "glbGeneral";
-            this.glbGeneral.Size = new System.Drawing.Size(347, 21);
-            this.glbGeneral.TabIndex = 0;
-            this.glbGeneral.TabStop = false;
+            this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(8, 4);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(757, 517);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.glbNote);
+            this.tabPage1.Controls.Add(this.txtNote);
+            this.tabPage1.Controls.Add(this.btnBrowse);
+            this.tabPage1.Controls.Add(this.lblBrowse);
+            this.tabPage1.Controls.Add(this.glbGeneral);
+            this.tabPage1.Controls.Add(this.lblClear);
+            this.tabPage1.Controls.Add(this.txtCode);
+            this.tabPage1.Controls.Add(this.picItem);
+            this.tabPage1.Controls.Add(this.txtDescription2);
+            this.tabPage1.Controls.Add(this.txtDescription);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.txtBarcode);
+            this.tabPage1.Controls.Add(this.lblDescription);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.txtVendor);
+            this.tabPage1.Controls.Add(this.cboABC);
+            this.tabPage1.Controls.Add(this.cboDiscount);
+            this.tabPage1.Controls.Add(this.cboType);
+            this.tabPage1.Controls.Add(this.cboCategory);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.lblCode);
+            this.tabPage1.Controls.Add(this.txtPrice);
+            this.tabPage1.Controls.Add(this.txtUPC);
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(749, 488);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Loan";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Image = global::kERP.Properties.Resources.Search;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(330, 253);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 24);
+            this.button1.TabIndex = 15;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // glbNote
             // 
             this.glbNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.glbNote.Caption = "Note";
-            this.glbNote.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.glbNote.Location = new System.Drawing.Point(12, 195);
+            this.glbNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.glbNote.Location = new System.Drawing.Point(7, 292);
             this.glbNote.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
             this.glbNote.Name = "glbNote";
-            this.glbNote.Size = new System.Drawing.Size(729, 21);
-            this.glbNote.TabIndex = 28;
+            this.glbNote.Size = new System.Drawing.Size(735, 21);
+            this.glbNote.TabIndex = 24;
             this.glbNote.TabStop = false;
             // 
             // txtNote
@@ -494,65 +547,286 @@
             this.txtNote.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNote.Location = new System.Drawing.Point(12, 224);
+            this.txtNote.Location = new System.Drawing.Point(7, 321);
             this.txtNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
-            this.txtNote.Size = new System.Drawing.Size(729, 170);
-            this.txtNote.TabIndex = 16;
+            this.txtNote.Size = new System.Drawing.Size(735, 160);
+            this.txtNote.TabIndex = 25;
             this.txtNote.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
-            // label10
+            // btnBrowse
             // 
-            this.label10.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(19, 76);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(103, 17);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Description";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBrowse.Image = global::kERP.Properties.Resources.Search;
+            this.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBrowse.Location = new System.Drawing.Point(746, 73);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(27, 27);
+            this.btnBrowse.TabIndex = 5;
+            this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            // 
+            // lblBrowse
+            // 
+            this.lblBrowse.AutoSize = true;
+            this.lblBrowse.Enabled = false;
+            this.lblBrowse.Location = new System.Drawing.Point(509, 129);
+            this.lblBrowse.Name = "lblBrowse";
+            this.lblBrowse.Size = new System.Drawing.Size(53, 16);
+            this.lblBrowse.TabIndex = 16;
+            this.lblBrowse.TabStop = true;
+            this.lblBrowse.Text = "Browse";
+            this.lblBrowse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblBrowse_LinkClicked);
+            // 
+            // glbGeneral
+            // 
+            this.glbGeneral.Caption = "General";
+            this.glbGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.glbGeneral.Location = new System.Drawing.Point(7, 12);
+            this.glbGeneral.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
+            this.glbGeneral.Name = "glbGeneral";
+            this.glbGeneral.Size = new System.Drawing.Size(347, 21);
+            this.glbGeneral.TabIndex = 0;
+            this.glbGeneral.TabStop = false;
+            // 
+            // lblClear
+            // 
+            this.lblClear.AutoSize = true;
+            this.lblClear.Enabled = false;
+            this.lblClear.Location = new System.Drawing.Point(702, 129);
+            this.lblClear.Name = "lblClear";
+            this.lblClear.Size = new System.Drawing.Size(40, 16);
+            this.lblClear.TabIndex = 17;
+            this.lblClear.TabStop = true;
+            this.lblClear.Text = "Clear";
+            this.lblClear.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblClear_LinkClicked);
+            // 
+            // txtCode
+            // 
+            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCode.Format = null;
+            this.txtCode.Location = new System.Drawing.Point(124, 41);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Numeric = false;
+            this.txtCode.ReadOnly = true;
+            this.txtCode.Size = new System.Drawing.Size(230, 22);
+            this.txtCode.TabIndex = 1;
+            this.txtCode.TabOnEnter = true;
+            this.txtCode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
+            // 
+            // picItem
+            // 
+            this.picItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picItem.Location = new System.Drawing.Point(512, 6);
+            this.picItem.Name = "picItem";
+            this.picItem.Size = new System.Drawing.Size(231, 120);
+            this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picItem.TabIndex = 29;
+            this.picItem.TabStop = false;
+            // 
+            // txtDescription2
+            // 
+            this.txtDescription2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription2.Format = null;
+            this.txtDescription2.Location = new System.Drawing.Point(124, 104);
+            this.txtDescription2.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescription2.Name = "txtDescription2";
+            this.txtDescription2.Numeric = false;
+            this.txtDescription2.ReadOnly = true;
+            this.txtDescription2.Size = new System.Drawing.Size(230, 22);
+            this.txtDescription2.TabIndex = 4;
+            this.txtDescription2.TabOnEnter = true;
+            this.txtDescription2.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtDescription2.Leave += new System.EventHandler(this.txtCode_Leave);
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Format = null;
+            this.txtDescription.Location = new System.Drawing.Point(124, 74);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Numeric = false;
+            this.txtDescription.ReadOnly = true;
+            this.txtDescription.Size = new System.Drawing.Size(230, 22);
+            this.txtDescription.TabIndex = 3;
+            this.txtDescription.TabOnEnter = true;
+            this.txtDescription.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtDescription.Leave += new System.EventHandler(this.txtCode_Leave);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(4, 257);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 17);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Classification";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(392, 222);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(112, 17);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Allow discount";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(392, 192);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 17);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "ABC code";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(392, 163);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 17);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "UPC code";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtBarcode
+            // 
+            this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarcode.Format = null;
+            this.txtBarcode.Location = new System.Drawing.Point(124, 134);
+            this.txtBarcode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Numeric = false;
+            this.txtBarcode.ReadOnly = true;
+            this.txtBarcode.Size = new System.Drawing.Size(230, 22);
+            this.txtBarcode.TabIndex = 6;
+            this.txtBarcode.TabOnEnter = true;
+            this.txtBarcode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // lblDescription
             // 
-            this.lblDescription.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(415, 43);
+            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(5, 77);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(88, 17);
-            this.lblDescription.TabIndex = 8;
-            this.lblDescription.Text = "Name";
+            this.lblDescription.Size = new System.Drawing.Size(112, 17);
+            this.lblDescription.TabIndex = 2;
+            this.lblDescription.Text = "Description";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(4, 167);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 17);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Price";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(14, 196);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 17);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Type";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
-            this.label11.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(19, 108);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(14, 226);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(103, 17);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Type";
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Category";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtVendor
+            // 
+            this.txtVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVendor.Format = null;
+            this.txtVendor.Location = new System.Drawing.Point(124, 254);
+            this.txtVendor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtVendor.Name = "txtVendor";
+            this.txtVendor.Numeric = false;
+            this.txtVendor.ReadOnly = true;
+            this.txtVendor.Size = new System.Drawing.Size(205, 22);
+            this.txtVendor.TabIndex = 14;
+            this.txtVendor.TabOnEnter = true;
+            this.txtVendor.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            // 
+            // cboDiscount
+            // 
+            this.cboDiscount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDiscount.Enabled = false;
+            this.cboDiscount.FormattingEnabled = true;
+            this.cboDiscount.Location = new System.Drawing.Point(512, 219);
+            this.cboDiscount.Name = "cboDiscount";
+            this.cboDiscount.Size = new System.Drawing.Size(230, 24);
+            this.cboDiscount.TabIndex = 23;
+            this.cboDiscount.TabOnEnter = true;
+            this.cboDiscount.Value = "";
+            this.cboDiscount.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // cboType
             // 
             this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType.Enabled = false;
             this.cboType.FormattingEnabled = true;
-            this.cboType.Location = new System.Drawing.Point(129, 105);
+            this.cboType.Location = new System.Drawing.Point(124, 193);
             this.cboType.Name = "cboType";
-            this.cboType.Size = new System.Drawing.Size(230, 25);
-            this.cboType.TabIndex = 5;
+            this.cboType.Size = new System.Drawing.Size(230, 24);
+            this.cboType.TabIndex = 10;
             this.cboType.TabOnEnter = true;
             this.cboType.Value = "";
             this.cboType.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
+            // cboCategory
+            // 
+            this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCategory.Enabled = false;
+            this.cboCategory.FormattingEnabled = true;
+            this.cboCategory.Location = new System.Drawing.Point(124, 223);
+            this.cboCategory.Name = "cboCategory";
+            this.cboCategory.Size = new System.Drawing.Size(230, 24);
+            this.cboCategory.TabIndex = 12;
+            this.cboCategory.TabOnEnter = true;
+            this.cboCategory.Value = "";
+            this.cboCategory.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(14, 137);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 17);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Barcode";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // lblCode
             // 
-            this.lblCode.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCode.Location = new System.Drawing.Point(22, 43);
+            this.lblCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCode.Location = new System.Drawing.Point(18, 44);
             this.lblCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(99, 17);
@@ -560,163 +834,71 @@
             this.lblCode.Text = "Code";
             this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtEmail
+            // txtPrice
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Format = null;
-            this.txtEmail.Location = new System.Drawing.Point(511, 139);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Numeric = false;
-            this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(230, 25);
-            this.txtEmail.TabIndex = 15;
-            this.txtEmail.TabOnEnter = true;
-            this.txtEmail.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrice.Format = null;
+            this.txtPrice.Location = new System.Drawing.Point(124, 164);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Numeric = true;
+            this.txtPrice.ReadOnly = true;
+            this.txtPrice.Size = new System.Drawing.Size(230, 22);
+            this.txtPrice.TabIndex = 8;
+            this.txtPrice.TabOnEnter = true;
+            this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrice.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
-            // groupLabel1
+            // txtUPC
             // 
-            this.groupLabel1.Caption = "Contact";
-            this.groupLabel1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupLabel1.Location = new System.Drawing.Point(418, 11);
-            this.groupLabel1.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
-            this.groupLabel1.Name = "groupLabel1";
-            this.groupLabel1.Size = new System.Drawing.Size(323, 21);
-            this.groupLabel1.TabIndex = 0;
-            this.groupLabel1.TabStop = false;
+            this.txtUPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUPC.Format = null;
+            this.txtUPC.Location = new System.Drawing.Point(512, 160);
+            this.txtUPC.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUPC.Name = "txtUPC";
+            this.txtUPC.Numeric = false;
+            this.txtUPC.ReadOnly = true;
+            this.txtUPC.Size = new System.Drawing.Size(230, 22);
+            this.txtUPC.TabIndex = 19;
+            this.txtUPC.TabOnEnter = true;
+            this.txtUPC.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
-            // txtFax
+            // tabPage2
             // 
-            this.txtFax.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFax.Format = null;
-            this.txtFax.Location = new System.Drawing.Point(511, 106);
-            this.txtFax.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFax.Name = "txtFax";
-            this.txtFax.Numeric = false;
-            this.txtFax.ReadOnly = true;
-            this.txtFax.Size = new System.Drawing.Size(230, 25);
-            this.txtFax.TabIndex = 13;
-            this.txtFax.TabOnEnter = true;
-            this.txtFax.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.tabPage2.Location = new System.Drawing.Point(4, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(749, 488);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Usage";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // tabPage3
             // 
-            this.label5.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 140);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 17);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Address";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tabPage3.Location = new System.Drawing.Point(4, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(749, 488);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Vendor";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // txtPhone
+            // tabPage4
             // 
-            this.txtPhone.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Format = null;
-            this.txtPhone.Location = new System.Drawing.Point(511, 73);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Numeric = false;
-            this.txtPhone.ReadOnly = true;
-            this.txtPhone.Size = new System.Drawing.Size(230, 25);
-            this.txtPhone.TabIndex = 11;
-            this.txtPhone.TabOnEnter = true;
-            this.txtPhone.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.tabPage4.Location = new System.Drawing.Point(4, 4);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(749, 488);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Serial";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // tabPage5
             // 
-            this.label2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(415, 109);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 17);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Fax";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtName
-            // 
-            this.txtName.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Format = null;
-            this.txtName.Location = new System.Drawing.Point(511, 40);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtName.Name = "txtName";
-            this.txtName.Numeric = false;
-            this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(230, 25);
-            this.txtName.TabIndex = 9;
-            this.txtName.TabOnEnter = true;
-            this.txtName.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(415, 142);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 17);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Email";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(415, 76);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 17);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Phone";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.AcceptsReturn = true;
-            this.txtAddress.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Format = null;
-            this.txtAddress.Location = new System.Drawing.Point(129, 137);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Numeric = false;
-            this.txtAddress.ReadOnly = true;
-            this.txtAddress.Size = new System.Drawing.Size(230, 42);
-            this.txtAddress.TabIndex = 7;
-            this.txtAddress.TabOnEnter = false;
-            this.txtAddress.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            this.txtAddress.Leave += new System.EventHandler(this.txtCode_Leave);
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Format = null;
-            this.txtDescription.Location = new System.Drawing.Point(129, 73);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Numeric = false;
-            this.txtDescription.ReadOnly = true;
-            this.txtDescription.Size = new System.Drawing.Size(230, 25);
-            this.txtDescription.TabIndex = 3;
-            this.txtDescription.TabOnEnter = true;
-            this.txtDescription.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            this.txtDescription.Leave += new System.EventHandler(this.txtCode_Leave);
-            // 
-            // txtCode
-            // 
-            this.txtCode.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCode.Format = null;
-            this.txtCode.Location = new System.Drawing.Point(129, 40);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Numeric = false;
-            this.txtCode.ReadOnly = true;
-            this.txtCode.Size = new System.Drawing.Size(230, 25);
-            this.txtCode.TabIndex = 1;
-            this.txtCode.TabOnEnter = true;
-            this.txtCode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
+            this.tabPage5.Location = new System.Drawing.Point(4, 4);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(749, 488);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Detail";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // mnuShow
             // 
@@ -744,31 +926,47 @@
             this.mnuShowI.Text = "Show Inactive";
             this.mnuShowI.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
             // 
+            // cboABC
+            // 
+            this.cboABC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboABC.Enabled = false;
+            this.cboABC.FormattingEnabled = true;
+            this.cboABC.Location = new System.Drawing.Point(511, 189);
+            this.cboABC.Name = "cboABC";
+            this.cboABC.Size = new System.Drawing.Size(230, 24);
+            this.cboABC.TabIndex = 23;
+            this.cboABC.TabOnEnter = true;
+            this.cboABC.Value = "";
+            this.cboABC.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            // 
             // frmItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(993, 433);
+            this.ClientSize = new System.Drawing.Size(1008, 556);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
-            this.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1009, 369);
             this.Name = "frmItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IC Item";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmUnitMeasureList_FormClosing);
-            this.Load += new System.EventHandler(this.frmLocationList_Load);
+            this.Load += new System.EventHandler(this.frmItem_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picItem)).EndInit();
             this.mnuShow.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -794,10 +992,8 @@
         private kUI.DataGridView dgvList;
         private System.Windows.Forms.Label lblCode;
         private kUI.GroupLabel glbGeneral;
-        private kUI.TextBox txtAddress;
-        private kUI.TextBox txtName;
+        private kUI.TextBox txtBarcode;
         private System.Windows.Forms.Label lblDescription;
-        private kUI.GroupLabel glbNote;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripButton btnMode;
         private System.Windows.Forms.ToolStripButton btnExport;
@@ -807,19 +1003,16 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Label lblSearch;
-        private kUI.GroupLabel groupLabel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private kUI.ComboBox cboType;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private kUI.TextBox txtDescription;
         private kUI.TextBox txtCode;
-        private kUI.TextBox txtEmail;
-        private kUI.TextBox txtFax;
-        private kUI.TextBox txtPhone;
+        private kUI.TextBox txtUPC;
+        private kUI.TextBox txtPrice;
+        private kUI.TextBox txtVendor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
@@ -827,7 +1020,27 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;        
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.LinkLabel lblBrowse;
+        private System.Windows.Forms.LinkLabel lblClear;
+        private System.Windows.Forms.PictureBox picItem;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.TabPage tabPage2;
+        private kUI.GroupLabel glbNote;
+        private kUI.TextBox txtDescription2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private kUI.ComboBox cboType;
+        private kUI.ComboBox cboCategory;
+        private System.Windows.Forms.Label label7;
+        private kUI.ComboBox cboDiscount;
+        private kUI.ComboBox cboABC;        
     }
 }
 

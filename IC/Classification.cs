@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace kERP
 {
-    public partial class frmCategory : Form
+    public partial class frmClassification: Form
     {
         long Id = 0;
         int RowIndex = 0;   // Current gird selected row
@@ -16,10 +16,10 @@ namespace kERP
         bool IsIgnore = true;
 
         frmMsg fMsg = null;
-        string ModuleName = "IC Category";
-        string TitleLabel = CategoryFacade.TitleLabel;
+        string ModuleName = "IC Classification";
+        string TitleLabel = ClassificationFacade.TitleLabel;
 
-        public frmCategory()
+        public frmClassification()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace kERP
             if (dgvList.SelectedRows.Count > 0) RowIndex = dgvList.SelectedRows[0].Index;
             try
             {
-                dgvList.DataSource = CategoryFacade.GetDataTable(txtFind.Text, GetStatus());
+                dgvList.DataSource = ClassificationFacade.GetDataTable(txtFind.Text, GetStatus());
             }
             catch (Exception ex)
             {
@@ -84,7 +84,8 @@ namespace kERP
                 txtCode.ReadOnly = true;
             else
                 txtCode.ReadOnly = l;
-            txtDescription.ReadOnly = l;          
+            txtDescription.ReadOnly = l;
+            cboParent.Enabled = !l;
             txtNote.ReadOnly = l;
             btnNew.Enabled = l;
             btnCopy.Enabled = dgvList.Id != 0 && l;
@@ -122,11 +123,11 @@ namespace kERP
 
         private bool IsValidated()
         {
-            var valid = new Validator(this, "ic_category");
+            var valid = new Validator(this, "ic_classification");
             string sCode = txtCode.Text.Trim();
             if (sCode.Length == 0)
                 valid.Add(txtCode, "code_blank");
-            else if (CategoryFacade.Exists(sCode, Id))
+            else if (ClassificationFacade.Exists(sCode, Id))
                 valid.Add(txtCode, "code_exists");
             if (txtDescription.IsEmptyTrim) valid.Add(txtDescription, "description_blank");
             return valid.Show();
@@ -147,9 +148,10 @@ namespace kERP
             if (Id != 0)
                 try
                 {
-                    var m = CategoryFacade.Select(Id);
+                    var m = ClassificationFacade.Select(Id);
                     txtCode.Text = m.Code;
-                    txtDescription.Text = m.Description;                    
+                    txtDescription.Text = m.Description;
+                    cboParent.Text = m.Parent;
                     txtNote.Text = m.Note;
                     SetStatus(m.Status);
                     LockControls();
@@ -231,7 +233,7 @@ namespace kERP
 
         private void SetLabels()
         {
-            var prefix = "ic_category_";
+            var prefix = "ic_classification_";
             btnNew.Text = LabelFacade.sys_button_new ?? btnNew.Text;
             btnCopy.Text = LabelFacade.sys_button_copy ?? btnCopy.Text;
             btnUnlock.Text = LabelFacade.sys_button_unlock ?? btnUnlock.Text;
@@ -257,11 +259,12 @@ namespace kERP
         {
             if (!IsValidated()) return false;
             Cursor = Cursors.WaitCursor;
-            var m = new Category();
+            var m = new Classification();
             var log = new SessionLog { Module = ModuleName };
             m.Id = Id;
             m.Code = txtCode.Text.Trim();
             m.Description = txtDescription.Text;
+            m.Parent = cboParent.Text;
             m.Note = txtNote.Text;
             if (m.Id == 0)
             {
@@ -275,7 +278,7 @@ namespace kERP
             }
             try
             {
-                m.Id = CategoryFacade.Save(m);
+                m.Id = ClassificationFacade.Save(m);
             }
             catch (Exception ex)
             {
@@ -292,13 +295,14 @@ namespace kERP
             return true;
         }
 
-        private void frmCategory_Load(object sender, EventArgs e)
+        private void frmClassification_Load(object sender, EventArgs e)
         {
             try
             {
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
+                ClassificationFacade.Load(cboParent);
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();
 
@@ -367,7 +371,7 @@ namespace kERP
                 // If referenced
                 //todo: check if exist in ic_item
                 // If locked
-                var lInfo = CategoryFacade.GetLock(Id);
+                var lInfo = ClassificationFacade.GetLock(Id);
                 string msg = "";
                 if (lInfo.Locked)
                 {
@@ -386,7 +390,7 @@ namespace kERP
                     return;
                 try
                 {
-                    CategoryFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
+                    ClassificationFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
                 }
                 catch (Exception ex)
                 {
@@ -454,7 +458,7 @@ namespace kERP
             //todo: check if already used in ic_item
 
             //If locked
-            var lInfo = CategoryFacade.GetLock(Id);
+            var lInfo = ClassificationFacade.GetLock(Id);
             if (lInfo.Locked)
             {
                 string msg = string.Format(MessageFacade.lock_currently, lInfo.Lock_By, lInfo.Lock_At);
@@ -469,7 +473,7 @@ namespace kERP
             }
             try
             {
-                CategoryFacade.SetStatus(Id, status);
+                ClassificationFacade.SetStatus(Id, status);
             }
             catch (Exception ex)
             {
@@ -507,7 +511,7 @@ namespace kERP
                 dgvList.Focus();
                 try
                 {
-                    CategoryFacade.ReleaseLock(dgvList.Id);
+                    ClassificationFacade.ReleaseLock(dgvList.Id);
                 }
                 catch (Exception ex)
                 {
@@ -526,7 +530,7 @@ namespace kERP
             if (Id == 0) return;
             try
             {
-                var lInfo = CategoryFacade.GetLock(Id);
+                var lInfo = ClassificationFacade.GetLock(Id);
 
                 if (lInfo.Locked) // Check if record is locked
                 {
@@ -554,7 +558,7 @@ namespace kERP
             }
             try
             {
-                CategoryFacade.Lock(dgvList.Id, txtCode.Text);
+                ClassificationFacade.Lock(dgvList.Id, txtCode.Text);
             }
             catch (Exception ex)
             {
@@ -661,7 +665,7 @@ namespace kERP
         {
             // Check if entered code already exists
             if (txtCode.ReadOnly) return;
-            if (CategoryFacade.Exists(txtCode.Text.Trim()))
+            if (ClassificationFacade.Exists(txtCode.Text.Trim()))
             {
                 MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sys_branch);
             }
@@ -714,7 +718,7 @@ namespace kERP
         {
             Cursor = Cursors.WaitCursor;
             Application.DoEvents();
-            CategoryFacade.Export();
+            ClassificationFacade.Export();
             Cursor = Cursors.Default;
         }
 
@@ -731,6 +735,16 @@ namespace kERP
         private void txtFind_Leave(object sender, EventArgs e)
         {
             lblSearch.Visible = (txtFind.IsEmpty);
+        }
+
+        private void cboParent_EnabledChanged(object sender, EventArgs e)
+        {
+            if (cboParent.Enabled)
+            {
+                var s = cboParent.Text;
+                ClassificationFacade.Load(cboParent);   // Reload
+                cboParent.Text = s;
+            }
         }
     }
 }
