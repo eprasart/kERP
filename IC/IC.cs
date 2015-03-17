@@ -176,6 +176,13 @@ namespace kERP
             return SqlFacade.Connection.Query<Category>(sql, new { Id }).FirstOrDefault();
         }
 
+        public static void Load(ComboBox cbo)
+        {
+            string sql = SqlFacade.SqlSelect(TableName, "code, description", "status = 'A'", "2");
+            cbo.DataSource = SqlFacade.GetDataTable(sql);
+            cbo.ValueMember = "code";
+            cbo.DisplayMember = "description";
+        }
         //todo: to global
         public static void SetStatus(long Id, string status)
         {
@@ -342,7 +349,7 @@ namespace kERP
         public static readonly string TitleLabel = LabelFacade.IC_Category;
 
         public static DataTable GetDataTable(string filter = "", string status = "")
-        {            
+        {
             var sql = SqlFacade.SqlSelect(TableName + " c\nleft join ic_classification p on p.code = c.parent", "c.id, c.code, c.description, p.description parent, c.note", "1 = 1");
             if (status.Length == 0)
                 sql += " and c.status <> '" + Constant.RecordStatus_Deleted + "'";
@@ -386,14 +393,20 @@ namespace kERP
             return SqlFacade.Connection.Query<Classification>(sql, new { Id }).FirstOrDefault();
         }
 
-        public static void Load(ComboBox cbo, long Id=0)
+        public static void Load(ComboBox cbo, long Id = 0)
         {
-            string sql = SqlFacade.SqlSelect(TableName , "'' code, '' description union all\nselect code, description", "id <> :id and status = 'A'", "description");
+            string sql = SqlFacade.SqlSelect(TableName, "'' code, '' description union all\nselect code, description", "id <> :id and status = 'A'", "description");
             var cmd = new NpgsqlCommand(sql);
             cmd.Parameters.AddWithValue("id", Id);
             cbo.DataSource = SqlFacade.GetDataTable(cmd);
             cbo.ValueMember = "code";
             cbo.DisplayMember = "description";
+        }
+
+        public static string GetDescription(string code)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
+            return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
         }
 
         //todo: to global
@@ -449,13 +462,17 @@ namespace kERP
         public string Branch_Code { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
+        public string Description2 { get; set; }
         public string Type { get; set; }
-        public string Address { get; set; }
-        public string Name { get; set; }
-        public string Phone { get; set; }
-        public string Fax { get; set; }
-        public string Email { get; set; }
+        public string Category { get; set; }
+        public string Classification { get; set; }
+        public string Barcode { get; set; }
+        public double Price { get; set; }
+        public string UPC_Code { get; set; }
+        public string ABC_Code { get; set; }
+        public string Allow_Discount { get; set; }
         public byte[] Picture { get; set; }
+
     }
 
     static class ItemFacade

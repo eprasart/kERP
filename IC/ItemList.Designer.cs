@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnNew = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
@@ -63,7 +63,7 @@
             this.txtFind = new kUI.TextBox(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnClassification = new System.Windows.Forms.Button();
             this.glbNote = new kUI.GroupLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.lblBrowse = new System.Windows.Forms.LinkLabel();
@@ -82,7 +82,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtVendor = new kUI.TextBox(this.components);
+            this.txtClassification = new kUI.TextBox(this.components);
             this.cboABC = new kUI.ComboBox(this.components);
             this.cboDiscount = new kUI.ComboBox(this.components);
             this.cboType = new kUI.ComboBox(this.components);
@@ -276,7 +276,7 @@
             this.lblSearch.ForeColor = System.Drawing.Color.DimGray;
             this.lblSearch.Location = new System.Drawing.Point(6, 5);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(51, 16);
+            this.lblSearch.Size = new System.Drawing.Size(51, 17);
             this.lblSearch.TabIndex = 6;
             this.lblSearch.Text = "Search";
             this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
@@ -325,21 +325,21 @@
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Honeydew;
-            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Honeydew;
+            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
             this.dgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -350,14 +350,14 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvList.Location = new System.Drawing.Point(1, 54);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
@@ -395,8 +395,8 @@
             // 
             this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.colDescription.DataPropertyName = "description";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colDescription.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.NullValue = null;
+            this.colDescription.DefaultCellStyle = dataGridViewCellStyle8;
             this.colDescription.HeaderText = "Description";
             this.colDescription.Name = "colDescription";
             this.colDescription.ReadOnly = true;
@@ -415,8 +415,8 @@
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column3.DataPropertyName = "phone";
-            dataGridViewCellStyle4.Format = "dd-MM-yy";
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Format = "dd-MM-yy";
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle9;
             this.Column3.HeaderText = "Phone";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -454,7 +454,7 @@
             this.txtFind.Margin = new System.Windows.Forms.Padding(4);
             this.txtFind.Name = "txtFind";
             this.txtFind.Numeric = false;
-            this.txtFind.Size = new System.Drawing.Size(224, 22);
+            this.txtFind.Size = new System.Drawing.Size(224, 25);
             this.txtFind.TabIndex = 4;
             this.txtFind.TabOnEnter = false;
             this.toolTip1.SetToolTip(this.txtFind, "Enter query to search for");
@@ -481,7 +481,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.btnClassification);
             this.tabPage1.Controls.Add(this.glbNote);
             this.tabPage1.Controls.Add(this.txtNote);
             this.tabPage1.Controls.Add(this.lblBrowse);
@@ -500,7 +500,7 @@
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.txtVendor);
+            this.tabPage1.Controls.Add(this.txtClassification);
             this.tabPage1.Controls.Add(this.cboABC);
             this.tabPage1.Controls.Add(this.cboDiscount);
             this.tabPage1.Controls.Add(this.cboType);
@@ -517,17 +517,18 @@
             this.tabPage1.Text = "Loan";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnClassification
             // 
-            this.button1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::kERP.Properties.Resources.Search;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(330, 269);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 26);
-            this.button1.TabIndex = 15;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnClassification.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClassification.Image = global::kERP.Properties.Resources.Search;
+            this.btnClassification.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClassification.Location = new System.Drawing.Point(328, 266);
+            this.btnClassification.Name = "btnClassification";
+            this.btnClassification.Size = new System.Drawing.Size(27, 27);
+            this.btnClassification.TabIndex = 15;
+            this.btnClassification.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClassification.UseVisualStyleBackColor = true;
+            this.btnClassification.Click += new System.EventHandler(this.btnClassification_Click);
             // 
             // glbNote
             // 
@@ -623,7 +624,7 @@
             // 
             this.txtDescription2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription2.Format = null;
-            this.txtDescription2.Location = new System.Drawing.Point(124, 110);
+            this.txtDescription2.Location = new System.Drawing.Point(124, 108);
             this.txtDescription2.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription2.Name = "txtDescription2";
             this.txtDescription2.Numeric = false;
@@ -638,7 +639,7 @@
             // 
             this.txtDescription.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.Format = null;
-            this.txtDescription.Location = new System.Drawing.Point(124, 79);
+            this.txtDescription.Location = new System.Drawing.Point(124, 77);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Numeric = false;
@@ -652,7 +653,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 273);
+            this.label1.Location = new System.Drawing.Point(4, 270);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 18);
@@ -697,7 +698,7 @@
             // 
             this.txtBarcode.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarcode.Format = null;
-            this.txtBarcode.Location = new System.Drawing.Point(124, 142);
+            this.txtBarcode.Location = new System.Drawing.Point(124, 140);
             this.txtBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Numeric = false;
@@ -710,7 +711,7 @@
             // lblDescription
             // 
             this.lblDescription.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(5, 82);
+            this.lblDescription.Location = new System.Drawing.Point(5, 80);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(112, 18);
@@ -721,7 +722,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 177);
+            this.label2.Location = new System.Drawing.Point(4, 175);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 18);
@@ -732,7 +733,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(14, 208);
+            this.label6.Location = new System.Drawing.Point(14, 206);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 18);
@@ -743,7 +744,7 @@
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(14, 240);
+            this.label11.Location = new System.Drawing.Point(14, 238);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(103, 18);
@@ -751,19 +752,19 @@
             this.label11.Text = "Category";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtVendor
+            // txtClassification
             // 
-            this.txtVendor.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVendor.Format = null;
-            this.txtVendor.Location = new System.Drawing.Point(124, 270);
-            this.txtVendor.Margin = new System.Windows.Forms.Padding(4);
-            this.txtVendor.Name = "txtVendor";
-            this.txtVendor.Numeric = false;
-            this.txtVendor.ReadOnly = true;
-            this.txtVendor.Size = new System.Drawing.Size(205, 25);
-            this.txtVendor.TabIndex = 14;
-            this.txtVendor.TabOnEnter = true;
-            this.txtVendor.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtClassification.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClassification.Format = null;
+            this.txtClassification.Location = new System.Drawing.Point(124, 267);
+            this.txtClassification.Margin = new System.Windows.Forms.Padding(4);
+            this.txtClassification.Name = "txtClassification";
+            this.txtClassification.Numeric = false;
+            this.txtClassification.ReadOnly = true;
+            this.txtClassification.Size = new System.Drawing.Size(202, 25);
+            this.txtClassification.TabIndex = 14;
+            this.txtClassification.TabOnEnter = true;
+            this.txtClassification.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // cboABC
             // 
@@ -799,7 +800,7 @@
             this.cboType.Enabled = false;
             this.cboType.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboType.FormattingEnabled = true;
-            this.cboType.Location = new System.Drawing.Point(124, 205);
+            this.cboType.Location = new System.Drawing.Point(124, 203);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(230, 25);
             this.cboType.TabIndex = 10;
@@ -813,7 +814,7 @@
             this.cboCategory.Enabled = false;
             this.cboCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(124, 237);
+            this.cboCategory.Location = new System.Drawing.Point(124, 235);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(230, 25);
             this.cboCategory.TabIndex = 12;
@@ -824,7 +825,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 146);
+            this.label5.Location = new System.Drawing.Point(14, 144);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 18);
@@ -847,7 +848,7 @@
             // 
             this.txtPrice.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Format = null;
-            this.txtPrice.Location = new System.Drawing.Point(124, 174);
+            this.txtPrice.Location = new System.Drawing.Point(124, 172);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Numeric = true;
@@ -877,7 +878,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(749, 520);
+            this.tabPage2.Size = new System.Drawing.Size(749, 522);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Usage";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -886,7 +887,7 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(749, 520);
+            this.tabPage3.Size = new System.Drawing.Size(749, 522);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Vendor";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -895,7 +896,7 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(749, 520);
+            this.tabPage4.Size = new System.Drawing.Size(749, 522);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Serial";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -904,7 +905,7 @@
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(749, 520);
+            this.tabPage5.Size = new System.Drawing.Size(749, 522);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Detail";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1008,7 +1009,7 @@
         private kUI.TextBox txtCode;
         private kUI.TextBox txtUPC;
         private kUI.TextBox txtPrice;
-        private kUI.TextBox txtVendor;
+        private kUI.TextBox txtClassification;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
@@ -1028,7 +1029,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnClassification;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private kUI.ComboBox cboType;

@@ -20,6 +20,8 @@ namespace kERP
         string ModuleName = "IC Item";
         string TitleLabel = ItemFacade.TitleLabel;
 
+        string Classification_Code;
+
         string imgPath = "";
 
         public frmItem()
@@ -91,7 +93,6 @@ namespace kERP
             cboCategory.Enabled = !l;
             txtDescription2.ReadOnly = l;
             txtBarcode.ReadOnly = l;
-            txtVendor.ReadOnly = l;
             txtPrice.ReadOnly = l;
             txtUPC.ReadOnly = l;
             cboType.Enabled = !l;
@@ -143,7 +144,12 @@ namespace kERP
             else if (ItemFacade.Exists(sCode, Id))
                 valid.Add(txtCode, "code_exists");
             if (txtDescription.IsEmptyTrim) valid.Add(txtDescription, "description_blank");
-            if (cboCategory.Unspecified) valid.Add(cboCategory, "type_unspecified");
+            if (!Util.IsDouble(txtPrice.Text)) valid.Add(txtPrice, "price_invalid");
+            if (cboType.Unspecified) valid.Add(cboType, "type_unspecified");
+            if (cboCategory.Unspecified) valid.Add(cboCategory, "category_unspecified");
+            if (txtClassification.IsEmpty) valid.Add(txtClassification, "category_unspecified");
+            if (cboABC.Unspecified) valid.Add(cboABC, "abc_code_unspecified");
+            if (cboDiscount.Unspecified) valid.Add(cboDiscount, "allow_discount_unspecified");
             return valid.Show();
         }
 
@@ -153,10 +159,10 @@ namespace kERP
             txtCode.Focus();
             picItem.Image = null;
             txtDescription.Text = "";
-            Data.LoadList(cboCategory, "ic_item_type"); // Reload & set default
+            Data.LoadList(cboType, "ic_item_type"); // Reload & set default
             txtDescription2.Text = "";
             txtBarcode.Text = "";
-            txtVendor.Text = "";
+            txtClassification.Text = "";
             txtPrice.Text = "";
             txtUPC.Text = "";
             txtNote.Text = "";
@@ -172,12 +178,16 @@ namespace kERP
                     var m = ItemFacade.Select(Id);
                     txtCode.Text = m.Code;
                     txtDescription.Text = m.Description;
-                    cboCategory.Value = m.Type;
-                    txtDescription2.Text = m.Address;
-                    txtBarcode.Text = m.Name;
-                    txtVendor.Text = m.Phone;
-                    txtPrice.Text = m.Fax;
-                    txtUPC.Text = m.Email;
+                    cboType.Value = m.Type;
+                    cboCategory.Value = m.Category;
+                    txtDescription2.Text = m.Description2;
+                    txtBarcode.Text = m.Barcode;
+                    txtClassification.Text = ClassificationFacade.GetDescription(m.Classification);
+                    Classification_Code = m.Classification; 
+                    txtPrice.Text = m.Price.ToString();
+                    txtUPC.Text = m.UPC_Code;
+                    cboABC.Value = m.ABC_Code;
+                    cboDiscount.Value = m.Allow_Discount;
                     txtNote.Text = m.Note;
                     byte[] imga = m.Picture;
                     if (imga != null)
@@ -247,6 +257,7 @@ namespace kERP
                     break;
             }
             txtCode.CharacterCasing = cs;
+            txtBarcode.CharacterCasing = cs;
             txtUPC.CharacterCasing = cs;
         }
 
@@ -300,12 +311,15 @@ namespace kERP
             m.Id = Id;
             m.Code = txtCode.Text.Trim();
             m.Description = txtDescription.Text;
-            m.Type = cboCategory.Value;
-            m.Address = txtDescription2.Text;
-            m.Name = txtBarcode.Text;
-            m.Phone = txtVendor.Text;
-            m.Fax = txtPrice.Text;
-            m.Email = txtUPC.Text;
+            m.Category = cboCategory.Value;
+            m.Type = cboType.Value;
+            m.Description2 = txtDescription2.Text;
+            m.Barcode = txtBarcode.Text;
+            m.Classification = Classification_Code;
+            m.Price = double.Parse(txtPrice.Text);
+            m.UPC_Code = txtUPC.Text;
+            m.ABC_Code = cboABC.Value;
+            m.Allow_Discount = cboDiscount.Value;
             m.Note = txtNote.Text;
             if (imgPath.Length > 0) m.Picture = ImageFacade.GetBytes(imgPath);
             if (m.Id == 0)
@@ -345,6 +359,7 @@ namespace kERP
                 SetSettings();
                 SetLabels();
                 Data.LoadList(cboType, "ic_item_type");
+                CategoryFacade.Load(cboCategory);
                 Data.LoadList(cboDiscount, "ic_item_discount");
                 Data.LoadList(cboABC, "ic_item_abc");
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
@@ -802,6 +817,15 @@ namespace kERP
             if (Id == 0) return;
             // set picture to null
             ItemFacade.ClearPicture(Id);
+        }
+
+        private void btnClassification_Click(object sender, EventArgs e)
+        {
+            var f = new frmClassification();
+            f.IsDlg = true;
+            if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            Classification_Code = f.Classification_Code;
+            txtClassification.Text = f.Description;
         }
     }
 }
