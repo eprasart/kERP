@@ -151,7 +151,7 @@ namespace kERP
                     var m = ClassificationFacade.Select(Id);
                     txtCode.Text = m.Code;
                     txtDescription.Text = m.Description;
-                    cboParent.Text = m.Parent;
+                    cboParent.Value = m.Parent;
                     txtNote.Text = m.Note;
                     SetStatus(m.Status);
                     LockControls();
@@ -264,7 +264,7 @@ namespace kERP
             m.Id = Id;
             m.Code = txtCode.Text.Trim();
             m.Description = txtDescription.Text;
-            m.Parent = cboParent.Text;
+            m.Parent = cboParent.Value;
             m.Note = txtNote.Text;
             if (m.Id == 0)
             {
@@ -637,7 +637,7 @@ namespace kERP
             IsDirty = true;
         }
 
-        private void frmUnitMeasureList_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmClassification_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (IsDirty)
             {
@@ -742,7 +742,7 @@ namespace kERP
             if (cboParent.Enabled)
             {
                 var s = cboParent.Text;
-                ClassificationFacade.Load(cboParent);   // Reload
+                ClassificationFacade.Load(cboParent, Id);   // Reload
                 cboParent.Text = s;
             }
         }

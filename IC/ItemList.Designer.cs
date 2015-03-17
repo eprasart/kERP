@@ -66,7 +66,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.glbNote = new kUI.GroupLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
-            this.btnBrowse = new System.Windows.Forms.Button();
             this.lblBrowse = new System.Windows.Forms.LinkLabel();
             this.glbGeneral = new kUI.GroupLabel();
             this.lblClear = new System.Windows.Forms.LinkLabel();
@@ -84,6 +83,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtVendor = new kUI.TextBox(this.components);
+            this.cboABC = new kUI.ComboBox(this.components);
             this.cboDiscount = new kUI.ComboBox(this.components);
             this.cboType = new kUI.ComboBox(this.components);
             this.cboCategory = new kUI.ComboBox(this.components);
@@ -99,7 +99,6 @@
             this.mnuShowA = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowI = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cboABC = new kUI.ComboBox(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -115,7 +114,7 @@
             // toolStrip1
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.White;
-            this.toolStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnNew,
             this.btnCopy,
@@ -225,7 +224,7 @@
             this.btnMode.Image = global::kERP.Properties.Resources.Expand;
             this.btnMode.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMode.Name = "btnMode";
-            this.btnMode.Size = new System.Drawing.Size(87, 22);
+            this.btnMode.Size = new System.Drawing.Size(88, 22);
             this.btnMode.Text = "List/Detail";
             this.btnMode.ToolTipText = "Toggle between list and detail mode (F9)";
             this.btnMode.Click += new System.EventHandler(this.btnMode_Click);
@@ -261,10 +260,10 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.splitContainer1.Panel2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(8, 4, 8, 8);
             this.splitContainer1.Panel2MinSize = 0;
-            this.splitContainer1.Size = new System.Drawing.Size(1008, 531);
+            this.splitContainer1.Size = new System.Drawing.Size(1008, 566);
             this.splitContainer1.SplitterDistance = 228;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 1;
@@ -273,7 +272,7 @@
             // 
             this.lblSearch.AutoSize = true;
             this.lblSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearch.ForeColor = System.Drawing.Color.DimGray;
             this.lblSearch.Location = new System.Drawing.Point(6, 5);
             this.lblSearch.Name = "lblSearch";
@@ -286,9 +285,9 @@
             // 
             this.btnFind.Image = global::kERP.Properties.Resources.Search;
             this.btnFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFind.Location = new System.Drawing.Point(1, 27);
+            this.btnFind.Location = new System.Drawing.Point(1, 29);
             this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(68, 23);
+            this.btnFind.Size = new System.Drawing.Size(68, 24);
             this.btnFind.TabIndex = 5;
             this.btnFind.Text = "     Find";
             this.btnFind.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -299,9 +298,9 @@
             // 
             this.btnClear.Image = global::kERP.Properties.Resources.Brush;
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClear.Location = new System.Drawing.Point(69, 27);
+            this.btnClear.Location = new System.Drawing.Point(69, 29);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(68, 23);
+            this.btnClear.Size = new System.Drawing.Size(68, 24);
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "     Clear";
             this.btnClear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -312,9 +311,9 @@
             // 
             this.btnFilter.Image = global::kERP.Properties.Resources.Filter;
             this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(137, 27);
+            this.btnFilter.Location = new System.Drawing.Point(137, 29);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(68, 23);
+            this.btnFilter.Size = new System.Drawing.Size(68, 24);
             this.btnFilter.TabIndex = 5;
             this.btnFilter.Text = "     Filter";
             this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -335,7 +334,7 @@
             this.dgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -353,14 +352,14 @@
             this.Column6});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvList.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvList.Location = new System.Drawing.Point(1, 51);
+            this.dgvList.Location = new System.Drawing.Point(1, 54);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvList.MultiSelect = false;
             this.dgvList.Name = "dgvList";
@@ -369,7 +368,7 @@
             this.dgvList.RowHeadersWidth = 35;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvList.ShowEditingIcon = false;
-            this.dgvList.Size = new System.Drawing.Size(223, 476);
+            this.dgvList.Size = new System.Drawing.Size(223, 508);
             this.dgvList.TabIndex = 1;
             this.dgvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellDoubleClick);
             this.dgvList.SelectionChanged += new System.EventHandler(this.dgvList_SelectionChanged);
@@ -449,7 +448,7 @@
             // 
             this.txtFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFind.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFind.Format = null;
             this.txtFind.Location = new System.Drawing.Point(1, 1);
             this.txtFind.Margin = new System.Windows.Forms.Padding(4);
@@ -473,10 +472,11 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(8, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(757, 517);
+            this.tabControl1.Size = new System.Drawing.Size(757, 552);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -484,7 +484,6 @@
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.glbNote);
             this.tabPage1.Controls.Add(this.txtNote);
-            this.tabPage1.Controls.Add(this.btnBrowse);
             this.tabPage1.Controls.Add(this.lblBrowse);
             this.tabPage1.Controls.Add(this.glbGeneral);
             this.tabPage1.Controls.Add(this.lblClear);
@@ -513,18 +512,19 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(749, 488);
+            this.tabPage1.Size = new System.Drawing.Size(749, 522);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Loan";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = global::kERP.Properties.Resources.Search;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(330, 253);
+            this.button1.Location = new System.Drawing.Point(330, 269);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 24);
+            this.button1.Size = new System.Drawing.Size(24, 26);
             this.button1.TabIndex = 15;
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
@@ -534,11 +534,11 @@
             this.glbNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.glbNote.Caption = "Note";
-            this.glbNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.glbNote.Location = new System.Drawing.Point(7, 292);
-            this.glbNote.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
+            this.glbNote.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.glbNote.Location = new System.Drawing.Point(7, 310);
+            this.glbNote.Margin = new System.Windows.Forms.Padding(4, 13, 4, 4);
             this.glbNote.Name = "glbNote";
-            this.glbNote.Size = new System.Drawing.Size(735, 21);
+            this.glbNote.Size = new System.Drawing.Size(735, 22);
             this.glbNote.TabIndex = 24;
             this.glbNote.TabStop = false;
             // 
@@ -547,33 +547,24 @@
             this.txtNote.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNote.Location = new System.Drawing.Point(7, 321);
+            this.txtNote.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNote.Location = new System.Drawing.Point(7, 341);
             this.txtNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
-            this.txtNote.Size = new System.Drawing.Size(735, 160);
+            this.txtNote.Size = new System.Drawing.Size(735, 172);
             this.txtNote.TabIndex = 25;
             this.txtNote.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Image = global::kERP.Properties.Resources.Search;
-            this.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBrowse.Location = new System.Drawing.Point(746, 73);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(27, 27);
-            this.btnBrowse.TabIndex = 5;
-            this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBrowse.UseVisualStyleBackColor = true;
             // 
             // lblBrowse
             // 
             this.lblBrowse.AutoSize = true;
             this.lblBrowse.Enabled = false;
-            this.lblBrowse.Location = new System.Drawing.Point(509, 129);
+            this.lblBrowse.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrowse.Location = new System.Drawing.Point(509, 137);
             this.lblBrowse.Name = "lblBrowse";
-            this.lblBrowse.Size = new System.Drawing.Size(53, 16);
+            this.lblBrowse.Size = new System.Drawing.Size(53, 17);
             this.lblBrowse.TabIndex = 16;
             this.lblBrowse.TabStop = true;
             this.lblBrowse.Text = "Browse";
@@ -582,11 +573,11 @@
             // glbGeneral
             // 
             this.glbGeneral.Caption = "General";
-            this.glbGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.glbGeneral.Location = new System.Drawing.Point(7, 12);
-            this.glbGeneral.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
+            this.glbGeneral.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.glbGeneral.Location = new System.Drawing.Point(7, 13);
+            this.glbGeneral.Margin = new System.Windows.Forms.Padding(4, 13, 4, 4);
             this.glbGeneral.Name = "glbGeneral";
-            this.glbGeneral.Size = new System.Drawing.Size(347, 21);
+            this.glbGeneral.Size = new System.Drawing.Size(347, 22);
             this.glbGeneral.TabIndex = 0;
             this.glbGeneral.TabStop = false;
             // 
@@ -594,9 +585,10 @@
             // 
             this.lblClear.AutoSize = true;
             this.lblClear.Enabled = false;
-            this.lblClear.Location = new System.Drawing.Point(702, 129);
+            this.lblClear.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClear.Location = new System.Drawing.Point(702, 137);
             this.lblClear.Name = "lblClear";
-            this.lblClear.Size = new System.Drawing.Size(40, 16);
+            this.lblClear.Size = new System.Drawing.Size(40, 17);
             this.lblClear.TabIndex = 17;
             this.lblClear.TabStop = true;
             this.lblClear.Text = "Clear";
@@ -604,14 +596,14 @@
             // 
             // txtCode
             // 
-            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCode.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.Format = null;
-            this.txtCode.Location = new System.Drawing.Point(124, 41);
+            this.txtCode.Location = new System.Drawing.Point(124, 44);
             this.txtCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtCode.Name = "txtCode";
             this.txtCode.Numeric = false;
             this.txtCode.ReadOnly = true;
-            this.txtCode.Size = new System.Drawing.Size(230, 22);
+            this.txtCode.Size = new System.Drawing.Size(230, 25);
             this.txtCode.TabIndex = 1;
             this.txtCode.TabOnEnter = true;
             this.txtCode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
@@ -622,21 +614,21 @@
             this.picItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picItem.Location = new System.Drawing.Point(512, 6);
             this.picItem.Name = "picItem";
-            this.picItem.Size = new System.Drawing.Size(231, 120);
+            this.picItem.Size = new System.Drawing.Size(231, 127);
             this.picItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picItem.TabIndex = 29;
             this.picItem.TabStop = false;
             // 
             // txtDescription2
             // 
-            this.txtDescription2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription2.Format = null;
-            this.txtDescription2.Location = new System.Drawing.Point(124, 104);
+            this.txtDescription2.Location = new System.Drawing.Point(124, 110);
             this.txtDescription2.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription2.Name = "txtDescription2";
             this.txtDescription2.Numeric = false;
             this.txtDescription2.ReadOnly = true;
-            this.txtDescription2.Size = new System.Drawing.Size(230, 22);
+            this.txtDescription2.Size = new System.Drawing.Size(230, 25);
             this.txtDescription2.TabIndex = 4;
             this.txtDescription2.TabOnEnter = true;
             this.txtDescription2.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
@@ -644,14 +636,14 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescription.Format = null;
-            this.txtDescription.Location = new System.Drawing.Point(124, 74);
+            this.txtDescription.Location = new System.Drawing.Point(124, 79);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Numeric = false;
             this.txtDescription.ReadOnly = true;
-            this.txtDescription.Size = new System.Drawing.Size(230, 22);
+            this.txtDescription.Size = new System.Drawing.Size(230, 25);
             this.txtDescription.TabIndex = 3;
             this.txtDescription.TabOnEnter = true;
             this.txtDescription.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
@@ -659,128 +651,143 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 257);
+            this.label1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(4, 273);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 17);
+            this.label1.Size = new System.Drawing.Size(112, 18);
             this.label1.TabIndex = 13;
             this.label1.Text = "Classification";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label7
             // 
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(392, 222);
+            this.label7.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(392, 236);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(112, 17);
+            this.label7.Size = new System.Drawing.Size(112, 18);
             this.label7.TabIndex = 22;
             this.label7.Text = "Allow discount";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(392, 192);
+            this.label4.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(392, 204);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 17);
+            this.label4.Size = new System.Drawing.Size(112, 18);
             this.label4.TabIndex = 20;
             this.label4.Text = "ABC code";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(392, 163);
+            this.label3.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(392, 173);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 17);
+            this.label3.Size = new System.Drawing.Size(112, 18);
             this.label3.TabIndex = 18;
             this.label3.Text = "UPC code";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtBarcode
             // 
-            this.txtBarcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBarcode.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBarcode.Format = null;
-            this.txtBarcode.Location = new System.Drawing.Point(124, 134);
+            this.txtBarcode.Location = new System.Drawing.Point(124, 142);
             this.txtBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Numeric = false;
             this.txtBarcode.ReadOnly = true;
-            this.txtBarcode.Size = new System.Drawing.Size(230, 22);
+            this.txtBarcode.Size = new System.Drawing.Size(230, 25);
             this.txtBarcode.TabIndex = 6;
             this.txtBarcode.TabOnEnter = true;
             this.txtBarcode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // lblDescription
             // 
-            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(5, 77);
+            this.lblDescription.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(5, 82);
             this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(112, 17);
+            this.lblDescription.Size = new System.Drawing.Size(112, 18);
             this.lblDescription.TabIndex = 2;
             this.lblDescription.Text = "Description";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 167);
+            this.label2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(4, 177);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 17);
+            this.label2.Size = new System.Drawing.Size(112, 18);
             this.label2.TabIndex = 7;
             this.label2.Text = "Price";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(14, 196);
+            this.label6.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(14, 208);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 17);
+            this.label6.Size = new System.Drawing.Size(103, 18);
             this.label6.TabIndex = 9;
             this.label6.Text = "Type";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(14, 226);
+            this.label11.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(14, 240);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(103, 17);
+            this.label11.Size = new System.Drawing.Size(103, 18);
             this.label11.TabIndex = 11;
             this.label11.Text = "Category";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtVendor
             // 
-            this.txtVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVendor.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVendor.Format = null;
-            this.txtVendor.Location = new System.Drawing.Point(124, 254);
+            this.txtVendor.Location = new System.Drawing.Point(124, 270);
             this.txtVendor.Margin = new System.Windows.Forms.Padding(4);
             this.txtVendor.Name = "txtVendor";
             this.txtVendor.Numeric = false;
             this.txtVendor.ReadOnly = true;
-            this.txtVendor.Size = new System.Drawing.Size(205, 22);
+            this.txtVendor.Size = new System.Drawing.Size(205, 25);
             this.txtVendor.TabIndex = 14;
             this.txtVendor.TabOnEnter = true;
             this.txtVendor.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            // 
+            // cboABC
+            // 
+            this.cboABC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboABC.Enabled = false;
+            this.cboABC.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboABC.FormattingEnabled = true;
+            this.cboABC.Location = new System.Drawing.Point(511, 201);
+            this.cboABC.Name = "cboABC";
+            this.cboABC.Size = new System.Drawing.Size(230, 25);
+            this.cboABC.TabIndex = 23;
+            this.cboABC.TabOnEnter = true;
+            this.cboABC.Value = "";
+            this.cboABC.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // cboDiscount
             // 
             this.cboDiscount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDiscount.Enabled = false;
+            this.cboDiscount.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDiscount.FormattingEnabled = true;
-            this.cboDiscount.Location = new System.Drawing.Point(512, 219);
+            this.cboDiscount.Location = new System.Drawing.Point(512, 233);
             this.cboDiscount.Name = "cboDiscount";
-            this.cboDiscount.Size = new System.Drawing.Size(230, 24);
+            this.cboDiscount.Size = new System.Drawing.Size(230, 25);
             this.cboDiscount.TabIndex = 23;
             this.cboDiscount.TabOnEnter = true;
             this.cboDiscount.Value = "";
@@ -790,10 +797,11 @@
             // 
             this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType.Enabled = false;
+            this.cboType.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboType.FormattingEnabled = true;
-            this.cboType.Location = new System.Drawing.Point(124, 193);
+            this.cboType.Location = new System.Drawing.Point(124, 205);
             this.cboType.Name = "cboType";
-            this.cboType.Size = new System.Drawing.Size(230, 24);
+            this.cboType.Size = new System.Drawing.Size(230, 25);
             this.cboType.TabIndex = 10;
             this.cboType.TabOnEnter = true;
             this.cboType.Value = "";
@@ -803,10 +811,11 @@
             // 
             this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategory.Enabled = false;
+            this.cboCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(124, 223);
+            this.cboCategory.Location = new System.Drawing.Point(124, 237);
             this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(230, 24);
+            this.cboCategory.Size = new System.Drawing.Size(230, 25);
             this.cboCategory.TabIndex = 12;
             this.cboCategory.TabOnEnter = true;
             this.cboCategory.Value = "";
@@ -814,36 +823,36 @@
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(14, 137);
+            this.label5.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(14, 146);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 17);
+            this.label5.Size = new System.Drawing.Size(103, 18);
             this.label5.TabIndex = 5;
             this.label5.Text = "Barcode";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblCode
             // 
-            this.lblCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCode.Location = new System.Drawing.Point(18, 44);
+            this.lblCode.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCode.Location = new System.Drawing.Point(18, 47);
             this.lblCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(99, 17);
+            this.lblCode.Size = new System.Drawing.Size(99, 18);
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Code";
             this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtPrice
             // 
-            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrice.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Format = null;
-            this.txtPrice.Location = new System.Drawing.Point(124, 164);
+            this.txtPrice.Location = new System.Drawing.Point(124, 174);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Numeric = true;
             this.txtPrice.ReadOnly = true;
-            this.txtPrice.Size = new System.Drawing.Size(230, 22);
+            this.txtPrice.Size = new System.Drawing.Size(230, 25);
             this.txtPrice.TabIndex = 8;
             this.txtPrice.TabOnEnter = true;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -851,14 +860,14 @@
             // 
             // txtUPC
             // 
-            this.txtUPC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUPC.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUPC.Format = null;
-            this.txtUPC.Location = new System.Drawing.Point(512, 160);
+            this.txtUPC.Location = new System.Drawing.Point(512, 170);
             this.txtUPC.Margin = new System.Windows.Forms.Padding(4);
             this.txtUPC.Name = "txtUPC";
             this.txtUPC.Numeric = false;
             this.txtUPC.ReadOnly = true;
-            this.txtUPC.Size = new System.Drawing.Size(230, 22);
+            this.txtUPC.Size = new System.Drawing.Size(230, 25);
             this.txtUPC.TabIndex = 19;
             this.txtUPC.TabOnEnter = true;
             this.txtUPC.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
@@ -868,7 +877,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(749, 488);
+            this.tabPage2.Size = new System.Drawing.Size(749, 520);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Usage";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -877,7 +886,7 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(749, 488);
+            this.tabPage3.Size = new System.Drawing.Size(749, 520);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Vendor";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -886,7 +895,7 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(749, 488);
+            this.tabPage4.Size = new System.Drawing.Size(749, 520);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Serial";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -895,7 +904,7 @@
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(749, 488);
+            this.tabPage5.Size = new System.Drawing.Size(749, 520);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Detail";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -926,30 +935,17 @@
             this.mnuShowI.Text = "Show Inactive";
             this.mnuShowI.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
             // 
-            // cboABC
-            // 
-            this.cboABC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboABC.Enabled = false;
-            this.cboABC.FormattingEnabled = true;
-            this.cboABC.Location = new System.Drawing.Point(511, 189);
-            this.cboABC.Name = "cboABC";
-            this.cboABC.Size = new System.Drawing.Size(230, 24);
-            this.cboABC.TabIndex = 23;
-            this.cboABC.TabOnEnter = true;
-            this.cboABC.Value = "";
-            this.cboABC.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            // 
             // frmItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1008, 556);
+            this.ClientSize = new System.Drawing.Size(1008, 591);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1009, 369);
+            this.MinimumSize = new System.Drawing.Size(1009, 390);
             this.Name = "frmItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IC Item";
@@ -1026,7 +1022,6 @@
         private System.Windows.Forms.PictureBox picItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.TabPage tabPage2;
         private kUI.GroupLabel glbNote;
         private kUI.TextBox txtDescription2;

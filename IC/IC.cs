@@ -342,15 +342,15 @@ namespace kERP
         public static readonly string TitleLabel = LabelFacade.IC_Category;
 
         public static DataTable GetDataTable(string filter = "", string status = "")
-        {
-            var sql = SqlFacade.SqlSelect(TableName, "id, code, description", "1 = 1");
+        {            
+            var sql = SqlFacade.SqlSelect(TableName + " c\nleft join ic_classification p on p.code = c.parent", "c.id, c.code, c.description, p.description parent, c.note", "1 = 1");
             if (status.Length == 0)
-                sql += " and status <> '" + Constant.RecordStatus_Deleted + "'";
+                sql += " and c.status <> '" + Constant.RecordStatus_Deleted + "'";
             else
-                sql += " and status = '" + status + "'";
+                sql += " and c.status = '" + status + "'";
             if (filter.Length > 0)
-                sql += " and (" + SqlFacade.SqlILike("code, description, note") + ")";
-            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit; //ConfigFacade.sy_select_limit;
+                sql += " and (" + SqlFacade.SqlILike("c.code, c.description, c.note") + ")";
+            sql += "\norder by c.code\nlimit " + ConfigFacade.Select_Limit; //ConfigFacade.sy_select_limit;
 
             var cmd = new NpgsqlCommand(sql);
             if (filter.Length > 0)
@@ -386,10 +386,12 @@ namespace kERP
             return SqlFacade.Connection.Query<Classification>(sql, new { Id }).FirstOrDefault();
         }
 
-        public static void Load(ComboBox cbo)
+        public static void Load(ComboBox cbo, long Id=0)
         {
-            string sql = SqlFacade.SqlSelect(TableName , "'' code, '' description union all\nselect code, description", "status = 'A'", "description");
-            cbo.DataSource = SqlFacade.GetDataTable(sql);
+            string sql = SqlFacade.SqlSelect(TableName , "'' code, '' description union all\nselect code, description", "id <> :id and status = 'A'", "description");
+            var cmd = new NpgsqlCommand(sql);
+            cmd.Parameters.AddWithValue("id", Id);
+            cbo.DataSource = SqlFacade.GetDataTable(cmd);
             cbo.ValueMember = "code";
             cbo.DisplayMember = "description";
         }

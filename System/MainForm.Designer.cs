@@ -72,7 +72,7 @@
             this.btnBranch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnBranch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnBranch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnBranch.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnBranch.Image = ((System.Drawing.Image)(resources.GetObject("btnBranch.Image")));
             this.btnBranch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBranch.Location = new System.Drawing.Point(755, 183);
@@ -92,7 +92,7 @@
             this.btnCompany.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCompany.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnCompany.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnCompany.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnCompany.Image = ((System.Drawing.Image)(resources.GetObject("btnCompany.Image")));
             this.btnCompany.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCompany.Location = new System.Drawing.Point(755, 146);
@@ -122,7 +122,7 @@
             this.btnHoliday.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnHoliday.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHoliday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnHoliday.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnHoliday.Image = ((System.Drawing.Image)(resources.GetObject("btnHoliday.Image")));
             this.btnHoliday.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHoliday.Location = new System.Drawing.Point(755, 220);
@@ -137,7 +137,7 @@
             // groupLabel1
             // 
             this.groupLabel1.Caption = "IC - Inventory Control";
-            this.groupLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupLabel1.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupLabel1.Location = new System.Drawing.Point(12, 19);
             this.groupLabel1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.groupLabel1.Name = "groupLabel1";
@@ -148,7 +148,7 @@
             // groupLabel7
             // 
             this.groupLabel7.Caption = "PO - Purchase Order";
-            this.groupLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel7.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupLabel7.Location = new System.Drawing.Point(255, 19);
             this.groupLabel7.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.groupLabel7.Name = "groupLabel7";
@@ -159,7 +159,7 @@
             // groupLabel10
             // 
             this.groupLabel10.Caption = "SYS - System";
-            this.groupLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel10.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupLabel10.Location = new System.Drawing.Point(742, 123);
             this.groupLabel10.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.groupLabel10.Name = "groupLabel10";
@@ -170,7 +170,7 @@
             // groupLabel11
             // 
             this.groupLabel11.Caption = "GL - General Leader";
-            this.groupLabel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel11.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupLabel11.Location = new System.Drawing.Point(499, 123);
             this.groupLabel11.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.groupLabel11.Name = "groupLabel11";
@@ -181,7 +181,7 @@
             // groupLabel12
             // 
             this.groupLabel12.Caption = "AR - Account Receivable";
-            this.groupLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel12.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupLabel12.Location = new System.Drawing.Point(255, 227);
             this.groupLabel12.Margin = new System.Windows.Forms.Padding(2, 10, 2, 3);
             this.groupLabel12.Name = "groupLabel12";
@@ -192,7 +192,7 @@
             // groupLabel13
             // 
             this.groupLabel13.Caption = "SO - Sale Order";
-            this.groupLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel13.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupLabel13.Location = new System.Drawing.Point(499, 19);
             this.groupLabel13.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.groupLabel13.Name = "groupLabel13";
@@ -203,7 +203,7 @@
             // groupLabel14
             // 
             this.groupLabel14.Caption = "AP - Account Payable";
-            this.groupLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel14.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupLabel14.Location = new System.Drawing.Point(255, 123);
             this.groupLabel14.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.groupLabel14.Name = "groupLabel14";
@@ -214,7 +214,7 @@
             // groupLabel15
             // 
             this.groupLabel15.Caption = "SM - Security Management";
-            this.groupLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.groupLabel15.Font = new System.Drawing.Font("Noto Sans Khmer", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupLabel15.Location = new System.Drawing.Point(742, 19);
             this.groupLabel15.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.groupLabel15.Name = "groupLabel15";
@@ -230,7 +230,7 @@
             this.btnPO.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnPO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnPO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnPO.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnPO.Image = ((System.Drawing.Image)(resources.GetObject("btnPO.Image")));
             this.btnPO.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPO.Location = new System.Drawing.Point(268, 79);
@@ -248,7 +248,7 @@
             this.btnVendor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnVendor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnVendor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVendor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnVendor.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnVendor.Image = ((System.Drawing.Image)(resources.GetObject("btnVendor.Image")));
             this.btnVendor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVendor.Location = new System.Drawing.Point(268, 146);
@@ -268,7 +268,7 @@
             this.buttonFlat1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonFlat1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.buttonFlat1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonFlat1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat1.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat1.Image")));
             this.buttonFlat1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFlat1.Location = new System.Drawing.Point(512, 183);
@@ -287,7 +287,7 @@
             this.buttonFlat2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonFlat2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.buttonFlat2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonFlat2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat2.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat2.Image")));
             this.buttonFlat2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFlat2.Location = new System.Drawing.Point(268, 288);
@@ -306,7 +306,7 @@
             this.btnLabelMessage.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnLabelMessage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnLabelMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLabelMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnLabelMessage.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnLabelMessage.Image = ((System.Drawing.Image)(resources.GetObject("btnLabelMessage.Image")));
             this.btnLabelMessage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLabelMessage.Location = new System.Drawing.Point(755, 257);
@@ -325,7 +325,7 @@
             this.buttonFlat17.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonFlat17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.buttonFlat17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonFlat17.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat17.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat17.Image")));
             this.buttonFlat17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFlat17.Location = new System.Drawing.Point(512, 79);
@@ -344,7 +344,7 @@
             this.buttonFlat4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonFlat4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.buttonFlat4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonFlat4.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat4.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat4.Image")));
             this.buttonFlat4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFlat4.Location = new System.Drawing.Point(268, 183);
@@ -363,7 +363,7 @@
             this.btnTransfer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnTransfer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnTransfer.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnTransfer.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnTransfer.Image = ((System.Drawing.Image)(resources.GetObject("btnTransfer.Image")));
             this.btnTransfer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -383,7 +383,7 @@
             this.btnAdjustment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAdjustment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnAdjustment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdjustment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnAdjustment.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnAdjustment.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAdjustment.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjustment.Image")));
             this.btnAdjustment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -402,7 +402,7 @@
             this.btnUnitMeasure.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnUnitMeasure.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnUnitMeasure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUnitMeasure.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnitMeasure.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUnitMeasure.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnUnitMeasure.Image = ((System.Drawing.Image)(resources.GetObject("btnUnitMeasure.Image")));
             this.btnUnitMeasure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -423,7 +423,7 @@
             this.btnReceive.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnReceive.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnReceive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReceive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnReceive.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnReceive.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnReceive.Image = ((System.Drawing.Image)(resources.GetObject("btnReceive.Image")));
             this.btnReceive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -442,7 +442,7 @@
             this.btnCategory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCategory.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnCategory.Image")));
             this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -463,7 +463,7 @@
             this.buttonFlat21.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonFlat21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.buttonFlat21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonFlat21.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat21.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat21.Image")));
             this.buttonFlat21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFlat21.Location = new System.Drawing.Point(512, 146);
@@ -482,7 +482,7 @@
             this.buttonFlat22.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonFlat22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.buttonFlat22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonFlat22.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat22.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat22.Image")));
             this.buttonFlat22.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFlat22.Location = new System.Drawing.Point(755, 79);
@@ -501,7 +501,7 @@
             this.buttonFlat23.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonFlat23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.buttonFlat23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonFlat23.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat23.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat23.Image")));
             this.buttonFlat23.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFlat23.Location = new System.Drawing.Point(268, 42);
@@ -520,7 +520,7 @@
             this.buttonFlat24.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonFlat24.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.buttonFlat24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonFlat24.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat24.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat24.Image")));
             this.buttonFlat24.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFlat24.Location = new System.Drawing.Point(512, 42);
@@ -538,7 +538,7 @@
             this.btnLocation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnLocation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnLocation.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnLocation.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnLocation.Image")));
             this.btnLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -559,7 +559,7 @@
             this.buttonFlat25.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonFlat25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.buttonFlat25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonFlat25.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat25.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat25.Image")));
             this.buttonFlat25.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFlat25.Location = new System.Drawing.Point(268, 251);
@@ -577,7 +577,7 @@
             this.btnItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnItem.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.btnItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnItem.Image = ((System.Drawing.Image)(resources.GetObject("btnItem.Image")));
             this.btnItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -598,7 +598,7 @@
             this.buttonFlat26.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonFlat26.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.buttonFlat26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFlat26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.buttonFlat26.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F);
             this.buttonFlat26.Image = ((System.Drawing.Image)(resources.GetObject("buttonFlat26.Image")));
             this.buttonFlat26.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFlat26.Location = new System.Drawing.Point(755, 42);
@@ -616,7 +616,7 @@
             this.btnClassification.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnClassification.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClassification.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClassification.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClassification.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnClassification.Image = ((System.Drawing.Image)(resources.GetObject("btnClassification.Image")));
             this.btnClassification.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
