@@ -490,14 +490,16 @@ namespace kERP
 
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
-            var sql = SqlFacade.SqlSelect(TableName, "id, code, description, description2, barcode, currency, price, allow_discount, type, category, classification", "1 = 1");
+            var sql = SqlFacade.SqlSelect(TableName + " i\ninner join list d on i.allow_discount = d.code\ninner join list t on i.type = t.code\n" + 
+                "inner join ic_category ca on ca.code = i.category\ninner join ic_classification cl on cl.code = i.classification",
+                "i.id, i.code, i.description, description2, barcode, currency, price, d.description allow_discount, t.description as type, ca.description category, cl.description classification", "1 = 1");
             if (status.Length == 0)
-                sql += " and status <> '" + Constant.RecordStatus_Deleted + "'";
+                sql += " and i.status <> '" + Constant.RecordStatus_Deleted + "'";
             else
-                sql += " and status = '" + status + "'";
+                sql += " and i.status = '" + status + "'";
             if (filter.Length > 0)
-                sql += " and (" + SqlFacade.SqlILike("code, description, description2, barcode, upc_code") + ")";
-            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit; //ConfigFacade.sy_select_limit;
+                sql += " and (" + SqlFacade.SqlILike("i.code, i.description, description2, barcode, upc_code") + ")";
+            sql += "\norder by i.code\nlimit " + ConfigFacade.Select_Limit; //ConfigFacade.sy_select_limit;
 
             var cmd = new NpgsqlCommand(sql);
             if (filter.Length > 0)
