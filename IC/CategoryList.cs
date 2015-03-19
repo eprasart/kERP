@@ -15,6 +15,10 @@ namespace kERP
         bool IsDirty = false;
         bool IsIgnore = true;
 
+        public bool IsDlg = false; // Show dialog box for selecting one 
+        public string Code;
+        public string Description;
+
         frmMsg fMsg = null;
         string ModuleName = "IC Category";
         string TitleLabel = CategoryFacade.TitleLabel;
@@ -84,7 +88,7 @@ namespace kERP
                 txtCode.ReadOnly = true;
             else
                 txtCode.ReadOnly = l;
-            txtDescription.ReadOnly = l;          
+            txtDescription.ReadOnly = l;
             txtNote.ReadOnly = l;
             btnNew.Enabled = l;
             btnCopy.Enabled = dgvList.Id != 0 && l;
@@ -149,7 +153,7 @@ namespace kERP
                 {
                     var m = CategoryFacade.Select(Id);
                     txtCode.Text = m.Code;
-                    txtDescription.Text = m.Description;                    
+                    txtDescription.Text = m.Description;
                     txtNote.Text = m.Note;
                     SetStatus(m.Status);
                     LockControls();
@@ -309,6 +313,13 @@ namespace kERP
                 ErrorLogFacade.Log(ex, "Form_Load");
                 MessageFacade.Show(MessageFacade.error_load_form + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // ShowDialog; Select a customer
+            btnSelect.Visible = IsDlg;
+            if (IsDlg)
+            {
+                btnMode_Click(null, null);
+                toolStrip1.Refresh();
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -324,7 +335,7 @@ namespace kERP
             if (dgvList.CurrentRow != null)
                 dgvList.CurrentRow.Selected = false;
             Id = 0;
-            LockControls(false);            
+            LockControls(false);
             if (dgvList.CurrentRow != null) RowIndex = dgvList.CurrentRow.Index;
             SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_New, "New clicked");
             IsDirty = false;
@@ -440,8 +451,13 @@ namespace kERP
         private void dgvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            if (IsExpand) picExpand_Click(sender, e);
-            dgvList_SelectionChanged(sender, e);    // reload data since SelectionChanged will not occured on current row            
+            if (!IsDlg)
+            {
+                if (IsExpand) picExpand_Click(sender, e);
+                dgvList_SelectionChanged(sender, e);    // reload data since SelectionChanged will not occured on current row
+            }
+            else
+                btnSelect_Click(null, null);
         }
 
         private void btnActive_Click(object sender, EventArgs e)
@@ -706,8 +722,10 @@ namespace kERP
 
         private void dgvList_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Delete) return;
-            if (btnDelete.Enabled) btnDelete_Click(null, null);
+            if (e.KeyCode == Keys.Delete && btnDelete.Enabled)
+                btnDelete_Click(null, null);
+            if (IsDlg && e.KeyCode == Keys.Enter)
+                btnSelect_Click(null, null);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -731,6 +749,13 @@ namespace kERP
         private void txtFind_Leave(object sender, EventArgs e)
         {
             lblSearch.Visible = (txtFind.IsEmpty);
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            Code = dgvList.CurrentRow.Cells["colCode"].Value.ToString();
+            Description = dgvList.CurrentRow.Cells["colDescription"].Value.ToString();
+            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace kERP
         string TitleLabel = ItemFacade.TitleLabel;
 
         string Classification_Code;
+        string Category_Code;
 
         string imgPath = "";
 
@@ -90,7 +91,7 @@ namespace kERP
             else
                 txtCode.ReadOnly = l;
             txtDescription.ReadOnly = l;
-            cboCategory.Enabled = !l;
+            cboCurrency.Enabled = !l;
             txtDescription2.ReadOnly = l;
             txtBarcode.ReadOnly = l;
             txtPrice.ReadOnly = l;
@@ -99,6 +100,8 @@ namespace kERP
             cboDiscount.Enabled = !l;
             cboABC.Enabled = !l;
             txtNote.ReadOnly = l;
+            btnCategory.Enabled = !l;
+            btnClassification.Enabled = !l;
             lblBrowse.Enabled = !l;
             lblClear.Enabled = !l;
             btnNew.Enabled = l;
@@ -143,11 +146,14 @@ namespace kERP
                 valid.Add(txtCode, "code_blank");
             else if (ItemFacade.Exists(sCode, Id))
                 valid.Add(txtCode, "code_exists");
+            if (txtBarcode.Text.Length > 0 && ItemFacade.ExistsBarcode(txtBarcode.Text, Id))
+                valid.Add(txtCode, "barcode_exists");
             if (txtDescription.IsEmptyTrim) valid.Add(txtDescription, "description_blank");
+            if (cboCurrency.Unspecified) valid.Add(cboCurrency, "currency_unspecified");
             if (!Util.IsDouble(txtPrice.Text)) valid.Add(txtPrice, "price_invalid");
             if (cboType.Unspecified) valid.Add(cboType, "type_unspecified");
-            if (cboCategory.Unspecified) valid.Add(cboCategory, "category_unspecified");
-            if (txtClassification.IsEmpty) valid.Add(txtClassification, "category_unspecified");
+            if (txtCategory.IsEmpty) valid.Add(txtCategory, "category_unspecified");
+            if (txtClassification.IsEmpty) valid.Add(txtClassification, "classification_unspecified");
             if (cboABC.Unspecified) valid.Add(cboABC, "abc_code_unspecified");
             if (cboDiscount.Unspecified) valid.Add(cboDiscount, "allow_discount_unspecified");
             return valid.Show();
@@ -159,10 +165,16 @@ namespace kERP
             txtCode.Focus();
             picItem.Image = null;
             txtDescription.Text = "";
+            Data.LoadCurrency(cboCurrency);
             Data.LoadList(cboType, "ic_item_type"); // Reload & set default
+            Data.LoadList(cboDiscount, "ic_item_discount");
+            Data.LoadList(cboABC, "ic_item_abc");
             txtDescription2.Text = "";
             txtBarcode.Text = "";
+            txtCategory.Text = "";
+            Category_Code = "";
             txtClassification.Text = "";
+            Classification_Code = "";
             txtPrice.Text = "";
             txtUPC.Text = "";
             txtNote.Text = "";
@@ -179,11 +191,13 @@ namespace kERP
                     txtCode.Text = m.Code;
                     txtDescription.Text = m.Description;
                     cboType.Value = m.Type;
-                    cboCategory.Value = m.Category;
+                    Category_Code = m.Category;
+                    txtCategory.Text = CategoryFacade.GetDescription(m.Category);
                     txtDescription2.Text = m.Description2;
                     txtBarcode.Text = m.Barcode;
                     txtClassification.Text = ClassificationFacade.GetDescription(m.Classification);
-                    Classification_Code = m.Classification; 
+                    Classification_Code = m.Classification;
+                    cboCurrency.Value = m.Currency;
                     txtPrice.Text = m.Price.ToString();
                     txtUPC.Text = m.UPC_Code;
                     cboABC.Value = m.ABC_Code;
@@ -194,7 +208,6 @@ namespace kERP
                     {
                         Stream s = new MemoryStream(imga);
                         picItem.Image = Image.FromStream(s);
-
                     }
                     else
                         picItem.Image = null;
@@ -311,11 +324,12 @@ namespace kERP
             m.Id = Id;
             m.Code = txtCode.Text.Trim();
             m.Description = txtDescription.Text;
-            m.Category = cboCategory.Value;
+            m.Category = Category_Code;
             m.Type = cboType.Value;
             m.Description2 = txtDescription2.Text;
             m.Barcode = txtBarcode.Text;
             m.Classification = Classification_Code;
+            m.Currency = cboCurrency.Value;
             m.Price = double.Parse(txtPrice.Text);
             m.UPC_Code = txtUPC.Text;
             m.ABC_Code = cboABC.Value;
@@ -358,8 +372,8 @@ namespace kERP
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
+                Data.LoadCurrency(cboCurrency);
                 Data.LoadList(cboType, "ic_item_type");
-                CategoryFacade.Load(cboCategory);
                 Data.LoadList(cboDiscount, "ic_item_discount");
                 Data.LoadList(cboABC, "ic_item_abc");
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
@@ -824,8 +838,33 @@ namespace kERP
             var f = new frmClassification();
             f.IsDlg = true;
             if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
-            Classification_Code = f.Classification_Code;
+            Classification_Code = f.Code;
             txtClassification.Text = f.Description;
+        }
+
+        private void txtClassification_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                e.SuppressKeyPress = true;
+                if (!btnClassification.Enabled) return;
+                btnClassification_Click(null, null);
+            }
+        }
+
+        private void txtClassification_DoubleClick(object sender, EventArgs e)
+        {
+            if (!btnClassification.Enabled) return;
+            btnClassification_Click(null, null);
+        }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            var f = new frmCategory();
+            f.IsDlg = true;
+            if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            Category_Code = f.Code;
+            txtCategory.Text = f.Description;
         }
     }
 }

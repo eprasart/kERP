@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnNew = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
@@ -52,14 +53,6 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.dgvList = new kUI.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtFind = new kUI.TextBox(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -86,7 +79,6 @@
             this.cboABC = new kUI.ComboBox(this.components);
             this.cboDiscount = new kUI.ComboBox(this.components);
             this.cboType = new kUI.ComboBox(this.components);
-            this.cboCategory = new kUI.ComboBox(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
             this.txtPrice = new kUI.TextBox(this.components);
@@ -99,6 +91,21 @@
             this.mnuShowA = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowI = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cboCurrency = new kUI.ComboBox(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCategory = new kUI.TextBox(this.components);
+            this.btnCategory = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -325,21 +332,21 @@
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Honeydew;
-            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Honeydew;
+            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
             this.dgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -347,17 +354,20 @@
             this.colDescription,
             this.Column2,
             this.Column3,
+            this.Column8,
+            this.Column9,
+            this.Column7,
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvList.Location = new System.Drawing.Point(1, 54);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
@@ -373,76 +383,6 @@
             this.dgvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellDoubleClick);
             this.dgvList.SelectionChanged += new System.EventHandler(this.dgvList_SelectionChanged);
             this.dgvList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvList_KeyDown);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Id";
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // colCode
-            // 
-            this.colCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colCode.DataPropertyName = "code";
-            this.colCode.HeaderText = "Code";
-            this.colCode.Name = "colCode";
-            this.colCode.ReadOnly = true;
-            this.colCode.Width = 66;
-            // 
-            // colDescription
-            // 
-            this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colDescription.DataPropertyName = "description";
-            dataGridViewCellStyle8.NullValue = null;
-            this.colDescription.DefaultCellStyle = dataGridViewCellStyle8;
-            this.colDescription.HeaderText = "Description";
-            this.colDescription.Name = "colDescription";
-            this.colDescription.ReadOnly = true;
-            this.colDescription.Width = 101;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column2.DataPropertyName = "name";
-            this.Column2.HeaderText = "Contact Name";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 118;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column3.DataPropertyName = "phone";
-            dataGridViewCellStyle9.Format = "dd-MM-yy";
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Column3.HeaderText = "Phone";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 72;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "fax";
-            this.Column4.HeaderText = "Fax";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "email";
-            this.Column5.HeaderText = "Email";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.DataPropertyName = "address";
-            this.Column6.HeaderText = "Address";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
             // 
             // txtFind
             // 
@@ -481,6 +421,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnCategory);
             this.tabPage1.Controls.Add(this.btnClassification);
             this.tabPage1.Controls.Add(this.glbNote);
             this.tabPage1.Controls.Add(this.txtNote);
@@ -499,12 +440,14 @@
             this.tabPage1.Controls.Add(this.lblDescription);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.txtCategory);
             this.tabPage1.Controls.Add(this.txtClassification);
             this.tabPage1.Controls.Add(this.cboABC);
             this.tabPage1.Controls.Add(this.cboDiscount);
             this.tabPage1.Controls.Add(this.cboType);
-            this.tabPage1.Controls.Add(this.cboCategory);
+            this.tabPage1.Controls.Add(this.cboCurrency);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.lblCode);
             this.tabPage1.Controls.Add(this.txtPrice);
@@ -522,10 +465,10 @@
             this.btnClassification.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClassification.Image = global::kERP.Properties.Resources.Search;
             this.btnClassification.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClassification.Location = new System.Drawing.Point(328, 266);
+            this.btnClassification.Location = new System.Drawing.Point(327, 299);
             this.btnClassification.Name = "btnClassification";
             this.btnClassification.Size = new System.Drawing.Size(27, 27);
-            this.btnClassification.TabIndex = 15;
+            this.btnClassification.TabIndex = 17;
             this.btnClassification.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClassification.UseVisualStyleBackColor = true;
             this.btnClassification.Click += new System.EventHandler(this.btnClassification_Click);
@@ -536,11 +479,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.glbNote.Caption = "Note";
             this.glbNote.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.glbNote.Location = new System.Drawing.Point(7, 310);
+            this.glbNote.Location = new System.Drawing.Point(7, 341);
             this.glbNote.Margin = new System.Windows.Forms.Padding(4, 13, 4, 4);
             this.glbNote.Name = "glbNote";
             this.glbNote.Size = new System.Drawing.Size(735, 22);
-            this.glbNote.TabIndex = 24;
+            this.glbNote.TabIndex = 26;
             this.glbNote.TabStop = false;
             // 
             // txtNote
@@ -549,13 +492,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNote.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNote.Location = new System.Drawing.Point(7, 341);
+            this.txtNote.Location = new System.Drawing.Point(7, 371);
             this.txtNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
-            this.txtNote.Size = new System.Drawing.Size(735, 172);
-            this.txtNote.TabIndex = 25;
+            this.txtNote.Size = new System.Drawing.Size(735, 142);
+            this.txtNote.TabIndex = 27;
             this.txtNote.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // lblBrowse
@@ -566,7 +509,7 @@
             this.lblBrowse.Location = new System.Drawing.Point(509, 137);
             this.lblBrowse.Name = "lblBrowse";
             this.lblBrowse.Size = new System.Drawing.Size(53, 17);
-            this.lblBrowse.TabIndex = 16;
+            this.lblBrowse.TabIndex = 18;
             this.lblBrowse.TabStop = true;
             this.lblBrowse.Text = "Browse";
             this.lblBrowse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblBrowse_LinkClicked);
@@ -590,7 +533,7 @@
             this.lblClear.Location = new System.Drawing.Point(702, 137);
             this.lblClear.Name = "lblClear";
             this.lblClear.Size = new System.Drawing.Size(40, 17);
-            this.lblClear.TabIndex = 17;
+            this.lblClear.TabIndex = 19;
             this.lblClear.TabStop = true;
             this.lblClear.Text = "Clear";
             this.lblClear.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblClear_LinkClicked);
@@ -653,11 +596,11 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 270);
+            this.label1.Location = new System.Drawing.Point(4, 303);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 18);
-            this.label1.TabIndex = 13;
+            this.label1.TabIndex = 15;
             this.label1.Text = "Classification";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -668,7 +611,7 @@
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(112, 18);
-            this.label7.TabIndex = 22;
+            this.label7.TabIndex = 24;
             this.label7.Text = "Allow discount";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -679,7 +622,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 18);
-            this.label4.TabIndex = 20;
+            this.label4.TabIndex = 22;
             this.label4.Text = "ABC code";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -690,7 +633,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 18);
-            this.label3.TabIndex = 18;
+            this.label3.TabIndex = 20;
             this.label3.Text = "UPC code";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -722,33 +665,33 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 175);
+            this.label2.Location = new System.Drawing.Point(4, 207);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 18);
-            this.label2.TabIndex = 7;
+            this.label2.TabIndex = 9;
             this.label2.Text = "Price";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(14, 206);
+            this.label6.Location = new System.Drawing.Point(14, 238);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 18);
-            this.label6.TabIndex = 9;
+            this.label6.TabIndex = 11;
             this.label6.Text = "Type";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(14, 238);
+            this.label11.Location = new System.Drawing.Point(14, 270);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(103, 18);
-            this.label11.TabIndex = 11;
+            this.label11.TabIndex = 13;
             this.label11.Text = "Category";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -756,15 +699,17 @@
             // 
             this.txtClassification.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClassification.Format = null;
-            this.txtClassification.Location = new System.Drawing.Point(124, 267);
+            this.txtClassification.Location = new System.Drawing.Point(124, 300);
             this.txtClassification.Margin = new System.Windows.Forms.Padding(4);
             this.txtClassification.Name = "txtClassification";
             this.txtClassification.Numeric = false;
             this.txtClassification.ReadOnly = true;
-            this.txtClassification.Size = new System.Drawing.Size(202, 25);
-            this.txtClassification.TabIndex = 14;
+            this.txtClassification.Size = new System.Drawing.Size(201, 25);
+            this.txtClassification.TabIndex = 16;
             this.txtClassification.TabOnEnter = true;
             this.txtClassification.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtClassification.DoubleClick += new System.EventHandler(this.txtClassification_DoubleClick);
+            this.txtClassification.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClassification_KeyDown);
             // 
             // cboABC
             // 
@@ -789,7 +734,7 @@
             this.cboDiscount.Location = new System.Drawing.Point(512, 233);
             this.cboDiscount.Name = "cboDiscount";
             this.cboDiscount.Size = new System.Drawing.Size(230, 25);
-            this.cboDiscount.TabIndex = 23;
+            this.cboDiscount.TabIndex = 25;
             this.cboDiscount.TabOnEnter = true;
             this.cboDiscount.Value = "";
             this.cboDiscount.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
@@ -800,27 +745,13 @@
             this.cboType.Enabled = false;
             this.cboType.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboType.FormattingEnabled = true;
-            this.cboType.Location = new System.Drawing.Point(124, 203);
+            this.cboType.Location = new System.Drawing.Point(124, 235);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(230, 25);
-            this.cboType.TabIndex = 10;
+            this.cboType.TabIndex = 12;
             this.cboType.TabOnEnter = true;
             this.cboType.Value = "";
             this.cboType.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            // 
-            // cboCategory
-            // 
-            this.cboCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCategory.Enabled = false;
-            this.cboCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(124, 235);
-            this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(230, 25);
-            this.cboCategory.TabIndex = 12;
-            this.cboCategory.TabOnEnter = true;
-            this.cboCategory.Value = "";
-            this.cboCategory.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // label5
             // 
@@ -848,13 +779,13 @@
             // 
             this.txtPrice.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Format = null;
-            this.txtPrice.Location = new System.Drawing.Point(124, 172);
+            this.txtPrice.Location = new System.Drawing.Point(124, 204);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Numeric = true;
             this.txtPrice.ReadOnly = true;
             this.txtPrice.Size = new System.Drawing.Size(230, 25);
-            this.txtPrice.TabIndex = 8;
+            this.txtPrice.TabIndex = 10;
             this.txtPrice.TabOnEnter = true;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPrice.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
@@ -869,7 +800,7 @@
             this.txtUPC.Numeric = false;
             this.txtUPC.ReadOnly = true;
             this.txtUPC.Size = new System.Drawing.Size(230, 25);
-            this.txtUPC.TabIndex = 19;
+            this.txtUPC.TabIndex = 21;
             this.txtUPC.TabOnEnter = true;
             this.txtUPC.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
@@ -935,6 +866,155 @@
             this.mnuShowI.Size = new System.Drawing.Size(147, 22);
             this.mnuShowI.Text = "Show Inactive";
             this.mnuShowI.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
+            // 
+            // cboCurrency
+            // 
+            this.cboCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCurrency.Enabled = false;
+            this.cboCurrency.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCurrency.FormattingEnabled = true;
+            this.cboCurrency.Location = new System.Drawing.Point(124, 172);
+            this.cboCurrency.Name = "cboCurrency";
+            this.cboCurrency.Size = new System.Drawing.Size(230, 25);
+            this.cboCurrency.TabIndex = 8;
+            this.cboCurrency.TabOnEnter = true;
+            this.cboCurrency.Value = "";
+            this.cboCurrency.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 175);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 18);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Currency";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Id";
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // colCode
+            // 
+            this.colCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colCode.DataPropertyName = "code";
+            this.colCode.HeaderText = "Code";
+            this.colCode.Name = "colCode";
+            this.colCode.ReadOnly = true;
+            this.colCode.Width = 66;
+            // 
+            // colDescription
+            // 
+            this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colDescription.DataPropertyName = "description";
+            dataGridViewCellStyle9.NullValue = null;
+            this.colDescription.DefaultCellStyle = dataGridViewCellStyle9;
+            this.colDescription.HeaderText = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.ReadOnly = true;
+            this.colDescription.Width = 101;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column2.DataPropertyName = "description2";
+            this.Column2.HeaderText = "Description 2";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 111;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.DataPropertyName = "barcode";
+            dataGridViewCellStyle10.Format = "dd-MM-yy";
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Column3.HeaderText = "Barcode";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 85;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "price";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Column8.HeaderText = "Price";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column9.DataPropertyName = "currency";
+            this.Column9.HeaderText = "Currency";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 86;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "allow_discount";
+            this.Column7.HeaderText = "Allow Discount";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "type";
+            this.Column4.HeaderText = "Type";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "category";
+            this.Column5.HeaderText = "Category";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.DataPropertyName = "classification";
+            this.Column6.HeaderText = "Classification";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // txtCategory
+            // 
+            this.txtCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategory.Format = null;
+            this.txtCategory.Location = new System.Drawing.Point(124, 268);
+            this.txtCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Numeric = false;
+            this.txtCategory.ReadOnly = true;
+            this.txtCategory.Size = new System.Drawing.Size(201, 25);
+            this.txtCategory.TabIndex = 16;
+            this.txtCategory.TabOnEnter = true;
+            this.txtCategory.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtCategory.DoubleClick += new System.EventHandler(this.txtClassification_DoubleClick);
+            this.txtCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClassification_KeyDown);
+            // 
+            // btnCategory
+            // 
+            this.btnCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategory.Image = global::kERP.Properties.Resources.Search;
+            this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategory.Location = new System.Drawing.Point(327, 267);
+            this.btnCategory.Name = "btnCategory";
+            this.btnCategory.Size = new System.Drawing.Size(27, 27);
+            this.btnCategory.TabIndex = 17;
+            this.btnCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategory.UseVisualStyleBackColor = true;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
             // 
             // frmItem
             // 
@@ -1010,14 +1090,6 @@
         private kUI.TextBox txtUPC;
         private kUI.TextBox txtPrice;
         private kUI.TextBox txtClassification;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.LinkLabel lblBrowse;
         private System.Windows.Forms.LinkLabel lblClear;
         private System.Windows.Forms.PictureBox picItem;
@@ -1033,10 +1105,24 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private kUI.ComboBox cboType;
-        private kUI.ComboBox cboCategory;
         private System.Windows.Forms.Label label7;
         private kUI.ComboBox cboDiscount;
-        private kUI.ComboBox cboABC;        
+        private kUI.ComboBox cboABC;
+        private System.Windows.Forms.Label label8;
+        private kUI.ComboBox cboCurrency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Button btnCategory;
+        private kUI.TextBox txtCategory;        
     }
 }
 

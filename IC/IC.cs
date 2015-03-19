@@ -176,13 +176,20 @@ namespace kERP
             return SqlFacade.Connection.Query<Category>(sql, new { Id }).FirstOrDefault();
         }
 
-        public static void Load(ComboBox cbo)
+        public static void LoadList(ComboBox cbo)
         {
             string sql = SqlFacade.SqlSelect(TableName, "code, description", "status = 'A'", "2");
             cbo.DataSource = SqlFacade.GetDataTable(sql);
             cbo.ValueMember = "code";
             cbo.DisplayMember = "description";
         }
+
+        public static string GetDescription(string code)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
+            return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
+        }
+
         //todo: to global
         public static void SetStatus(long Id, string status)
         {
@@ -393,7 +400,7 @@ namespace kERP
             return SqlFacade.Connection.Query<Classification>(sql, new { Id }).FirstOrDefault();
         }
 
-        public static void Load(ComboBox cbo, long Id = 0)
+        public static void LoadList(ComboBox cbo, long Id = 0)
         {
             string sql = SqlFacade.SqlSelect(TableName, "'' code, '' description union all\nselect code, description", "id <> :id and status = 'A'", "description");
             var cmd = new NpgsqlCommand(sql);
@@ -467,6 +474,7 @@ namespace kERP
         public string Category { get; set; }
         public string Classification { get; set; }
         public string Barcode { get; set; }
+        public string Currency { get; set; }
         public double Price { get; set; }
         public string UPC_Code { get; set; }
         public string ABC_Code { get; set; }
@@ -482,7 +490,7 @@ namespace kERP
 
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
-            var sql = SqlFacade.SqlSelect(TableName, "id, code, description, description2, barcode, price", "1 = 1");
+            var sql = SqlFacade.SqlSelect(TableName, "id, code, description, description2, barcode, currency, price, allow_discount, type, category, classification", "1 = 1");
             if (status.Length == 0)
                 sql += " and status <> '" + Constant.RecordStatus_Deleted + "'";
             else
@@ -500,7 +508,7 @@ namespace kERP
 
         public static long Save(Item m)
         {
-            string sql = "code, description, description2, barcode, price, type, category, classification, upc_code, abc_code, allow_discount, ";   //todo: like this everywhere
+            string sql = "code, description, description2, barcode, currency, price, type, category, classification, upc_code, abc_code, allow_discount, ";   //todo: like this everywhere
             if (m.Picture != null) sql += "picture, ";
             if (m.Id == 0)
             {
@@ -566,6 +574,22 @@ namespace kERP
             {
                 MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogFacade.Log(ex, "Exists");
+            }
+            return bExists;
+        }
+
+        public static bool ExistsBarcode(string barcode, long Id = 0)
+        {
+            var sql = SqlFacade.SqlExists(TableName, "id <> :id and status <> :status and barcode = :barcode");
+            var bExists = false;
+            try
+            {
+                bExists = SqlFacade.Connection.ExecuteScalar<bool>(sql, new { Id, Status = Constant.RecordStatus_Deleted, barcode });
+            }
+            catch (Exception ex)
+            {
+                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogFacade.Log(ex, "Barcode Exists");
             }
             return bExists;
         }

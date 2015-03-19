@@ -16,7 +16,7 @@ namespace kERP
         bool IsIgnore = true;
 
         public bool IsDlg = false; // Show dialog box for selecting one 
-        public string Classification_Code;
+        public string Code;
         public string Description;
 
         frmMsg fMsg = null;
@@ -306,7 +306,7 @@ namespace kERP
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
-                ClassificationFacade.Load(cboParent);
+                ClassificationFacade.LoadList(cboParent);
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();
 
@@ -726,8 +726,10 @@ namespace kERP
 
         private void dgvList_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Delete) return;
-            if (btnDelete.Enabled) btnDelete_Click(null, null);
+            if (e.KeyCode == Keys.Delete && btnDelete.Enabled)
+                btnDelete_Click(null, null);
+            if (IsDlg && e.KeyCode == Keys.Enter)
+                btnSelect_Click(null, null);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -758,14 +760,14 @@ namespace kERP
             if (cboParent.Enabled)
             {
                 var s = cboParent.Text;
-                ClassificationFacade.Load(cboParent, Id);   // Reload
+                ClassificationFacade.LoadList(cboParent, Id);   // Reload
                 cboParent.Text = s;
             }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            Classification_Code = dgvList.CurrentRow.Cells["colCode"].Value.ToString();
+            Code = dgvList.CurrentRow.Cells["colCode"].Value.ToString();
             Description = dgvList.CurrentRow.Cells["colDescription"].Value.ToString();
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }
