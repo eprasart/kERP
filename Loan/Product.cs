@@ -315,11 +315,11 @@ namespace kERP
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
-                Data.LoadList(cboMethod, "calculation_method");
-                Data.LoadList(cboPrincipalRound, "round_rule");
-                Data.LoadList(cboInterestRound, "round_rule");
-                Data.LoadList(cboTotalRound, "round_rule");
-                Data.LoadList(cboMove, "non_working_day_move");
+                DataFacade.LoadList(cboMethod, "calculation_method");
+                DataFacade.LoadList(cboPrincipalRound, "round_rule");
+                DataFacade.LoadList(cboInterestRound, "round_rule");
+                DataFacade.LoadList(cboTotalRound, "round_rule");
+                DataFacade.LoadList(cboMove, "non_working_day_move");
 
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();

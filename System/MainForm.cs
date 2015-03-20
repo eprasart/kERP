@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace kERP.SYS
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            lblVersion.Text = " v " + App.version;
+            lblVersion.Text = " v " + App.version + File.GetLastWriteTime(Application.ExecutablePath).ToString(" (yyyy-MM-dd HH:mm)");
 
             FormFacade.SetFormState(this);
 

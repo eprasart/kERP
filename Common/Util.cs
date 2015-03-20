@@ -162,6 +162,12 @@ namespace kERP
         //private static string RoundRule;
         public static string Format;
 
+        public static string GetBase()
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "code", "is_base = 'Y'");
+            return SqlFacade.Connection.ExecuteScalar<string>(sql);
+        }
+
         public static void LoadSetting(string currency)
         {
             Currency = currency;
@@ -233,6 +239,20 @@ namespace kERP
         {
             var sql = SqlFacade.SqlSelect(TableName, "*", "id = :id");
             return SqlFacade.Connection.Query<Branch>(sql, new { Id }).FirstOrDefault();
+        }
+
+        public static void LoadList(ComboBox cbo)
+        {
+            string sql = SqlFacade.SqlSelect("currency", "code, name, is_base", "status = 'A'", "code");
+            var dt = SqlFacade.GetDataTable(sql);
+            cbo.DataSource = dt;
+            cbo.ValueMember = "code";
+            cbo.DisplayMember = "name";
+            var dr = dt.Select("is_base = 'Y'");
+            if (dr.Length > 0)
+                cbo.SelectedValue = dr[0][0];
+            else
+                cbo.SelectedIndex = -1;
         }
 
         public static void SetStatus(long Id, string status)

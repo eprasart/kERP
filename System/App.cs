@@ -79,6 +79,7 @@ namespace kERP
             session.Version = version;
 
             fSplash.ShowMsg("Loading configurations...");
+            CurrencyFacade.LoadSetting(CurrencyFacade.GetBase());
             ConfigFacade.Load();
             LabelFacade.Load();
             MessageFacade.Load();            

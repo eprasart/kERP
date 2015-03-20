@@ -572,12 +572,12 @@ namespace kERP
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
-                Data.LoadList(cboFrequencyUnit, "frequency_unit");
-                Data.LoadProduct(cboProduct);
-                Data.LoadList(cboPurpose, "loan_purpose");
-                Data.LoadList(cboPaymentSite, "payment_site");
-                Data.LoadAgent(cboAgent);
-                Data.LoadCurrency(cboCurrency);
+                DataFacade.LoadList(cboFrequencyUnit, "frequency_unit");
+                DataFacade.LoadProduct(cboProduct);
+                DataFacade.LoadList(cboPurpose, "loan_purpose");
+                DataFacade.LoadList(cboPaymentSite, "payment_site");
+                DataFacade.LoadAgent(cboAgent);
+                CurrencyFacade.LoadList(cboCurrency);
 
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();

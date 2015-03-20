@@ -144,7 +144,7 @@ namespace kERP
             txtCode.Text = "";
             txtCode.Focus();
             txtDescription.Text = "";
-            Data.LoadList(cboType, "ic_location_type"); // Reload & set default
+            DataFacade.LoadList(cboType, "ic_location_type"); // Reload & set default
             txtAddress.Text = "";
             txtName.Text = "";
             txtPhone.Text = "";
@@ -324,7 +324,7 @@ namespace kERP
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
-                Data.LoadList(cboType, "ic_location_type");
+                DataFacade.LoadList(cboType, "ic_location_type");
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();
 

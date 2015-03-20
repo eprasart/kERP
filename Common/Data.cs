@@ -19,7 +19,7 @@ namespace kERP
         public DateTime? Change_At { get; set; }
     }
 
-    public static class Data
+    public static class DataFacade
     {
         public static void LoadList(ComboBox cbo, string field)
         {
@@ -33,21 +33,7 @@ namespace kERP
                 cbo.SelectedValue = dr[0][0];
             else
                 cbo.SelectedIndex = -1;
-        }
-
-        public static void LoadCurrency(ComboBox cbo)
-        {
-            string sql = SqlFacade.SqlSelect("currency", "code, name, is_default", "status = 'A'", "code");
-            var dt = SqlFacade.GetDataTable(sql);
-            cbo.DataSource = dt;
-            cbo.ValueMember = "code";
-            cbo.DisplayMember = "name";
-            var dr = dt.Select("is_default = 'Y'");
-            if (dr.Length > 0)
-                cbo.SelectedValue = dr[0][0];
-            else
-                cbo.SelectedIndex = -1;
-        }
+        }       
 
         public static void LoadAgent(ComboBox cbo)
         {

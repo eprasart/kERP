@@ -152,8 +152,8 @@ namespace kERP
             if (cboCurrency.Unspecified) valid.Add(cboCurrency, "currency_unspecified");
             if (!Util.IsDouble(txtPrice.Text)) valid.Add(txtPrice, "price_invalid");
             if (cboType.Unspecified) valid.Add(cboType, "type_unspecified");
-            if (txtCategory.IsEmpty) valid.Add(txtCategory, "category_unspecified");
-            if (txtClassification.IsEmpty) valid.Add(txtClassification, "classification_unspecified");
+            //if (txtCategory.IsEmpty) valid.Add(txtCategory, "category_unspecified");
+            //if (txtClassification.IsEmpty) valid.Add(txtClassification, "classification_unspecified");
             if (cboABC.Unspecified) valid.Add(cboABC, "abc_code_unspecified");
             if (cboDiscount.Unspecified) valid.Add(cboDiscount, "allow_discount_unspecified");
             return valid.Show();
@@ -165,12 +165,13 @@ namespace kERP
             txtCode.Focus();
             picItem.Image = null;
             txtDescription.Text = "";
-            Data.LoadCurrency(cboCurrency);
-            Data.LoadList(cboType, "ic_item_type"); // Reload & set default
-            Data.LoadList(cboDiscount, "ic_item_discount");
-            Data.LoadList(cboABC, "ic_item_abc");
+            CurrencyFacade.LoadList(cboCurrency);
+            DataFacade.LoadList(cboType, "ic_item_type"); // Reload & set default
+            DataFacade.LoadList(cboDiscount, "ic_item_discount");
+            DataFacade.LoadList(cboABC, "ic_item_abc");
             txtDescription2.Text = "";
             txtBarcode.Text = "";
+            txtPrice.Text = "0";
             txtCategory.Text = "";
             Category_Code = "";
             txtClassification.Text = "";
@@ -199,6 +200,7 @@ namespace kERP
                     Classification_Code = m.Classification;
                     cboCurrency.Value = m.Currency;
                     txtPrice.Text = m.Price.ToString();
+                    txtPrice_Leave(null, null);
                     txtUPC.Text = m.UPC_Code;
                     cboABC.Value = m.ABC_Code;
                     cboDiscount.Value = m.Allow_Discount;
@@ -372,10 +374,10 @@ namespace kERP
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
-                Data.LoadCurrency(cboCurrency);
-                Data.LoadList(cboType, "ic_item_type");
-                Data.LoadList(cboDiscount, "ic_item_discount");
-                Data.LoadList(cboABC, "ic_item_abc");
+                CurrencyFacade.LoadList(cboCurrency);
+                DataFacade.LoadList(cboType, "ic_item_type");
+                DataFacade.LoadList(cboDiscount, "ic_item_discount");
+                DataFacade.LoadList(cboABC, "ic_item_abc");
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();
 
@@ -542,7 +544,7 @@ namespace kERP
                 }
                 else
                     if (MessageFacade.Show(msg + "\r\n" + MessageFacade.proceed_confirmation, MessageFacade.active_inactive, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
-                        return;
+                    return;
             }
             try
             {
@@ -615,9 +617,9 @@ namespace kERP
                     }
                     else
                         if (MessageFacade.Show(msg + "\r\n" + MessageFacade.lock_override, LabelFacade.sys_unlock, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
-                        else
-                            return;
+                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
+                    else
+                        return;
                 }
                 txtDescription.SelectionStart = txtDescription.Text.Length;
                 txtDescription.Focus();
@@ -844,11 +846,16 @@ namespace kERP
 
         private void txtClassification_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F2)
+            if (!btnClassification.Enabled) return;
+            switch (e.KeyCode)
             {
-                e.SuppressKeyPress = true;
-                if (!btnClassification.Enabled) return;
-                btnClassification_Click(null, null);
+                case Keys.F2:
+                    btnClassification_Click(null, null);
+                    break;
+                case Keys.Delete:
+                    txtClassification.Text = "";
+                    Classification_Code = "";
+                    break;
             }
         }
 
@@ -865,6 +872,28 @@ namespace kERP
             if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
             Category_Code = f.Code;
             txtCategory.Text = f.Description;
+        }
+
+        private void txtCategory_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!btnCategory.Enabled) return;
+            switch (e.KeyCode)
+            {
+                case Keys.F2:
+                    btnCategory_Click(null, null);
+                    break;
+                case Keys.Delete:
+                    txtCategory.Text = "";
+                    Category_Code = "";
+                    break;
+            }
+        }
+
+        private void txtPrice_Leave(object sender, EventArgs e)
+        {
+            if (!Util.IsDouble(txtPrice.Text)) return;
+            CurrencyFacade.LoadSetting(cboCurrency.Value);
+            txtPrice.Text = double.Parse(txtPrice.Text).ToString(CurrencyFacade.Format);
         }
     }
 }

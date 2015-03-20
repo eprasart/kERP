@@ -332,9 +332,9 @@ namespace kERP
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
-                Data.LoadCurrency(cboCurrency);
-                Data.LoadRegional(cboProvince, "'P', 'M'"); // Province and Municipality                
-                Data.LoadBranch(cboParent);
+                CurrencyFacade.LoadList(cboCurrency);
+                DataFacade.LoadRegional(cboProvince, "'P', 'M'"); // Province and Municipality                
+                DataFacade.LoadBranch(cboParent);
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();
                 LoadData();
@@ -771,19 +771,19 @@ namespace kERP
 
         private void cboProvince_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Data.LoadRegional(cboDistrict, "'D'", cboProvince.Value);
+            DataFacade.LoadRegional(cboDistrict, "'D'", cboProvince.Value);
             cboDistrict.SelectedIndex = -1;
         }
 
         private void cboDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Data.LoadRegional(cboCommune, "'C'", cboDistrict.Value);
+            DataFacade.LoadRegional(cboCommune, "'C'", cboDistrict.Value);
             cboCommune.SelectedIndex = -1;
         }
 
         private void cboCommune_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Data.LoadRegional(cboVillage, "'V'", cboCommune.Value);
+            DataFacade.LoadRegional(cboVillage, "'V'", cboCommune.Value);
             cboVillage.SelectedIndex = -1;
         }
     }

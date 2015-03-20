@@ -480,7 +480,6 @@ namespace kERP
         public string ABC_Code { get; set; }
         public string Allow_Discount { get; set; }
         public byte[] Picture { get; set; }
-
     }
 
     static class ItemFacade
@@ -491,7 +490,7 @@ namespace kERP
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
             var sql = SqlFacade.SqlSelect(TableName + " i\ninner join list d on i.allow_discount = d.code\ninner join list t on i.type = t.code\n" + 
-                "inner join ic_category ca on ca.code = i.category\ninner join ic_classification cl on cl.code = i.classification",
+                "left join ic_category ca on ca.code = i.category\nleft join ic_classification cl on cl.code = i.classification",
                 "i.id, i.code, i.description, description2, barcode, currency, price, d.description allow_discount, t.description as type, ca.description category, cl.description classification", "1 = 1");
             if (status.Length == 0)
                 sql += " and i.status <> '" + Constant.RecordStatus_Deleted + "'";

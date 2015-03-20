@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnNew = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
@@ -53,9 +53,21 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.dgvList = new kUI.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtFind = new kUI.TextBox(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnCategory = new System.Windows.Forms.Button();
             this.btnClassification = new System.Windows.Forms.Button();
             this.glbNote = new kUI.GroupLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
@@ -74,11 +86,14 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.txtCategory = new kUI.TextBox(this.components);
             this.txtClassification = new kUI.TextBox(this.components);
             this.cboABC = new kUI.ComboBox(this.components);
             this.cboDiscount = new kUI.ComboBox(this.components);
             this.cboType = new kUI.ComboBox(this.components);
+            this.cboCurrency = new kUI.ComboBox(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
             this.txtPrice = new kUI.TextBox(this.components);
@@ -91,21 +106,6 @@
             this.mnuShowA = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowI = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cboCurrency = new kUI.ComboBox(this.components);
-            this.label8 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtCategory = new kUI.TextBox(this.components);
-            this.btnCategory = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -332,21 +332,21 @@
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Honeydew;
-            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.Honeydew;
+            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
             this.dgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -360,14 +360,14 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgvList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvList.Location = new System.Drawing.Point(1, 54);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
@@ -383,6 +383,101 @@
             this.dgvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellDoubleClick);
             this.dgvList.SelectionChanged += new System.EventHandler(this.dgvList_SelectionChanged);
             this.dgvList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvList_KeyDown);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Id";
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // colCode
+            // 
+            this.colCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colCode.DataPropertyName = "code";
+            this.colCode.HeaderText = "Code";
+            this.colCode.Name = "colCode";
+            this.colCode.ReadOnly = true;
+            this.colCode.Width = 66;
+            // 
+            // colDescription
+            // 
+            this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colDescription.DataPropertyName = "description";
+            dataGridViewCellStyle15.NullValue = null;
+            this.colDescription.DefaultCellStyle = dataGridViewCellStyle15;
+            this.colDescription.HeaderText = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.ReadOnly = true;
+            this.colDescription.Width = 101;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column2.DataPropertyName = "description2";
+            this.Column2.HeaderText = "Description 2";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 111;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.DataPropertyName = "barcode";
+            dataGridViewCellStyle16.Format = "dd-MM-yy";
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle16;
+            this.Column3.HeaderText = "Barcode";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 85;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "price";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle17;
+            this.Column8.HeaderText = "Price";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column9.DataPropertyName = "currency";
+            this.Column9.HeaderText = "Currency";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 86;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "allow_discount";
+            this.Column7.HeaderText = "Allow Discount";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "type";
+            this.Column4.HeaderText = "Type";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "category";
+            this.Column5.HeaderText = "Category";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.DataPropertyName = "classification";
+            this.Column6.HeaderText = "Classification";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // txtFind
             // 
@@ -460,6 +555,19 @@
             this.tabPage1.Text = "Loan";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnCategory
+            // 
+            this.btnCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategory.Image = global::kERP.Properties.Resources.Search;
+            this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategory.Location = new System.Drawing.Point(327, 267);
+            this.btnCategory.Name = "btnCategory";
+            this.btnCategory.Size = new System.Drawing.Size(27, 27);
+            this.btnCategory.TabIndex = 16;
+            this.btnCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCategory.UseVisualStyleBackColor = true;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
+            // 
             // btnClassification
             // 
             this.btnClassification.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -468,7 +576,7 @@
             this.btnClassification.Location = new System.Drawing.Point(327, 299);
             this.btnClassification.Name = "btnClassification";
             this.btnClassification.Size = new System.Drawing.Size(27, 27);
-            this.btnClassification.TabIndex = 17;
+            this.btnClassification.TabIndex = 19;
             this.btnClassification.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClassification.UseVisualStyleBackColor = true;
             this.btnClassification.Click += new System.EventHandler(this.btnClassification_Click);
@@ -483,7 +591,7 @@
             this.glbNote.Margin = new System.Windows.Forms.Padding(4, 13, 4, 4);
             this.glbNote.Name = "glbNote";
             this.glbNote.Size = new System.Drawing.Size(735, 22);
-            this.glbNote.TabIndex = 26;
+            this.glbNote.TabIndex = 28;
             this.glbNote.TabStop = false;
             // 
             // txtNote
@@ -498,7 +606,7 @@
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
             this.txtNote.Size = new System.Drawing.Size(735, 142);
-            this.txtNote.TabIndex = 27;
+            this.txtNote.TabIndex = 29;
             this.txtNote.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // lblBrowse
@@ -509,7 +617,7 @@
             this.lblBrowse.Location = new System.Drawing.Point(509, 137);
             this.lblBrowse.Name = "lblBrowse";
             this.lblBrowse.Size = new System.Drawing.Size(53, 17);
-            this.lblBrowse.TabIndex = 18;
+            this.lblBrowse.TabIndex = 20;
             this.lblBrowse.TabStop = true;
             this.lblBrowse.Text = "Browse";
             this.lblBrowse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblBrowse_LinkClicked);
@@ -533,7 +641,7 @@
             this.lblClear.Location = new System.Drawing.Point(702, 137);
             this.lblClear.Name = "lblClear";
             this.lblClear.Size = new System.Drawing.Size(40, 17);
-            this.lblClear.TabIndex = 19;
+            this.lblClear.TabIndex = 21;
             this.lblClear.TabStop = true;
             this.lblClear.Text = "Clear";
             this.lblClear.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblClear_LinkClicked);
@@ -548,7 +656,7 @@
             this.txtCode.Numeric = false;
             this.txtCode.ReadOnly = true;
             this.txtCode.Size = new System.Drawing.Size(230, 25);
-            this.txtCode.TabIndex = 1;
+            this.txtCode.TabIndex = 2;
             this.txtCode.TabOnEnter = true;
             this.txtCode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
@@ -573,7 +681,7 @@
             this.txtDescription2.Numeric = false;
             this.txtDescription2.ReadOnly = true;
             this.txtDescription2.Size = new System.Drawing.Size(230, 25);
-            this.txtDescription2.TabIndex = 4;
+            this.txtDescription2.TabIndex = 5;
             this.txtDescription2.TabOnEnter = true;
             this.txtDescription2.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtDescription2.Leave += new System.EventHandler(this.txtCode_Leave);
@@ -588,7 +696,7 @@
             this.txtDescription.Numeric = false;
             this.txtDescription.ReadOnly = true;
             this.txtDescription.Size = new System.Drawing.Size(230, 25);
-            this.txtDescription.TabIndex = 3;
+            this.txtDescription.TabIndex = 4;
             this.txtDescription.TabOnEnter = true;
             this.txtDescription.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtDescription.Leave += new System.EventHandler(this.txtCode_Leave);
@@ -600,7 +708,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 18);
-            this.label1.TabIndex = 15;
+            this.label1.TabIndex = 17;
             this.label1.Text = "Classification";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -611,7 +719,7 @@
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(112, 18);
-            this.label7.TabIndex = 24;
+            this.label7.TabIndex = 26;
             this.label7.Text = "Allow discount";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -622,7 +730,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 18);
-            this.label4.TabIndex = 22;
+            this.label4.TabIndex = 24;
             this.label4.Text = "ABC code";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -633,7 +741,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 18);
-            this.label3.TabIndex = 20;
+            this.label3.TabIndex = 22;
             this.label3.Text = "UPC code";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -647,7 +755,7 @@
             this.txtBarcode.Numeric = false;
             this.txtBarcode.ReadOnly = true;
             this.txtBarcode.Size = new System.Drawing.Size(230, 25);
-            this.txtBarcode.TabIndex = 6;
+            this.txtBarcode.TabIndex = 7;
             this.txtBarcode.TabOnEnter = true;
             this.txtBarcode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
@@ -658,7 +766,7 @@
             this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(112, 18);
-            this.lblDescription.TabIndex = 2;
+            this.lblDescription.TabIndex = 3;
             this.lblDescription.Text = "Description";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -669,7 +777,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 18);
-            this.label2.TabIndex = 9;
+            this.label2.TabIndex = 10;
             this.label2.Text = "Price";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -680,9 +788,20 @@
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 18);
-            this.label6.TabIndex = 11;
+            this.label6.TabIndex = 12;
             this.label6.Text = "Type";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 175);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 18);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Currency";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
@@ -691,9 +810,25 @@
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(103, 18);
-            this.label11.TabIndex = 13;
+            this.label11.TabIndex = 14;
             this.label11.Text = "Category";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtCategory
+            // 
+            this.txtCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCategory.Format = null;
+            this.txtCategory.Location = new System.Drawing.Point(124, 268);
+            this.txtCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Numeric = false;
+            this.txtCategory.ReadOnly = true;
+            this.txtCategory.Size = new System.Drawing.Size(201, 25);
+            this.txtCategory.TabIndex = 15;
+            this.txtCategory.TabOnEnter = true;
+            this.txtCategory.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtCategory.DoubleClick += new System.EventHandler(this.txtClassification_DoubleClick);
+            this.txtCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCategory_KeyDown);
             // 
             // txtClassification
             // 
@@ -705,7 +840,7 @@
             this.txtClassification.Numeric = false;
             this.txtClassification.ReadOnly = true;
             this.txtClassification.Size = new System.Drawing.Size(201, 25);
-            this.txtClassification.TabIndex = 16;
+            this.txtClassification.TabIndex = 18;
             this.txtClassification.TabOnEnter = true;
             this.txtClassification.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtClassification.DoubleClick += new System.EventHandler(this.txtClassification_DoubleClick);
@@ -720,7 +855,7 @@
             this.cboABC.Location = new System.Drawing.Point(511, 201);
             this.cboABC.Name = "cboABC";
             this.cboABC.Size = new System.Drawing.Size(230, 25);
-            this.cboABC.TabIndex = 23;
+            this.cboABC.TabIndex = 25;
             this.cboABC.TabOnEnter = true;
             this.cboABC.Value = "";
             this.cboABC.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
@@ -734,7 +869,7 @@
             this.cboDiscount.Location = new System.Drawing.Point(512, 233);
             this.cboDiscount.Name = "cboDiscount";
             this.cboDiscount.Size = new System.Drawing.Size(230, 25);
-            this.cboDiscount.TabIndex = 25;
+            this.cboDiscount.TabIndex = 27;
             this.cboDiscount.TabOnEnter = true;
             this.cboDiscount.Value = "";
             this.cboDiscount.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
@@ -748,10 +883,24 @@
             this.cboType.Location = new System.Drawing.Point(124, 235);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(230, 25);
-            this.cboType.TabIndex = 12;
+            this.cboType.TabIndex = 13;
             this.cboType.TabOnEnter = true;
             this.cboType.Value = "";
             this.cboType.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            // 
+            // cboCurrency
+            // 
+            this.cboCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCurrency.Enabled = false;
+            this.cboCurrency.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCurrency.FormattingEnabled = true;
+            this.cboCurrency.Location = new System.Drawing.Point(124, 172);
+            this.cboCurrency.Name = "cboCurrency";
+            this.cboCurrency.Size = new System.Drawing.Size(230, 25);
+            this.cboCurrency.TabIndex = 9;
+            this.cboCurrency.TabOnEnter = true;
+            this.cboCurrency.Value = "";
+            this.cboCurrency.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // label5
             // 
@@ -760,7 +909,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 18);
-            this.label5.TabIndex = 5;
+            this.label5.TabIndex = 6;
             this.label5.Text = "Barcode";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -771,7 +920,7 @@
             this.lblCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(99, 18);
-            this.lblCode.TabIndex = 0;
+            this.lblCode.TabIndex = 1;
             this.lblCode.Text = "Code";
             this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -785,10 +934,11 @@
             this.txtPrice.Numeric = true;
             this.txtPrice.ReadOnly = true;
             this.txtPrice.Size = new System.Drawing.Size(230, 25);
-            this.txtPrice.TabIndex = 10;
+            this.txtPrice.TabIndex = 11;
             this.txtPrice.TabOnEnter = true;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPrice.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtPrice.Leave += new System.EventHandler(this.txtPrice_Leave);
             // 
             // txtUPC
             // 
@@ -800,7 +950,7 @@
             this.txtUPC.Numeric = false;
             this.txtUPC.ReadOnly = true;
             this.txtUPC.Size = new System.Drawing.Size(230, 25);
-            this.txtUPC.TabIndex = 21;
+            this.txtUPC.TabIndex = 23;
             this.txtUPC.TabOnEnter = true;
             this.txtUPC.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
@@ -866,155 +1016,6 @@
             this.mnuShowI.Size = new System.Drawing.Size(147, 22);
             this.mnuShowI.Text = "Show Inactive";
             this.mnuShowI.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
-            // 
-            // cboCurrency
-            // 
-            this.cboCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCurrency.Enabled = false;
-            this.cboCurrency.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboCurrency.FormattingEnabled = true;
-            this.cboCurrency.Location = new System.Drawing.Point(124, 172);
-            this.cboCurrency.Name = "cboCurrency";
-            this.cboCurrency.Size = new System.Drawing.Size(230, 25);
-            this.cboCurrency.TabIndex = 8;
-            this.cboCurrency.TabOnEnter = true;
-            this.cboCurrency.Value = "";
-            this.cboCurrency.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(14, 175);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 18);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Currency";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Id";
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // colCode
-            // 
-            this.colCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colCode.DataPropertyName = "code";
-            this.colCode.HeaderText = "Code";
-            this.colCode.Name = "colCode";
-            this.colCode.ReadOnly = true;
-            this.colCode.Width = 66;
-            // 
-            // colDescription
-            // 
-            this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colDescription.DataPropertyName = "description";
-            dataGridViewCellStyle9.NullValue = null;
-            this.colDescription.DefaultCellStyle = dataGridViewCellStyle9;
-            this.colDescription.HeaderText = "Description";
-            this.colDescription.Name = "colDescription";
-            this.colDescription.ReadOnly = true;
-            this.colDescription.Width = 101;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column2.DataPropertyName = "description2";
-            this.Column2.HeaderText = "Description 2";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 111;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column3.DataPropertyName = "barcode";
-            dataGridViewCellStyle10.Format = "dd-MM-yy";
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle10;
-            this.Column3.HeaderText = "Barcode";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 85;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "price";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle11;
-            this.Column8.HeaderText = "Price";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column9.DataPropertyName = "currency";
-            this.Column9.HeaderText = "Currency";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Width = 86;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "allow_discount";
-            this.Column7.HeaderText = "Allow Discount";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "type";
-            this.Column4.HeaderText = "Type";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "category";
-            this.Column5.HeaderText = "Category";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.DataPropertyName = "classification";
-            this.Column6.HeaderText = "Classification";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // txtCategory
-            // 
-            this.txtCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCategory.Format = null;
-            this.txtCategory.Location = new System.Drawing.Point(124, 268);
-            this.txtCategory.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Numeric = false;
-            this.txtCategory.ReadOnly = true;
-            this.txtCategory.Size = new System.Drawing.Size(201, 25);
-            this.txtCategory.TabIndex = 16;
-            this.txtCategory.TabOnEnter = true;
-            this.txtCategory.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            this.txtCategory.DoubleClick += new System.EventHandler(this.txtClassification_DoubleClick);
-            this.txtCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtClassification_KeyDown);
-            // 
-            // btnCategory
-            // 
-            this.btnCategory.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategory.Image = global::kERP.Properties.Resources.Search;
-            this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategory.Location = new System.Drawing.Point(327, 267);
-            this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(27, 27);
-            this.btnCategory.TabIndex = 17;
-            this.btnCategory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategory.UseVisualStyleBackColor = true;
-            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
             // 
             // frmItem
             // 
