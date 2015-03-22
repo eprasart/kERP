@@ -31,15 +31,14 @@ namespace kERP
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
             var sql = SqlFacade.SqlSelect(TableName, "id, branch_code, code, description, type, name, phone, fax, email, address", "1 = 1");
-            if (status.Length == 0)
-                sql += " and status <> '" + Constant.RecordStatus_Deleted + "'";
-            else
-                sql += " and status = '" + status + "'";
+            sql += " and status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
             if (filter.Length > 0)
                 sql += " and (" + SqlFacade.SqlILike("code, description, phone, fax, email, address, note") + ")";
-            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit; //ConfigFacade.sy_select_limit;
+            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit; 
 
             var cmd = new NpgsqlCommand(sql);
+            cmd.Parameters.AddWithValue(":status", status);
             if (filter.Length > 0)
                 cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
 
@@ -48,7 +47,7 @@ namespace kERP
 
         public static long Save(Location m)
         {
-            string sql = "code, description, type, address, name, phone, fax, email, note, ";   //todo: like this everywhere
+            string sql = "code, description, type, address, name, phone, fax, email, note, ";
             if (m.Id == 0)
             {
                 m.Insert_By = App.session.Username;
@@ -60,7 +59,7 @@ namespace kERP
             {
                 m.Change_By = App.session.Username;
                 sql += "change_by, change_at, change_no";
-                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id"); //todo: gobal
+                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id");
                 SqlFacade.Connection.Execute(sql, m);
                 ReleaseLock(m.Id);  // Unlock
             }
@@ -134,15 +133,13 @@ namespace kERP
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
             var sql = SqlFacade.SqlSelect(TableName, "id, code, description", "1 = 1");
-            if (status.Length == 0)
-                sql += " and status <> '" + Constant.RecordStatus_Deleted + "'";
-            else
-                sql += " and status = '" + status + "'";
+            sql += " and status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
             if (filter.Length > 0)
                 sql += " and (" + SqlFacade.SqlILike("code, description, note") + ")";
-            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit; //ConfigFacade.sy_select_limit;
-
+            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit;
             var cmd = new NpgsqlCommand(sql);
+            cmd.Parameters.AddWithValue(":status", status);
             if (filter.Length > 0)
                 cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
 
@@ -190,7 +187,6 @@ namespace kERP
             return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
         }
 
-        //todo: to global
         public static void SetStatus(long Id, string status)
         {
             var sql = SqlFacade.SqlUpdate(TableName, "status, change_by, change_at", "change_at = now()", "id = :id");
@@ -253,15 +249,14 @@ namespace kERP
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
             var sql = SqlFacade.SqlSelect(TableName, "id, code, description", "1 = 1");
-            if (status.Length == 0)
-                sql += " and status <> '" + Constant.RecordStatus_Deleted + "'";
-            else
-                sql += " and status = '" + status + "'";
+            sql += " and status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
             if (filter.Length > 0)
                 sql += " and (" + SqlFacade.SqlILike("code, description, note") + ")";
-            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit; //ConfigFacade.sy_select_limit;
+            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit;
 
             var cmd = new NpgsqlCommand(sql);
+            cmd.Parameters.AddWithValue(":status", status);
             if (filter.Length > 0)
                 cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
 
@@ -301,7 +296,6 @@ namespace kERP
             SqlFacade.Connection.Execute(sql, new { status, Change_By = App.session.Username, Id });
         }
 
-        //todo: move to global
         public static Lock GetLock(long Id)
         {
             return LockFacade.Select(TableName, Id);
@@ -358,18 +352,15 @@ namespace kERP
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
             var sql = SqlFacade.SqlSelect(TableName + " c\nleft join ic_classification p on p.code = c.parent", "c.id, c.code, c.description, p.description parent, c.note", "1 = 1");
-            if (status.Length == 0)
-                sql += " and c.status <> '" + Constant.RecordStatus_Deleted + "'";
-            else
-                sql += " and c.status = '" + status + "'";
+            sql += " and c.status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
             if (filter.Length > 0)
                 sql += " and (" + SqlFacade.SqlILike("c.code, c.description, c.note") + ")";
-            sql += "\norder by c.code\nlimit " + ConfigFacade.Select_Limit; //ConfigFacade.sy_select_limit;
-
+            sql += "\norder by c.code\nlimit " + ConfigFacade.Select_Limit;
             var cmd = new NpgsqlCommand(sql);
-            if (filter.Length > 0)
-                cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
-
+            cmd.Parameters.AddWithValue(":status", status); 
+            if (filter.Length > 0)               
+            cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
             return SqlFacade.GetDataTable(cmd);
         }
 
@@ -416,7 +407,6 @@ namespace kERP
             return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
         }
 
-        //todo: to global
         public static void SetStatus(long Id, string status)
         {
             var sql = SqlFacade.SqlUpdate(TableName, "status, change_by, change_at", "change_at = now()", "id = :id");
@@ -489,27 +479,23 @@ namespace kERP
 
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
-            var sql = SqlFacade.SqlSelect(TableName + " i\ninner join list d on i.allow_discount = d.code\ninner join list t on i.type = t.code\n" + 
+            var sql = SqlFacade.SqlSelect(TableName + " i\ninner join list d on i.allow_discount = d.code\ninner join list t on i.type = t.code\n" +
                 "left join ic_category ca on ca.code = i.category\nleft join ic_classification cl on cl.code = i.classification",
                 "i.id, i.code, i.description, description2, barcode, currency, price, d.description allow_discount, t.description as type, ca.description category, cl.description classification", "1 = 1");
-            if (status.Length == 0)
-                sql += " and i.status <> '" + Constant.RecordStatus_Deleted + "'";
-            else
-                sql += " and i.status = '" + status + "'";
+            sql += " and i.status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
             if (filter.Length > 0)
                 sql += " and (" + SqlFacade.SqlILike("i.code, i.description, description2, barcode, upc_code") + ")";
-            sql += "\norder by i.code\nlimit " + ConfigFacade.Select_Limit; //ConfigFacade.sy_select_limit;
-
+            sql += "\norder by i.code\nlimit " + ConfigFacade.Select_Limit;
             var cmd = new NpgsqlCommand(sql);
-            if (filter.Length > 0)
-                cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
-
+            cmd.Parameters.AddWithValue(":status", status);
+            if (filter.Length > 0) cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
             return SqlFacade.GetDataTable(cmd);
         }
 
         public static long Save(Item m)
         {
-            string sql = "code, description, description2, barcode, currency, price, type, category, classification, upc_code, abc_code, allow_discount, ";   //todo: like this everywhere
+            string sql = "code, description, description2, barcode, currency, price, type, category, classification, upc_code, abc_code, allow_discount, ";
             if (m.Picture != null) sql += "picture, ";
             if (m.Id == 0)
             {
@@ -522,7 +508,7 @@ namespace kERP
             {
                 m.Change_By = App.session.Username;
                 sql += "change_by, change_at, change_no";
-                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id"); //todo: gobal
+                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id");
                 SqlFacade.Connection.Execute(sql, m);
                 ReleaseLock(m.Id);  // Unlock
             }

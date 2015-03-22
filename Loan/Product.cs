@@ -195,26 +195,13 @@ namespace kERP
             }
         }
 
-        private void SetIconDisplayType(string type)
+        private void SetIconDisplayType()
         {
-            ToolStripItemDisplayStyle ds;
-            switch (type)
-            {
-                case "I":
-                    ds = ToolStripItemDisplayStyle.Image;
-                    break;
-                case "T":
-                    ds = ToolStripItemDisplayStyle.Text;
-                    break;
-                default:
-                    ds = ToolStripItemDisplayStyle.ImageAndText;
-                    break;
-            }
-            if (ds == ToolStripItemDisplayStyle.ImageAndText) return;   // If IT=ImageAndText, then do nothing (the designer already take care this)
+            if (ConfigFacade.Toolbar_Icon_Display_Style == ToolStripItemDisplayStyle.ImageAndText) return;   // If IT=ImageAndText, then do nothing (the designer already take care this)
             foreach (var c in toolStrip1.Items)
             {
                 if (c is ToolStripButton)
-                    ((ToolStripButton)c).DisplayStyle = ds;
+                    ((ToolStripButton)c).DisplayStyle = ConfigFacade.Toolbar_Icon_Display_Style;
             }
         }
 
@@ -222,11 +209,8 @@ namespace kERP
         {
             try
             {
-                SetIconDisplayType(ConfigFacade.Toolbar_Icon_Display_Type);
+                SetIconDisplayType();
                 splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
-
-                //SetCodeCasing();
-                //txtAccountNo.MaxLength = ConfigFacade.sy_code_max_length;
 
                 FormFacade.SetFormState(this);
             }
@@ -262,7 +246,7 @@ namespace kERP
         private bool Save()
         {
             if (!IsValidated()) return false;
-            Cursor = Cursors.WaitCursor;            
+            Cursor = Cursors.WaitCursor;
             var m = new Product();
             var log = new SessionLog { Module = "Product" };
             m.Id = Id;

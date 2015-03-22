@@ -212,22 +212,66 @@ namespace kERP
         public static string Language;
         public static string Select_Limit;
         public static string Code_Casing;
+        public static string Code_Description_Separator;
+        public static CharacterCasing Character_Casing;
         public static int Code_Max_Length;
+
         public static bool Log_Missing_Label;
 
         public static string Toolbar_Icon_Display_Type;
+        public static ToolStripItemDisplayStyle Toolbar_Icon_Display_Style;
+
         public static string Export_Delimiter;
         public static bool Export_Open_File_After;
+
+        private static void SetCharacterCasing()
+        {
+            CharacterCasing cs;
+            switch (ConfigFacade.Code_Casing)
+            {
+                case "U":
+                    cs = CharacterCasing.Upper;
+                    break;
+                case "L":
+                    cs = CharacterCasing.Lower;
+                    break;
+                default:
+                    cs = CharacterCasing.Normal;
+                    break;
+            }
+            Character_Casing = cs;
+        }
+
+        private static void SetToolStripItemDisplayStyle()
+        {
+            ToolStripItemDisplayStyle ds;
+            switch (Toolbar_Icon_Display_Type)
+            {
+                case "I":
+                    ds = ToolStripItemDisplayStyle.Image;
+                    break;
+                case "T":
+                    ds = ToolStripItemDisplayStyle.Text;
+                    break;
+                default:
+                    ds = ToolStripItemDisplayStyle.ImageAndText;
+                    break;
+            }
+            Toolbar_Icon_Display_Style = ds;
+        }
 
         public static void Load()
         {
             Language = Get("sys_language", "ENG");
             Select_Limit = Get("sys_select_limit", "1000");
             Code_Casing = Get("sys_code_casing", "N");
+            Code_Description_Separator = Get("sys_code_description_separator", " - ");
+            SetCharacterCasing();
             Code_Max_Length = GetInt("sys_code_max_length", "15");
             Log_Missing_Label = GetBool("sys_log_missing_label", App.session.Username, "N");    // Speed up by not not write too much to db unless turn on
 
             Toolbar_Icon_Display_Type = Get("sys_toolbar_icon_display_type", App.session.Username, "IT");
+            SetToolStripItemDisplayStyle();
             Export_Delimiter = Get("sys_export_delimiter", ",");
             Export_Open_File_After = GetBool("sys_export_open_file_after", App.session.Username, "Y");
         }
@@ -291,9 +335,9 @@ namespace kERP
             return int.Parse(Get(frmName + Constant.Splitter_Distance, App.session.Username, defaultValue));
         }
 
-        public static void SetSplitterDistance(string frmName, int value )
+        public static void SetSplitterDistance(string frmName, int value)
         {
-           Set(frmName + Constant.Splitter_Distance, value);
+            Set(frmName + Constant.Splitter_Distance, value);
         }
 
         public static FormWindowState GetWindowState(string code, string defaultValue = "")
@@ -368,6 +412,7 @@ namespace kERP
         public static string IC_Classification;
         public static string IC_Location;
         public static string IC_Item;
+        public static string IC_Unit_Measure;
         public static string AP_Vendor;
         public static string sys_loan;
 
@@ -445,8 +490,9 @@ namespace kERP
             sys_product = Get("sys_product");
             IC_Category = Get("ic_category");
             IC_Classification = Get("ic_classification");
+            IC_Unit_Measure = Get("ic_unit_measure");
             IC_Location = Get("ic_location");
-            IC_Item= Get("ic_item");
+            IC_Item = Get("ic_item");
             AP_Vendor = Get("ap_vendor");
             sys_loan = Get("sys_loan");
 

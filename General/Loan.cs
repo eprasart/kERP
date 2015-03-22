@@ -24,15 +24,13 @@ namespace kERP
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
             var sql = SqlFacade.SqlSelect(TableName, "id, case when extract(year from date) = 1900 then to_char(date, 'dd-MM') else to_char(date, 'dd-MM-yy Dy') end date, event, note", "1 = 1");
-            if (status.Length == 0)
-                sql += " and status <> '" + Constant.RecordStatus_Deleted + "'";  // todo: sql injection is possible => a better way
-            else
-                sql += " and status = '" + status + "'";
+            sql += " and status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
             if (filter.Length > 0)
                 sql += " and (" + SqlFacade.SqlILike("event, date, note") + ")";
             sql += "\norder by holiday.date\nlimit " + ConfigFacade.Select_Limit;
-
             var cmd = new NpgsqlCommand(sql);
+            cmd.Parameters.AddWithValue(":status", status);
             if (filter.Length > 0)
                 cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
 

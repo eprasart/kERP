@@ -135,7 +135,7 @@ namespace kERP
             else if (VendorFacade.Exists(sCode, Id))
                 valid.Add(txtCode, "code_exists");
             if (txtDescription.IsEmptyTrim) valid.Add(txtDescription, "description_blank");
-            //todo: if (cboType.Unspecified) valid.Add(cboType, "type_unspecified");
+            if (cboType.Unspecified) valid.Add(cboType, "type_unspecified");
             return valid.Show();
         }
 
@@ -144,7 +144,7 @@ namespace kERP
             txtCode.Text = "";
             txtCode.Focus();
             txtDescription.Text = "";
-            DataFacade.LoadList(cboType, "ic_vendor_type"); // Reload & set default
+            DataFacade.LoadList(cboType, "ap_vendor_type"); // Reload & set default
             txtAddress.Text = "";
             txtName.Text = "";
             txtPhone.Text = "";
@@ -190,26 +190,13 @@ namespace kERP
             }
         }
 
-        private void SetIconDisplayType(string type)
+        private void SetIconDisplayType()
         {
-            ToolStripItemDisplayStyle ds;
-            switch (type)
-            {
-                case "I":
-                    ds = ToolStripItemDisplayStyle.Image;
-                    break;
-                case "T":
-                    ds = ToolStripItemDisplayStyle.Text;
-                    break;
-                default:
-                    ds = ToolStripItemDisplayStyle.ImageAndText;
-                    break;
-            }
-            if (ds == ToolStripItemDisplayStyle.ImageAndText) return;   // If IT=ImageAndText, then do nothing (the designer already take care this)
+            if (ConfigFacade.Toolbar_Icon_Display_Style == ToolStripItemDisplayStyle.ImageAndText) return;   // If IT=ImageAndText, then do nothing (the designer already take care this)
             foreach (var c in toolStrip1.Items)
             {
                 if (c is ToolStripButton)
-                    ((ToolStripButton)c).DisplayStyle = ds;
+                    ((ToolStripButton)c).DisplayStyle = ConfigFacade.Toolbar_Icon_Display_Style;
             }
         }
 
@@ -235,7 +222,7 @@ namespace kERP
         {
             try
             {
-                SetIconDisplayType(ConfigFacade.Toolbar_Icon_Display_Type);
+                SetIconDisplayType();
                 splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
 
                 SetCodeCasing();
@@ -350,7 +337,7 @@ namespace kERP
             if (dgvList.CurrentRow != null)
                 dgvList.CurrentRow.Selected = false;
             Id = 0;
-            LockControls(false);            
+            LockControls(false);
             if (dgvList.CurrentRow != null) RowIndex = dgvList.CurrentRow.Index;
             SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_New, "New clicked");
             IsDirty = false;

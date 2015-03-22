@@ -43,18 +43,15 @@ namespace kERP
                 "\ninner join list int on int.field = 'round_rule' and int.code = interest_round_rule" +
                 "\ninner join list total on total.field = 'round_rule' and total.code = total_round_rule" +
                 "\nwhere 1 = 1";
-            if (status.Length == 0)
-                sql += " and p.status <> '" + Constant.RecordStatus_Deleted + "'";  // todo: sql injection is possible => a better way
-            else
-                sql += " and p.status = '" + status + "'";
+            sql += " and p.status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
             if (filter.Length > 0)
                 sql += " and (" + SqlFacade.SqlILike("p.code, name, p.note") + ")";
             sql += "\norder by name\nlimit " + ConfigFacade.Select_Limit;
-
             var cmd = new NpgsqlCommand(sql);
+            cmd.Parameters.AddWithValue(":status", status);
             if (filter.Length > 0)
                 cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
-
             return SqlFacade.GetDataTable(cmd);
         }
 
@@ -177,15 +174,13 @@ namespace kERP
         {
             var sql = "select l.id, account_no, last_name || ' ' || first_name full_name, frequency_unit, frequency, installment_no, amount, currency, interest_rate, disburse_date" +
                 "\nfrom loan l\ninner join customer c on c.customer_no = l.customer_no";
-            if (status.Length == 0)
-                sql += " and l.status <> '" + Constant.RecordStatus_Deleted + "'";
-            else
-                sql += " and l.status = '" + status + "'";
+            sql += " and l.status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
             if (filter.Length > 0)
                 sql += " and (" + SqlFacade.SqlILike("account_no, l.customer_no, l.branch_code") + ")";
             sql += "\norder by account_no\nlimit " + ConfigFacade.Select_Limit;
-
             var cmd = new NpgsqlCommand(sql);
+            cmd.Parameters.AddWithValue(":status", status);
             if (filter.Length > 0)
                 cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
 

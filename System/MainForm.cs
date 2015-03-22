@@ -72,7 +72,7 @@ namespace kERP.SYS
 
         private void btnBranch_Click(object sender, EventArgs e)
         {
-            if (!SM.Privilege.CanAccess("BRN", "V")) // todo: not hard code
+            if (!SM.Privilege.CanAccess("BRN", "V"))
             {
                 MessageBox.Show("You don't have the privilege to access this function.");
                 return;
@@ -89,9 +89,9 @@ namespace kERP.SYS
 
         private void btnLocation_Click(object sender, EventArgs e)
         {
-            if (!SM.Privilege.CanAccess("CUS", "V")) // todo: not hard code
+            if (!SM.Privilege.CanAccess("IC_LOC", "V"))
             {
-                MessageBox.Show("You don't have the privilege to access this function.");
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Location);
                 return;
             }
             Cursor = Cursors.WaitCursor;
@@ -106,9 +106,9 @@ namespace kERP.SYS
 
         private void btnUnitMeasure_Click(object sender, EventArgs e)
         {
-            if (!SM.Privilege.CanAccess("LON", "V")) // todo: not hard code
+            if (!SM.Privilege.CanAccess("IC_UOM", "V"))
             {
-                MessageBox.Show("You don't have the privilege to access this function.");
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Unit_Measure);
                 return;
             }
             Cursor = Cursors.WaitCursor;
@@ -117,7 +117,7 @@ namespace kERP.SYS
                 App.fUnitMeasure = new frmUnitMeasure();
                 App.fUnitMeasure.Show();
             }
-            if (App.fUnitMeasure.WindowState == FormWindowState.Minimized) //todo: do this with the rest
+            if (App.fUnitMeasure.WindowState == FormWindowState.Minimized)
                 App.fUnitMeasure.WindowState = FormWindowState.Normal;
             App.fUnitMeasure.Focus();
             Cursor = Cursors.Default;
@@ -126,9 +126,9 @@ namespace kERP.SYS
         private void btnCategory_Click(object sender, EventArgs e)
         {
             var f = App.fCategory;
-            if (!SM.Privilege.CanAccess("PRD", "V")) // todo: not hard code
+            if (!SM.Privilege.CanAccess("IC_CAT", "V"))
             {
-                MessageBox.Show("You don't have the privilege to access this function.");
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Category);
                 return;
             }
             Cursor = Cursors.WaitCursor;
@@ -137,7 +137,7 @@ namespace kERP.SYS
                 f = new frmCategory();
                 f.Show();
             }
-            if (f.WindowState == FormWindowState.Minimized) //todo: do this with the rest
+            if (f.WindowState == FormWindowState.Minimized)
                 f.WindowState = FormWindowState.Normal;
             f.Focus();
             Cursor = Cursors.Default;
@@ -146,9 +146,9 @@ namespace kERP.SYS
         private void btnHoliday_Click(object sender, EventArgs e)
         {
             var f = App.fHoliday;
-            if (!SM.Privilege.CanAccess("PRD", "V")) // todo: not hard code
+            if (!SM.Privilege.CanAccess("HOL", "V"))
             {
-                MessageBox.Show("You don't have the privilege to access this function.");
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), "Hiliday");
                 return;
             }
             Cursor = Cursors.WaitCursor;
@@ -157,7 +157,7 @@ namespace kERP.SYS
                 f = new frmHoliday();
                 f.Show();
             }
-            if (f.WindowState == FormWindowState.Minimized) //todo: do this with the rest
+            if (f.WindowState == FormWindowState.Minimized)
                 f.WindowState = FormWindowState.Normal;
             f.Focus();
             Cursor = Cursors.Default;
@@ -166,9 +166,9 @@ namespace kERP.SYS
         private void btnVendor_Click(object sender, EventArgs e)
         {
             var f = App.fVendor;
-            if (!SM.Privilege.CanAccess("PRD", "V")) // todo: not hard code
+            if (!SM.Privilege.CanAccess("AP_VDR", "V"))
             {
-                MessageBox.Show("You don't have the privilege to access this function.");
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.AP_Vendor);
                 return;
             }
             Cursor = Cursors.WaitCursor;
@@ -177,7 +177,7 @@ namespace kERP.SYS
                 f = new frmVendor();
                 f.Show();
             }
-            if (f.WindowState == FormWindowState.Minimized) //todo: do this with the rest
+            if (f.WindowState == FormWindowState.Minimized)
                 f.WindowState = FormWindowState.Normal;
             f.Focus();
             Cursor = Cursors.Default;
@@ -186,9 +186,9 @@ namespace kERP.SYS
         private void btnItem_Click(object sender, EventArgs e)
         {
             var f = App.fItem;
-            if (!SM.Privilege.CanAccess("PRD", "V")) // todo: not hard code
+            if (!SM.Privilege.CanAccess("IC_ITM", "V")) 
             {
-                MessageBox.Show("You don't have the privilege to access this function.");
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Item);
                 return;
             }
             Cursor = Cursors.WaitCursor;
@@ -197,7 +197,7 @@ namespace kERP.SYS
                 f = new frmItem();
                 f.Show();
             }
-            if (f.WindowState == FormWindowState.Minimized) //todo: do this with the rest
+            if (f.WindowState == FormWindowState.Minimized)
                 f.WindowState = FormWindowState.Normal;
             f.Focus();
             Cursor = Cursors.Default;
@@ -206,9 +206,9 @@ namespace kERP.SYS
         private void btnClassification_Click(object sender, EventArgs e)
         {
             var f = App.fClassification;
-            if (!SM.Privilege.CanAccess("PRD", "V")) // todo: not hard code
+            if (!SM.Privilege.CanAccess("IC_CLS", "V"))
             {
-                MessageBox.Show("You don't have the privilege to access this function.");
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Classification);
                 return;
             }
             Cursor = Cursors.WaitCursor;
@@ -217,7 +217,7 @@ namespace kERP.SYS
                 f = new frmClassification();
                 f.Show();
             }
-            if (f.WindowState == FormWindowState.Minimized) //todo: do this with the rest
+            if (f.WindowState == FormWindowState.Minimized)
                 f.WindowState = FormWindowState.Normal;
             f.Focus();
             Cursor = Cursors.Default;

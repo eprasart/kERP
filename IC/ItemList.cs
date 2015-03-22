@@ -176,7 +176,6 @@ namespace kERP
             Category_Code = "";
             txtClassification.Text = "";
             Classification_Code = "";
-            txtPrice.Text = "";
             txtUPC.Text = "";
             txtNote.Text = "";
             IsDirty = false;
@@ -193,10 +192,10 @@ namespace kERP
                     txtDescription.Text = m.Description;
                     cboType.Value = m.Type;
                     Category_Code = m.Category;
-                    txtCategory.Text = CategoryFacade.GetDescription(m.Category);
+                    txtCategory.Text =Util.ConcatCodeDescription( m.Category, CategoryFacade.GetDescription(m.Category));
                     txtDescription2.Text = m.Description2;
                     txtBarcode.Text = m.Barcode;
-                    txtClassification.Text = ClassificationFacade.GetDescription(m.Classification);
+                    txtClassification.Text =Util.ConcatCodeDescription( m.Classification , ClassificationFacade.GetDescription(m.Classification));
                     Classification_Code = m.Classification;
                     cboCurrency.Value = m.Currency;
                     txtPrice.Text = m.Price.ToString();
@@ -233,57 +232,26 @@ namespace kERP
             }
         }
 
-        private void SetIconDisplayType(string type)
+        private void SetIconDisplayType()
         {
-            ToolStripItemDisplayStyle ds;
-            switch (type)
-            {
-                case "I":
-                    ds = ToolStripItemDisplayStyle.Image;
-                    break;
-                case "T":
-                    ds = ToolStripItemDisplayStyle.Text;
-                    break;
-                default:
-                    ds = ToolStripItemDisplayStyle.ImageAndText;
-                    break;
-            }
-            if (ds == ToolStripItemDisplayStyle.ImageAndText) return;   // If IT=ImageAndText, then do nothing (the designer already take care this)
+            if (ConfigFacade.Toolbar_Icon_Display_Style == ToolStripItemDisplayStyle.ImageAndText) return;   // If IT=ImageAndText, then do nothing (the designer already take care this)
             foreach (var c in toolStrip1.Items)
             {
                 if (c is ToolStripButton)
-                    ((ToolStripButton)c).DisplayStyle = ds;
+                    ((ToolStripButton)c).DisplayStyle = ConfigFacade.Toolbar_Icon_Display_Style;
             }
-        }
-
-        private void SetCodeCasing()
-        {
-            CharacterCasing cs;
-            switch (ConfigFacade.Code_Casing)
-            {
-                case "U":
-                    cs = CharacterCasing.Upper;
-                    break;
-                case "L":
-                    cs = CharacterCasing.Lower;
-                    break;
-                default:
-                    cs = CharacterCasing.Normal;
-                    break;
-            }
-            txtCode.CharacterCasing = cs;
-            txtBarcode.CharacterCasing = cs;
-            txtUPC.CharacterCasing = cs;
         }
 
         private void SetSettings()
         {
             try
             {
-                SetIconDisplayType(ConfigFacade.Toolbar_Icon_Display_Type);
+                SetIconDisplayType();
                 splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
 
-                SetCodeCasing();
+                txtCode.CharacterCasing = ConfigFacade.Character_Casing;
+                txtBarcode.CharacterCasing = ConfigFacade.Character_Casing;
+                txtUPC.CharacterCasing = ConfigFacade.Character_Casing;
                 txtCode.MaxLength = ConfigFacade.Code_Max_Length;
                 FormFacade.SetFormState(this);
             }
@@ -385,7 +353,7 @@ namespace kERP
             }
             catch (Exception ex)
             {
-                ErrorLogFacade.Log(ex, "Form_Load");    //todo: in a gobal var
+                ErrorLogFacade.Log(ex, ErrorLogFacade.Form_Load);
                 MessageFacade.Show(MessageFacade.error_load_form + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -544,7 +512,7 @@ namespace kERP
                 }
                 else
                     if (MessageFacade.Show(msg + "\r\n" + MessageFacade.proceed_confirmation, MessageFacade.active_inactive, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
-                    return;
+                        return;
             }
             try
             {
@@ -617,9 +585,9 @@ namespace kERP
                     }
                     else
                         if (MessageFacade.Show(msg + "\r\n" + MessageFacade.lock_override, LabelFacade.sys_unlock, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
-                    else
-                        return;
+                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
+                        else
+                            return;
                 }
                 txtDescription.SelectionStart = txtDescription.Text.Length;
                 txtDescription.Focus();
@@ -841,7 +809,8 @@ namespace kERP
             f.IsDlg = true;
             if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
             Classification_Code = f.Code;
-            txtClassification.Text = f.Description;
+            txtClassification.Text = Util.ConcatCodeDescription(f.Code, f.Description);
+            txtUPC.Focus();
         }
 
         private void txtClassification_KeyDown(object sender, KeyEventArgs e)
@@ -871,7 +840,8 @@ namespace kERP
             f.IsDlg = true;
             if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
             Category_Code = f.Code;
-            txtCategory.Text = f.Description;
+            txtCategory.Text = Util.ConcatCodeDescription(f.Code, f.Description);
+            txtClassification.Focus();
         }
 
         private void txtCategory_KeyDown(object sender, KeyEventArgs e)

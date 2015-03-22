@@ -65,7 +65,7 @@ namespace kERP
         /// <returns></returns>
         public static string SqlSelect(string table, string columns, string where = "", string orderby = "", long limit = 0, long offset = 0)
         {
-            var sql = "select " + columns + " from " + table;
+            var sql = "select " + columns + "\nfrom " + table;
             if (where.Length > 0) sql += "\nwhere " + where;
             if (orderby.Length > 0) sql += "\norder by " + orderby;
             if (limit > 0) sql += "\nlimit " + limit;

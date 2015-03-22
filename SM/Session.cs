@@ -167,16 +167,14 @@ namespace kERP.SM
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
             var sql = "select id, code, description, name, phone, fax, email, address from " + TableName + "\nwhere 1 = 1";
-            if (status.Length == 0)
-                sql += " and status <> '" + Constant.RecordStatus_Deleted + "'";
-            else
-                sql += " and status = '" + status + "'";
-            if (filter.Length > 0)
-                sql += " and (code ilike :filter or description ilike :filter or phone ilike :filter or fax ilike :filter or email ilike :filter or address ilike :filter or note ilike :filter)";
+            sql += " and status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
+            //if (filter.Length > 0)
+            //    sql += " and (" + SqlFacade.SqlILike("code, description, phone, fax, email, address, note") + ")";
             sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit;
-
             var cmd = new NpgsqlCommand(sql);
-            if (filter.Length > 0)
+             cmd.Parameters.AddWithValue(":status", status);
+           if (filter.Length > 0)
                 cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
 
             return SqlFacade.GetDataTable(cmd);

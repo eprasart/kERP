@@ -24,6 +24,8 @@ namespace kERP
     {
         public static FileLog logFile = new FileLog();
 
+        public static string Form_Load = "Form Load";
+
         public string FileLogPath
         {
             get { return logFile.FileName; }

@@ -48,7 +48,7 @@ namespace kERP
 
         public static long Save(Vendor m)
         {
-            string sql = "code, description, type, address, name, phone, fax, email, note, ";   //todo: like this everywhere
+            string sql = "code, description, type, address, name, phone, fax, email, note, ";
             if (m.Id == 0)
             {
                 m.Insert_By = App.session.Username;
@@ -60,7 +60,7 @@ namespace kERP
             {
                 m.Change_By = App.session.Username;
                 sql += "change_by, change_at, change_no";
-                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id"); //todo: gobal
+                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id"); 
                 SqlFacade.Connection.Execute(sql, m);
                 ReleaseLock(m.Id);  // Unlock
             }
