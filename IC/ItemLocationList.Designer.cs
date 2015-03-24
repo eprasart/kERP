@@ -558,7 +558,7 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
-            this.txtNote.Size = new System.Drawing.Size(893, 363);
+            this.txtNote.Size = new System.Drawing.Size(720, 129);
             this.txtNote.TabIndex = 16;
             this.txtNote.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
