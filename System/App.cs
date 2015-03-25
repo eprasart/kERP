@@ -23,6 +23,7 @@ namespace kERP
         //public static frmCompany fCompany;
         public static frmCategory fCategory;
         public static frmClassification fClassification;
+        public static frmItemLocation fItemLocation;
         public static frmHoliday fHoliday;
         public static frmVendor fVendor;
         public static frmBranch fBranch;

@@ -15,6 +15,10 @@ namespace kERP
         bool IsDirty = false;
         bool IsIgnore = true;
 
+        public bool IsDlg = false; // Show dialog box for selecting one 
+        public string Code;
+        public string Description;
+
         frmMsg fMsg = null;
         string ModuleName = "IC Vendor";
         string TitleLabel = VendorFacade.TitleLabel;
@@ -322,6 +326,12 @@ namespace kERP
                 ErrorLogFacade.Log(ex, "Form_Load");
                 MessageFacade.Show(MessageFacade.error_load_form + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            btnSelect.Visible = IsDlg;
+            if (IsDlg)
+            {
+                btnMode_Click(null, null);
+                toolStrip1.Refresh();
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -453,8 +463,13 @@ namespace kERP
         private void dgvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            if (IsExpand) picExpand_Click(sender, e);
-            dgvList_SelectionChanged(sender, e);    // reload data since SelectionChanged will not occured on current row            
+            if (!IsDlg)
+            {
+                if (IsExpand) picExpand_Click(sender, e);
+                dgvList_SelectionChanged(sender, e);    // reload data since SelectionChanged will not occured on current row
+            }
+            else
+                btnSelect_Click(null, null);
         }
 
         private void btnActive_Click(object sender, EventArgs e)
@@ -719,8 +734,10 @@ namespace kERP
 
         private void dgvList_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Delete) return;
-            if (btnDelete.Enabled) btnDelete_Click(null, null);
+            if (e.KeyCode == Keys.Delete && btnDelete.Enabled)
+                btnDelete_Click(null, null);
+            if (IsDlg && e.KeyCode == Keys.Enter)
+                btnSelect_Click(null, null);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -744,6 +761,13 @@ namespace kERP
         private void txtFind_Leave(object sender, EventArgs e)
         {
             lblSearch.Visible = (txtFind.IsEmpty);
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            Code = dgvList.CurrentRow.Cells["colCode"].Value.ToString();
+            Description = dgvList.CurrentRow.Cells["colDescription"].Value.ToString();
+            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
     }
 }

@@ -411,9 +411,10 @@ namespace kERP
         public static string IC_Category;
         public static string IC_Classification;
         public static string IC_Location;
+        public static string IC_Item_Location;
         public static string IC_Item;
         public static string IC_Unit_Measure;
-        public static string AP_Vendor;
+        public static string AP_Supplier;
         public static string sys_loan;
 
         // Button
@@ -493,7 +494,8 @@ namespace kERP
             IC_Unit_Measure = Get("ic_unit_measure");
             IC_Location = Get("ic_location");
             IC_Item = Get("ic_item");
-            AP_Vendor = Get("ap_vendor");
+            IC_Item_Location = Get("ic_item_location");
+            AP_Supplier = Get("ap_supplier");
             sys_loan = Get("sys_loan");
 
 

@@ -282,7 +282,6 @@ namespace kERP
                 ErrorLogFacade.Log(ex, "Form_Load");
                 MessageFacade.Show(MessageFacade.error_load_form + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            // ShowDialog; Select a customer
             btnSelect.Visible = IsDlg;
             if (IsDlg)
             {

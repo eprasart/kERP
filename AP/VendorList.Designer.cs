@@ -85,6 +85,7 @@
             this.mnuShowA = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowI = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSelect = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -99,6 +100,7 @@
             this.toolStrip1.BackColor = System.Drawing.Color.White;
             this.toolStrip1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSelect,
             this.btnNew,
             this.btnCopy,
             this.btnUnlock,
@@ -485,7 +487,7 @@
             this.glbNote.Location = new System.Drawing.Point(12, 207);
             this.glbNote.Margin = new System.Windows.Forms.Padding(4, 13, 4, 4);
             this.glbNote.Name = "glbNote";
-            this.glbNote.Size = new System.Drawing.Size(727, 22);
+            this.glbNote.Size = new System.Drawing.Size(726, 22);
             this.glbNote.TabIndex = 28;
             this.glbNote.TabStop = false;
             // 
@@ -500,7 +502,7 @@
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
-            this.txtNote.Size = new System.Drawing.Size(727, 182);
+            this.txtNote.Size = new System.Drawing.Size(726, 182);
             this.txtNote.TabIndex = 16;
             this.txtNote.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
@@ -746,6 +748,17 @@
             this.mnuShowI.Text = "Show Inactive";
             this.mnuShowI.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
             // 
+            // btnSelect
+            // 
+            this.btnSelect.Image = global::kERP.Properties.Resources.Tick;
+            this.btnSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(66, 22);
+            this.btnSelect.Text = "Select";
+            this.btnSelect.ToolTipText = "New (Ctrl+N)";
+            this.btnSelect.Visible = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // frmVendor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -829,7 +842,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;        
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.ToolStripButton btnSelect;
     }
 }
 

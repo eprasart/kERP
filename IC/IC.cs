@@ -35,7 +35,7 @@ namespace kERP
             if (status.Length == 0) status = Constant.RecordStatus_Deleted;
             if (filter.Length > 0)
                 sql += " and (" + SqlFacade.SqlILike("code, description, phone, fax, email, address, note") + ")";
-            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit; 
+            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit;
 
             var cmd = new NpgsqlCommand(sql);
             cmd.Parameters.AddWithValue(":status", status);
@@ -70,6 +70,12 @@ namespace kERP
         {
             var sql = SqlFacade.SqlSelect(TableName, "*", "id = :id");
             return SqlFacade.Connection.Query<Location>(sql, new { Id }).FirstOrDefault();
+        }
+
+        public static string GetDescription(string code)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
+            return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
         }
 
         public static void SetStatus(long Id, string status)
@@ -358,9 +364,9 @@ namespace kERP
                 sql += " and (" + SqlFacade.SqlILike("c.code, c.description, c.note") + ")";
             sql += "\norder by c.code\nlimit " + ConfigFacade.Select_Limit;
             var cmd = new NpgsqlCommand(sql);
-            cmd.Parameters.AddWithValue(":status", status); 
-            if (filter.Length > 0)               
-            cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
+            cmd.Parameters.AddWithValue(":status", status);
+            if (filter.Length > 0)
+                cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
             return SqlFacade.GetDataTable(cmd);
         }
 
@@ -521,6 +527,12 @@ namespace kERP
             return SqlFacade.Connection.Query<Item>(sql, new { Id }).FirstOrDefault();
         }
 
+        public static string GetDescription(string code)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
+            return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
+        }
+
         public static void ClearPicture(long Id)
         {
             var sql = SqlFacade.SqlUpdate(TableName, "picture, change_by, change_at", "picture = null, change_at = now()", "id = :id");
@@ -577,6 +589,135 @@ namespace kERP
             {
                 MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogFacade.Log(ex, "Barcode Exists");
+            }
+            return bExists;
+        }
+
+        public static void Export()
+        {
+            var cols = "*";
+            cols = ConfigFacade.Get(Constant.Sql_Export + TableName, cols);
+            string sql = SqlFacade.SqlSelect(TableName, cols, "status <> '" + Constant.RecordStatus_Deleted + "'", "code");
+            SqlFacade.ExportToCSV(sql, TableName);
+        }
+    }
+
+    class ItemLocation : BaseTable
+    {
+        public string item_code { get; set; }
+        public string location_code { get; set; }
+        public string default_supplier_code { get; set; }
+        public string last_supplier_code { get; set; }
+        public double avg_cost { get; set; }
+        public double std_cost { get; set; }
+        public double last_cost { get; set; }
+        public double ptd_usage_val { get; set; }
+        public double ptd_sale_val { get; set; }
+        public double ptd_usage_qty { get; set; }
+        public double ptd_sale_qty { get; set; }
+        public double ytd_usage_val { get; set; }
+        public double ytd_sale_val { get; set; }
+        public double ytd_usage_qty { get; set; }
+        public double ytd_sale_qty { get; set; }
+        public double lsoaloc { get; set; }
+        public double lwoaloc { get; set; }
+        public double onhand { get; set; }
+        public double order_point { get; set; }
+        public double order_qty { get; set; }
+        public double delivery_lead_time { get; set; }
+        public DateTime last_sale { get; set; }
+        public DateTime last_receipt { get; set; }
+        public DateTime last_po { get; set; }
+        public DateTime last_count { get; set; }
+        public string count_flag { get; set; }
+    }
+
+    static class ItemLocationFacade
+    {
+        public static readonly string TableName = "ic_item_location";
+        public static readonly string TitleLabel = LabelFacade.IC_Item_Location;
+
+        public static DataTable GetDataTable(string filter = "", string status = "")
+        {
+            var sql = SqlFacade.SqlSelect(TableName + " il\nleft join ic_item i on i.code = il.item_code\nleft join ic_location l on l.code = il.location_code\n" +
+                "left join ap_vendor v on v.code = il.default_supplier_code\nleft join sys_config c on c.code = 'sys_code_description_separator'",
+                "il.id, item_code || c.value || i.description item, location_code || c.value || l.description as location, default_supplier_code || c.value || v.description supplier, " +
+                "il.std_cost, il.last_cost, il.onhand, order_point, order_qty, delivery_lead_time", "1 = 1");
+            sql += " and il.status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
+            if (filter.Length > 0)
+                sql += " and (" + SqlFacade.SqlILike("item_code, location_code") + ")";
+            sql += "\norder by item_code\nlimit " + ConfigFacade.Select_Limit;
+
+            var cmd = new NpgsqlCommand(sql);
+            cmd.Parameters.AddWithValue(":status", status);
+            if (filter.Length > 0)
+                cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
+
+            return SqlFacade.GetDataTable(cmd);
+        }
+
+        public static long Save(ItemLocation m)
+        {
+            string sql = "item_code, location_code, default_supplier_code, last_supplier_code, avg_cost, std_cost, last_cost, ptd_usage_val, ptd_sale_val, ptd_usage_qty, ptd_sale_qty, ytd_usage_val, ytd_sale_val, ytd_usage_qty, ytd_sale_qty, lsoaloc, lwoaloc, onhand, order_point, order_qty, delivery_lead_time, last_sale, last_receipt, last_po, note, ";
+            if (m.Id == 0)
+            {
+                m.Insert_By = App.session.Username;
+                sql += "insert_by";
+                sql = SqlFacade.SqlInsert(TableName, sql, "", true);
+                m.Id = SqlFacade.Connection.ExecuteScalar<long>(sql, m);
+            }
+            else
+            {
+                m.Change_By = App.session.Username;
+                sql += "change_by, change_at, change_no";
+                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id");
+                SqlFacade.Connection.Execute(sql, m);
+                ReleaseLock(m.Id);  // Unlock
+            }
+            return m.Id;
+        }
+
+        public static ItemLocation Select(long Id)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "*", "id = :id");
+            return SqlFacade.Connection.Query<ItemLocation>(sql, new { Id }).FirstOrDefault();
+        }
+
+        public static void SetStatus(long Id, string status)
+        {
+            var sql = SqlFacade.SqlUpdate(TableName, "status, change_by, change_at", "change_at = now()", "id = :id");
+            SqlFacade.Connection.Execute(sql, new { status, Change_By = App.session.Username, Id });
+        }
+
+        public static Lock GetLock(long Id)
+        {
+            return LockFacade.Select(TableName, Id);
+        }
+
+        public static void Lock(long Id, string code)
+        {
+            var m = new Lock { Table_Name = TableName, Lock_Id = Id, Ref = code };
+            LockFacade.Save(m);
+        }
+
+        public static void ReleaseLock(long Id)
+        {
+            LockFacade.Delete(TableName, Id);
+        }
+
+        public static bool Exists(string item_code, string location_code, long Id = 0)
+        {
+            var sql = SqlFacade.SqlExists(TableName, "id <> :id and status <> :status and item_code = :item_code and location_code = :location_code");
+            var bExists = false;
+            try
+            {
+                bExists = SqlFacade.Connection.ExecuteScalar<bool>(sql, new { Id, Status = Constant.RecordStatus_Deleted, item_code, location_code });
+            }
+            catch (Exception ex)
+            {
+                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogFacade.Log(ex, "Exists");
             }
             return bExists;
         }

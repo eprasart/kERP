@@ -26,7 +26,7 @@ namespace kERP
     static class VendorFacade
     {
         public static readonly string TableName = "ap_vendor";
-        public static readonly string TitleLabel = LabelFacade.AP_Vendor;
+        public static readonly string TitleLabel = LabelFacade.AP_Supplier;
 
         public static DataTable GetDataTable(string filter = "", string status = "")
         {
@@ -71,6 +71,12 @@ namespace kERP
         {
             var sql = SqlFacade.SqlSelect(TableName, "*", "id = :id");
             return SqlFacade.Connection.Query<Vendor>(sql, new { Id }).FirstOrDefault();
+        }
+
+        public static string GetDescription(string code)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
+            return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
         }
 
         public static void SetStatus(long Id, string status)

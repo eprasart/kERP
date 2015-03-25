@@ -62,6 +62,7 @@
             this.btnItem = new kUI.ButtonFlat();
             this.buttonFlat26 = new kUI.ButtonFlat();
             this.btnClassification = new kUI.ButtonFlat();
+            this.btnItemLocation = new kUI.ButtonFlat();
             this.SuspendLayout();
             // 
             // btnBranch
@@ -107,7 +108,7 @@
             // 
             this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersion.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersion.Location = new System.Drawing.Point(783, 346);
+            this.lblVersion.Location = new System.Drawing.Point(783, 412);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(191, 17);
             this.lblVersion.TabIndex = 5;
@@ -406,7 +407,7 @@
             this.btnUnitMeasure.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnUnitMeasure.Image = ((System.Drawing.Image)(resources.GetObject("btnUnitMeasure.Image")));
             this.btnUnitMeasure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUnitMeasure.Location = new System.Drawing.Point(25, 301);
+            this.btnUnitMeasure.Location = new System.Drawing.Point(25, 338);
             this.btnUnitMeasure.Name = "btnUnitMeasure";
             this.btnUnitMeasure.Size = new System.Drawing.Size(217, 31);
             this.btnUnitMeasure.TabIndex = 15;
@@ -446,7 +447,7 @@
             this.btnCategory.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnCategory.Image")));
             this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategory.Location = new System.Drawing.Point(25, 227);
+            this.btnCategory.Location = new System.Drawing.Point(25, 264);
             this.btnCategory.Name = "btnCategory";
             this.btnCategory.Size = new System.Drawing.Size(217, 31);
             this.btnCategory.TabIndex = 13;
@@ -620,7 +621,7 @@
             this.btnClassification.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnClassification.Image = ((System.Drawing.Image)(resources.GetObject("btnClassification.Image")));
             this.btnClassification.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClassification.Location = new System.Drawing.Point(25, 264);
+            this.btnClassification.Location = new System.Drawing.Point(25, 301);
             this.btnClassification.Name = "btnClassification";
             this.btnClassification.Size = new System.Drawing.Size(217, 31);
             this.btnClassification.TabIndex = 13;
@@ -629,12 +630,32 @@
             this.btnClassification.UseVisualStyleBackColor = false;
             this.btnClassification.Click += new System.EventHandler(this.btnClassification_Click);
             // 
+            // btnItemLocation
+            // 
+            this.btnItemLocation.BackColor = System.Drawing.Color.White;
+            this.btnItemLocation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnItemLocation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnItemLocation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnItemLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnItemLocation.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnItemLocation.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnItemLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnItemLocation.Image")));
+            this.btnItemLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnItemLocation.Location = new System.Drawing.Point(25, 227);
+            this.btnItemLocation.Name = "btnItemLocation";
+            this.btnItemLocation.Size = new System.Drawing.Size(217, 31);
+            this.btnItemLocation.TabIndex = 15;
+            this.btnItemLocation.Text = "         Item Location";
+            this.btnItemLocation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnItemLocation.UseVisualStyleBackColor = false;
+            this.btnItemLocation.Click += new System.EventHandler(this.btnItemLocation_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(986, 372);
+            this.ClientSize = new System.Drawing.Size(986, 438);
             this.Controls.Add(this.groupLabel1);
             this.Controls.Add(this.groupLabel7);
             this.Controls.Add(this.groupLabel10);
@@ -652,6 +673,7 @@
             this.Controls.Add(this.buttonFlat4);
             this.Controls.Add(this.btnTransfer);
             this.Controls.Add(this.btnAdjustment);
+            this.Controls.Add(this.btnItemLocation);
             this.Controls.Add(this.btnUnitMeasure);
             this.Controls.Add(this.btnReceive);
             this.Controls.Add(this.btnClassification);
@@ -715,5 +737,6 @@
         private kUI.ButtonFlat btnItem;
         private kUI.ButtonFlat buttonFlat26;
         private kUI.ButtonFlat btnClassification;
+        private kUI.ButtonFlat btnItemLocation;
     }
 }

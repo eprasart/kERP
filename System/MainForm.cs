@@ -168,7 +168,7 @@ namespace kERP.SYS
             var f = App.fVendor;
             if (!SM.Privilege.CanAccess("AP_VDR", "V"))
             {
-                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.AP_Vendor);
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.AP_Supplier);
                 return;
             }
             Cursor = Cursors.WaitCursor;
@@ -215,6 +215,26 @@ namespace kERP.SYS
             if (f == null || f.IsDisposed == true)
             {
                 f = new frmClassification();
+                f.Show();
+            }
+            if (f.WindowState == FormWindowState.Minimized)
+                f.WindowState = FormWindowState.Normal;
+            f.Focus();
+            Cursor = Cursors.Default;
+        }
+
+        private void btnItemLocation_Click(object sender, EventArgs e)
+        {
+            var f = App.fItemLocation;
+            if (!SM.Privilege.CanAccess("IC_IL", "V"))
+            {
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Classification);
+                return;
+            }
+            Cursor = Cursors.WaitCursor;
+            if (f == null || f.IsDisposed == true)
+            {
+                f = new frmItemLocation();
                 f.Show();
             }
             if (f.WindowState == FormWindowState.Minimized)
