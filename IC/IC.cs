@@ -527,6 +527,13 @@ namespace kERP
             return SqlFacade.Connection.Query<Item>(sql, new { Id }).FirstOrDefault();
         }
 
+        public static Item Select(string code)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "code, description, barcode", "code = :code");
+            return SqlFacade.Connection.Query<Item>(sql, new { code }).FirstOrDefault();
+        }
+
+
         public static string GetDescription(string code)
         {
             var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
@@ -637,7 +644,7 @@ namespace kERP
         public static readonly string TableName = "ic_item_location";
         public static readonly string TitleLabel = LabelFacade.IC_Item_Location;
 
-        public static DataTable GetDataTable(string filter = "", string status = "")
+        public static DataTable GetDataTable(string filter , string status , string searchCols)
         {
             var sql = SqlFacade.SqlSelect(TableName + " il\nleft join ic_item i on i.code = il.item_code\nleft join ic_location l on l.code = il.location_code\n" +
                 "left join ap_vendor v on v.code = il.default_supplier_code\nleft join sys_config c on c.code = 'sys_code_description_separator'",
@@ -646,9 +653,9 @@ namespace kERP
             sql += " and il.status " + (status.Length == 0 ? "<>" : "=") + " :status";
             if (status.Length == 0) status = Constant.RecordStatus_Deleted;
             if (filter.Length > 0)
-                sql += " and (" + SqlFacade.SqlILike("item_code, location_code") + ")";
+                sql += " and (" + SqlFacade.SqlILike(searchCols) + ")";
             sql += "\norder by item_code\nlimit " + ConfigFacade.Select_Limit;
-
+           
             var cmd = new NpgsqlCommand(sql);
             cmd.Parameters.AddWithValue(":status", status);
             if (filter.Length > 0)

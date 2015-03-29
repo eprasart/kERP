@@ -31,11 +31,24 @@ namespace kERP
         private string GetStatus()
         {
             var status = "";
-            if (mnuShowA.Checked && !mnuShowI.Checked)
+            if (mnuActive.Checked && !mnuInactive.Checked)
                 status = Constant.RecordStatus_Active;
-            else if (mnuShowI.Checked && !mnuShowA.Checked)
+            else if (mnuInactive.Checked && !mnuActive.Checked)
                 status = Constant.RecordStatus_InActive;
             return status;
+        }
+
+        private string GetSearchCols()
+        {
+            var cols = "";
+            if (mnuItem.Checked)
+                cols = "i.code, i.description, i.description2, i.barcode, i.upc_code";
+            if (mnuLocation.Checked)
+            {
+                if (cols.Length > 0) cols += ", ";
+                cols += "l.code, l.description";
+            }
+            return cols;
         }
 
         private void RefreshGrid(long seq = 0)
@@ -45,7 +58,7 @@ namespace kERP
             if (dgvList.SelectedRows.Count > 0) RowIndex = dgvList.SelectedRows[0].Index;
             try
             {
-                dgvList.DataSource = ItemLocationFacade.GetDataTable(txtFind.Text, GetStatus());
+                dgvList.DataSource = ItemLocationFacade.GetDataTable(txtFind.Text, GetStatus(), GetSearchCols());
             }
             catch (Exception ex)
             {
@@ -147,6 +160,7 @@ namespace kERP
         {
             txtItem.Text = "";
             txtItem.Focus();
+            txtBarcode.Text = "";
             txtLocation.Text = "";
             txtSupplier.Text = "";
             txtLeadTime.Text = "";
@@ -164,8 +178,10 @@ namespace kERP
                 try
                 {
                     var m = ItemLocationFacade.Select(Id);
-                    txtItem.Text = Util.ConcatCodeDescription(m.item_code, ItemFacade.GetDescription(m.item_code));
                     ItemCode = m.item_code;
+                    var i = ItemFacade.Select(ItemCode);
+                    txtItem.Text = Util.ConcatCodeDescription(m.item_code, i.Description);
+                    txtBarcode.Text = i.Barcode;
                     txtLocation.Text = Util.ConcatCodeDescription(m.location_code, LocationFacade.GetDescription(m.location_code));
                     LocationCode = m.location_code;
                     txtSupplier.Text = m.default_supplier_code.Length > 0 ? Util.ConcatCodeDescription(m.default_supplier_code, VendorFacade.GetDescription(m.default_supplier_code)) : "";
@@ -460,7 +476,7 @@ namespace kERP
                 }
                 else
                     if (MessageFacade.Show(msg + "\r\n" + MessageFacade.proceed_confirmation, MessageFacade.active_inactive, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
-                    return;
+                        return;
             }
             try
             {
@@ -533,9 +549,9 @@ namespace kERP
                     }
                     else
                         if (MessageFacade.Show(msg + "\r\n" + MessageFacade.lock_override, LabelFacade.sys_unlock, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtItem.Text);
-                    else
-                        return;
+                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtItem.Text);
+                        else
+                            return;
                 }
                 txtLocation.SelectionStart = txtLocation.Text.Length;
                 txtLocation.Focus();
@@ -617,11 +633,24 @@ namespace kERP
         private void mnuShow_CheckedChanged(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-            if (!mnuShowA.Checked && !mnuShowI.Checked)
-                mnuShowA.Checked = true;
+            if (!mnuActive.Checked && !mnuInactive.Checked)
+                mnuActive.Checked = true;
             RefreshGrid();
             Cursor = Cursors.Default;
         }
+
+        private void mnuSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            if (!mnuItem.Checked && !mnuLocation.Checked)
+            {
+                mnuItem.Checked = true;
+                mnuLocation.Checked = true;
+            }
+            RefreshGrid();
+            Cursor = Cursors.Default;
+        }
+
 
         private void Dirty_TextChanged(object sender, EventArgs e)
         {
@@ -734,7 +763,9 @@ namespace kERP
             f.IsDlg = true;
             if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
             ItemCode = f.Code;
-            txtItem.Text = Util.ConcatCodeDescription(f.Code, f.Description);
+            var m = ItemFacade.Select(ItemCode);
+            txtItem.Text = Util.ConcatCodeDescription(m.Code, m.Description);
+            txtBarcode.Text = m.Barcode;
             txtLocation.Focus();
         }
 
@@ -801,6 +832,11 @@ namespace kERP
                     SupplierCode = "";
                     break;
             }
+        }
+
+        private void mnuActive_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
