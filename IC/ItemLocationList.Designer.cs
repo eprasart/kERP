@@ -629,7 +629,6 @@
             this.txtLocation.TabIndex = 29;
             this.txtLocation.TabOnEnter = true;
             this.txtLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLocation_KeyDown);
-            this.txtLocation.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
             // glbGeneral
             // 
@@ -656,7 +655,7 @@
             this.txtItem.TabOnEnter = true;
             this.txtItem.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtItem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtItem_KeyDown);
-            this.txtItem.Leave += new System.EventHandler(this.txtCode_Leave);
+            this.txtItem.Leave += new System.EventHandler(this.txtItem_Leave);
             // 
             // glbNote
             // 
@@ -1346,7 +1345,6 @@
             this.mnuActive.Size = new System.Drawing.Size(187, 22);
             this.mnuActive.Text = "Show Active";
             this.mnuActive.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
-            this.mnuActive.Click += new System.EventHandler(this.mnuActive_Click);
             // 
             // mnuInactive
             // 

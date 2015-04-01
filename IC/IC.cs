@@ -527,17 +527,29 @@ namespace kERP
             return SqlFacade.Connection.Query<Item>(sql, new { Id }).FirstOrDefault();
         }
 
-        public static Item Select(string code)
+        public static Item SelectLessCols(string code)
         {
-            var sql = SqlFacade.SqlSelect(TableName, "code, description, barcode", "code = :code");
-            return SqlFacade.Connection.Query<Item>(sql, new { code }).FirstOrDefault();
+            var sql = SqlFacade.SqlSelect(TableName, "code, description, barcode", SqlFacade.SqlILike("code, description, barcode", ":p"));
+            return SqlFacade.Connection.Query<Item>(sql, new { p = code }).FirstOrDefault();
+        }
+
+        public static Item SelectLessCols(long Id)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "code, description, barcode", "Id = :Id");
+            return SqlFacade.Connection.Query<Item>(sql, new { Id }).FirstOrDefault();
         }
 
 
-        public static string GetDescription(string code)
+        //public static string GetDescription(string code)
+        //{
+        //    var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
+        //    return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
+        //}
+
+        public static int GetCount(string value)
         {
-            var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
-            return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
+            var sql = SqlFacade.SqlSelect(TableName, "count (*)", "status = 'A' and (" + SqlFacade.SqlILike("code, description, barcode", ":p") + ")");
+            return SqlFacade.Connection.ExecuteScalar<int>(sql, new { p = value });
         }
 
         public static void ClearPicture(long Id)
@@ -644,7 +656,7 @@ namespace kERP
         public static readonly string TableName = "ic_item_location";
         public static readonly string TitleLabel = LabelFacade.IC_Item_Location;
 
-        public static DataTable GetDataTable(string filter , string status , string searchCols)
+        public static DataTable GetDataTable(string filter, string status, string searchCols)
         {
             var sql = SqlFacade.SqlSelect(TableName + " il\nleft join ic_item i on i.code = il.item_code\nleft join ic_location l on l.code = il.location_code\n" +
                 "left join ap_vendor v on v.code = il.default_supplier_code\nleft join sys_config c on c.code = 'sys_code_description_separator'",
@@ -655,7 +667,7 @@ namespace kERP
             if (filter.Length > 0)
                 sql += " and (" + SqlFacade.SqlILike(searchCols) + ")";
             sql += "\norder by item_code\nlimit " + ConfigFacade.Select_Limit;
-           
+
             var cmd = new NpgsqlCommand(sql);
             cmd.Parameters.AddWithValue(":status", status);
             if (filter.Length > 0)

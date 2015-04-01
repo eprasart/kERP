@@ -19,7 +19,6 @@ namespace kERP
         string LocationCode = "";
         string SupplierCode = "";
 
-        frmMsg fMsg = null;
         string ModuleName = "IC Location";
         string TitleLabel = ItemLocationFacade.TitleLabel;
 
@@ -101,8 +100,11 @@ namespace kERP
             //    txtItem.ReadOnly = true;
             //else
             //    txtItem.ReadOnly = l;            
+            txtItem.ReadOnly = l;
             btnItem.Enabled = !l;
+            txtLocation.ReadOnly = l;
             btnLocation.Enabled = !l;
+            txtSupplier.ReadOnly = l;
             btnSupplier.Enabled = !l;
             txtLeadTime.ReadOnly = l;
             txtOrderPoint.ReadOnly = l;
@@ -122,7 +124,7 @@ namespace kERP
             btnFind.Enabled = l;
             btnClear.Enabled = l;
             btnFilter.Enabled = l;
-            if (fMsg != null && !fMsg.IsDisposed) fMsg.Close();
+            Validator.Close(this);
         }
 
         private void SetStatus(string stat)
@@ -179,7 +181,7 @@ namespace kERP
                 {
                     var m = ItemLocationFacade.Select(Id);
                     ItemCode = m.item_code;
-                    var i = ItemFacade.Select(ItemCode);
+                    var i = ItemFacade.SelectLessCols(ItemCode);
                     txtItem.Text = Util.ConcatCodeDescription(m.item_code, i.Description);
                     txtBarcode.Text = i.Barcode;
                     txtLocation.Text = Util.ConcatCodeDescription(m.location_code, LocationFacade.GetDescription(m.location_code));
@@ -257,6 +259,32 @@ namespace kERP
             glbGeneral.Caption = LabelFacade.Get(prefix + "general") ?? glbGeneral.Caption;
             glbNote.Caption = LabelFacade.Get(prefix + "note") ?? glbNote.Caption;
             //todo: load the rest
+        }
+
+
+        private void CheckExists()
+        {        // Check if entered code already exists
+            if (txtItem.ReadOnly) return;
+            if (ItemCode.Length > 0 && LocationCode.Length > 0 && ItemLocationFacade.Exists(ItemCode, LocationCode, Id))
+            {
+                var valid = new Validator(this, "item_location");
+                valid.Add(txtItem, "item_invalid");
+            }
+            else
+                Validator.Close(this);
+        }
+
+        private void ShowItem(string search = "")
+        {
+            var f = new frmItem();
+            f.IsDlg = true;
+            f.SearchText = search;
+            if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            ItemCode = f.Code;
+            var m = ItemFacade.SelectLessCols(f.Id);
+            txtItem.Text = Util.ConcatCodeDescription(m.Code, m.Description);
+            txtBarcode.Text = m.Barcode;
+            txtLocation.Focus();
         }
 
         private bool Save()
@@ -476,7 +504,7 @@ namespace kERP
                 }
                 else
                     if (MessageFacade.Show(msg + "\r\n" + MessageFacade.proceed_confirmation, MessageFacade.active_inactive, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
-                        return;
+                    return;
             }
             try
             {
@@ -549,12 +577,12 @@ namespace kERP
                     }
                     else
                         if (MessageFacade.Show(msg + "\r\n" + MessageFacade.lock_override, LabelFacade.sys_unlock, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtItem.Text);
-                        else
-                            return;
+                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtItem.Text);
+                    else
+                        return;
                 }
-                txtLocation.SelectionStart = txtLocation.Text.Length;
-                txtLocation.Focus();
+                txtItem.SelectionStart = txtItem.Text.Length;
+                txtItem.Focus();
                 LockControls(false);
             }
             catch (Exception ex)
@@ -681,16 +709,6 @@ namespace kERP
             FormFacade.SaveFormSate(this);
         }
 
-        private void txtCode_Leave(object sender, EventArgs e)
-        {
-            // Check if entered code already exists
-            if (txtItem.ReadOnly) return;
-            if (ItemCode.Length > 0 && LocationCode.Length > 0 && ItemLocationFacade.Exists(ItemCode, LocationCode, Id))
-            {
-                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sys_branch);
-            }
-        }
-
         private void btnMode_Click(object sender, EventArgs e)
         {
             splitContainer1.IsSplitterFixed = !IsExpand;
@@ -759,14 +777,7 @@ namespace kERP
 
         private void btnItem_Click(object sender, EventArgs e)
         {
-            var f = new frmItem();
-            f.IsDlg = true;
-            if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
-            ItemCode = f.Code;
-            var m = ItemFacade.Select(ItemCode);
-            txtItem.Text = Util.ConcatCodeDescription(m.Code, m.Description);
-            txtBarcode.Text = m.Barcode;
-            txtLocation.Focus();
+            ShowItem();
         }
 
         private void btnLocation_Click(object sender, EventArgs e)
@@ -834,9 +845,28 @@ namespace kERP
             }
         }
 
-        private void mnuActive_Click(object sender, EventArgs e)
+        private void txtItem_Leave(object sender, EventArgs e)
         {
-
+            string sItem = txtItem.Text;
+            if (!txtItem.Enabled || txtItem.Text.Length == 0 || sItem.Contains(ConfigFacade.Code_Description_Separator)) return;
+            int count = ItemFacade.GetCount(sItem);
+            Validator.Close(this);
+            if (count == 1) // match 1
+            {
+                var m = ItemFacade.SelectLessCols(sItem);
+                ItemCode = m.Code;
+                txtItem.Text = Util.ConcatCodeDescription(m.Code, m.Description);
+                txtBarcode.Text = m.Barcode;
+                txtLocation.Focus();
+            }
+            else if (count > 1) // match multiple
+                ShowItem(sItem);
+            else    // < 0; not match
+            {
+                var valid = new Validator(this, "ic_item_location");
+                valid.Add(txtItem, "item_invalid");
+                valid.Show();
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ namespace kERP
 {
     public partial class frmItem : Form
     {
-        long Id = 0;
+        public long Id = 0;
         int RowIndex = 0;   // Current gird selected row
         bool IsExpand = false;
         bool IsDirty = false;
@@ -21,6 +21,7 @@ namespace kERP
         public string Description;
 
         frmMsg fMsg = null;
+        public string SearchText = "";
         string ModuleName = "IC Item";
         string TitleLabel = ItemFacade.TitleLabel;
 
@@ -346,6 +347,7 @@ namespace kERP
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
+                txtFind.Text = SearchText;
                 CurrencyFacade.LoadList(cboCurrency);
                 DataFacade.LoadList(cboType, "ic_item_type");
                 DataFacade.LoadList(cboDiscount, "ic_item_discount");
