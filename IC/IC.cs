@@ -72,10 +72,22 @@ namespace kERP
             return SqlFacade.Connection.Query<Location>(sql, new { Id }).FirstOrDefault();
         }
 
+        public static Location SelectLessCols(long Id)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "code, description", "Id = :Id");
+            return SqlFacade.Connection.Query<Location>(sql, new { Id }).FirstOrDefault();
+        }
+
         public static string GetDescription(string code)
         {
             var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
             return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
+        }
+
+        public static int GetCount(string value)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "count (*)", "status = 'A' and (" + SqlFacade.SqlILike("code, description", ":p") + ")");
+            return SqlFacade.Connection.ExecuteScalar<int>(sql, new { p = value });
         }
 
         public static void SetStatus(long Id, string status)
@@ -548,7 +560,7 @@ namespace kERP
 
         public static int GetCount(string value)
         {
-            var sql = SqlFacade.SqlSelect(TableName, "count (*)", "status = 'A' and (" + SqlFacade.SqlILike("code, description, barcode", ":p") + ")");
+            var sql = SqlFacade.SqlSelect(TableName, "count (*)", "status = 'A' and (" + SqlFacade.SqlILike("code, description, description2, barcode", ":p") + ")");
             return SqlFacade.Connection.ExecuteScalar<int>(sql, new { p = value });
         }
 

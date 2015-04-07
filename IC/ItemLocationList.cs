@@ -287,6 +287,31 @@ namespace kERP
             txtLocation.Focus();
         }
 
+        private void ShowLocation(string search = "")
+        {
+            var f = new frmLocation();
+            f.IsDlg = true;
+            f.SearchText = search;
+            if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            LocationCode = f.Code;
+            var m = LocationFacade.SelectLessCols(f.Id);
+            txtLocation.Text = Util.ConcatCodeDescription(m.Code, m.Description);            
+            txtLocation.Focus();
+        }
+
+        private void ShowSupplier(string search = "")
+        {
+            var f = new frmItem();
+            f.IsDlg = true;
+            f.SearchText = search;
+            if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            ItemCode = f.Code;
+            var m = ItemFacade.SelectLessCols(f.Id);
+            txtItem.Text = Util.ConcatCodeDescription(m.Code, m.Description);
+            txtBarcode.Text = m.Barcode;
+            txtLocation.Focus();
+        }
+
         private bool Save()
         {
             if (!IsValidated()) return false;
@@ -863,6 +888,30 @@ namespace kERP
                 ShowItem(sItem);
             else    // < 0; not match
             {
+                ItemCode = "";
+                var valid = new Validator(this, "ic_item_location");
+                valid.Add(txtItem, "item_invalid");
+                valid.Show();
+            }
+        }
+
+        private void txtLocation_Leave(object sender, EventArgs e)
+        {
+            string sLocation = txtLocation.Text;
+            if (!txtLocation.Enabled || txtLocation.Text.Length == 0 || sLocation.Contains(ConfigFacade.Code_Description_Separator)) return;
+            int count = LocationFacade.GetCount(sLocation);
+            Validator.Close(this);
+            if (count == 1) // match 1
+            {                               
+                txtLocation.Text = Util.ConcatCodeDescription(m.Code, LocationFacade.GetDescription());
+                txtBarcode.Text = m.Barcode;
+                txtLocation.Focus();
+            }
+            else if (count > 1) // match multiple
+                ShowItem(sItem);
+            else    // < 0; not match
+            {
+                ItemCode = "";
                 var valid = new Validator(this, "ic_item_location");
                 valid.Add(txtItem, "item_invalid");
                 valid.Show();

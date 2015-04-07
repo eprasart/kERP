@@ -9,13 +9,14 @@ namespace kERP
 {
     public partial class frmLocation : Form
     {
-        long Id = 0;
+        public long Id = 0;
         int RowIndex = 0;   // Current gird selected row
         bool IsExpand = false;
         bool IsDirty = false;
         bool IsIgnore = true;
 
         public bool IsDlg = false; // Show dialog box for selecting one 
+        public string SearchText = "";
         public string Code;
         public string Description;
 
@@ -297,6 +298,7 @@ namespace kERP
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
+                txtFind.Text = SearchText;
                 DataFacade.LoadList(cboType, "ic_location_type");
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();

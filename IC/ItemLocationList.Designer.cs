@@ -628,7 +628,9 @@
             this.txtLocation.Size = new System.Drawing.Size(201, 25);
             this.txtLocation.TabIndex = 29;
             this.txtLocation.TabOnEnter = true;
+            this.txtLocation.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLocation_KeyDown);
+            this.txtLocation.Leave += new System.EventHandler(this.txtLocation_Leave);
             // 
             // glbGeneral
             // 
