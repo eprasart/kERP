@@ -55,21 +55,22 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper">
-      <HintPath>packages\Dapper.1.38\lib\net45\Dapper.dll</HintPath>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.1.40\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Mono.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Npgsql.2.2.3\lib\net45\Mono.Security.dll</HintPath>
+      <HintPath>packages\Npgsql.2.2.5\lib\net45\Mono.Security.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Npgsql, Version=2.2.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Npgsql.2.2.3\lib\net45\Npgsql.dll</HintPath>
+    <Reference Include="Npgsql, Version=2.2.5.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>packages\Npgsql.2.2.5\lib\net45\Npgsql.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -84,27 +85,63 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AP\AP.cs" />
-    <Compile Include="AP\VendorList.cs">
+    <Compile Include="AP\SupplierList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AP\VendorList.Designer.cs">
-      <DependentUpon>VendorList.cs</DependentUpon>
+    <Compile Include="AP\SupplierList.Designer.cs">
+      <DependentUpon>SupplierList.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Data.cs" />
     <Compile Include="Common\Identity.cs" />
+    <Compile Include="Common\Language.cs" />
     <Compile Include="Common\Report.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Common\Report.designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="General\HolidayList.cs">
+    <Compile Include="SM\RoleList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="General\HolidayList.Designer.cs">
-      <DependentUpon>HolidayList.cs</DependentUpon>
+    <Compile Include="SM\RoleList.Designer.cs">
+      <DependentUpon>RoleList.cs</DependentUpon>
     </Compile>
-    <Compile Include="General\Loan.cs" />
+    <Compile Include="System\HomeUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="System\HomeUI.Designer.cs">
+      <DependentUpon>HomeUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\POUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="System\POUI.Designer.cs">
+      <DependentUpon>POUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\APUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="System\APUI.Designer.cs">
+      <DependentUpon>APUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\SYSUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="System\SYSUI.Designer.cs">
+      <DependentUpon>SYSUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\SMUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="System\SMUI.Designer.cs">
+      <DependentUpon>SMUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\ICUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="System\ICUI.Designer.cs">
+      <DependentUpon>ICUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="IC\Classification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +160,12 @@
     <Compile Include="IC\ItemList.Designer.cs">
       <DependentUpon>ItemList.cs</DependentUpon>
     </Compile>
+    <Compile Include="IC\ItemSupplierList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IC\ItemSupplierList.Designer.cs">
+      <DependentUpon>ItemSupplierList.cs</DependentUpon>
+    </Compile>
     <Compile Include="IC\ItemLocationList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,12 +177,6 @@
     </Compile>
     <Compile Include="IC\UnitMeasureList.Designer.cs">
       <DependentUpon>UnitMeasureList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Loan\Product.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Loan\Product.Designer.cs">
-      <DependentUpon>Product.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Util.cs" />
     <Compile Include="Common\SqlFacade.cs" />
@@ -160,7 +197,6 @@
     </Compile>
     <Compile Include="IC\IC.cs" />
     <Compile Include="General\Branch.cs" />
-    <Compile Include="Loan\Loan.cs" />
     <Compile Include="General\LoanDS.cs">
       <DependentUpon>LoanDS.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -170,11 +206,23 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Loan\LoanList.cs">
+    <Compile Include="Common\ImageViewer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Loan\LoanList.Designer.cs">
-      <DependentUpon>LoanList.cs</DependentUpon>
+    <Compile Include="Common\ImageViewer.Designer.cs">
+      <DependentUpon>ImageViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SM\PwdReset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SM\PwdReset.Designer.cs">
+      <DependentUpon>PwdReset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SM\UserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SM\UserList.Designer.cs">
+      <DependentUpon>UserList.cs</DependentUpon>
     </Compile>
     <Compile Include="System\Notification.cs">
       <SubType>Form</SubType>
@@ -200,20 +248,8 @@
     <Compile Include="SM\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="SM\PwdReset.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SM\PwdReset.Designer.cs">
-      <DependentUpon>PwdReset.cs</DependentUpon>
-    </Compile>
     <Compile Include="SM\Session.cs" />
     <Compile Include="SM\SM.cs" />
-    <Compile Include="SM\UserList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SM\UserList.Designer.cs">
-      <DependentUpon>UserList.cs</DependentUpon>
-    </Compile>
     <Compile Include="System\Msg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,12 +274,33 @@
       <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Validator.cs" />
-    <EmbeddedResource Include="AP\VendorList.resx">
-      <DependentUpon>VendorList.cs</DependentUpon>
+    <EmbeddedResource Include="AP\SupplierList.resx">
+      <DependentUpon>SupplierList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="bin\Debug\Report\Schedule.rdlc" />
     <EmbeddedResource Include="Common\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SM\RoleList.resx">
+      <DependentUpon>RoleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\HomeUI.resx">
+      <DependentUpon>HomeUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\POUI.resx">
+      <DependentUpon>POUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\APUI.resx">
+      <DependentUpon>APUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\SYSUI.resx">
+      <DependentUpon>SYSUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\SMUI.resx">
+      <DependentUpon>SMUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\ICUI.resx">
+      <DependentUpon>ICUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IC\Classification.resx">
       <DependentUpon>Classification.cs</DependentUpon>
@@ -253,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IC\ItemList.resx">
       <DependentUpon>ItemList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IC\ItemSupplierList.resx">
+      <DependentUpon>ItemSupplierList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IC\ItemLocationList.resx">
       <DependentUpon>ItemLocationList.cs</DependentUpon>
@@ -266,20 +326,11 @@
     <EmbeddedResource Include="General\BranchList.resx">
       <DependentUpon>BranchList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="General\HolidayList.resx">
-      <DependentUpon>HolidayList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Loan\Product.resx">
-      <DependentUpon>Product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Loan\LoanList.resx">
-      <DependentUpon>LoanList.cs</DependentUpon>
+    <EmbeddedResource Include="Common\ImageViewer.resx">
+      <DependentUpon>ImageViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SM\AuditLog.resx">
       <DependentUpon>AuditLog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SM\Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SM\PwdReset.resx">
       <DependentUpon>PwdReset.cs</DependentUpon>
@@ -287,8 +338,12 @@
     <EmbeddedResource Include="SM\UserList.resx">
       <DependentUpon>UserList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SM\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="System\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -326,61 +381,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\New.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Recyclebin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Check.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Brush.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SaveNew.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Copy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Next.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Unlock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Active.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Inactive.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Tick.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Filter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Expand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Export.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -404,24 +404,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Question.png" />
+    <Content Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Error.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Exclamation.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Information.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Refresh.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Preview.png" />
-  </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\kUI\kUI.csproj">
       <Project>{30e4439a-c188-479f-852b-a58cbf8b0ab6}</Project>

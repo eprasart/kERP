@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace kERP.SM
+namespace kERP
 {
     public partial class frmAuditLog : Form
     {
@@ -24,7 +24,6 @@ namespace kERP.SM
 
         private void frmAuditLog_Load(object sender, EventArgs e)
         {
-            Icon = Properties.Resources.Icon;            
             RefreshGrid();
         }
 

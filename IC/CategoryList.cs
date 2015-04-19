@@ -9,13 +9,14 @@ namespace kERP
 {
     public partial class frmCategory : Form
     {
-        long Id = 0;
+        public long Id = 0;
         int RowIndex = 0;   // Current gird selected row
         bool IsExpand = false;
         bool IsDirty = false;
         bool IsIgnore = true;
 
         public bool IsDlg = false; // Show dialog box for selecting one 
+        public string SearchText = "";
         public string Code;
         public string Description;
 
@@ -26,6 +27,23 @@ namespace kERP
         public frmCategory()
         {
             InitializeComponent();
+        }
+        private void LoadImages()
+        {
+            btnSelect.Image = ImageFacade.FromFile("Select");
+            btnNew.Image = ImageFacade.FromFile("New");
+            btnCopy.Image = ImageFacade.FromFile("Copy");
+            btnUnlock.Image = ImageFacade.FromFile("Unlock");
+            btnSave.Image = ImageFacade.FromFile("Save");
+            btnSaveNew.Image = ImageFacade.FromFile("SaveNew");
+            btnActive.Image = ImageFacade.FromFile("Inactive");
+            btnDelete.Image = ImageFacade.FromFile("Delete");
+            btnMode.Image = ImageFacade.FromFile("Mode");
+            btnExport.Image = ImageFacade.FromFile("Export");
+
+            btnFind.Image = ImageFacade.FromFile("Find");
+            btnClear.Image = ImageFacade.FromFile("Clear");
+            btnFilter.Image = ImageFacade.FromFile("Filter");
         }
 
         private string GetStatus()
@@ -112,15 +130,15 @@ namespace kERP
             {
                 if (btnActive.Text == LabelFacade.sys_button_inactive) return;
                 btnActive.Text = LabelFacade.sys_button_inactive;
-                if (btnActive.Image != Properties.Resources.Inactive)
-                    btnActive.Image = Properties.Resources.Inactive;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_inactive))
+                    btnActive.Image = ImageFacade.FromFile("Inactive");
             }
             else
             {
                 if (btnActive.Text == LabelFacade.sys_button_active) return;
                 btnActive.Text = LabelFacade.sys_button_active;
-                if (btnActive.Image != Properties.Resources.Active)
-                    btnActive.Image = Properties.Resources.Active;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_active))
+                    btnActive.Image = ImageFacade.FromFile("Active");
             }
         }
 
@@ -147,7 +165,7 @@ namespace kERP
 
         private void LoadData()
         {
-            var Id = dgvList.Id;
+            Id = dgvList.Id;
             if (Id != 0)
                 try
                 {
@@ -269,6 +287,7 @@ namespace kERP
         {
             try
             {
+                LoadImages();
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
@@ -341,7 +360,6 @@ namespace kERP
         {
             try
             {
-                var Id = dgvList.Id;
                 if (Id == 0) return;
                 // If referenced
                 //todo: check if exist in ic_item
@@ -430,7 +448,6 @@ namespace kERP
 
         private void btnActive_Click(object sender, EventArgs e)
         {
-            var Id = dgvList.Id;
             if (Id == 0) return;
 
             string status = btnActive.Text == LabelFacade.sys_button_inactive ? Constant.RecordStatus_InActive : Constant.RecordStatus_Active;
@@ -526,8 +543,7 @@ namespace kERP
                         else
                             return;
                 }
-                txtDescription.SelectionStart = txtDescription.Text.Length;
-                txtDescription.Focus();
+                txtDescription.Focus2();
                 LockControls(false);
             }
             catch (Exception ex)
@@ -647,7 +663,7 @@ namespace kERP
             if (txtCode.ReadOnly) return;
             if (CategoryFacade.Exists(txtCode.Text.Trim()))
             {
-                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sys_branch);
+                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.SYS_Branch);
             }
         }
 
@@ -721,9 +737,15 @@ namespace kERP
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            Id = dgvList.Id;
             Code = dgvList.CurrentRow.Cells["colCode"].Value.ToString();
             Description = dgvList.CurrentRow.Cells["colDescription"].Value.ToString();
             DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void txtCode_Enter(object sender, EventArgs e)
+        {
+            Language.SwitchToEN();
         }
     }
 }

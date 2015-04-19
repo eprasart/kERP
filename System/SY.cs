@@ -216,6 +216,7 @@ namespace kERP
         public static CharacterCasing Character_Casing;
         public static int Code_Max_Length;
 
+        public static bool Log_Activity;
         public static bool Log_Missing_Label;
 
         public static string Toolbar_Icon_Display_Type;
@@ -268,6 +269,8 @@ namespace kERP
             Code_Description_Separator = Get("sys_code_description_separator", " - ");
             SetCharacterCasing();
             Code_Max_Length = GetInt("sys_code_max_length", "15");
+
+            Log_Activity = GetBool("sys_log_activity", "Y");    // Session log
             Log_Missing_Label = GetBool("sys_log_missing_label", App.session.Username, "N");    // Speed up by not not write too much to db unless turn on
 
             Toolbar_Icon_Display_Type = Get("sys_toolbar_icon_display_type", App.session.Username, "IT");
@@ -406,16 +409,25 @@ namespace kERP
         public static string sys_msg_prefix;
 
         // Form
-        public static string sys_branch;
-        public static string sys_product;
+        public static string SYS_Branch;
+
         public static string IC_Category;
         public static string IC_Classification;
         public static string IC_Location;
         public static string IC_Item_Location;
+        public static string IC_Item_Supplier;
         public static string IC_Item;
         public static string IC_Unit_Measure;
+
         public static string AP_Supplier;
-        public static string sys_loan;
+
+        public static string SM_User;
+        public static string SM_Role;
+        public static string SM_Function;
+        public static string SM_UserRole;
+        public static string SM_UserFunction;
+        public static string SM_AuditLog;
+
 
         // Button
         public static string sys_cancel;
@@ -486,19 +498,24 @@ namespace kERP
         public static void Load()
         {
             sys_msg_prefix = Get("sys_msg_prefix", "- ");
+            SYS_Branch = Get("sys_branch");
 
-            sys_branch = Get("sys_branch");
-            sys_product = Get("sys_product");
             IC_Category = Get("ic_category");
             IC_Classification = Get("ic_classification");
             IC_Unit_Measure = Get("ic_unit_measure");
             IC_Location = Get("ic_location");
             IC_Item = Get("ic_item");
             IC_Item_Location = Get("ic_item_location");
+            IC_Item_Supplier = Get("ic_item_supplier");
             AP_Supplier = Get("ap_supplier");
-            sys_loan = Get("sys_loan");
 
 
+            SM_User = Get("sm_user");
+            SM_Role = Get("sm_role");
+            SM_Function = Get("sm_function");
+            SM_UserRole = Get("sm_userrole");
+            SM_UserFunction = Get("sm_userfunction");
+            SM_AuditLog = Get("sm_audit_log");
 
             sys_cancel = Get("sys_cancel");
             sys_close = Get("sys_close");

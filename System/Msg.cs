@@ -70,13 +70,13 @@ namespace kERP
             switch (icon)
             {
                 case MessageBoxIcon.Error:
-                    picIcon.Image = Properties.Resources.Error;
+                    picIcon.Image = ImageFacade.FromFile("Error"); 
                     break;
                 case MessageBoxIcon.Exclamation:
-                    picIcon.Image = Properties.Resources.Exclamation;
+                    picIcon.Image = ImageFacade.FromFile("Exclamation"); 
                     break;
                 case MessageBoxIcon.Question:
-                    picIcon.Image = Properties.Resources.Question;
+                    picIcon.Image = ImageFacade.FromFile("Question");
                     break;
                 case MessageBoxIcon.None:
                     picIcon.Image = null;

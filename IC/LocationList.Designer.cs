@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnSelect = new System.Windows.Forms.ToolStripButton();
             this.btnNew = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
             this.btnUnlock = new System.Windows.Forms.ToolStripButton();
@@ -88,7 +89,6 @@
             this.mnuShowA = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowI = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnSelect = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -123,12 +123,21 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnSelect
+            // 
+            this.btnSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(50, 22);
+            this.btnSelect.Text = "Select";
+            this.btnSelect.ToolTipText = "New (Ctrl+N)";
+            this.btnSelect.Visible = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // btnNew
             // 
-            this.btnNew.Image = global::kERP.Properties.Resources.New;
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(55, 22);
+            this.btnNew.Size = new System.Drawing.Size(39, 22);
             this.btnNew.Text = "&New";
             this.btnNew.ToolTipText = "New (Ctrl+N)";
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -136,10 +145,9 @@
             // btnCopy
             // 
             this.btnCopy.Enabled = false;
-            this.btnCopy.Image = global::kERP.Properties.Resources.Copy;
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(60, 22);
+            this.btnCopy.Size = new System.Drawing.Size(44, 22);
             this.btnCopy.Text = "Cop&y";
             this.btnCopy.ToolTipText = "Copy (Ctrl+Y)";
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
@@ -147,10 +155,9 @@
             // btnUnlock
             // 
             this.btnUnlock.Enabled = false;
-            this.btnUnlock.Image = global::kERP.Properties.Resources.Unlock;
             this.btnUnlock.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUnlock.Name = "btnUnlock";
-            this.btnUnlock.Size = new System.Drawing.Size(70, 22);
+            this.btnUnlock.Size = new System.Drawing.Size(54, 22);
             this.btnUnlock.Text = "Unl&ock";
             this.btnUnlock.ToolTipText = "Unlock (Ctrl+L)";
             this.btnUnlock.Click += new System.EventHandler(this.btnUnlock_Click);
@@ -158,10 +165,9 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Image = global::kERP.Properties.Resources.Save;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(60, 22);
+            this.btnSave.Size = new System.Drawing.Size(44, 22);
             this.btnSave.Text = "&Save";
             this.btnSave.ToolTipText = "Save (Ctrl+S)";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -169,10 +175,9 @@
             // btnSaveNew
             // 
             this.btnSaveNew.Enabled = false;
-            this.btnSaveNew.Image = global::kERP.Properties.Resources.SaveNew;
             this.btnSaveNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSaveNew.Name = "btnSaveNew";
-            this.btnSaveNew.Size = new System.Drawing.Size(116, 22);
+            this.btnSaveNew.Size = new System.Drawing.Size(100, 22);
             this.btnSaveNew.Text = "Save and Ne&w";
             this.btnSaveNew.ToolTipText = "Save and New (Ctrl+W)";
             this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
@@ -185,10 +190,9 @@
             // btnActive
             // 
             this.btnActive.Enabled = false;
-            this.btnActive.Image = global::kERP.Properties.Resources.Inactive;
             this.btnActive.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnActive.Name = "btnActive";
-            this.btnActive.Size = new System.Drawing.Size(74, 22);
+            this.btnActive.Size = new System.Drawing.Size(58, 22);
             this.btnActive.Text = "Inactiv&e";
             this.btnActive.ToolTipText = "Active/Inactive (Ctrl+E)";
             this.btnActive.Click += new System.EventHandler(this.btnActive_Click);
@@ -196,10 +200,9 @@
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Image = global::kERP.Properties.Resources.Recyclebin;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(68, 22);
+            this.btnDelete.Size = new System.Drawing.Size(52, 22);
             this.btnDelete.Text = "Delete";
             this.btnDelete.ToolTipText = "Delete (Del)";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -211,20 +214,18 @@
             // 
             // btnMode
             // 
-            this.btnMode.Image = global::kERP.Properties.Resources.Expand;
             this.btnMode.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMode.Name = "btnMode";
-            this.btnMode.Size = new System.Drawing.Size(88, 22);
+            this.btnMode.Size = new System.Drawing.Size(72, 22);
             this.btnMode.Text = "List/Detail";
             this.btnMode.ToolTipText = "Toggle between list and detail mode (F9)";
             this.btnMode.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // btnExport
             // 
-            this.btnExport.Image = global::kERP.Properties.Resources.Export;
             this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(66, 22);
+            this.btnExport.Size = new System.Drawing.Size(50, 22);
             this.btnExport.Text = "Export";
             this.btnExport.ToolTipText = "Export all data to CSV file (F12)";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -274,7 +275,6 @@
             // 
             // btnFind
             // 
-            this.btnFind.Image = global::kERP.Properties.Resources.Search;
             this.btnFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFind.Location = new System.Drawing.Point(1, 27);
             this.btnFind.Name = "btnFind";
@@ -287,7 +287,6 @@
             // 
             // btnClear
             // 
-            this.btnClear.Image = global::kERP.Properties.Resources.Brush;
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClear.Location = new System.Drawing.Point(69, 27);
             this.btnClear.Name = "btnClear";
@@ -300,7 +299,6 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Image = global::kERP.Properties.Resources.Filter;
             this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFilter.Location = new System.Drawing.Point(137, 27);
             this.btnFilter.Name = "btnFilter";
@@ -316,21 +314,21 @@
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Honeydew;
-            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Honeydew;
+            this.dgvList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvList.BackgroundColor = System.Drawing.Color.White;
             this.dgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -341,14 +339,14 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvList.Location = new System.Drawing.Point(1, 51);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
@@ -386,8 +384,8 @@
             // 
             this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.colDescription.DataPropertyName = "description";
-            dataGridViewCellStyle8.NullValue = null;
-            this.colDescription.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.NullValue = null;
+            this.colDescription.DefaultCellStyle = dataGridViewCellStyle3;
             this.colDescription.HeaderText = "Description";
             this.colDescription.Name = "colDescription";
             this.colDescription.ReadOnly = true;
@@ -406,8 +404,8 @@
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column3.DataPropertyName = "phone";
-            dataGridViewCellStyle9.Format = "dd-MM-yy";
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Format = "dd-MM-yy";
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column3.HeaderText = "Phone";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -520,6 +518,7 @@
             this.txtCode.TabIndex = 1;
             this.txtCode.TabOnEnter = true;
             this.txtCode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtCode.Enter += new System.EventHandler(this.SwitchToEN_Enter);
             this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
             // glbNote
@@ -698,6 +697,7 @@
             this.txtPhone.TabIndex = 11;
             this.txtPhone.TabOnEnter = true;
             this.txtPhone.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtPhone.Enter += new System.EventHandler(this.SwitchToEN_Enter);
             // 
             // txtEmail
             // 
@@ -712,6 +712,7 @@
             this.txtEmail.TabIndex = 15;
             this.txtEmail.TabOnEnter = true;
             this.txtEmail.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtEmail.Enter += new System.EventHandler(this.SwitchToEN_Enter);
             // 
             // label5
             // 
@@ -748,13 +749,14 @@
             this.txtFax.TabIndex = 13;
             this.txtFax.TabOnEnter = true;
             this.txtFax.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtFax.Enter += new System.EventHandler(this.SwitchToEN_Enter);
             // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(734, 364);
+            this.tabPage2.Size = new System.Drawing.Size(748, 351);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Item";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -785,17 +787,6 @@
             this.mnuShowI.Text = "Show Inactive";
             this.mnuShowI.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
             // 
-            // btnSelect
-            // 
-            this.btnSelect.Image = global::kERP.Properties.Resources.Tick;
-            this.btnSelect.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(66, 22);
-            this.btnSelect.Text = "Select";
-            this.btnSelect.ToolTipText = "New (Ctrl+N)";
-            this.btnSelect.Visible = false;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
             // frmLocation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -810,7 +801,7 @@
             this.Name = "frmLocation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IC Location";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmUnitMeasureList_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLocation_FormClosing);
             this.Load += new System.EventHandler(this.frmLocationList_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

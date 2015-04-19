@@ -31,8 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnNew = new System.Windows.Forms.ToolStripButton();
             this.btnCopy = new System.Windows.Forms.ToolStripButton();
@@ -54,12 +59,12 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtFind = new kUI.TextBox(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -86,15 +91,15 @@
             this.txtLeadTime = new kUI.TextBox(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
-            this.txtOrderPoint = new kUI.TextBox(this.components);
-            this.textBox4 = new kUI.TextBox(this.components);
-            this.textBox6 = new kUI.TextBox(this.components);
+            this.txtMinQty = new kUI.TextBox(this.components);
+            this.txtStockUoM = new kUI.TextBox(this.components);
+            this.txtLastSupplier = new kUI.TextBox(this.components);
             this.txtBarcode = new kUI.TextBox(this.components);
-            this.textBox2 = new kUI.TextBox(this.components);
-            this.textBox3 = new kUI.TextBox(this.components);
-            this.textBox1 = new kUI.TextBox(this.components);
+            this.txtAvgCost = new kUI.TextBox(this.components);
+            this.txtLastCost = new kUI.TextBox(this.components);
+            this.txtOnhand = new kUI.TextBox(this.components);
             this.txtStdCost = new kUI.TextBox(this.components);
-            this.txtOrderQty = new kUI.TextBox(this.components);
+            this.txtMaxQty = new kUI.TextBox(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupLabel3 = new kUI.GroupLabel();
             this.groupLabel2 = new kUI.GroupLabel();
@@ -166,10 +171,9 @@
             // 
             // btnNew
             // 
-            this.btnNew.Image = global::kERP.Properties.Resources.New;
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(55, 22);
+            this.btnNew.Size = new System.Drawing.Size(39, 22);
             this.btnNew.Text = "&New";
             this.btnNew.ToolTipText = "New (Ctrl+N)";
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -177,10 +181,9 @@
             // btnCopy
             // 
             this.btnCopy.Enabled = false;
-            this.btnCopy.Image = global::kERP.Properties.Resources.Copy;
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(60, 22);
+            this.btnCopy.Size = new System.Drawing.Size(44, 22);
             this.btnCopy.Text = "Cop&y";
             this.btnCopy.ToolTipText = "Copy (Ctrl+Y)";
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
@@ -188,10 +191,9 @@
             // btnUnlock
             // 
             this.btnUnlock.Enabled = false;
-            this.btnUnlock.Image = global::kERP.Properties.Resources.Unlock;
             this.btnUnlock.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUnlock.Name = "btnUnlock";
-            this.btnUnlock.Size = new System.Drawing.Size(70, 22);
+            this.btnUnlock.Size = new System.Drawing.Size(54, 22);
             this.btnUnlock.Text = "Unl&ock";
             this.btnUnlock.ToolTipText = "Unlock (Ctrl+L)";
             this.btnUnlock.Click += new System.EventHandler(this.btnUnlock_Click);
@@ -199,10 +201,9 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Image = global::kERP.Properties.Resources.Save;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(60, 22);
+            this.btnSave.Size = new System.Drawing.Size(44, 22);
             this.btnSave.Text = "&Save";
             this.btnSave.ToolTipText = "Save (Ctrl+S)";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -210,10 +211,9 @@
             // btnSaveNew
             // 
             this.btnSaveNew.Enabled = false;
-            this.btnSaveNew.Image = global::kERP.Properties.Resources.SaveNew;
             this.btnSaveNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSaveNew.Name = "btnSaveNew";
-            this.btnSaveNew.Size = new System.Drawing.Size(116, 22);
+            this.btnSaveNew.Size = new System.Drawing.Size(100, 22);
             this.btnSaveNew.Text = "Save and Ne&w";
             this.btnSaveNew.ToolTipText = "Save and New (Ctrl+W)";
             this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
@@ -226,10 +226,9 @@
             // btnActive
             // 
             this.btnActive.Enabled = false;
-            this.btnActive.Image = global::kERP.Properties.Resources.Inactive;
             this.btnActive.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnActive.Name = "btnActive";
-            this.btnActive.Size = new System.Drawing.Size(74, 22);
+            this.btnActive.Size = new System.Drawing.Size(58, 22);
             this.btnActive.Text = "Inactiv&e";
             this.btnActive.ToolTipText = "Active/Inactive (Ctrl+E)";
             this.btnActive.Click += new System.EventHandler(this.btnActive_Click);
@@ -237,10 +236,9 @@
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Image = global::kERP.Properties.Resources.Recyclebin;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(68, 22);
+            this.btnDelete.Size = new System.Drawing.Size(52, 22);
             this.btnDelete.Text = "Delete";
             this.btnDelete.ToolTipText = "Delete (Del)";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -252,20 +250,18 @@
             // 
             // btnMode
             // 
-            this.btnMode.Image = global::kERP.Properties.Resources.Expand;
             this.btnMode.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMode.Name = "btnMode";
-            this.btnMode.Size = new System.Drawing.Size(88, 22);
+            this.btnMode.Size = new System.Drawing.Size(72, 22);
             this.btnMode.Text = "List/Detail";
             this.btnMode.ToolTipText = "Toggle between list and detail mode (F9)";
             this.btnMode.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // btnExport
             // 
-            this.btnExport.Image = global::kERP.Properties.Resources.Export;
             this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(66, 22);
+            this.btnExport.Size = new System.Drawing.Size(50, 22);
             this.btnExport.Text = "Export";
             this.btnExport.ToolTipText = "Export all data to CSV file (F12)";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -315,7 +311,6 @@
             // 
             // btnFind
             // 
-            this.btnFind.Image = global::kERP.Properties.Resources.Search;
             this.btnFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFind.Location = new System.Drawing.Point(1, 27);
             this.btnFind.Name = "btnFind";
@@ -328,7 +323,6 @@
             // 
             // btnClear
             // 
-            this.btnClear.Image = global::kERP.Properties.Resources.Brush;
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClear.Location = new System.Drawing.Point(69, 27);
             this.btnClear.Name = "btnClear";
@@ -341,7 +335,6 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Image = global::kERP.Properties.Resources.Filter;
             this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFilter.Location = new System.Drawing.Point(137, 27);
             this.btnFilter.Name = "btnFilter";
@@ -377,20 +370,20 @@
             this.Column1,
             this.colCode,
             this.colDescription,
-            this.Column2,
             this.Column4,
             this.Column5,
             this.Column6,
             this.Column7,
-            this.Column8});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column8,
+            this.Column2});
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvList.Location = new System.Drawing.Point(1, 51);
             this.dgvList.Margin = new System.Windows.Forms.Padding(4);
@@ -417,12 +410,11 @@
             // 
             // colCode
             // 
-            this.colCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.colCode.DataPropertyName = "item";
             this.colCode.HeaderText = "Item";
             this.colCode.Name = "colCode";
             this.colCode.ReadOnly = true;
-            this.colCode.Width = 58;
+            this.colCode.Width = 150;
             // 
             // colDescription
             // 
@@ -435,19 +427,12 @@
             this.colDescription.ReadOnly = true;
             this.colDescription.Width = 84;
             // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column2.DataPropertyName = "supplier";
-            this.Column2.HeaderText = "Default Supplier";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 128;
-            // 
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column4.DataPropertyName = "std_cost";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column4.HeaderText = "Standard Cost";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -457,6 +442,8 @@
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Column5.DataPropertyName = "onhand";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column5.HeaderText = "Onhand";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -465,27 +452,43 @@
             // Column6
             // 
             this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column6.DataPropertyName = "order_point";
-            this.Column6.HeaderText = "Order Point";
+            this.Column6.DataPropertyName = "min_qty";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Column6.HeaderText = "Min. Qty";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
+            this.Column6.Width = 80;
             // 
             // Column7
             // 
             this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column7.DataPropertyName = "order_qty";
-            this.Column7.HeaderText = "Order Qty";
+            this.Column7.DataPropertyName = "max_qty";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Column7.HeaderText = "Max. Qty";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
-            this.Column7.Width = 90;
+            this.Column7.Width = 84;
             // 
             // Column8
             // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column8.DataPropertyName = "delivery_lead_time";
-            this.Column8.HeaderText = "Delievery Lead Time";
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column8.DataPropertyName = "lead_time";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Column8.HeaderText = "Lead Time";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
+            this.Column8.Width = 98;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.DataPropertyName = "supplier";
+            this.Column2.HeaderText = "Default Supplier";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // txtFind
             // 
@@ -543,15 +546,15 @@
             this.tabPage1.Controls.Add(this.txtLeadTime);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.lblCode);
-            this.tabPage1.Controls.Add(this.txtOrderPoint);
-            this.tabPage1.Controls.Add(this.textBox4);
-            this.tabPage1.Controls.Add(this.textBox6);
+            this.tabPage1.Controls.Add(this.txtMinQty);
+            this.tabPage1.Controls.Add(this.txtStockUoM);
+            this.tabPage1.Controls.Add(this.txtLastSupplier);
             this.tabPage1.Controls.Add(this.txtBarcode);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.txtAvgCost);
+            this.tabPage1.Controls.Add(this.txtLastCost);
+            this.tabPage1.Controls.Add(this.txtOnhand);
             this.tabPage1.Controls.Add(this.txtStdCost);
-            this.tabPage1.Controls.Add(this.txtOrderQty);
+            this.tabPage1.Controls.Add(this.txtMaxQty);
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -562,8 +565,8 @@
             // 
             // btnItem
             // 
+            this.btnItem.Enabled = false;
             this.btnItem.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnItem.Image = global::kERP.Properties.Resources.Search;
             this.btnItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnItem.Location = new System.Drawing.Point(344, 43);
             this.btnItem.Name = "btnItem";
@@ -576,8 +579,8 @@
             // 
             // btnSupplier
             // 
+            this.btnSupplier.Enabled = false;
             this.btnSupplier.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSupplier.Image = global::kERP.Properties.Resources.Search;
             this.btnSupplier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSupplier.Location = new System.Drawing.Point(344, 109);
             this.btnSupplier.Name = "btnSupplier";
@@ -590,8 +593,8 @@
             // 
             // btnLocation
             // 
+            this.btnLocation.Enabled = false;
             this.btnLocation.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLocation.Image = global::kERP.Properties.Resources.Search;
             this.btnLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLocation.Location = new System.Drawing.Point(344, 76);
             this.btnLocation.Name = "btnLocation";
@@ -612,9 +615,11 @@
             this.txtSupplier.Numeric = false;
             this.txtSupplier.ReadOnly = true;
             this.txtSupplier.Size = new System.Drawing.Size(201, 25);
-            this.txtSupplier.TabIndex = 29;
+            this.txtSupplier.TabIndex = 5;
             this.txtSupplier.TabOnEnter = true;
+            this.txtSupplier.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSupplier_KeyDown);
+            this.txtSupplier.Leave += new System.EventHandler(this.txtSupplier_Leave);
             // 
             // txtLocation
             // 
@@ -626,7 +631,7 @@
             this.txtLocation.Numeric = false;
             this.txtLocation.ReadOnly = true;
             this.txtLocation.Size = new System.Drawing.Size(201, 25);
-            this.txtLocation.TabIndex = 29;
+            this.txtLocation.TabIndex = 3;
             this.txtLocation.TabOnEnter = true;
             this.txtLocation.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             this.txtLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLocation_KeyDown);
@@ -639,7 +644,7 @@
             this.glbGeneral.Location = new System.Drawing.Point(7, 15);
             this.glbGeneral.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
             this.glbGeneral.Name = "glbGeneral";
-            this.glbGeneral.Size = new System.Drawing.Size(347, 21);
+            this.glbGeneral.Size = new System.Drawing.Size(753, 21);
             this.glbGeneral.TabIndex = 0;
             this.glbGeneral.TabStop = false;
             // 
@@ -683,7 +688,7 @@
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
             this.txtNote.Size = new System.Drawing.Size(757, 171);
-            this.txtNote.TabIndex = 16;
+            this.txtNote.TabIndex = 26;
             this.txtNote.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // label4
@@ -693,7 +698,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(126, 17);
-            this.label4.TabIndex = 2;
+            this.label4.TabIndex = 4;
             this.label4.Text = "Default supplier";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -715,8 +720,8 @@
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 17);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Order point";
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Minimum quantity";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblDescription
@@ -726,7 +731,7 @@
             this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(126, 17);
-            this.lblDescription.TabIndex = 8;
+            this.lblDescription.TabIndex = 6;
             this.lblDescription.Text = "Delivery lead time";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -737,7 +742,7 @@
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(140, 17);
-            this.label8.TabIndex = 14;
+            this.label8.TabIndex = 22;
             this.label8.Text = "Stock unit of measure";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -748,7 +753,7 @@
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(140, 17);
-            this.label11.TabIndex = 14;
+            this.label11.TabIndex = 24;
             this.label11.Text = "Last supplier";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -759,7 +764,7 @@
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(140, 17);
-            this.label6.TabIndex = 14;
+            this.label6.TabIndex = 18;
             this.label6.Text = "Average cost";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -781,7 +786,7 @@
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(140, 17);
-            this.label7.TabIndex = 14;
+            this.label7.TabIndex = 20;
             this.label7.Text = "Last cost";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -792,7 +797,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 17);
-            this.label5.TabIndex = 14;
+            this.label5.TabIndex = 16;
             this.label5.Text = "Qty onhand";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -803,7 +808,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(126, 17);
-            this.label3.TabIndex = 14;
+            this.label3.TabIndex = 12;
             this.label3.Text = "Standard cost";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -814,12 +819,14 @@
             this.txtLeadTime.Location = new System.Drawing.Point(141, 143);
             this.txtLeadTime.Margin = new System.Windows.Forms.Padding(4);
             this.txtLeadTime.Name = "txtLeadTime";
-            this.txtLeadTime.Numeric = false;
+            this.txtLeadTime.Numeric = true;
             this.txtLeadTime.ReadOnly = true;
             this.txtLeadTime.Size = new System.Drawing.Size(230, 25);
-            this.txtLeadTime.TabIndex = 9;
+            this.txtLeadTime.TabIndex = 7;
             this.txtLeadTime.TabOnEnter = true;
+            this.txtLeadTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtLeadTime.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtLeadTime.Enter += new System.EventHandler(this.SwitchToEN_Enter);
             // 
             // label2
             // 
@@ -828,8 +835,8 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 17);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Order Qty";
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Maximum quantity";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblCode
@@ -843,47 +850,49 @@
             this.lblCode.Text = "Item";
             this.lblCode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtOrderPoint
+            // txtMinQty
             // 
-            this.txtOrderPoint.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOrderPoint.Format = null;
-            this.txtOrderPoint.Location = new System.Drawing.Point(141, 176);
-            this.txtOrderPoint.Margin = new System.Windows.Forms.Padding(4);
-            this.txtOrderPoint.Name = "txtOrderPoint";
-            this.txtOrderPoint.Numeric = false;
-            this.txtOrderPoint.ReadOnly = true;
-            this.txtOrderPoint.Size = new System.Drawing.Size(230, 25);
-            this.txtOrderPoint.TabIndex = 11;
-            this.txtOrderPoint.TabOnEnter = true;
-            this.txtOrderPoint.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtMinQty.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMinQty.Format = null;
+            this.txtMinQty.Location = new System.Drawing.Point(141, 176);
+            this.txtMinQty.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMinQty.Name = "txtMinQty";
+            this.txtMinQty.Numeric = true;
+            this.txtMinQty.ReadOnly = true;
+            this.txtMinQty.Size = new System.Drawing.Size(230, 25);
+            this.txtMinQty.TabIndex = 9;
+            this.txtMinQty.TabOnEnter = true;
+            this.txtMinQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMinQty.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtMinQty.Enter += new System.EventHandler(this.SwitchToEN_Enter);
             // 
-            // textBox4
+            // txtStockUoM
             // 
-            this.textBox4.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Format = null;
-            this.textBox4.Location = new System.Drawing.Point(530, 176);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Numeric = false;
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(230, 25);
-            this.textBox4.TabIndex = 15;
-            this.textBox4.TabOnEnter = true;
-            this.textBox4.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtStockUoM.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStockUoM.Format = null;
+            this.txtStockUoM.Location = new System.Drawing.Point(530, 176);
+            this.txtStockUoM.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStockUoM.Name = "txtStockUoM";
+            this.txtStockUoM.Numeric = false;
+            this.txtStockUoM.ReadOnly = true;
+            this.txtStockUoM.Size = new System.Drawing.Size(230, 25);
+            this.txtStockUoM.TabIndex = 23;
+            this.txtStockUoM.TabOnEnter = true;
+            this.txtStockUoM.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
-            // textBox6
+            // txtLastSupplier
             // 
-            this.textBox6.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Format = null;
-            this.textBox6.Location = new System.Drawing.Point(530, 209);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Numeric = false;
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(230, 25);
-            this.textBox6.TabIndex = 15;
-            this.textBox6.TabOnEnter = true;
-            this.textBox6.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtLastSupplier.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastSupplier.Format = null;
+            this.txtLastSupplier.Location = new System.Drawing.Point(530, 209);
+            this.txtLastSupplier.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLastSupplier.Name = "txtLastSupplier";
+            this.txtLastSupplier.Numeric = false;
+            this.txtLastSupplier.ReadOnly = true;
+            this.txtLastSupplier.Size = new System.Drawing.Size(230, 25);
+            this.txtLastSupplier.TabIndex = 25;
+            this.txtLastSupplier.TabOnEnter = true;
+            this.txtLastSupplier.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // txtBarcode
             // 
@@ -899,47 +908,50 @@
             this.txtBarcode.TabOnEnter = true;
             this.txtBarcode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
-            // textBox2
+            // txtAvgCost
             // 
-            this.textBox2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Format = null;
-            this.textBox2.Location = new System.Drawing.Point(530, 110);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Numeric = false;
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(230, 25);
-            this.textBox2.TabIndex = 15;
-            this.textBox2.TabOnEnter = true;
-            this.textBox2.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtAvgCost.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAvgCost.Format = null;
+            this.txtAvgCost.Location = new System.Drawing.Point(530, 110);
+            this.txtAvgCost.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAvgCost.Name = "txtAvgCost";
+            this.txtAvgCost.Numeric = false;
+            this.txtAvgCost.ReadOnly = true;
+            this.txtAvgCost.Size = new System.Drawing.Size(230, 25);
+            this.txtAvgCost.TabIndex = 19;
+            this.txtAvgCost.TabOnEnter = true;
+            this.txtAvgCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtAvgCost.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
-            // textBox3
+            // txtLastCost
             // 
-            this.textBox3.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Format = null;
-            this.textBox3.Location = new System.Drawing.Point(530, 143);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Numeric = false;
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(230, 25);
-            this.textBox3.TabIndex = 15;
-            this.textBox3.TabOnEnter = true;
-            this.textBox3.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtLastCost.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastCost.Format = null;
+            this.txtLastCost.Location = new System.Drawing.Point(530, 143);
+            this.txtLastCost.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLastCost.Name = "txtLastCost";
+            this.txtLastCost.Numeric = false;
+            this.txtLastCost.ReadOnly = true;
+            this.txtLastCost.Size = new System.Drawing.Size(230, 25);
+            this.txtLastCost.TabIndex = 21;
+            this.txtLastCost.TabOnEnter = true;
+            this.txtLastCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtLastCost.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
-            // textBox1
+            // txtOnhand
             // 
-            this.textBox1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Format = null;
-            this.textBox1.Location = new System.Drawing.Point(530, 77);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Numeric = false;
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(230, 25);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.TabOnEnter = true;
-            this.textBox1.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtOnhand.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOnhand.Format = null;
+            this.txtOnhand.Location = new System.Drawing.Point(530, 77);
+            this.txtOnhand.Margin = new System.Windows.Forms.Padding(4);
+            this.txtOnhand.Name = "txtOnhand";
+            this.txtOnhand.Numeric = false;
+            this.txtOnhand.ReadOnly = true;
+            this.txtOnhand.Size = new System.Drawing.Size(230, 25);
+            this.txtOnhand.TabIndex = 17;
+            this.txtOnhand.TabOnEnter = true;
+            this.txtOnhand.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtOnhand.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
             // txtStdCost
             // 
@@ -948,26 +960,30 @@
             this.txtStdCost.Location = new System.Drawing.Point(141, 242);
             this.txtStdCost.Margin = new System.Windows.Forms.Padding(4);
             this.txtStdCost.Name = "txtStdCost";
-            this.txtStdCost.Numeric = false;
+            this.txtStdCost.Numeric = true;
             this.txtStdCost.ReadOnly = true;
             this.txtStdCost.Size = new System.Drawing.Size(230, 25);
-            this.txtStdCost.TabIndex = 15;
+            this.txtStdCost.TabIndex = 13;
             this.txtStdCost.TabOnEnter = true;
+            this.txtStdCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtStdCost.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtStdCost.Enter += new System.EventHandler(this.SwitchToEN_Enter);
             // 
-            // txtOrderQty
+            // txtMaxQty
             // 
-            this.txtOrderQty.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOrderQty.Format = null;
-            this.txtOrderQty.Location = new System.Drawing.Point(141, 209);
-            this.txtOrderQty.Margin = new System.Windows.Forms.Padding(4);
-            this.txtOrderQty.Name = "txtOrderQty";
-            this.txtOrderQty.Numeric = false;
-            this.txtOrderQty.ReadOnly = true;
-            this.txtOrderQty.Size = new System.Drawing.Size(230, 25);
-            this.txtOrderQty.TabIndex = 13;
-            this.txtOrderQty.TabOnEnter = true;
-            this.txtOrderQty.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtMaxQty.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaxQty.Format = null;
+            this.txtMaxQty.Location = new System.Drawing.Point(141, 209);
+            this.txtMaxQty.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaxQty.Name = "txtMaxQty";
+            this.txtMaxQty.Numeric = true;
+            this.txtMaxQty.ReadOnly = true;
+            this.txtMaxQty.Size = new System.Drawing.Size(230, 25);
+            this.txtMaxQty.TabIndex = 11;
+            this.txtMaxQty.TabOnEnter = true;
+            this.txtMaxQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMaxQty.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtMaxQty.Enter += new System.EventHandler(this.SwitchToEN_Enter);
             // 
             // tabPage2
             // 
@@ -1453,8 +1469,8 @@
         private System.Windows.Forms.Label label10;
         private kUI.TextBox txtItem;
         private kUI.TextBox txtStdCost;
-        private kUI.TextBox txtOrderQty;
-        private kUI.TextBox txtOrderPoint;
+        private kUI.TextBox txtMaxQty;
+        private kUI.TextBox txtMinQty;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button btnLocation;
@@ -1463,25 +1479,16 @@
         private System.Windows.Forms.Button btnSupplier;
         private kUI.TextBox txtSupplier;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
-        private kUI.TextBox textBox4;
-        private kUI.TextBox textBox6;
-        private kUI.TextBox textBox2;
-        private kUI.TextBox textBox3;
-        private kUI.TextBox textBox1;
+        private kUI.TextBox txtStockUoM;
+        private kUI.TextBox txtLastSupplier;
+        private kUI.TextBox txtAvgCost;
+        private kUI.TextBox txtLastCost;
+        private kUI.TextBox txtOnhand;
         private System.Windows.Forms.Label label9;
         private kUI.TextBox txtBarcode;
         private System.Windows.Forms.TabPage tabPage2;
@@ -1515,6 +1522,15 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem mnuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }
 

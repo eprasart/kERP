@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace kERP
 {
-    class Vendor:BaseTable
+    class Supplier : BaseTable
     {
         public string Branch_Code { get; set; }
         public string Code { get; set; }
@@ -23,9 +23,9 @@ namespace kERP
         public string Email { get; set; }
     }
 
-    static class VendorFacade
+    static class SupplierFacade
     {
-        public static readonly string TableName = "ap_vendor";
+        public static readonly string TableName = "ap_supplier";
         public static readonly string TitleLabel = LabelFacade.AP_Supplier;
 
         public static DataTable GetDataTable(string filter = "", string status = "")
@@ -46,7 +46,7 @@ namespace kERP
             return SqlFacade.GetDataTable(cmd);
         }
 
-        public static long Save(Vendor m)
+        public static long Save(Supplier m)
         {
             string sql = "code, description, type, address, name, phone, fax, email, note, ";
             if (m.Id == 0)
@@ -60,23 +60,40 @@ namespace kERP
             {
                 m.Change_By = App.session.Username;
                 sql += "change_by, change_at, change_no";
-                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id"); 
+                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id");
                 SqlFacade.Connection.Execute(sql, m);
                 ReleaseLock(m.Id);  // Unlock
             }
             return m.Id;
         }
 
-        public static Vendor Select(long Id)
+        public static Supplier Select(long Id)
         {
             var sql = SqlFacade.SqlSelect(TableName, "*", "id = :id");
-            return SqlFacade.Connection.Query<Vendor>(sql, new { Id }).FirstOrDefault();
+            return SqlFacade.Connection.Query<Supplier>(sql, new { Id }).FirstOrDefault();
+        }
+        public static Location SelectLessCols(long Id)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "code, description", "Id = :Id");
+            return SqlFacade.Connection.Query<Location>(sql, new { Id }).FirstOrDefault();
+        }
+
+        public static Location SelectLessCols(string value)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "code, description", SqlFacade.SqlILike("code, description", ":p"));
+            return SqlFacade.Connection.Query<Location>(sql, new { p = value }).FirstOrDefault();
         }
 
         public static string GetDescription(string code)
         {
             var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
             return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
+        }
+
+        public static int GetCount(string value)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "count (*)", "status = 'A' and (" + SqlFacade.SqlILike("code, description", ":p") + ")");
+            return SqlFacade.Connection.ExecuteScalar<int>(sql, new { p = value });
         }
 
         public static void SetStatus(long Id, string status)

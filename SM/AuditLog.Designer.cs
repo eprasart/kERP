@@ -1,4 +1,4 @@
-﻿namespace kERP.SM
+﻿namespace kERP
 {
     partial class frmAuditLog
     {

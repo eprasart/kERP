@@ -6,7 +6,7 @@ using Npgsql;
 using Dapper;
 using kERP.SYS;
 
-namespace kERP.SM
+namespace kERP
 {
     public class Session
     {
@@ -105,17 +105,10 @@ namespace kERP.SM
         {
             try
             {
-                if (m.Id == 0)
-                {
-                    var sql = "insert into sm_session_log (session_id, priority, module, type, message)\n" +
-                        "values (:Session_Id, :Priority, :Module, :Type, :Message)";
-                    m.Session_Id = App.session.Id;
-                    SqlFacade.Connection.Execute(sql, m);
-                }
-                else
-                {
-                    //SqlFacade.Connection.UpdateOnly(m, p => new { p.Username }, p => p.Id == m.Id);
-                }
+                var sql = "insert into sm_session_log (session_id, priority, module, type, message)\n" +
+                    "values (:Session_Id, :Priority, :Module, :Type, :Message)";
+                m.Session_Id = App.session.Id;
+                SqlFacade.Connection.Execute(sql, m);
             }
             catch (Exception ex)
             {
@@ -130,6 +123,7 @@ namespace kERP.SM
 
         public static void Log(string priority, string module, string type, string message)
         {
+            if (!ConfigFacade.Log_Activity) return;
             var log = new SessionLog()
             {
                 Priority = priority,
@@ -173,8 +167,8 @@ namespace kERP.SM
             //    sql += " and (" + SqlFacade.SqlILike("code, description, phone, fax, email, address, note") + ")";
             sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit;
             var cmd = new NpgsqlCommand(sql);
-             cmd.Parameters.AddWithValue(":status", status);
-           if (filter.Length > 0)
+            cmd.Parameters.AddWithValue(":status", status);
+            if (filter.Length > 0)
                 cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
 
             return SqlFacade.GetDataTable(cmd);
@@ -183,9 +177,9 @@ namespace kERP.SM
         public static long Save(Lock m)
         {
             m.Lock_By = App.session.Username;
-            m.Branch_Code = App.session.Branch_Code; 
+            m.Branch_Code = App.session.Branch_Code;
             m.Machine_Name = App.session.Machine_Name;
-            m.Machine_Username = App.session.Machine_User_Name;            
+            m.Machine_Username = App.session.Machine_User_Name;
             var sql = SqlFacade.SqlInsert(TableName, "table_name, branch_code, lock_id, ref, lock_by, machine_name, machine_username", "", true);
             m.Id = SqlFacade.Connection.ExecuteScalar<long>(sql, m);
             return m.Id;

@@ -107,10 +107,9 @@
             // 
             // btnNew
             // 
-            this.btnNew.Image = global::kERP.Properties.Resources.New;
             this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(55, 22);
+            this.btnNew.Size = new System.Drawing.Size(39, 22);
             this.btnNew.Text = "&New";
             this.btnNew.ToolTipText = "New (Ctrl+N)";
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -118,10 +117,9 @@
             // btnCopy
             // 
             this.btnCopy.Enabled = false;
-            this.btnCopy.Image = global::kERP.Properties.Resources.Copy;
             this.btnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(60, 22);
+            this.btnCopy.Size = new System.Drawing.Size(44, 22);
             this.btnCopy.Text = "Cop&y";
             this.btnCopy.ToolTipText = "Copy (Ctrl+Y)";
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
@@ -129,10 +127,9 @@
             // btnUnlock
             // 
             this.btnUnlock.Enabled = false;
-            this.btnUnlock.Image = global::kERP.Properties.Resources.Unlock;
             this.btnUnlock.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUnlock.Name = "btnUnlock";
-            this.btnUnlock.Size = new System.Drawing.Size(70, 22);
+            this.btnUnlock.Size = new System.Drawing.Size(54, 22);
             this.btnUnlock.Text = "Unl&ock";
             this.btnUnlock.ToolTipText = "Unlock (Ctrl+L)";
             this.btnUnlock.Click += new System.EventHandler(this.btnUnlock_Click);
@@ -140,10 +137,9 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Image = global::kERP.Properties.Resources.Save;
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(60, 22);
+            this.btnSave.Size = new System.Drawing.Size(44, 22);
             this.btnSave.Text = "&Save";
             this.btnSave.ToolTipText = "Save (Ctrl+S)";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -151,10 +147,9 @@
             // btnSaveNew
             // 
             this.btnSaveNew.Enabled = false;
-            this.btnSaveNew.Image = global::kERP.Properties.Resources.SaveNew;
             this.btnSaveNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSaveNew.Name = "btnSaveNew";
-            this.btnSaveNew.Size = new System.Drawing.Size(116, 22);
+            this.btnSaveNew.Size = new System.Drawing.Size(100, 22);
             this.btnSaveNew.Text = "Save and Ne&w";
             this.btnSaveNew.ToolTipText = "Save and New (Ctrl+W)";
             this.btnSaveNew.Click += new System.EventHandler(this.btnSaveNew_Click);
@@ -167,10 +162,9 @@
             // btnActive
             // 
             this.btnActive.Enabled = false;
-            this.btnActive.Image = global::kERP.Properties.Resources.Inactive;
             this.btnActive.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnActive.Name = "btnActive";
-            this.btnActive.Size = new System.Drawing.Size(74, 22);
+            this.btnActive.Size = new System.Drawing.Size(58, 22);
             this.btnActive.Text = "Inactiv&e";
             this.btnActive.ToolTipText = "Active/Inactive (Ctrl+E)";
             this.btnActive.Click += new System.EventHandler(this.btnActive_Click);
@@ -178,10 +172,9 @@
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Image = global::kERP.Properties.Resources.Recyclebin;
             this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(68, 22);
+            this.btnDelete.Size = new System.Drawing.Size(52, 22);
             this.btnDelete.Text = "Delete";
             this.btnDelete.ToolTipText = "Delete (Del)";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -193,20 +186,18 @@
             // 
             // btnMode
             // 
-            this.btnMode.Image = global::kERP.Properties.Resources.Expand;
             this.btnMode.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMode.Name = "btnMode";
-            this.btnMode.Size = new System.Drawing.Size(88, 22);
+            this.btnMode.Size = new System.Drawing.Size(72, 22);
             this.btnMode.Text = "List/Detail";
             this.btnMode.ToolTipText = "Toggle between list and detail mode (F9)";
             this.btnMode.Click += new System.EventHandler(this.btnMode_Click);
             // 
             // btnExport
             // 
-            this.btnExport.Image = global::kERP.Properties.Resources.Export;
             this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(66, 22);
+            this.btnExport.Size = new System.Drawing.Size(50, 22);
             this.btnExport.Text = "Export";
             this.btnExport.ToolTipText = "Export all data to CSV file (F12)";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -263,7 +254,6 @@
             // 
             // btnFind
             // 
-            this.btnFind.Image = global::kERP.Properties.Resources.Search;
             this.btnFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFind.Location = new System.Drawing.Point(1, 27);
             this.btnFind.Name = "btnFind";
@@ -276,7 +266,6 @@
             // 
             // btnClear
             // 
-            this.btnClear.Image = global::kERP.Properties.Resources.Brush;
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClear.Location = new System.Drawing.Point(69, 27);
             this.btnClear.Name = "btnClear";
@@ -289,7 +278,6 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Image = global::kERP.Properties.Resources.Filter;
             this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFilter.Location = new System.Drawing.Point(137, 27);
             this.btnFilter.Name = "btnFilter";
@@ -460,10 +448,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.glbNote.Caption = "Note";
             this.glbNote.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.glbNote.Location = new System.Drawing.Point(12, 195);
+            this.glbNote.Location = new System.Drawing.Point(12, 147);
             this.glbNote.Margin = new System.Windows.Forms.Padding(4, 12, 4, 4);
             this.glbNote.Name = "glbNote";
-            this.glbNote.Size = new System.Drawing.Size(729, 21);
+            this.glbNote.Size = new System.Drawing.Size(733, 21);
             this.glbNote.TabIndex = 28;
             this.glbNote.TabStop = false;
             // 
@@ -472,12 +460,12 @@
             this.txtNote.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNote.Location = new System.Drawing.Point(12, 224);
+            this.txtNote.Location = new System.Drawing.Point(12, 176);
             this.txtNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
-            this.txtNote.Size = new System.Drawing.Size(729, 170);
+            this.txtNote.Size = new System.Drawing.Size(733, 218);
             this.txtNote.TabIndex = 16;
             this.txtNote.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
             // 
@@ -521,12 +509,14 @@
             this.txtFactor.Location = new System.Drawing.Point(129, 106);
             this.txtFactor.Margin = new System.Windows.Forms.Padding(4);
             this.txtFactor.Name = "txtFactor";
-            this.txtFactor.Numeric = false;
+            this.txtFactor.Numeric = true;
             this.txtFactor.ReadOnly = true;
             this.txtFactor.Size = new System.Drawing.Size(230, 25);
             this.txtFactor.TabIndex = 7;
             this.txtFactor.TabOnEnter = true;
+            this.txtFactor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtFactor.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtFactor.Enter += new System.EventHandler(this.SwitchToEN_Enter);
             this.txtFactor.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
             // txtDescription
@@ -557,6 +547,7 @@
             this.txtCode.TabIndex = 1;
             this.txtCode.TabOnEnter = true;
             this.txtCode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtCode.Enter += new System.EventHandler(this.SwitchToEN_Enter);
             this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
             // mnuShow

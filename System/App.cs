@@ -24,15 +24,19 @@ namespace kERP
         public static frmCategory fCategory;
         public static frmClassification fClassification;
         public static frmItemLocation fItemLocation;
-        public static frmHoliday fHoliday;
-        public static frmVendor fVendor;
+        public static frmItemSupplier fItemSupplier;
+        public static frmSupplier fSupplier;
         public static frmBranch fBranch;
         public static frmLocation fLocation;
         public static frmItem fItem;
         public static frmUnitMeasure fUnitMeasure;
 
-        public static SM.frmUserList fUserList;
-        public static SM.frmAuditLog fAuditLog;
+        public static frmUser fUser;
+        public static frmRole fRole;
+        //public static frmFunction fFunction;
+        //public static frmUserRole fUserRole;
+        //public static frmUserFunction fUserFunction;
+        public static frmAuditLog fAuditLog;
 
         public static FileLog AccessLog = new FileLog();
 
@@ -83,7 +87,8 @@ namespace kERP
             CurrencyFacade.LoadSetting(CurrencyFacade.GetBase());
             ConfigFacade.Load();
             LabelFacade.Load();
-            MessageFacade.Load();            
+            MessageFacade.Load();
+            Language.LoadLanguage();
             // Log
             ErrorLogFacade.logFile.FileName = Path.Combine(App.StartupPath, "Error.log");
             AccessLog.FileName = Path.Combine(App.StartupPath, "Access.log");
@@ -114,10 +119,12 @@ namespace kERP
         public static void Close()
         {
             App.AccessLog.Write(DateTime.Now.ToString("yyy-MM-dd ddd hh:mm:ss tt") + " Application quit. Process Id: " + App.ProcessID);
-            SM.SessionFacade.UpdateLogout(App.session);
+            SessionFacade.UpdateLogout(App.session);
 
             setting.Save();
             ConfigFacade.Save();
         }
+
+      
     }
 }

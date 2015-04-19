@@ -7,11 +7,10 @@ using Dapper;
 using kERP.SYS;
 using System.Windows.Forms;
 
-namespace kERP.SM
+namespace kERP
 {
-    public class User
+    class User : BaseTable
     {
-        public long Id { get; set; }
         public string Username { get; set; }
         public string Full_Name { get; set; }
         public string Pwd { get; set; }
@@ -22,138 +21,178 @@ namespace kERP.SM
         public DateTime? End_On { get; set; }
         public int Success { get; set; }
         public int Fail { get; set; }
-        public bool Locked { get; set; }
+        public string User_Status { get; set; }
         public string Right { get; set; }
         public string Security_No { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public string Note { get; set; }
-        public String Status { get; set; }
-        public long Session_Id { get; set; }
-        public string Lock_By { get; set; }
-        public DateTime? Lock_At { get; set; }
-        public string Insert_By { get; set; }
-        public DateTime? Insert_At { get; set; }
-        public string Change_By { get; set; }
-        public DateTime? Change_At { get; set; }
     }
 
-    public static class UserFacade
+    static class UserFacade
     {
-        const string TableName = "sm_user";
+        public static readonly string TableName = "sm_user";
+        public static readonly string TitleLabel = LabelFacade.SM_User;
 
-        //public static DataTable GetDataTable(string filter = "", string status = "")
-        //{
-        //    var sql = "select id, username, full_name, phone, email from sm_user where 1 = 1";
-        //    if (status.Length > 0)
-        //        sql += " and status = '" + status + "'";
-        //    if (filter.Length > 0)
-        //        sql += " and (username ~* :filter or full_name ~* :filter or phone ~* :filter or email ~* :filter or note ~* :filter)";
-        //    sql += "\norder by username";
-        //    var cmd = new NpgsqlCommand(sql, new NpgsqlConnection(SqlFacade.ConnectionString));
-        //    if (filter.Length > 0)
-        //        cmd.Parameters.AddWithValue(":filter", filter);
-        //    var da = new NpgsqlDataAdapter(cmd);
-        //    var dt = new DataTable();
-        //    try
-        //    {
-        //        da.Fill(dt);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error while loading data.\n" + ex.Message, "Location", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        ErrorLogFacade.Log(ex);
-        //    }
-        //    return dt;
-        //}
+        public static DataTable GetDataTable(string filter = "", string status = "")
+        {
+            var sql = SqlFacade.SqlSelect(TableName + " u left join list s on u.user_status = s.code and s.field = 'sys_user_status'", "u.id, username, full_name, time_level, start_on, end_on, s.description user_status, phone, email", "1 = 1");
+            sql += " and u.status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
+            if (filter.Length > 0)
+                sql += " and (" + SqlFacade.SqlILike("username, full_name, phone, email") + ")";
+            sql += "\norder by username\nlimit " + ConfigFacade.Select_Limit;
+            var cmd = new NpgsqlCommand(sql);
+            cmd.Parameters.AddWithValue(":status", status);
+            if (filter.Length > 0) cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
+            return SqlFacade.GetDataTable(cmd);
+        }
 
-        //public static long Save(User m)
-        //{
-        //    var sql = "";
-        //    if (m.Id == 0)
-        //    {
-        //        m.Status = Type.RecordStatus_Active;
-        //        m.Insert_By = App.session.Username;
-        //        m.Insert_At = ts;
-        //        string sqlPwd = "select crypt('" + m.Pwd + "', gen_salt('bf'))";    // Blowfish algorithm
-        //        m.Pwd = SqlFacade.ExcuteString(sqlPwd);
+        public static long Save(User m)
+        {
+            string sql = "username, full_name, pwd_change_force, time_level, start_on, end_on, phone, email, user_status, note, ";
+            if (m.Id == 0)
+            {
+                m.Insert_By = App.session.Username;
+                sql += "pwd, insert_by";
+                var values = ":" + sql.Replace(", ", ", :");
+                values = values.Replace(":pwd,", "crypt(:pwd, gen_salt('bf')),");
+                sql = SqlFacade.SqlInsert(TableName, sql, values, true);
+                m.Id = SqlFacade.Connection.ExecuteScalar<long>(sql, m);
+            }
+            else
+            {
+                m.Change_By = App.session.Username;
+                sql += "change_by, change_at, change_no";
+                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id");
+                SqlFacade.Connection.Execute(sql, m);
+                ReleaseLock(m.Id);  // Unlock
+            }
+            return m.Id;
+        }
 
-        //        sql=SqlFacade.SqlInsert(TableName,)
-        //            m.Id = SqlFacade.Connection.Insert(m, true); // New inserted sequence
-        //    }
-        //    else
-        //    {
-        //        m.Change_By = App.session.Username;
-        //        m.Change_At = ts;
+        public static void ResetPwd(User m)
+        {
+            var sql = "update " + TableName + "\nset pwd = crypt(:pwd, gen_salt('bf')), user_status = :user_status, " +
+                "pwd_change_force = :pwd_change_force, change_by = :change_by, change_at = now(), change_no = change_no + 1\nwhere id = :id";
+            m.Change_By = App.session.Username;
+            SqlFacade.Connection.Execute(sql, m);
+        }
 
-        //        SqlFacade.Connection.UpdateOnly(m, p => new { p.Username, p.FullName, p.StartOn, p.EndOn, p.Phone, p.Email, p.Note, p.ChangeBy, p.ChangeAt },
-        //            p => p.Id == m.Id);
-        //        // If record is locked then unlock
-        //        if (IsLocked(m.Id)) ReleaseLock(m.Id);
-        //    }
-        //    return m.Id;
-        //}
+        public static void ClearLocked(long Id)
+        {
+            var sql = SqlFacade.SqlUpdate(TableName, "user_status", "user_status = 'E'", "id = :id");
+            SqlFacade.Connection.Execute(sql, new { Id });
+        }
 
         public static User Select(long Id)
         {
-            return SqlFacade.Connection.Query<User>("select * from " + TableName + " where id=@Id", new { Id = Id }).FirstOrDefault();
+            var sql = SqlFacade.SqlSelect(TableName, "*", "id = :id");
+            return SqlFacade.Connection.Query<User>(sql, new { Id }).FirstOrDefault();
         }
 
-        public static User Select(string usr)
+        public static User Select(string username)
         {
-            return SqlFacade.Connection.Query<User>("select * from " + TableName + " where username=@usr", new { usr = usr }).FirstOrDefault();
+            var sql = SqlFacade.SqlSelect(TableName, "*", "username = :username");
+            return SqlFacade.Connection.Query<User>(sql, new { username }).FirstOrDefault();
         }
 
-        //public static void SetStatus(long Id, string s)
+        public static User SelectLessCols(string code)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "username, full_name", SqlFacade.SqlILike("username, full_name", ":p"));
+            return SqlFacade.Connection.Query<User>(sql, new { p = code }).FirstOrDefault();
+        }
+
+        public static User SelectLessCols(long Id)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "username, full_name", "Id = :Id");
+            return SqlFacade.Connection.Query<User>(sql, new { Id }).FirstOrDefault();
+        }
+
+        //public static string GetDescription(string code)
         //{
-        //    DateTime? ts = SqlFacade.GetCurrentTimeStamp();
-        //    SqlFacade.Connection.UpdateOnly(new User { Status = s, ChangeBy = App.session.Username, ChangeAt = ts }, p => new { p.Status, p.ChangeBy, p.ChangeAt }, p => p.Id == Id);
+        //    var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
+        //    return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
         //}
 
-        //public static bool IsLocked(long Id)
-        //{
-        //    return SqlFacade.Connection.Exists<User>("Id = @Id and Lock_By = @LockBy", new { Id = Id, LockBy = App.session.Username });
-        //}
+        public static int GetCount(string value)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "count (*)", "status = 'A' and (" + SqlFacade.SqlILike("username, full_name", ":p") + ")");
+            return SqlFacade.Connection.ExecuteScalar<int>(sql, new { p = value });
+        }
 
-        //public static LockInfo GetLockInfo(long Id)
-        //{
-        //    var m = Select(Id);
-        //    var l = new LockInfo();
-        //    l.Id = Id;
-        //    l.LockBy = m.LockBy;
-        //    l.LockAt = m.LockAt;
-        //    return l;
-        //}
+        public static void SetStatus(long Id, string status)
+        {
+            var sql = SqlFacade.SqlUpdate(TableName, "status, change_by, change_at", "change_at = now()", "id = :id");
+            SqlFacade.Connection.Execute(sql, new { status, Change_By = App.session.Username, Id });
+        }
 
-        //public static void Lock(long Id)
-        //{
-        //    DateTime ts = SqlFacade.GetCurrentTimeStamp();
-        //    SqlFacade.Connection.UpdateOnly(new User { LockBy = App.session.Username, LockAt = ts }, p => new { p.LockBy, p.LockAt }, p => p.Id == Id);
-        //}
+        public static Lock GetLock(long Id)
+        {
+            return LockFacade.Select(TableName, Id);
+        }
 
-        //public static void ReleaseLock(long Id)
-        //{
-        //    if (Id == 0) return;
-        //    DateTime ts = SqlFacade.GetCurrentTimeStamp();
-        //    SqlFacade.Connection.UpdateOnly(new User { LockBy = null }, p => p.LockBy, p => p.Id == Id);
-        //}
+        public static void Lock(long Id, string code)
+        {
+            var m = new Lock { Table_Name = TableName, Lock_Id = Id, Ref = code };
+            LockFacade.Save(m);
+        }
 
-        //public static bool IsExist(string Username, long Id = 0)
-        //{
-        //    return SqlFacade.Connection.Exists<User>("Id <> @Id and Username = @Username", new { Id = Id, Username = Username });
-        //}
+        public static void ReleaseLock(long Id)
+        {
+            LockFacade.Delete(TableName, Id);
+        }
+
+        public static bool Exists(string username, long Id = 0)
+        {
+            var sql = SqlFacade.SqlExists(TableName, "id <> :id and status <> :status and username = :username");
+            var bExists = false;
+            try
+            {
+                bExists = SqlFacade.Connection.ExecuteScalar<bool>(sql, new { Id, Status = Constant.RecordStatus_Deleted, username });
+            }
+            catch (Exception ex)
+            {
+                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogFacade.Log(ex, "Exists");
+            }
+            return bExists;
+        }
+
+        public static bool ExistsBarcode(string barcode, long Id = 0)
+        {
+            var sql = SqlFacade.SqlExists(TableName, "id <> :id and status <> :status and barcode = :barcode");
+            var bExists = false;
+            try
+            {
+                bExists = SqlFacade.Connection.ExecuteScalar<bool>(sql, new { Id, Status = Constant.RecordStatus_Deleted, barcode });
+            }
+            catch (Exception ex)
+            {
+                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogFacade.Log(ex, "Barcode Exists");
+            }
+            return bExists;
+        }
+
+        public static void Export()
+        {
+            var cols = "*";
+            cols = ConfigFacade.Get(Constant.Sql_Export + TableName, cols);
+            string sql = SqlFacade.SqlSelect(TableName, cols, "status <> '" + Constant.RecordStatus_Deleted + "'", "code");
+            SqlFacade.ExportToCSV(sql, TableName);
+        }
 
         public static void UpdatePwd(User m)
         {
-            string sqlPwd = "select crypt('" + m.Pwd + "', gen_salt('bf'))";
-            m.Pwd = SqlFacade.Connection.ExecuteScalar<string>(sqlPwd);
-            var sql = SqlFacade.SqlUpdate(TableName, "Pwd = @Pwd", "Id = @Id");
+            string sqlPwd = "select crypt(:pwd, gen_salt('bf'))";
+            m.Pwd = SqlFacade.Connection.ExecuteScalar<string>(sqlPwd, new { pwd = m.Pwd });
+            var sql = SqlFacade.SqlUpdate(TableName, "Pwd = :Pwd", "Id = :Id");
             SqlFacade.Connection.Execute(sql, m);
         }
 
         public static bool IsPwdCorrect(long id, string pwd)
         {
-            string sql = "SELECT (pwd = crypt(@pwd, pwd)) AS pswmatch FROM sm_user where id = @id";
+            string sql = "SELECT (pwd = crypt(:pwd, pwd)) AS pswmatch FROM sm_user where id = :id";
             return SqlFacade.Connection.ExecuteScalar<bool>(sql, new { pwd = pwd, id = id });
         }
     }
@@ -256,6 +295,139 @@ namespace kERP.SM
             // Check in user_function
 
             return true;
+        }
+    }
+
+    class Role : BaseTable
+    {
+        public string Code { get; set; }
+        public string Description { get; set; }
+    }
+
+    static class RoleFacade
+    {
+        public static readonly string TableName = "sm_role";
+        public static readonly string TitleLabel = LabelFacade.SM_Role;
+
+        public static DataTable GetDataTable(string filter = "", string status = "")
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "id, code, description", "1 = 1");
+            sql += " and status " + (status.Length == 0 ? "<>" : "=") + " :status";
+            if (status.Length == 0) status = Constant.RecordStatus_Deleted;
+            if (filter.Length > 0)
+                sql += " and (" + SqlFacade.SqlILike("code, description, note") + ")";
+            sql += "\norder by code\nlimit " + ConfigFacade.Select_Limit;
+            var cmd = new NpgsqlCommand(sql);
+            cmd.Parameters.AddWithValue(":status", status);
+            if (filter.Length > 0)
+                cmd.Parameters.AddWithValue(":filter", "%" + filter + "%");
+            return SqlFacade.GetDataTable(cmd);
+        }
+
+        public static long Save(Role m)
+        {
+            string sql = "code, description, note";
+            if (m.Id == 0)
+            {
+                m.Insert_By = App.session.Username;
+                sql += ", insert_by";
+                sql = SqlFacade.SqlInsert(TableName, sql, "", true);
+                m.Id = SqlFacade.Connection.ExecuteScalar<long>(sql, m);
+            }
+            else
+            {
+                m.Change_By = App.session.Username;
+                sql += ", change_by, change_at, change_no";
+                sql = SqlFacade.SqlUpdate(TableName, sql, "change_at = now(), change_no = change_no + 1", "id = :id");
+                SqlFacade.Connection.Execute(sql, m);
+                ReleaseLock(m.Id);  // Unlock
+            }
+            return m.Id;
+        }
+
+        public static Role Select(long Id)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "*", "id = :id");
+            return SqlFacade.Connection.Query<Role>(sql, new { Id }).FirstOrDefault();
+        }
+
+        public static Role SelectLessCols(long Id)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "code, description", "Id = :Id");
+            return SqlFacade.Connection.Query<Role>(sql, new { Id }).FirstOrDefault();
+        }
+
+        public static Role SelectLessCols(string value)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "code, description", SqlFacade.SqlILike("code, description", ":p"));
+            return SqlFacade.Connection.Query<Role>(sql, new { p = value }).FirstOrDefault();
+        }
+
+        public static int GetCount(string value)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "count (*)", "status = 'A' and (" + SqlFacade.SqlILike("code, description", ":p") + ")");
+            return SqlFacade.Connection.ExecuteScalar<int>(sql, new { p = value });
+        }
+
+
+        public static void LoadList(ComboBox cbo)
+        {
+            string sql = SqlFacade.SqlSelect(TableName, "code, description", "status = 'A'", "2");
+            cbo.DataSource = SqlFacade.GetDataTable(sql);
+            cbo.ValueMember = "code";
+            cbo.DisplayMember = "description";
+        }
+
+        public static string GetDescription(string code)
+        {
+            var sql = SqlFacade.SqlSelect(TableName, "description", "code = :code and status = 'A'");
+            return SqlFacade.Connection.ExecuteScalar<string>(sql, new { code });
+        }
+
+        public static void SetStatus(long Id, string status)
+        {
+            var sql = SqlFacade.SqlUpdate(TableName, "status, change_by, change_at", "change_at = now()", "id = :id");
+            SqlFacade.Connection.Execute(sql, new { status, Change_By = App.session.Username, Id });
+        }
+
+        public static Lock GetLock(long Id)
+        {
+            return LockFacade.Select(TableName, Id);
+        }
+
+        public static void Lock(long Id, string code)
+        {
+            var m = new Lock { Table_Name = TableName, Lock_Id = Id, Ref = code };
+            LockFacade.Save(m);
+        }
+
+        public static void ReleaseLock(long Id)
+        {
+            LockFacade.Delete(TableName, Id);
+        }
+
+        public static bool Exists(string code, long Id = 0)
+        {
+            var sql = SqlFacade.SqlExists(TableName, "id <> :id and status <> :status and code = :code");
+            var bExists = false;
+            try
+            {
+                bExists = SqlFacade.Connection.ExecuteScalar<bool>(sql, new { Id, Status = Constant.RecordStatus_Deleted, code });
+            }
+            catch (Exception ex)
+            {
+                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogFacade.Log(ex, "Exists");
+            }
+            return bExists;
+        }
+
+        public static void Export()
+        {
+            var cols = "*";
+            cols = ConfigFacade.Get(Constant.Sql_Export + TableName, cols);
+            string sql = SqlFacade.SqlSelect(TableName, cols, "status <> '" + Constant.RecordStatus_Deleted + "'", "code");
+            SqlFacade.ExportToCSV(sql, TableName);
         }
     }
 }

@@ -7,25 +7,44 @@ using System.Drawing;
 
 namespace kERP
 {
-    public partial class frmVendor : Form
+    public partial class frmSupplier : Form
     {
-        long Id = 0;
+        public long Id = 0;
         int RowIndex = 0;   // Current gird selected row
         bool IsExpand = false;
         bool IsDirty = false;
         bool IsIgnore = true;
 
         public bool IsDlg = false; // Show dialog box for selecting one 
+        public string SearchText = "";
         public string Code;
         public string Description;
 
         frmMsg fMsg = null;
-        string ModuleName = "IC Vendor";
-        string TitleLabel = VendorFacade.TitleLabel;
+        string ModuleName = "IC Supplier";
+        string TitleLabel = SupplierFacade.TitleLabel;
 
-        public frmVendor()
+        public frmSupplier()
         {
             InitializeComponent();
+        }
+
+        private void LoadImages()
+        {
+            btnSelect.Image = ImageFacade.FromFile("Select");
+            btnNew.Image = ImageFacade.FromFile("New");
+            btnCopy.Image = ImageFacade.FromFile("Copy");
+            btnUnlock.Image = ImageFacade.FromFile("Unlock");
+            btnSave.Image = ImageFacade.FromFile("Save");
+            btnSaveNew.Image = ImageFacade.FromFile("SaveNew");
+            btnActive.Image = ImageFacade.FromFile("Inactive");
+            btnDelete.Image = ImageFacade.FromFile("Delete");
+            btnMode.Image = ImageFacade.FromFile("Mode");
+            btnExport.Image = ImageFacade.FromFile("Export");
+
+            btnFind.Image = ImageFacade.FromFile("Find");
+            btnClear.Image = ImageFacade.FromFile("Clear");
+            btnFilter.Image = ImageFacade.FromFile("Filter");
         }
 
         private string GetStatus()
@@ -45,7 +64,7 @@ namespace kERP
             if (dgvList.SelectedRows.Count > 0) RowIndex = dgvList.SelectedRows[0].Index;
             try
             {
-                dgvList.DataSource = VendorFacade.GetDataTable(txtFind.Text, GetStatus());
+                dgvList.DataSource = SupplierFacade.GetDataTable(txtFind.Text, GetStatus());
             }
             catch (Exception ex)
             {
@@ -118,25 +137,25 @@ namespace kERP
             {
                 if (btnActive.Text == LabelFacade.sys_button_inactive) return;
                 btnActive.Text = LabelFacade.sys_button_inactive;
-                if (btnActive.Image != Properties.Resources.Inactive)
-                    btnActive.Image = Properties.Resources.Inactive;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_inactive))
+                    btnActive.Image = ImageFacade.FromFile("Inactive");
             }
             else
             {
                 if (btnActive.Text == LabelFacade.sys_button_active) return;
                 btnActive.Text = LabelFacade.sys_button_active;
-                if (btnActive.Image != Properties.Resources.Active)
-                    btnActive.Image = Properties.Resources.Active;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_active))
+                    btnActive.Image = ImageFacade.FromFile("Active");
             }
         }
 
         private bool IsValidated()
         {
-            var valid = new Validator(this, "ic_Vendor");
+            var valid = new Validator(this, "ic_supplier");
             string sCode = txtCode.Text.Trim();
             if (sCode.Length == 0)
                 valid.Add(txtCode, "code_blank");
-            else if (VendorFacade.Exists(sCode, Id))
+            else if (SupplierFacade.Exists(sCode, Id))
                 valid.Add(txtCode, "code_exists");
             if (txtDescription.IsEmptyTrim) valid.Add(txtDescription, "description_blank");
             if (cboType.Unspecified) valid.Add(cboType, "type_unspecified");
@@ -148,7 +167,7 @@ namespace kERP
             txtCode.Text = "";
             txtCode.Focus();
             txtDescription.Text = "";
-            DataFacade.LoadList(cboType, "ap_vendor_type"); // Reload & set default
+            DataFacade.LoadList(cboType, "ap_supplier_type"); // Reload & set default
             txtAddress.Text = "";
             txtName.Text = "";
             txtPhone.Text = "";
@@ -160,11 +179,11 @@ namespace kERP
 
         private void LoadData()
         {
-            var Id = dgvList.Id;
+            Id = dgvList.Id;
             if (Id != 0)
                 try
                 {
-                    var m = VendorFacade.Select(Id);
+                    var m = SupplierFacade.Select(Id);
                     txtCode.Text = m.Code;
                     txtDescription.Text = m.Description;
                     cboType.Value = m.Type;
@@ -241,7 +260,7 @@ namespace kERP
 
         private void SetLabels()
         {
-            var prefix = "ic_vendor_";
+            var prefix = "ic_supplier_";
             btnNew.Text = LabelFacade.sys_button_new ?? btnNew.Text;
             btnCopy.Text = LabelFacade.sys_button_copy ?? btnCopy.Text;
             btnUnlock.Text = LabelFacade.sys_button_unlock ?? btnUnlock.Text;
@@ -267,7 +286,7 @@ namespace kERP
         {
             if (!IsValidated()) return false;
             Cursor = Cursors.WaitCursor;
-            var m = new Vendor();
+            var m = new Supplier();
             var log = new SessionLog { Module = ModuleName };
             m.Id = Id;
             m.Code = txtCode.Text.Trim();
@@ -291,7 +310,7 @@ namespace kERP
             }
             try
             {
-                m.Id = VendorFacade.Save(m);
+                m.Id = SupplierFacade.Save(m);
             }
             catch (Exception ex)
             {
@@ -308,14 +327,16 @@ namespace kERP
             return true;
         }
 
-        private void frmVendorList_Load(object sender, EventArgs e)
+        private void frmSupplierList_Load(object sender, EventArgs e)
         {
             try
             {
+                LoadImages();
                 dgvList.ShowLessColumns(true);
                 SetSettings();
+                txtFind.Text = SearchText;
                 SetLabels();
-                DataFacade.LoadList(cboType, "ap_vendor_type");
+                DataFacade.LoadList(cboType, "ap_supplier_type");
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();
 
@@ -385,12 +406,11 @@ namespace kERP
         {
             try
             {
-                var Id = dgvList.Id;
                 if (Id == 0) return;
                 // If referenced
                 //todo: check if exist in ic_item
                 // If locked
-                var lInfo = VendorFacade.GetLock(Id);
+                var lInfo = SupplierFacade.GetLock(Id);
                 string msg = "";
                 if (lInfo.Locked)
                 {
@@ -409,7 +429,7 @@ namespace kERP
                     return;
                 try
                 {
-                    VendorFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
+                    SupplierFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
                 }
                 catch (Exception ex)
                 {
@@ -474,7 +494,6 @@ namespace kERP
 
         private void btnActive_Click(object sender, EventArgs e)
         {
-            var Id = dgvList.Id;
             if (Id == 0) return;
 
             string status = btnActive.Text == LabelFacade.sys_button_inactive ? Constant.RecordStatus_InActive : Constant.RecordStatus_Active;
@@ -482,7 +501,7 @@ namespace kERP
             //todo: check if already used in ic_item
 
             //If locked
-            var lInfo = VendorFacade.GetLock(Id);
+            var lInfo = SupplierFacade.GetLock(Id);
             if (lInfo.Locked)
             {
                 string msg = string.Format(MessageFacade.lock_currently, lInfo.Lock_By, lInfo.Lock_At);
@@ -497,7 +516,7 @@ namespace kERP
             }
             try
             {
-                VendorFacade.SetStatus(Id, status);
+                SupplierFacade.SetStatus(Id, status);
             }
             catch (Exception ex)
             {
@@ -535,7 +554,7 @@ namespace kERP
                 dgvList.Focus();
                 try
                 {
-                    VendorFacade.ReleaseLock(dgvList.Id);
+                    SupplierFacade.ReleaseLock(dgvList.Id);
                 }
                 catch (Exception ex)
                 {
@@ -554,7 +573,7 @@ namespace kERP
             if (Id == 0) return;
             try
             {
-                var lInfo = VendorFacade.GetLock(Id);
+                var lInfo = SupplierFacade.GetLock(Id);
 
                 if (lInfo.Locked) // Check if record is locked
                 {
@@ -570,8 +589,7 @@ namespace kERP
                         else
                             return;
                 }
-                txtDescription.SelectionStart = txtDescription.Text.Length;
-                txtDescription.Focus();
+                txtDescription.Focus2();
                 LockControls(false);
             }
             catch (Exception ex)
@@ -582,7 +600,7 @@ namespace kERP
             }
             try
             {
-                VendorFacade.Lock(dgvList.Id, txtCode.Text);
+                SupplierFacade.Lock(dgvList.Id, txtCode.Text);
             }
             catch (Exception ex)
             {
@@ -661,7 +679,7 @@ namespace kERP
             IsDirty = true;
         }
 
-        private void frmUnitMeasureList_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmSupplierList_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (IsDirty)
             {
@@ -689,9 +707,9 @@ namespace kERP
         {
             // Check if entered code already exists
             if (txtCode.ReadOnly) return;
-            if (VendorFacade.Exists(txtCode.Text.Trim()))
+            if (SupplierFacade.Exists(txtCode.Text.Trim()))
             {
-                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sys_branch);
+                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.SYS_Branch);
             }
         }
 
@@ -744,7 +762,7 @@ namespace kERP
         {
             Cursor = Cursors.WaitCursor;
             Application.DoEvents();
-            VendorFacade.Export();
+            SupplierFacade.Export();
             Cursor = Cursors.Default;
         }
 
@@ -765,9 +783,15 @@ namespace kERP
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            Id = dgvList.Id;
             Code = dgvList.CurrentRow.Cells["colCode"].Value.ToString();
             Description = dgvList.CurrentRow.Cells["colDescription"].Value.ToString();
             DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void SwitchToEN_Enter(object sender, EventArgs e)
+        {
+            Language.SwitchToEN();
         }
     }
 }

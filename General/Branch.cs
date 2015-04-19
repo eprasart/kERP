@@ -100,7 +100,7 @@ namespace kERP
             }
             catch (Exception ex)
             {
-                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, LabelFacade.sys_branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, LabelFacade.SYS_Branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogFacade.Log(ex, "Exists");
             }
             return bExists;

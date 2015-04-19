@@ -20,227 +20,131 @@ namespace kERP.SYS
             InitializeComponent();
         }
 
+        private void LoadImages()
+        {
+            btnHome.Image = ImageFacade.FromFile("Home24");
+            btnIC.Image = ImageFacade.FromFile("IC24");
+            btnAR.Image = ImageFacade.FromFile("AR24");
+            btnAP.Image = ImageFacade.FromFile("AP24");
+            btnPO.Image = ImageFacade.FromFile("PO24");
+            btnSO.Image = ImageFacade.FromFile("SO24");
+            btnGL.Image = ImageFacade.FromFile("GL24");
+            btnReport.Image = ImageFacade.FromFile("Report24");
+            btnSM.Image = ImageFacade.FromFile("SM24");
+            btnSYS.Image = ImageFacade.FromFile("SYS24");
+        }
+
+        private void AddToPanelR(UserControl ui)
+        {
+            ui.Dock = DockStyle.Fill;
+            splitContainer1.Panel2.Controls.Add(ui);
+            splitContainer1.Panel2.Controls.RemoveAt(1);
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
-            lblVersion.Text = " v " + App.version + File.GetLastWriteTime(Application.ExecutablePath).ToString(" (yyyy-MM-dd HH:mm)");
-
+            LoadImages();
+            splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
             FormFacade.SetFormState(this);
+            var hUI = new HomeUI();
+            hUI.Dock = DockStyle.Fill;
+            splitContainer1.Panel2.Controls.Add(hUI);
 
             App.fSplash.ShowMsg("");
             App.fSplash.StartTimer();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            new SM.frmUserList().Show();
-            Cursor = Cursors.Default;
-        }
-
-        private void btnUser_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            if (App.fUserList == null || App.fUserList.IsDisposed == true)
-            {
-                App.fUserList = new SM.frmUserList();
-                App.fUserList.Show();
-            }
-            App.fUserList.Focus();
-            Cursor = Cursors.Default;
-            SM.SessionLogFacade.Log(Constant.Priority_Information, Module, Constant.Log_Open, "User List opened.");
-        }
-
-        private void btnAuditLog_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            SM.SessionLogFacade.Log(Constant.Priority_Information, Module, Constant.Log_Open, "Audit Log opened.");
-            if (App.fAuditLog == null || App.fAuditLog.IsDisposed == true)
-            {
-                App.fAuditLog = new SM.frmAuditLog();
-                App.fAuditLog.Show();
-            }
-            App.fAuditLog.Focus();
-            Cursor = Cursors.Default;
-        }
-
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            ConfigFacade.Set(Name + Constant.Splitter_Distance, splitContainer1.SplitterDistance);
             FormFacade.SaveFormSate(this);
-
             App.Close();
         }
 
         private void btnBranch_Click(object sender, EventArgs e)
         {
-            if (!SM.Privilege.CanAccess("BRN", "V"))
+            var f = App.fBranch;
+            if (!Privilege.CanAccess("IC_BRN", "V"))
             {
-                MessageBox.Show("You don't have the privilege to access this function.");
-                return;
-            }
-            Cursor = Cursors.WaitCursor;
-            if (App.fBranch == null || App.fBranch.IsDisposed == true)
-            {
-                App.fBranch = new frmBranch();
-                App.fBranch.Show();
-            }
-            App.fBranch.Focus();
-            Cursor = Cursors.Default;
-        }
-
-        private void btnLocation_Click(object sender, EventArgs e)
-        {
-            if (!SM.Privilege.CanAccess("IC_LOC", "V"))
-            {
-                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Location);
-                return;
-            }
-            Cursor = Cursors.WaitCursor;
-            if (App.fLocation == null || App.fLocation.IsDisposed == true)
-            {
-                App.fLocation = new frmLocation();
-                App.fLocation.Show();
-            }
-            App.fLocation.Focus();
-            Cursor = Cursors.Default;
-        }
-
-        private void btnUnitMeasure_Click(object sender, EventArgs e)
-        {
-            if (!SM.Privilege.CanAccess("IC_UOM", "V"))
-            {
-                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Unit_Measure);
-                return;
-            }
-            Cursor = Cursors.WaitCursor;
-            if (App.fUnitMeasure == null || App.fUnitMeasure.IsDisposed == true)
-            {
-                App.fUnitMeasure = new frmUnitMeasure();
-                App.fUnitMeasure.Show();
-            }
-            if (App.fUnitMeasure.WindowState == FormWindowState.Minimized)
-                App.fUnitMeasure.WindowState = FormWindowState.Normal;
-            App.fUnitMeasure.Focus();
-            Cursor = Cursors.Default;
-        }
-
-        private void btnCategory_Click(object sender, EventArgs e)
-        {
-            var f = App.fCategory;
-            if (!SM.Privilege.CanAccess("IC_CAT", "V"))
-            {
-                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Category);
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.SYS_Branch);
                 return;
             }
             Cursor = Cursors.WaitCursor;
             if (f == null || f.IsDisposed == true)
             {
-                f = new frmCategory();
+                f = new frmBranch();
                 f.Show();
             }
             if (f.WindowState == FormWindowState.Minimized)
                 f.WindowState = FormWindowState.Normal;
             f.Focus();
+            SessionLogFacade.Log(Constant.Priority_Information, Module, Constant.Log_Open, f.Text + " opened.");
             Cursor = Cursors.Default;
         }
 
-        private void btnHoliday_Click(object sender, EventArgs e)
+        private void btnIC_CheckedChanged(object sender, EventArgs e)
         {
-            var f = App.fHoliday;
-            if (!SM.Privilege.CanAccess("HOL", "V"))
-            {
-                MessageFacade.Show(MessageFacade.Get("sys_no_access"), "Hiliday");
-                return;
-            }
-            Cursor = Cursors.WaitCursor;
-            if (f == null || f.IsDisposed == true)
-            {
-                f = new frmHoliday();
-                f.Show();
-            }
-            if (f.WindowState == FormWindowState.Minimized)
-                f.WindowState = FormWindowState.Normal;
-            f.Focus();
-            Cursor = Cursors.Default;
+            if (!btnIC.Checked) return;
+            AddToPanelR(new ICUI());
         }
 
-        private void btnVendor_Click(object sender, EventArgs e)
+        private void btnHome_CheckedChanged(object sender, EventArgs e)
         {
-            var f = App.fVendor;
-            if (!SM.Privilege.CanAccess("AP_VDR", "V"))
-            {
-                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.AP_Supplier);
-                return;
-            }
-            Cursor = Cursors.WaitCursor;
-            if (f == null || f.IsDisposed == true)
-            {
-                f = new frmVendor();
-                f.Show();
-            }
-            if (f.WindowState == FormWindowState.Minimized)
-                f.WindowState = FormWindowState.Normal;
-            f.Focus();
-            Cursor = Cursors.Default;
+            if (!btnHome.Checked) return;
+            AddToPanelR(new HomeUI());
         }
 
-        private void btnItem_Click(object sender, EventArgs e)
+        private void btnSM_CheckedChanged(object sender, EventArgs e)
         {
-            var f = App.fItem;
-            if (!SM.Privilege.CanAccess("IC_ITM", "V")) 
-            {
-                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Item);
-                return;
-            }
-            Cursor = Cursors.WaitCursor;
-            if (f == null || f.IsDisposed == true)
-            {
-                f = new frmItem();
-                f.Show();
-            }
-            if (f.WindowState == FormWindowState.Minimized)
-                f.WindowState = FormWindowState.Normal;
-            f.Focus();
-            Cursor = Cursors.Default;
+            if (!btnSM.Checked) return;
+            AddToPanelR(new SMUI());
         }
 
-        private void btnClassification_Click(object sender, EventArgs e)
+        private void btnAR_CheckedChanged(object sender, EventArgs e)
         {
-            var f = App.fClassification;
-            if (!SM.Privilege.CanAccess("IC_CLS", "V"))
-            {
-                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Classification);
-                return;
-            }
-            Cursor = Cursors.WaitCursor;
-            if (f == null || f.IsDisposed == true)
-            {
-                f = new frmClassification();
-                f.Show();
-            }
-            if (f.WindowState == FormWindowState.Minimized)
-                f.WindowState = FormWindowState.Normal;
-            f.Focus();
-            Cursor = Cursors.Default;
+            if (!btnAR.Checked) return;
         }
 
-        private void btnItemLocation_Click(object sender, EventArgs e)
+        private void btnAP_CheckedChanged(object sender, EventArgs e)
         {
-            var f = App.fItemLocation;
-            if (!SM.Privilege.CanAccess("IC_IL", "V"))
-            {
-                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Classification);
-                return;
-            }
-            Cursor = Cursors.WaitCursor;
-            if (f == null || f.IsDisposed == true)
-            {
-                f = new frmItemLocation();
-                f.Show();
-            }
-            if (f.WindowState == FormWindowState.Minimized)
-                f.WindowState = FormWindowState.Normal;
-            f.Focus();
-            Cursor = Cursors.Default;
+            if (!btnAP.Checked) return;
+            AddToPanelR(new APUI());
+        }
+
+        private void btnPO_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!btnPO.Checked) return;
+            AddToPanelR(new POUI());
+        }
+
+        private void btnSO_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!btnSO.Checked) return;
+        }
+
+        private void btnGL_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!btnGL.Checked) return;
+        }
+
+        private void btnReport_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!btnReport.Checked) return;
+        }
+
+        private void btnSYS_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!btnSYS.Checked) return;
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Click(object sender, EventArgs e)
+        {
+         
         }
     }
 }

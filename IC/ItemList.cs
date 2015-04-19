@@ -17,11 +17,11 @@ namespace kERP
         bool IsIgnore = true;
 
         public bool IsDlg = false; // Show dialog box for selecting one 
+        public string SearchText = "";
         public string Code;
         public string Description;
 
         frmMsg fMsg = null;
-        public string SearchText = "";
         string ModuleName = "IC Item";
         string TitleLabel = ItemFacade.TitleLabel;
 
@@ -43,6 +43,30 @@ namespace kERP
             else if (mnuShowI.Checked && !mnuShowA.Checked)
                 status = Constant.RecordStatus_InActive;
             return status;
+        }
+
+        private void ShowCategory(string search = "")
+        {
+            var f = new frmCategory();
+            f.IsDlg = true;
+            f.SearchText = search;
+            if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            CategoryCode = f.Code;
+            var m = CategoryFacade.SelectLessCols(f.Id);
+            txtCategory.Text = Util.ConcatCodeDescription(m.Code, m.Description);
+            txtClassification.Focus();
+        }
+
+        private void ShowClassification(string search = "")
+        {
+            var f = new frmClassification();
+            f.IsDlg = true;
+            f.SearchText = search;
+            if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            ClassificationCode = f.Code;
+            var m = CategoryFacade.SelectLessCols(f.Id);
+            txtClassification.Text = Util.ConcatCodeDescription(m.Code, m.Description);
+            txtClassification.Focus();
         }
 
         private void RefreshGrid(long seq = 0)
@@ -91,10 +115,11 @@ namespace kERP
 
         private void LockControls(bool l = true)
         {
-            if (Id != 0 && l == false)
-                txtCode.ReadOnly = true;
-            else
-                txtCode.ReadOnly = l;
+            txtCode.ReadOnly = Id != 0;
+            //if (Id != 0 && l == false)
+            //    txtCode.ReadOnly = true;
+            //else
+            //    txtCode.ReadOnly = l;
             txtDescription.ReadOnly = l;
             cboCurrency.Enabled = !l;
             txtDescription2.ReadOnly = l;
@@ -105,7 +130,9 @@ namespace kERP
             cboDiscount.Enabled = !l;
             cboABC.Enabled = !l;
             txtNote.ReadOnly = l;
+            txtCategory.ReadOnly = l;
             btnCategory.Enabled = !l;
+            txtClassification.ReadOnly = l;
             btnClassification.Enabled = !l;
             lblBrowse.Enabled = !l;
             lblClear.Enabled = !l;
@@ -131,15 +158,15 @@ namespace kERP
             {
                 if (btnActive.Text == LabelFacade.sys_button_inactive) return;
                 btnActive.Text = LabelFacade.sys_button_inactive;
-                if (btnActive.Image != Properties.Resources.Inactive)
-                    btnActive.Image = Properties.Resources.Inactive;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_inactive))
+                    btnActive.Image = ImageFacade.FromFile("Inactive");
             }
             else
             {
                 if (btnActive.Text == LabelFacade.sys_button_active) return;
                 btnActive.Text = LabelFacade.sys_button_active;
-                if (btnActive.Image != Properties.Resources.Active)
-                    btnActive.Image = Properties.Resources.Active;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_active))
+                    btnActive.Image = ImageFacade.FromFile("Active");
             }
         }
 
@@ -188,7 +215,7 @@ namespace kERP
 
         private void LoadData()
         {
-            var Id = dgvList.Id;
+            Id = dgvList.Id;
             if (Id != 0)
                 try
                 {
@@ -197,10 +224,10 @@ namespace kERP
                     txtDescription.Text = m.Description;
                     cboType.Value = m.Type;
                     CategoryCode = m.Category;
-                    txtCategory.Text =Util.ConcatCodeDescription( m.Category, CategoryFacade.GetDescription(m.Category));
+                    txtCategory.Text = Util.ConcatCodeDescription(m.Category, CategoryFacade.GetDescription(m.Category));
                     txtDescription2.Text = m.Description2;
                     txtBarcode.Text = m.Barcode;
-                    txtClassification.Text =Util.ConcatCodeDescription( m.Classification , ClassificationFacade.GetDescription(m.Classification));
+                    txtClassification.Text = Util.ConcatCodeDescription(m.Classification, ClassificationFacade.GetDescription(m.Classification));
                     ClassificationCode = m.Classification;
                     cboCurrency.Value = m.Currency;
                     txtPrice.Text = m.Price.ToString();
@@ -290,6 +317,28 @@ namespace kERP
             //todo: load the rest
         }
 
+        private void LoadImages()
+        {
+            btnSelect.Image = ImageFacade.FromFile("Select");
+            btnNew.Image = ImageFacade.FromFile("New");
+            btnCopy.Image = ImageFacade.FromFile("Copy");
+            btnUnlock.Image = ImageFacade.FromFile("Unlock");
+            btnSave.Image = ImageFacade.FromFile("Save");
+            btnSaveNew.Image = ImageFacade.FromFile("SaveNew");
+            btnActive.Image = ImageFacade.FromFile("Inactive");
+            btnDelete.Image = ImageFacade.FromFile("Delete");
+            btnMode.Image = ImageFacade.FromFile("Mode");
+            btnExport.Image = ImageFacade.FromFile("Export");
+            //btnGoTo.Image = ImageFacade.FromFile("GoTo");
+
+            btnFind.Image = ImageFacade.FromFile("Find");
+            btnClear.Image = ImageFacade.FromFile("Clear");
+            btnFilter.Image = ImageFacade.FromFile("Filter");
+
+            btnCategory.Image = btnFind.Image;
+            btnClassification.Image = btnFind.Image;
+        }
+
         private bool Save()
         {
             if (!IsValidated()) return false;
@@ -344,6 +393,7 @@ namespace kERP
         {
             try
             {
+                LoadImages();
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
@@ -421,7 +471,6 @@ namespace kERP
         {
             try
             {
-                var Id = dgvList.Id;
                 if (Id == 0) return;
                 // If referenced
                 //todo: check if exist in ic_item
@@ -510,7 +559,6 @@ namespace kERP
 
         private void btnActive_Click(object sender, EventArgs e)
         {
-            var Id = dgvList.Id;
             if (Id == 0) return;
 
             string status = btnActive.Text == LabelFacade.sys_button_inactive ? Constant.RecordStatus_InActive : Constant.RecordStatus_Active;
@@ -606,8 +654,7 @@ namespace kERP
                         else
                             return;
                 }
-                txtDescription.SelectionStart = txtDescription.Text.Length;
-                txtDescription.Focus();
+                txtDescription.Focus2();
                 LockControls(false);
             }
             catch (Exception ex)
@@ -727,7 +774,7 @@ namespace kERP
             if (txtCode.ReadOnly) return;
             if (ItemFacade.Exists(txtCode.Text.Trim()))
             {
-                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sys_branch);
+                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.SYS_Branch);
             }
         }
 
@@ -824,12 +871,7 @@ namespace kERP
 
         private void btnClassification_Click(object sender, EventArgs e)
         {
-            var f = new frmClassification();
-            f.IsDlg = true;
-            if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
-            ClassificationCode = f.Code;
-            txtClassification.Text = Util.ConcatCodeDescription(f.Code, f.Description);
-            txtUPC.Focus();
+            ShowClassification();
         }
 
         private void txtClassification_KeyDown(object sender, KeyEventArgs e)
@@ -855,12 +897,7 @@ namespace kERP
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            var f = new frmCategory();
-            f.IsDlg = true;
-            if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
-            CategoryCode = f.Code;
-            txtCategory.Text = Util.ConcatCodeDescription(f.Code, f.Description);
-            txtClassification.Focus();
+            ShowCategory();
         }
 
         private void txtCategory_KeyDown(object sender, KeyEventArgs e)
@@ -887,9 +924,104 @@ namespace kERP
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            Id = dgvList.Id;
             Code = dgvList.CurrentRow.Cells["colCode"].Value.ToString();
             Description = dgvList.CurrentRow.Cells["colDescription"].Value.ToString();
             DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
+        private void txtCategory_Leave(object sender, EventArgs e)
+        {
+            Validator.Close(this);
+            string sCategory = txtCategory.Text;
+            if (txtCategory.ReadOnly || txtCategory.Text.Length == 0 || sCategory.Contains(ConfigFacade.Code_Description_Separator)) return;
+            int count = CategoryFacade.GetCount(sCategory);
+            if (count == 1) // match 1
+            {
+                var m = CategoryFacade.SelectLessCols(sCategory);
+                CategoryCode = m.Code;
+                txtCategory.Text = Util.ConcatCodeDescription(m.Code, m.Description);
+            }
+            else if (count > 1) // match multiple
+                ShowCategory(sCategory);
+            else    // < 0; not match
+            {
+                CategoryCode = "";
+                var valid = new Validator(this, "ic_item");
+                valid.Add(txtCategory, "category_invalid");
+                valid.Show();
+            }
+        }
+
+        private void txtClassification_Leave(object sender, EventArgs e)
+        {
+            Validator.Close(this);
+            string sClassification = txtClassification.Text;
+            if (txtClassification.ReadOnly || txtClassification.Text.Length == 0 || sClassification.Contains(ConfigFacade.Code_Description_Separator)) return;
+            int count = ClassificationFacade.GetCount(sClassification);
+            if (count == 1) // match 1
+            {
+                var m = ClassificationFacade.SelectLessCols(sClassification);
+                ClassificationCode = m.Code;
+                txtClassification.Text = Util.ConcatCodeDescription(m.Code, m.Description);
+            }
+            else if (count > 1) // match multiple
+                ShowClassification(sClassification);
+            else    // < 0; not match
+            {
+                ClassificationCode = "";
+                var valid = new Validator(this, "ic_item");
+                valid.Add(txtClassification, "classification_invalid");
+                valid.Show();
+            }
+        }
+
+        private void mnuImage_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mnuOpen.Enabled = picItem.Image != null;
+            mnuSaveAs.Enabled = mnuOpen.Enabled;
+        }
+
+        private void mnuSaveAs_Click(object sender, EventArgs e)
+        {
+            var sfd = new SaveFileDialog
+            {
+                Filter = "JPG File (*.jpg) | *.jpg|All Files (*.*) | *.*",
+                CheckPathExists = true,
+                OverwritePrompt = true
+            };
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    Cursor = Cursors.WaitCursor;
+                    picItem.Image.Save(sfd.FileName);//, System.Drawing.Imaging.ImageFormat.Jpeg
+                    Cursor = Cursors.Default;
+                }
+                catch (Exception ex)
+                {
+                    Cursor = Cursors.Default;
+                    MessageFacade.Show(MessageFacade.Get("error_save_image") + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorLogFacade.Log(ex);
+                }
+            }
+        }
+
+        private void mnuOpen_Click(object sender, EventArgs e)
+        {
+            var f = new frmImageViewer(picItem.Image);
+            f.Show();
+        }
+
+        private void picItem_DoubleClick(object sender, EventArgs e)
+        {
+            if (picItem.Image == null) return;
+            mnuOpen_Click(null, null);
+        }
+
+        private void SwitchToEN_Enter(object sender, EventArgs e)
+        {
+            Language.SwitchToEN();
         }
     }
 }

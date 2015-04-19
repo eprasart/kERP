@@ -16,7 +16,6 @@ namespace kERP
 {
     class Util
     {
-
         public static string RemoveLastDotZero(string v)
         {
             string s = v;
@@ -101,6 +100,7 @@ namespace kERP
 
         public static string ConcatCodeDescription(string code, string description)
         {
+            if (code == null && description == null) return "";
             return string.Format("{0}{1}{2}", code, ConfigFacade.Code_Description_Separator, description);
         }
     }
@@ -111,7 +111,7 @@ namespace kERP
         {
             foreach (Screen s in Screen.AllScreens)
             {
-                if (p.X > s.Bounds.Right && p.X > s.Bounds.Left && p.Y > s.Bounds.Top && p.Y < s.Bounds.Bottom)
+                if (p.X < s.Bounds.Right && p.X > s.Bounds.Left && p.Y > s.Bounds.Top && p.Y < s.Bounds.Bottom)
                     return true;
             }
             return false;
@@ -128,7 +128,7 @@ namespace kERP
 
         public static void SetFormState(Form frm, string prefix = "")
         {
-            frm.Icon = Properties.Resources.Icon;
+            frm.Icon = new Icon("Image\\Icon.ico");
             if (prefix.Length == 0) prefix = frm.Name;
             var lo = ConfigFacade.GetPoint(prefix + Constant.Location);
             if (lo != new Point(-1, -1) && isPointVisibleOnAScreen(lo))
@@ -274,7 +274,7 @@ namespace kERP
             }
             catch (Exception ex)
             {
-                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, LabelFacade.sys_branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageFacade.Show(MessageFacade.error_query + "\r\n" + ex.Message, LabelFacade.SYS_Branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogFacade.Log(ex, "Exists");
             }
             return bExists;
@@ -336,6 +336,13 @@ namespace kERP
             br.Close();
             fs.Close();
             return bytes;
+        }
+
+        public static Image FromFile(string fileName)
+        {
+            var path = Path.Combine("Image", fileName + ".png");
+            if (!File.Exists(path)) return null;
+            return Image.FromFile(path);
         }
     }
 }

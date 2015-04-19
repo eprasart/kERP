@@ -52,7 +52,7 @@ namespace kERP
             catch (Exception ex)
             {
                 Cursor = Cursors.Default;
-                MessageFacade.Show(MessageFacade.error_retrieve_data + "\r\n" + ex.Message, LabelFacade.sys_branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageFacade.Show(MessageFacade.error_retrieve_data + "\r\n" + ex.Message, LabelFacade.SYS_Branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogFacade.Log(ex);
                 return;
             }
@@ -123,15 +123,15 @@ namespace kERP
             {
                 if (btnActive.Text == LabelFacade.sys_button_inactive) return;
                 btnActive.Text = LabelFacade.sys_button_inactive;
-                if (btnActive.Image != Properties.Resources.Inactive)
-                    btnActive.Image = Properties.Resources.Inactive;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_inactive))
+                    btnActive.Image = ImageFacade.FromFile("Inactive");
             }
             else
             {
                 if (btnActive.Text == LabelFacade.sys_button_active) return;
                 btnActive.Text = LabelFacade.sys_button_active;
-                if (btnActive.Image != Properties.Resources.Active)
-                    btnActive.Image = Properties.Resources.Active;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_active))
+                    btnActive.Image = ImageFacade.FromFile("Active");
             }
         }
 
@@ -159,7 +159,6 @@ namespace kERP
 
         private void LoadData()
         {
-            var Id = dgvList.Id;
             if (Id != 0)
                 try
                 {
@@ -181,7 +180,7 @@ namespace kERP
                 }
                 catch (Exception ex)
                 {
-                    MessageFacade.Show(MessageFacade.error_load_record + "\r\n" + ex.Message, LabelFacade.sys_branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageFacade.Show(MessageFacade.error_load_record + "\r\n" + ex.Message, LabelFacade.SYS_Branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ErrorLogFacade.Log(ex);
                 }
             else    // when delete all => disable buttons and clear all controls
@@ -295,7 +294,6 @@ namespace kERP
 
         private void frmUnitMeasureList_Load(object sender, EventArgs e)
         {
-            Icon = Properties.Resources.Icon;
             try
             {
                 dgvList.ShowLessColumns(true);
@@ -311,7 +309,7 @@ namespace kERP
             catch (Exception ex)
             {
                 ErrorLogFacade.Log(ex, "Form_Load");
-                MessageFacade.Show(MessageFacade.error_load_form + "\r\n" + ex.Message, LabelFacade.sys_branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageFacade.Show(MessageFacade.error_load_form + "\r\n" + ex.Message, LabelFacade.SYS_Branch, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -366,7 +364,6 @@ namespace kERP
         {
             try
             {
-                var Id = dgvList.Id;
                 if (Id == 0) return;
                 // If referenced
                 //todo: check if exist in ic_item
@@ -450,7 +447,6 @@ namespace kERP
 
         private void btnActive_Click(object sender, EventArgs e)
         {
-            var Id = dgvList.Id;
             if (Id == 0) return;
 
             string status = btnActive.Text == LabelFacade.sys_button_inactive ? Constant.RecordStatus_InActive : Constant.RecordStatus_Active;
@@ -546,8 +542,7 @@ namespace kERP
                         else
                             return;
                 }
-                txtAddress.SelectionStart = txtAddress.Text.Length;
-                txtAddress.Focus();
+                txtAddress.Focus2();
                 LockControls(false);
             }
             catch (Exception ex)
@@ -669,7 +664,7 @@ namespace kERP
             if (txtCode.ReadOnly) return;
             if (BranchFacade.Exists(txtCode.Text.Trim()))
             {
-                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sys_branch);
+                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.SYS_Branch);
             }
         }
 

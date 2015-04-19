@@ -19,7 +19,7 @@ namespace kERP
 
         private void frmSplash_Load(object sender, EventArgs e)
         {
-
+            //pictureBox1.Image = Image.FromFile("Image\\Icon.ico");
         }
 
         public void SetAppName(string name)

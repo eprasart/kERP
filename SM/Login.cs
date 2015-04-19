@@ -54,7 +54,6 @@ namespace kERP.SM
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            Icon = Properties.Resources.Icon;
             lblMsg.Text = "";
 
             txtUsername.Text = App.setting.Get("Username");

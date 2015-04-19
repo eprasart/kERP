@@ -4,24 +4,46 @@ using kERP.SM;
 using kERP.SYS;
 using System.Text;
 using System.Drawing;
-using Microsoft.Reporting.WinForms;
 
 namespace kERP
 {
-    public partial class frmProduct : Form
+    public partial class frmRole : Form
     {
-        long Id = 0;
+        public long Id = 0;
         int RowIndex = 0;   // Current gird selected row
         bool IsExpand = false;
         bool IsDirty = false;
         bool IsIgnore = true;
 
-        string ModuleName = "Product";
-        string TitleLabel = ProductFacade.TitleLabel;
+        public bool IsDlg = false; // Show dialog box for selecting one 
+        public string SearchText = "";
+        public string Code;
+        public string Description;
 
-        public frmProduct()
+        frmMsg fMsg = null;
+        string ModuleName = "SM Role";
+        string TitleLabel = RoleFacade.TitleLabel;
+
+        public frmRole()
         {
             InitializeComponent();
+        }
+        private void LoadImages()
+        {
+            btnSelect.Image = ImageFacade.FromFile("Select");
+            btnNew.Image = ImageFacade.FromFile("New");
+            btnCopy.Image = ImageFacade.FromFile("Copy");
+            btnUnlock.Image = ImageFacade.FromFile("Unlock");
+            btnSave.Image = ImageFacade.FromFile("Save");
+            btnSaveNew.Image = ImageFacade.FromFile("SaveNew");
+            btnActive.Image = ImageFacade.FromFile("Inactive");
+            btnDelete.Image = ImageFacade.FromFile("Delete");
+            btnMode.Image = ImageFacade.FromFile("Mode");
+            btnExport.Image = ImageFacade.FromFile("Export");
+
+            btnFind.Image = ImageFacade.FromFile("Find");
+            btnClear.Image = ImageFacade.FromFile("Clear");
+            btnFilter.Image = ImageFacade.FromFile("Filter");
         }
 
         private string GetStatus()
@@ -41,7 +63,7 @@ namespace kERP
             if (dgvList.SelectedRows.Count > 0) RowIndex = dgvList.SelectedRows[0].Index;
             try
             {
-                dgvList.DataSource = ProductFacade.GetDataTable(txtFind.Text, GetStatus());
+                dgvList.DataSource = RoleFacade.GetDataTable(txtFind.Text, GetStatus());
             }
             catch (Exception ex)
             {
@@ -80,18 +102,12 @@ namespace kERP
 
         private void LockControls(bool l = true)
         {
-            txtCode.ReadOnly = Id != 0 && !l ? true : l;
-            txtName.ReadOnly = l;
-            cboMethod.Enabled = !l;
-            cboPrincipalRound.Enabled = !l;
-            cboInterestRound.Enabled = !l;
-            cboTotalRound.Enabled = !l;
-            chkSaturday.Enabled = !l;
-            chkSunday.Enabled = !l;
-            chkHoliday.Enabled = !l;
-            chkNeverOn_CheckedChanged(null, null);
+            if (Id != 0 && l == false)
+                txtCode.ReadOnly = true;
+            else
+                txtCode.ReadOnly = l;
+            txtDescription.ReadOnly = l;
             txtNote.ReadOnly = l;
-
             btnNew.Enabled = l;
             btnCopy.Enabled = dgvList.Id != 0 && l;
             btnSave.Enabled = !l;
@@ -105,8 +121,7 @@ namespace kERP
             btnFind.Enabled = l;
             btnClear.Enabled = l;
             btnFilter.Enabled = l;
-
-            Validator.Close(this);
+            if (fMsg != null && !fMsg.IsDisposed) fMsg.Close();
         }
 
         private void SetStatus(string stat)
@@ -115,32 +130,27 @@ namespace kERP
             {
                 if (btnActive.Text == LabelFacade.sys_button_inactive) return;
                 btnActive.Text = LabelFacade.sys_button_inactive;
-                if (btnActive.Image != Properties.Resources.Inactive)
-                    btnActive.Image = Properties.Resources.Inactive;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_inactive))
+                    btnActive.Image = ImageFacade.FromFile("Inactive");
             }
             else
             {
                 if (btnActive.Text == LabelFacade.sys_button_active) return;
                 btnActive.Text = LabelFacade.sys_button_active;
-                if (btnActive.Image != Properties.Resources.Active)
-                    btnActive.Image = Properties.Resources.Active;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_active))
+                    btnActive.Image = ImageFacade.FromFile("Active");
             }
         }
 
         private bool IsValidated()
         {
-            var valid = new Validator(this, "product");
-            string Code = txtCode.Text;
-            if (Code.Length == 0)
+            var valid = new Validator(this, "ic_role");
+            string sCode = txtCode.Text.Trim();
+            if (sCode.Length == 0)
                 valid.Add(txtCode, "code_blank");
-            else if (ProductFacade.Exists(Code, Id))
+            else if (RoleFacade.Exists(sCode, Id))
                 valid.Add(txtCode, "code_exists");
-            if (txtName.IsEmptyTrim) valid.Add(txtName, "name_invalid");
-            if (cboMethod.Unspecified) valid.Add(cboMethod, "calculation_method_unspecified");
-            if (cboPrincipalRound.Unspecified) valid.Add(cboPrincipalRound, "principal_round_rule_unspecified");
-            if (cboInterestRound.Unspecified) valid.Add(cboInterestRound, "interest_round_rule_unspecified");
-            if (cboTotalRound.Unspecified) valid.Add(cboTotalRound, "total_round_rule_unspecified");
-            if (cboMove.Enabled && cboMove.Unspecified) valid.Add(cboMove, "non_working_move_unspecified");
+            if (txtDescription.IsEmptyTrim) valid.Add(txtDescription, "description_blank");
             return valid.Show();
         }
 
@@ -148,37 +158,25 @@ namespace kERP
         {
             txtCode.Text = "";
             txtCode.Focus();
-            txtName.Text = "";
-            chkSaturday.Checked = true;
-            chkSunday.Checked = true;
-            chkHoliday.Checked = true;
-            cboMove.SelectedIndex = 0;
+            txtDescription.Text = "";
             txtNote.Text = "";
             IsDirty = false;
         }
 
         private void LoadData()
         {
-            var Id = dgvList.Id;
+            Id = dgvList.Id;
             if (Id != 0)
                 try
                 {
-                    var m = ProductFacade.Select(Id);
+                    var m = RoleFacade.Select(Id);
                     txtCode.Text = m.Code;
-                    txtName.Text = m.Name;
-                    cboMethod.Value = m.Calculation_Method;
-                    cboPrincipalRound.Value = m.Principal_Round_Rule;
-                    cboInterestRound.Value = m.Interest_Round_Rule;
-                    cboTotalRound.Value = m.Total_Round_Rule;
-                    chkSaturday.Checked = (m.Never_On.Contains("6"));
-                    chkSunday.Checked = (m.Never_On.Contains("0"));
-                    chkHoliday.Checked = (m.Never_On.Contains("H"));
-                    cboMove.Value = m.Non_Working_Day_Move;
+                    txtDescription.Text = m.Description;
                     txtNote.Text = m.Note;
                     SetStatus(m.Status);
                     LockControls();
                     IsDirty = false;
-                    SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_View, "View. Id=" + m.Id + ", Name=" + m.Name);
+                    SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_View, "View. Id=" + m.Id + ", Code=" + m.Code);
                 }
                 catch (Exception ex)
                 {
@@ -212,6 +210,8 @@ namespace kERP
                 SetIconDisplayType();
                 splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
 
+                txtCode.CharacterCasing = ConfigFacade.Character_Casing;
+                txtCode.MaxLength = ConfigFacade.Code_Max_Length;
                 FormFacade.SetFormState(this);
             }
             catch (Exception ex)
@@ -222,7 +222,7 @@ namespace kERP
 
         private void SetLabels()
         {
-            var prefix = "product_";
+            var prefix = "ic_role_";
             btnNew.Text = LabelFacade.sys_button_new ?? btnNew.Text;
             btnCopy.Text = LabelFacade.sys_button_copy ?? btnCopy.Text;
             btnUnlock.Text = LabelFacade.sys_button_unlock ?? btnUnlock.Text;
@@ -237,31 +237,22 @@ namespace kERP
             btnClear.Text = "     " + (LabelFacade.sys_button_clear ?? btnClear.Text.Replace(" ", ""));
             btnFilter.Text = "     " + (LabelFacade.sys_button_filter ?? btnFilter.Text.Replace(" ", ""));
 
-            lblCode.Text = LabelFacade.Get(prefix + "default_factor") ?? lblCode.Text;
+            colCode.HeaderText = LabelFacade.Get(prefix + "code") ?? colCode.HeaderText;
+            lblCode.Text = colCode.HeaderText;
             glbGeneral.Caption = LabelFacade.Get(prefix + "general") ?? glbGeneral.Caption;
             glbNote.Caption = LabelFacade.Get(prefix + "note") ?? glbNote.Caption;
-            //todo: Label for the rest
+            //todo: load the rest
         }
 
         private bool Save()
         {
             if (!IsValidated()) return false;
             Cursor = Cursors.WaitCursor;
-            var m = new Product();
-            var log = new SessionLog { Module = "Product" };
+            var m = new Role();
+            var log = new SessionLog { Module = ModuleName };
             m.Id = Id;
-            m.Code = txtCode.Text;
-            m.Name = txtName.Text;
-            m.Calculation_Method = cboMethod.Value;
-            m.Interest_Round_Rule = cboInterestRound.Value;
-            m.Principal_Round_Rule = cboPrincipalRound.Value;
-            m.Total_Round_Rule = cboTotalRound.Value;
-            string sNeverOn = "";
-            if (chkSaturday.Checked) sNeverOn = "6";
-            if (chkSunday.Checked) sNeverOn += "0";
-            if (chkHoliday.Checked) sNeverOn += "H";
-            m.Never_On = sNeverOn;
-            m.Non_Working_Day_Move = cboMove.Value;
+            m.Code = txtCode.Text.Trim();
+            m.Description = txtDescription.Text;
             m.Note = txtNote.Text;
             if (m.Id == 0)
             {
@@ -275,7 +266,7 @@ namespace kERP
             }
             try
             {
-                m.Id = ProductFacade.Save(m);
+                m.Id = RoleFacade.Save(m);
             }
             catch (Exception ex)
             {
@@ -286,33 +277,35 @@ namespace kERP
             RefreshGrid(m.Id);
             LockControls();
             Cursor = Cursors.Default;
-            log.Message = "Saved. Id=" + m.Id + ", Name=" + m.Name;
+            log.Message = "Saved. Id=" + m.Id + ", Code=" + txtCode.Text;
             SessionLogFacade.Log(log);
             IsDirty = false;
             return true;
         }
 
-        private void frmProductList_Load(object sender, EventArgs e)
+        private void frmRole_Load(object sender, EventArgs e)
         {
             try
             {
+                LoadImages();
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
-                DataFacade.LoadList(cboMethod, "calculation_method");
-                DataFacade.LoadList(cboPrincipalRound, "round_rule");
-                DataFacade.LoadList(cboInterestRound, "round_rule");
-                DataFacade.LoadList(cboTotalRound, "round_rule");
-                DataFacade.LoadList(cboMove, "non_working_day_move");
-
                 SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Open, "Opened");
                 RefreshGrid();
+
                 LoadData();
             }
             catch (Exception ex)
             {
                 ErrorLogFacade.Log(ex, "Form_Load");
                 MessageFacade.Show(MessageFacade.error_load_form + "\r\n" + ex.Message, TitleLabel, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            btnSelect.Visible = IsDlg;
+            if (IsDlg)
+            {
+                btnMode_Click(null, null);
+                toolStrip1.Refresh();
             }
         }
 
@@ -330,7 +323,6 @@ namespace kERP
                 dgvList.CurrentRow.Selected = false;
             Id = 0;
             LockControls(false);
-            cboFrequencyUnit_SelectedIndexChanged(null, null);
             if (dgvList.CurrentRow != null) RowIndex = dgvList.CurrentRow.Index;
             SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_New, "New clicked");
             IsDirty = false;
@@ -358,7 +350,7 @@ namespace kERP
 
         private void btnSaveNew_Click(object sender, EventArgs e)
         {
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_SaveAndNew, "Saved and new. Id=" + dgvList.Id + ", Name=" + txtName.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_SaveAndNew, "Saved and new. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
             btnSave_Click(sender, e);
             if (btnSaveNew.Enabled) return;
             btnNew_Click(sender, e);
@@ -368,12 +360,11 @@ namespace kERP
         {
             try
             {
-                var Id = dgvList.Id;
                 if (Id == 0) return;
                 // If referenced
                 //todo: check if exist in ic_item
                 // If locked
-                var lInfo = HolidayFacade.GetLock(Id);
+                var lInfo = RoleFacade.GetLock(Id);
                 string msg = "";
                 if (lInfo.Locked)
                 {
@@ -381,7 +372,7 @@ namespace kERP
                     if (!Privilege.CanAccess(Constant.Function_IC_Unit_Measure, "O"))
                     {
                         MessageFacade.Show(msg, LabelFacade.sys_delete, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Delete, "Cannot delete. Currently locked by '" + lInfo.Lock_By + "' since '" + lInfo.Lock_At + "' . Id=" + dgvList.Id + ", Name=" + txtName.Text);
+                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Delete, "Cannot delete. Currently locked by '" + lInfo.Lock_By + "' since '" + lInfo.Lock_At + "' . Id=" + dgvList.Id + ", Code=" + txtCode.Text);
                         return;
                     }
                 }
@@ -392,7 +383,7 @@ namespace kERP
                     return;
                 try
                 {
-                    HolidayFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
+                    RoleFacade.SetStatus(Id, Constant.RecordStatus_Deleted);
                 }
                 catch (Exception ex)
                 {
@@ -401,7 +392,7 @@ namespace kERP
                 }
                 RefreshGrid();
                 // log
-                SessionLogFacade.Log(Constant.Priority_Warning, ModuleName, Constant.Log_Delete, "Deleted. Id=" + dgvList.Id + ", Name=" + txtName.Text);
+                SessionLogFacade.Log(Constant.Priority_Warning, ModuleName, Constant.Log_Delete, "Deleted. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
             }
             catch (Exception ex)
             {
@@ -420,10 +411,9 @@ namespace kERP
             }
             Id = 0;
             if (IsExpand) picExpand_Click(sender, e);
-            txtName.Focus();
+            txtCode.Focus();
             LockControls(false);
-            cboFrequencyUnit_SelectedIndexChanged(null, null);
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Copy, "Copy from Id=" + dgvList.Id + "Name=" + txtName.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Copy, "Copy from Id=" + dgvList.Id + "Code=" + txtCode.Text);
             IsDirty = false;
         }
 
@@ -447,13 +437,17 @@ namespace kERP
         private void dgvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-            if (IsExpand) picExpand_Click(sender, e);
-            dgvList_SelectionChanged(sender, e);    // reload data since SelectionChanged will not occured on current row
+            if (!IsDlg)
+            {
+                if (IsExpand) picExpand_Click(sender, e);
+                dgvList_SelectionChanged(sender, e);    // reload data since SelectionChanged will not occured on current row
+            }
+            else
+                btnSelect_Click(null, null);
         }
 
         private void btnActive_Click(object sender, EventArgs e)
         {
-            var Id = dgvList.Id;
             if (Id == 0) return;
 
             string status = btnActive.Text == LabelFacade.sys_button_inactive ? Constant.RecordStatus_InActive : Constant.RecordStatus_Active;
@@ -461,7 +455,7 @@ namespace kERP
             //todo: check if already used in ic_item
 
             //If locked
-            var lInfo = HolidayFacade.GetLock(Id);
+            var lInfo = RoleFacade.GetLock(Id);
             if (lInfo.Locked)
             {
                 string msg = string.Format(MessageFacade.lock_currently, lInfo.Lock_By, lInfo.Lock_At);
@@ -476,7 +470,7 @@ namespace kERP
             }
             try
             {
-                HolidayFacade.SetStatus(Id, status);
+                RoleFacade.SetStatus(Id, status);
             }
             catch (Exception ex)
             {
@@ -484,7 +478,7 @@ namespace kERP
                 ErrorLogFacade.Log(ex);
             }
             RefreshGrid();
-            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, status == Constant.RecordStatus_InActive ? Constant.Log_Inactive : Constant.Log_Active, "Id=" + dgvList.Id + ", Name=" + txtName.Text);
+            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, status == Constant.RecordStatus_InActive ? Constant.Log_Inactive : Constant.Log_Active, "Id=" + dgvList.Id + ", Code=" + txtCode.Text);
         }
 
         private void btnUnlock_Click(object sender, EventArgs e)
@@ -514,7 +508,7 @@ namespace kERP
                 dgvList.Focus();
                 try
                 {
-                    HolidayFacade.ReleaseLock(dgvList.Id);
+                    RoleFacade.ReleaseLock(dgvList.Id);
                 }
                 catch (Exception ex)
                 {
@@ -524,7 +518,7 @@ namespace kERP
                 }
                 if (dgvList.CurrentRow != null && !dgvList.CurrentRow.Selected)
                     dgvList.CurrentRow.Selected = true;
-                SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Unlock, "Unlock cancel. Id=" + dgvList.Id + ", Name=" + txtName.Text);
+                SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Unlock, "Unlock cancel. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
                 btnUnlock.ToolTipText = "Unlock (Ctrl+L)";
                 IsDirty = false;
                 return;
@@ -533,7 +527,7 @@ namespace kERP
             if (Id == 0) return;
             try
             {
-                var lInfo = HolidayFacade.GetLock(Id);
+                var lInfo = RoleFacade.GetLock(Id);
 
                 if (lInfo.Locked) // Check if record is locked
                 {
@@ -545,10 +539,11 @@ namespace kERP
                     }
                     else
                         if (MessageFacade.Show(msg + "\r\n" + MessageFacade.lock_override, LabelFacade.sys_unlock, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Name=" + txtName.Text);
+                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
                         else
                             return;
                 }
+                txtDescription.Focus2();
                 LockControls(false);
             }
             catch (Exception ex)
@@ -559,7 +554,7 @@ namespace kERP
             }
             try
             {
-                ProductFacade.Lock(dgvList.Id, txtName.Text);
+                RoleFacade.Lock(dgvList.Id, txtCode.Text);
             }
             catch (Exception ex)
             {
@@ -567,9 +562,8 @@ namespace kERP
                 ErrorLogFacade.Log(ex);
                 return;
             }
-            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Lock, "Locked. Id=" + dgvList.Id + ", Name=" + txtName.Text);
+            SessionLogFacade.Log(Constant.Priority_Information, ModuleName, Constant.Log_Lock, "Locked. Id=" + dgvList.Id + ", Code=" + txtCode.Text);
             btnUnlock.ToolTipText = "Cancel (Esc or Ctrl+L)";
-            IsDirty = false;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -639,7 +633,7 @@ namespace kERP
             IsDirty = true;
         }
 
-        private void frmProductList_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmUnitMeasureList_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (IsDirty)
             {
@@ -665,12 +659,12 @@ namespace kERP
 
         private void txtCode_Leave(object sender, EventArgs e)
         {
-            //// Check if entered code already exists
-            //if (txtNo.ReadOnly) return;
-            //if (ProductFacade.Exists(txtNo.Text.Trim()))
-            //{
-            //    MessageFacade.Show(this, ref fMsg, LabelFacade.sy_msg_prefix + MessageFacade.code_already_exists, LabelFacade.sy_customer);
-            //}
+            // Check if entered code already exists
+            if (txtCode.ReadOnly) return;
+            if (RoleFacade.Exists(txtCode.Text.Trim()))
+            {
+                MessageFacade.Show(this, ref fMsg, LabelFacade.sys_msg_prefix + MessageFacade.code_already_exists, LabelFacade.SYS_Branch);
+            }
         }
 
         private void btnMode_Click(object sender, EventArgs e)
@@ -684,7 +678,7 @@ namespace kERP
             }
             else
             {
-                splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name); //ConfigFacade.ic_unit_measure_splitter_distance;
+                splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
                 splitContainer1.FixedPanel = FixedPanel.Panel1;
             }
             dgvList.ShowLessColumns(IsExpand);
@@ -712,15 +706,17 @@ namespace kERP
 
         private void dgvList_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Delete) return;
-            if (btnDelete.Enabled) btnDelete_Click(null, null);
+            if (e.KeyCode == Keys.Delete && btnDelete.Enabled)
+                btnDelete_Click(null, null);
+            if (IsDlg && e.KeyCode == Keys.Enter)
+                btnSelect_Click(null, null);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
             Application.DoEvents();
-            ProductFacade.Export();
+            RoleFacade.Export();
             Cursor = Cursors.Default;
         }
 
@@ -739,22 +735,17 @@ namespace kERP
             lblSearch.Visible = (txtFind.IsEmpty);
         }
 
-        private void cboFrequencyUnit_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnSelect_Click(object sender, EventArgs e)
         {
-            //if (cboFrequencyUnit.UnSpecified || btnNew.Enabled) return;
-            //txtAccountNo.Text = ProductFacade.GetNextAccountNo(cboFrequencyUnit.Value); //todo: Format No; from table
+            Id = dgvList.Id;
+            Code = dgvList.CurrentRow.Cells["colCode"].Value.ToString();
+            Description = dgvList.CurrentRow.Cells["colDescription"].Value.ToString();
+            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
-        private void chkNeverOn_CheckedChanged(object sender, EventArgs e)
+        private void txtCode_Enter(object sender, EventArgs e)
         {
-            bool b = (!chkSaturday.Checked && !chkSunday.Checked && !chkHoliday.Checked);
-            cboMove.Enabled = !b;
-            if (!chkHoliday.Enabled)
-                cboMove.Enabled = false;
-            else
-                lblOnNonWorkingDay.Enabled = !b;
-            IsDirty = true;
-            //if (!cboMove.Enabled) cboMove.Value = "";
+            Language.SwitchToEN();
         }
     }
 }

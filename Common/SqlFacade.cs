@@ -217,6 +217,11 @@ namespace kERP
             return cmd.ExecuteReader(CommandBehavior.CloseConnection);
         }
 
+        public static dynamic ExecuteQuery(string sql)
+        {
+            return Connection.Query(sql);
+        }
+
         public static int ExportToCSV(string sql, string tableName)
         {
             //sql = "COPY (" + sql + ") TO '" + path + "' DELIMITER '" + delimiter + "' CSV HEADER ENCODING 'UTF8';";

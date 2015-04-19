@@ -19,12 +19,33 @@ namespace kERP
         string LocationCode = "";
         string SupplierCode = "";
 
-        string ModuleName = "IC Location";
+        string ModuleName = "IC Item Location";
         string TitleLabel = ItemLocationFacade.TitleLabel;
 
         public frmItemLocation()
         {
             InitializeComponent();
+        }
+
+        private void LoadImages()
+        {
+            btnNew.Image = ImageFacade.FromFile("New");
+            btnCopy.Image = ImageFacade.FromFile("Copy");
+            btnUnlock.Image = ImageFacade.FromFile("Unlock");
+            btnSave.Image = ImageFacade.FromFile("Save");
+            btnSaveNew.Image = ImageFacade.FromFile("SaveNew");
+            btnActive.Image = ImageFacade.FromFile("Inactive");
+            btnDelete.Image = ImageFacade.FromFile("Delete");
+            btnMode.Image = ImageFacade.FromFile("Mode");
+            btnExport.Image = ImageFacade.FromFile("Export");
+
+            btnFind.Image = ImageFacade.FromFile("Find");
+            btnClear.Image = ImageFacade.FromFile("Clear");
+            btnFilter.Image = ImageFacade.FromFile("Filter");
+
+            btnItem.Image = btnFind.Image;
+            btnLocation.Image = btnFind.Image;
+            btnSupplier.Image = btnFind.Image;
         }
 
         private string GetStatus()
@@ -96,19 +117,15 @@ namespace kERP
 
         private void LockControls(bool l = true)
         {
-            //if (Id != 0 && l == false)
-            //    txtItem.ReadOnly = true;
-            //else
-            //    txtItem.ReadOnly = l;            
-            txtItem.ReadOnly = l;
-            btnItem.Enabled = !l;
-            txtLocation.ReadOnly = l;
-            btnLocation.Enabled = !l;
+            txtItem.ReadOnly = Id != 0;
+            btnItem.Enabled = Id == 0;
+            txtLocation.ReadOnly = Id != 0;
+            btnLocation.Enabled = Id == 0;
             txtSupplier.ReadOnly = l;
             btnSupplier.Enabled = !l;
             txtLeadTime.ReadOnly = l;
-            txtOrderPoint.ReadOnly = l;
-            txtOrderQty.ReadOnly = l;
+            txtMinQty.ReadOnly = l;
+            txtMaxQty.ReadOnly = l;
             txtStdCost.ReadOnly = l;
             txtNote.ReadOnly = l;
             btnNew.Enabled = l;
@@ -133,15 +150,15 @@ namespace kERP
             {
                 if (btnActive.Text == LabelFacade.sys_button_inactive) return;
                 btnActive.Text = LabelFacade.sys_button_inactive;
-                if (btnActive.Image != Properties.Resources.Inactive)
-                    btnActive.Image = Properties.Resources.Inactive;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_inactive))
+                    btnActive.Image = ImageFacade.FromFile("Inactive");
             }
             else
             {
                 if (btnActive.Text == LabelFacade.sys_button_active) return;
                 btnActive.Text = LabelFacade.sys_button_active;
-                if (btnActive.Image != Properties.Resources.Active)
-                    btnActive.Image = Properties.Resources.Active;
+                if (btnActive.Text.Equals(LabelFacade.sys_button_active))
+                    btnActive.Image = ImageFacade.FromFile("Active");
             }
         }
 
@@ -152,8 +169,8 @@ namespace kERP
             if (LocationCode.Length == 0) valid.Add(txtLocation, "location_unspecified");
             if (ItemLocationFacade.Exists(ItemCode, LocationCode, Id)) valid.Add(txtItem, "item_location_exists");
             if (!Util.IsDouble(txtLeadTime.Text)) valid.Add(txtLeadTime, "deliver_lead_time_invalid");
-            if (!Util.IsDouble(txtOrderPoint.Text)) valid.Add(txtOrderPoint, "order_point_invalid");
-            if (!Util.IsDouble(txtOrderQty.Text)) valid.Add(txtOrderQty, "order_qty_invalid");
+            if (!Util.IsDouble(txtMinQty.Text)) valid.Add(txtMinQty, "min_qty_invalid");
+            if (!Util.IsDouble(txtMaxQty.Text)) valid.Add(txtMaxQty, "max_qty_invalid");
             if (!Util.IsDouble(txtStdCost.Text)) valid.Add(txtStdCost, "standard_cost_invalid");
             return valid.Show();
         }
@@ -165,17 +182,17 @@ namespace kERP
             txtBarcode.Text = "";
             txtLocation.Text = "";
             txtSupplier.Text = "";
-            txtLeadTime.Text = "";
-            txtOrderPoint.Text = "";
-            txtOrderQty.Text = "";
-            txtStdCost.Text = "";
+            txtLeadTime.Text = "0";
+            txtMinQty.Text = "0";
+            txtMaxQty.Text = "0";
+            txtStdCost.Text = "0";
             txtNote.Text = "";
             IsDirty = false;
         }
 
         private void LoadData()
         {
-            var Id = dgvList.Id;
+            Id = dgvList.Id;
             if (Id != 0)
                 try
                 {
@@ -186,12 +203,17 @@ namespace kERP
                     txtBarcode.Text = i.Barcode;
                     txtLocation.Text = Util.ConcatCodeDescription(m.location_code, LocationFacade.GetDescription(m.location_code));
                     LocationCode = m.location_code;
-                    txtSupplier.Text = m.default_supplier_code.Length > 0 ? Util.ConcatCodeDescription(m.default_supplier_code, VendorFacade.GetDescription(m.default_supplier_code)) : "";
+                    txtSupplier.Text = m.default_supplier_code.Length > 0 ? Util.ConcatCodeDescription(m.default_supplier_code, SupplierFacade.GetDescription(m.default_supplier_code)) : "";
                     SupplierCode = m.default_supplier_code;
-                    txtLeadTime.Text = m.delivery_lead_time.ToString();
-                    txtOrderPoint.Text = m.order_point.ToString();
-                    txtOrderQty.Text = m.order_qty.ToString();
+                    txtLeadTime.Text = m.lead_time.ToString();
+                    txtMinQty.Text = m.min_qty.ToString();
+                    txtMaxQty.Text = m.max_qty.ToString();
                     txtStdCost.Text = m.std_cost.ToString();
+                    txtOnhand.Text = m.onhand.ToString();
+                    txtAvgCost.Text = m.avg_cost.ToString();
+                    txtLastCost.Text = m.last_cost.ToString();
+                    //txtStockUoM.Text=
+                    txtLastSupplier.Text = Util.ConcatCodeDescription(m.last_supplier_code, SupplierFacade.GetDescription(m.last_supplier_code));
                     txtNote.Text = m.Note;
                     SetStatus(m.Status);
                     LockControls();
@@ -295,7 +317,7 @@ namespace kERP
             if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
             LocationCode = f.Code;
             var m = LocationFacade.SelectLessCols(f.Id);
-            txtLocation.Text = Util.ConcatCodeDescription(m.Code, m.Description);            
+            txtLocation.Text = Util.ConcatCodeDescription(m.Code, m.Description);
             txtLocation.Focus();
         }
 
@@ -322,9 +344,9 @@ namespace kERP
             m.item_code = ItemCode;
             m.location_code = LocationCode;
             m.default_supplier_code = SupplierCode;
-            m.delivery_lead_time = double.Parse(txtLeadTime.Text);
-            m.order_point = double.Parse(txtOrderPoint.Text);
-            m.order_qty = double.Parse(txtOrderQty.Text);
+            m.lead_time = double.Parse(txtLeadTime.Text);
+            m.min_qty = double.Parse(txtMinQty.Text);
+            m.max_qty = double.Parse(txtMaxQty.Text);
             m.std_cost = double.Parse(txtStdCost.Text);
             m.Note = txtNote.Text;
             if (m.Id == 0)
@@ -360,6 +382,7 @@ namespace kERP
         {
             try
             {
+                LoadImages();
                 dgvList.ShowLessColumns(true);
                 SetSettings();
                 SetLabels();
@@ -425,8 +448,7 @@ namespace kERP
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
-            {
-                var Id = dgvList.Id;
+            {                
                 if (Id == 0) return;
                 // If referenced
                 //todo: check if exist in ic_item
@@ -509,10 +531,8 @@ namespace kERP
         }
 
         private void btnActive_Click(object sender, EventArgs e)
-        {
-            var Id = dgvList.Id;
+        {            
             if (Id == 0) return;
-
             string status = btnActive.Text == LabelFacade.sys_button_inactive ? Constant.RecordStatus_InActive : Constant.RecordStatus_Active;
             // If referenced
             //todo: check if already used in ic_item
@@ -529,7 +549,7 @@ namespace kERP
                 }
                 else
                     if (MessageFacade.Show(msg + "\r\n" + MessageFacade.proceed_confirmation, MessageFacade.active_inactive, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
-                    return;
+                        return;
             }
             try
             {
@@ -602,12 +622,11 @@ namespace kERP
                     }
                     else
                         if (MessageFacade.Show(msg + "\r\n" + MessageFacade.lock_override, LabelFacade.sys_unlock, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
-                        SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtItem.Text);
-                    else
-                        return;
+                            SessionLogFacade.Log(Constant.Priority_Caution, ModuleName, Constant.Log_Lock, "Override lock. Id=" + dgvList.Id + ", Code=" + txtItem.Text);
+                        else
+                            return;
                 }
-                txtItem.SelectionStart = txtItem.Text.Length;
-                txtItem.Focus();
+                txtSupplier.Focus2();
                 LockControls(false);
             }
             catch (Exception ex)
@@ -817,7 +836,7 @@ namespace kERP
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
-            var f = new frmVendor();
+            var f = new frmSupplier();
             f.IsDlg = true;
             if (f.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
             SupplierCode = f.Code;
@@ -872,17 +891,16 @@ namespace kERP
 
         private void txtItem_Leave(object sender, EventArgs e)
         {
-            string sItem = txtItem.Text;
-            if (!txtItem.Enabled || txtItem.Text.Length == 0 || sItem.Contains(ConfigFacade.Code_Description_Separator)) return;
-            int count = ItemFacade.GetCount(sItem);
             Validator.Close(this);
+            string sItem = txtItem.Text;
+            if (txtItem.ReadOnly || txtItem.Text.Length == 0 || sItem.Contains(ConfigFacade.Code_Description_Separator)) return;
+            int count = ItemFacade.GetCount(sItem);
             if (count == 1) // match 1
             {
                 var m = ItemFacade.SelectLessCols(sItem);
                 ItemCode = m.Code;
                 txtItem.Text = Util.ConcatCodeDescription(m.Code, m.Description);
                 txtBarcode.Text = m.Barcode;
-                txtLocation.Focus();
             }
             else if (count > 1) // match multiple
                 ShowItem(sItem);
@@ -897,25 +915,53 @@ namespace kERP
 
         private void txtLocation_Leave(object sender, EventArgs e)
         {
-            string sLocation = txtLocation.Text;
-            if (!txtLocation.Enabled || txtLocation.Text.Length == 0 || sLocation.Contains(ConfigFacade.Code_Description_Separator)) return;
-            int count = LocationFacade.GetCount(sLocation);
             Validator.Close(this);
+            string sLocation = txtLocation.Text;
+            if (txtLocation.ReadOnly || txtLocation.Text.Length == 0 || sLocation.Contains(ConfigFacade.Code_Description_Separator)) return;
+            int count = LocationFacade.GetCount(sLocation);
             if (count == 1) // match 1
-            {                               
-                txtLocation.Text = Util.ConcatCodeDescription(m.Code, LocationFacade.GetDescription());
-                txtBarcode.Text = m.Barcode;
-                txtLocation.Focus();
+            {
+                var m = LocationFacade.SelectLessCols(sLocation);
+                LocationCode = m.Code;
+                txtLocation.Text = Util.ConcatCodeDescription(m.Code, m.Description);
             }
             else if (count > 1) // match multiple
-                ShowItem(sItem);
+                ShowLocation(sLocation);
             else    // < 0; not match
             {
-                ItemCode = "";
+                LocationCode = "";
                 var valid = new Validator(this, "ic_item_location");
-                valid.Add(txtItem, "item_invalid");
+                valid.Add(txtLocation, "location_invalid");
                 valid.Show();
             }
+        }
+
+        private void txtSupplier_Leave(object sender, EventArgs e)
+        {
+            Validator.Close(this);
+            string sSupplier = txtSupplier.Text;
+            if (txtSupplier.ReadOnly || txtSupplier.Text.Length == 0 || sSupplier.Contains(ConfigFacade.Code_Description_Separator)) return;
+            int count = SupplierFacade.GetCount(sSupplier);
+            if (count == 1) // match 1
+            {
+                var m = SupplierFacade.SelectLessCols(sSupplier);
+                SupplierCode = m.Code;
+                txtSupplier.Text = Util.ConcatCodeDescription(m.Code, m.Description);
+            }
+            else if (count > 1) // match multiple
+                ShowSupplier(sSupplier);
+            else    // < 0; not match
+            {
+                SupplierCode = "";
+                var valid = new Validator(this, "ic_item_location");
+                valid.Add(txtSupplier, "location_invalid");
+                valid.Show();
+            }
+        }
+
+        private void SwitchToEN_Enter(object sender, EventArgs e)
+        {
+            Language.SwitchToEN();
         }
     }
 }
