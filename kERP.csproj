@@ -404,6 +404,67 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Image\Active.png" />
+    <Content Include="bin\Debug\Image\Adjustment.png" />
+    <Content Include="bin\Debug\Image\AP24.png" />
+    <Content Include="bin\Debug\Image\AR24.png" />
+    <Content Include="bin\Debug\Image\AuditLog.png" />
+    <Content Include="bin\Debug\Image\Branch.png" />
+    <Content Include="bin\Debug\Image\Calendar.png" />
+    <Content Include="bin\Debug\Image\Category.png" />
+    <Content Include="bin\Debug\Image\Classification.png" />
+    <Content Include="bin\Debug\Image\Clear.png" />
+    <Content Include="bin\Debug\Image\ClearLocked.png" />
+    <Content Include="bin\Debug\Image\Company.png" />
+    <Content Include="bin\Debug\Image\Copy.png" />
+    <Content Include="bin\Debug\Image\Delete.png" />
+    <Content Include="bin\Debug\Image\Edit.png" />
+    <Content Include="bin\Debug\Image\Error.png" />
+    <Content Include="bin\Debug\Image\Exclamation.png" />
+    <Content Include="bin\Debug\Image\Export.png" />
+    <Content Include="bin\Debug\Image\Filter.png" />
+    <Content Include="bin\Debug\Image\Find.png" />
+    <Content Include="bin\Debug\Image\Function.png" />
+    <Content Include="bin\Debug\Image\GL24.png" />
+    <Content Include="bin\Debug\Image\GoTo.png" />
+    <Content Include="bin\Debug\Image\Home24.png" />
+    <Content Include="bin\Debug\Image\IC24.png" />
+    <Content Include="bin\Debug\Image\Icon.ico" />
+    <Content Include="bin\Debug\Image\Inactive.png" />
+    <Content Include="bin\Debug\Image\Information.png" />
+    <Content Include="bin\Debug\Image\Item.png" />
+    <Content Include="bin\Debug\Image\ItemLocation.png" />
+    <Content Include="bin\Debug\Image\ItemSupplier.png" />
+    <Content Include="bin\Debug\Image\Location.png" />
+    <Content Include="bin\Debug\Image\Mode.png" />
+    <Content Include="bin\Debug\Image\New.png" />
+    <Content Include="bin\Debug\Image\PO.png" />
+    <Content Include="bin\Debug\Image\PO24.png" />
+    <Content Include="bin\Debug\Image\Preview.png" />
+    <Content Include="bin\Debug\Image\Question.png" />
+    <Content Include="bin\Debug\Image\Receive.png" />
+    <Content Include="bin\Debug\Image\Refresh.png" />
+    <Content Include="bin\Debug\Image\Report24.png" />
+    <Content Include="bin\Debug\Image\ResetPwd.png" />
+    <Content Include="bin\Debug\Image\Role.png" />
+    <Content Include="bin\Debug\Image\Save.png" />
+    <Content Include="bin\Debug\Image\SaveNew.png" />
+    <Content Include="bin\Debug\Image\Select.png" />
+    <Content Include="bin\Debug\Image\SM2.png" />
+    <Content Include="bin\Debug\Image\SM24.png" />
+    <Content Include="bin\Debug\Image\SO24.png" />
+    <Content Include="bin\Debug\Image\Supplier.png" />
+    <Content Include="bin\Debug\Image\SYS24.png" />
+    <Content Include="bin\Debug\Image\tmp_3.png" />
+    <Content Include="bin\Debug\Image\tmp_4.png" />
+    <Content Include="bin\Debug\Image\tmp_6.png" />
+    <Content Include="bin\Debug\Image\Transfer.png" />
+    <Content Include="bin\Debug\Image\UnitMeasure.png" />
+    <Content Include="bin\Debug\Image\Unlock.png" />
+    <Content Include="bin\Debug\Image\User.png" />
+    <Content Include="bin\Debug\Image\UserFunction.png" />
+    <Content Include="bin\Debug\Image\UserRole.png" />
+    <Content Include="bin\Debug\Image\warehouse-16.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

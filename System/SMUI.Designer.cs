@@ -37,7 +37,7 @@
             this.lblRole = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblUserFunction = new System.Windows.Forms.Label();
-            this.btnRoleFunction = new System.Windows.Forms.Label();
+            this.lblRoleFunction = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -167,20 +167,20 @@
             this.lblUserFunction.Text = "        User Function";
             this.lblUserFunction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnRoleFunction
+            // lblRoleFunction
             // 
-            this.btnRoleFunction.AutoSize = true;
-            this.btnRoleFunction.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRoleFunction.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRoleFunction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRoleFunction.Location = new System.Drawing.Point(14, 168);
-            this.btnRoleFunction.Margin = new System.Windows.Forms.Padding(5);
-            this.btnRoleFunction.Name = "btnRoleFunction";
-            this.btnRoleFunction.Padding = new System.Windows.Forms.Padding(1);
-            this.btnRoleFunction.Size = new System.Drawing.Size(116, 19);
-            this.btnRoleFunction.TabIndex = 58;
-            this.btnRoleFunction.Text = "        Role Function";
-            this.btnRoleFunction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRoleFunction.AutoSize = true;
+            this.lblRoleFunction.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblRoleFunction.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoleFunction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblRoleFunction.Location = new System.Drawing.Point(14, 168);
+            this.lblRoleFunction.Margin = new System.Windows.Forms.Padding(5);
+            this.lblRoleFunction.Name = "lblRoleFunction";
+            this.lblRoleFunction.Padding = new System.Windows.Forms.Padding(1);
+            this.lblRoleFunction.Size = new System.Drawing.Size(116, 19);
+            this.lblRoleFunction.TabIndex = 58;
+            this.lblRoleFunction.Text = "        Role Function";
+            this.lblRoleFunction.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // SMUI
             // 
@@ -191,7 +191,7 @@
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.lblFunction);
-            this.Controls.Add(this.btnRoleFunction);
+            this.Controls.Add(this.lblRoleFunction);
             this.Controls.Add(this.lblUserFunction);
             this.Controls.Add(this.lblUserRole);
             this.Controls.Add(this.lblAuditLog);
@@ -219,6 +219,6 @@
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblUserFunction;
-        private System.Windows.Forms.Label btnRoleFunction;
+        private System.Windows.Forms.Label lblRoleFunction;
     }
 }

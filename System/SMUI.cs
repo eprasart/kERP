@@ -25,6 +25,7 @@ namespace kERP
             lblRole.Image = ImageFacade.FromFile("Role");
             lblFunction.Image = ImageFacade.FromFile("Function");
             lblUserRole.Image = ImageFacade.FromFile("UserRole");
+            lblRoleFunction.Image = ImageFacade.FromFile("RoleFunction");
             lblUserFunction.Image = ImageFacade.FromFile("UserFunction");
             lblAuditLog.Image = ImageFacade.FromFile("AuditLog");
         }
