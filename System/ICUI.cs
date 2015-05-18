@@ -21,7 +21,7 @@ namespace kERP
 
         private void LoadImages()
         {
-            lblReceive.Image = ImageFacade.FromFile("Receive");
+            lblReceipt.Image = ImageFacade.FromFile("Receive");
             lblTransfer.Image = ImageFacade.FromFile("Transfer");
             lblAdjustment.Image = ImageFacade.FromFile("Adjustment");
             lblItem.Image = ImageFacade.FromFile("Item");
@@ -176,6 +176,27 @@ namespace kERP
             if (f == null || f.IsDisposed == true)
             {
                 f = new frmItemSupplier();
+                f.Show();
+            }
+            if (f.WindowState == FormWindowState.Minimized)
+                f.WindowState = FormWindowState.Normal;
+            f.Focus();
+            SessionLogFacade.Log(Constant.Priority_Information, Module, Constant.Log_Open, f.Text + " opened.");
+            Cursor = Cursors.Default;
+        }
+
+        private void lblReceipt_Click(object sender, EventArgs e)
+        {
+            var f = App.fReceipt;
+            if (!Privilege.CanAccess("IC_RCT", "V"))
+            {
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.IC_Item_Supplier);
+                return;
+            }
+            Cursor = Cursors.WaitCursor;
+            if (f == null || f.IsDisposed == true)
+            {
+                f = new frmReceipt();
                 f.Show();
             }
             if (f.WindowState == FormWindowState.Minimized)

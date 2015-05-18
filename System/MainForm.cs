@@ -34,6 +34,77 @@ namespace kERP.SYS
             btnSYS.Image = ImageFacade.FromFile("SYS24");
         }
 
+        private void LoadLastNav()
+        {
+            var uc = new HomeUI();
+            uc.Dock = DockStyle.Fill;
+            splitContainer1.Panel2.Controls.Add(uc);
+
+            var sNav = ConfigFacade.GetByUser("last_nav", "H");
+            switch (sNav)
+            {
+                case "H":
+                    btnHome.Checked = true;
+                    break;
+                case "IC":
+                    btnIC.Checked = true;
+                    break;
+
+                case "AR":
+                    break;
+                case "AP":
+                    btnAP.Checked = true;
+                    break;
+                case "PO":
+                    btnAP.Checked = true;
+                    break;
+                case "SO":
+
+                    break;
+                case "GL":
+
+                    break;
+                case "R":
+
+                    break;
+                case "SM":
+                    btnSM.Checked = true;
+                    break;
+                case "SYS":
+
+                    break;
+                default:
+                    btnHome.Checked = true;
+                    break;
+            }           
+        }
+
+        private void SaveLastNav()
+        {
+            var sNav="";
+            if (btnHome.Checked)
+                sNav = "H";
+            else if (btnIC.Checked)
+                sNav = "IC";
+            else if (btnAR.Checked)
+                sNav = "AR";
+            else if (btnAP.Checked)
+                sNav = "AP";
+            else if (btnPO.Checked)
+                sNav = "PO";
+            else if (btnSO.Checked)
+                sNav = "SO";
+            else if (btnGL.Checked)
+                sNav = "GL";
+            else if (btnReport.Checked)
+                sNav = "R";
+            else if (btnSM.Checked)
+                sNav = "SM";
+            else if (btnSYS.Checked)
+                sNav = "SYS";
+            ConfigFacade.Set("last_nav", sNav);
+        }
+
         private void AddToPanelR(UserControl ui)
         {
             ui.Dock = DockStyle.Fill;
@@ -46,10 +117,9 @@ namespace kERP.SYS
             LoadImages();
             splitContainer1.SplitterDistance = ConfigFacade.GetSplitterDistance(Name);
             FormFacade.SetFormState(this);
-            var hUI = new HomeUI();
-            hUI.Dock = DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(hUI);
-
+            
+            LoadLastNav();
+            
             App.fSplash.ShowMsg("");
             App.fSplash.StartTimer();
         }
@@ -58,6 +128,7 @@ namespace kERP.SYS
         {
             ConfigFacade.Set(Name + Constant.Splitter_Distance, splitContainer1.SplitterDistance);
             FormFacade.SaveFormSate(this);
+            SaveLastNav();
             App.Close();
         }
 
@@ -144,7 +215,7 @@ namespace kERP.SYS
 
         private void tableLayoutPanel1_Click(object sender, EventArgs e)
         {
-         
+
         }
     }
 }

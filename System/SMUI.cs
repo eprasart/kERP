@@ -97,5 +97,26 @@ namespace kERP
             SessionLogFacade.Log(Constant.Priority_Information, Module, Constant.Log_Open, f.Text + " opened.");
             Cursor = Cursors.Default;
         }
+
+        private void lblUserRole_Click(object sender, EventArgs e)
+        {
+            var f = App.fUserRole;
+            if (!Privilege.CanAccess("SM_UR", "V"))
+            {
+                MessageFacade.Show(MessageFacade.Get("sys_no_access"), LabelFacade.SM_Role);
+                return;
+            }
+            Cursor = Cursors.WaitCursor;
+            if (f == null || f.IsDisposed == true)
+            {
+                f = new frmUserRole();
+                f.Show();
+            }
+            if (f.WindowState == FormWindowState.Minimized)
+                f.WindowState = FormWindowState.Normal;
+            f.Focus();
+            SessionLogFacade.Log(Constant.Priority_Information, Module, Constant.Log_Open, f.Text + " opened.");
+            Cursor = Cursors.Default;
+        }
     }
 }

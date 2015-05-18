@@ -296,6 +296,11 @@ namespace kERP
             return s.Value;
         }
 
+        public static string GetByUser(string code, string defaultValue = "")
+        {
+            return Get(code, App.session.Username, defaultValue);
+        }
+        
         public static void Set(string code, string value)
         {
             if (configList.ContainsKey(code))

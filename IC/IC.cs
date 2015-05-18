@@ -714,7 +714,7 @@ namespace kERP
         {
             var sql = SqlFacade.SqlSelect(TableName + " il\nleft join ic_item i on i.code = il.item_code\nleft join ic_location l on l.code = il.location_code\n" +
                 "left join ap_supplier v on v.code = il.default_supplier_code\nleft join sys_config c on c.code = 'sys_code_description_separator'",
-                "il.id, item_code || c.value || i.description item, location_code || c.value || l.description as location, default_supplier_code || c.value || v.description supplier, " +
+                "il.id, item_code || c.value || i.description item, location_code || c.value || l.description as location, il.default_supplier_code || c.value || v.description supplier, " +
                 "il.std_cost, il.last_cost, il.onhand, min_qty, max_qty, lead_time", "1 = 1");
             sql += " and il.status " + (status.Length == 0 ? "<>" : "=") + " :status";
             if (status.Length == 0) status = Constant.RecordStatus_Deleted;

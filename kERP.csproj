@@ -100,11 +100,23 @@
     <Compile Include="Common\Report.designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="IC\ReceiptList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IC\ReceiptList.Designer.cs">
+      <DependentUpon>ReceiptList.cs</DependentUpon>
+    </Compile>
     <Compile Include="SM\RoleList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SM\RoleList.Designer.cs">
       <DependentUpon>RoleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SM\UserRoleList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SM\UserRoleList.Designer.cs">
+      <DependentUpon>UserRoleList.cs</DependentUpon>
     </Compile>
     <Compile Include="System\HomeUI.cs">
       <SubType>UserControl</SubType>
@@ -281,8 +293,14 @@
     <EmbeddedResource Include="Common\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IC\ReceiptList.resx">
+      <DependentUpon>ReceiptList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SM\RoleList.resx">
       <DependentUpon>RoleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SM\UserRoleList.resx">
+      <DependentUpon>UserRoleList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\HomeUI.resx">
       <DependentUpon>HomeUI.cs</DependentUpon>

@@ -356,7 +356,7 @@ namespace kERP
             m.Currency = cboCurrency.Value;
             m.Price = double.Parse(txtPrice.Text);
             m.UPC_Code = txtUPC.Text;
-            m.ABC_Code = cboABC.Value;
+            m.ABC_Code = cboABC.Value;           
             m.Allow_Discount = cboDiscount.Value;
             m.Note = txtNote.Text;
             if (imgPath.Length > 0) m.Picture = ImageFacade.GetBytes(imgPath);

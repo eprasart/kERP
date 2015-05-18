@@ -21,20 +21,25 @@ namespace kERP
         public static Session session = new Session();
 
         //public static frmCompany fCompany;
-        public static frmCategory fCategory;
-        public static frmClassification fClassification;
-        public static frmItemLocation fItemLocation;
-        public static frmItemSupplier fItemSupplier;
-        public static frmSupplier fSupplier;
         public static frmBranch fBranch;
         public static frmLocation fLocation;
+        public static frmCategory fCategory;
+        public static frmClassification fClassification;
         public static frmItem fItem;
+        public static frmItemLocation fItemLocation;
+        public static frmItemSupplier fItemSupplier;
+        public static frmReceipt fReceipt;
+        //public static frmTransfer fTransfer;
+        //public static frmAdjustment fAdjustment;
+
+        public static frmSupplier fSupplier;
+        
         public static frmUnitMeasure fUnitMeasure;
 
         public static frmUser fUser;
         public static frmRole fRole;
         //public static frmFunction fFunction;
-        //public static frmUserRole fUserRole;
+        public static frmUserRole fUserRole;
         //public static frmUserFunction fUserFunction;
         public static frmAuditLog fAuditLog;
 

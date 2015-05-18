@@ -291,13 +291,13 @@
             this.tableLayoutPanel1.Controls.Add(this.btnSYS, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.btnSM, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.btnReport, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.btnGL, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.btnSO, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnPO, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnAP, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnAR, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnIC, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnHome, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnGL, 0, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";

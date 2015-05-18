@@ -104,6 +104,7 @@
             this.lblUserRole.TabIndex = 58;
             this.lblUserRole.Text = "        User Role";
             this.lblUserRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblUserRole.Click += new System.EventHandler(this.lblUserRole_Click);
             // 
             // lblFunction
             // 
