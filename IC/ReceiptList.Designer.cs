@@ -32,15 +32,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceipt));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceipt));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnSelect = new System.Windows.Forms.ToolStripButton();
             this.btnNew = new System.Windows.Forms.ToolStripButton();
@@ -63,6 +63,11 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.dgvList = new kUI.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtFind = new kUI.TextBox(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -75,17 +80,21 @@
             this.btnSupplier = new System.Windows.Forms.Button();
             this.txtSupplier = new kUI.TextBox(this.components);
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new kUI.DateTimePicker(this.components);
+            this.dtpTrn = new kUI.DateTimePicker(this.components);
             this.glbNote = new kUI.GroupLabel();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.groupLabel1 = new kUI.GroupLabel();
             this.glbGeneral = new kUI.GroupLabel();
-            this.txtDescription2 = new kUI.TextBox(this.components);
-            this.txtDescription = new kUI.TextBox(this.components);
+            this.txtOriginaateNo = new kUI.TextBox(this.components);
+            this.txtReference = new kUI.TextBox(this.components);
             this.label9 = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.btnNew2 = new System.Windows.Forms.ToolStripButton();
+            this.btnSave2 = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete2 = new System.Windows.Forms.ToolStripButton();
             this.btnItem = new System.Windows.Forms.Button();
             this.btnLocation = new System.Windows.Forms.Button();
             this.txtLocation = new kUI.TextBox(this.components);
@@ -94,35 +103,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new kUI.ComboBox(this.components);
-            this.cboType = new kUI.ComboBox(this.components);
-            this.textBox8 = new kUI.TextBox(this.components);
-            this.textBox13 = new kUI.TextBox(this.components);
-            this.textBox5 = new kUI.TextBox(this.components);
-            this.textBox6 = new kUI.TextBox(this.components);
+            this.cboCurrency = new kUI.ComboBox(this.components);
+            this.cboUnitMeasure = new kUI.ComboBox(this.components);
+            this.txtCost = new kUI.TextBox(this.components);
+            this.txtBin = new kUI.TextBox(this.components);
+            this.txtQty = new kUI.TextBox(this.components);
+            this.txtFactor = new kUI.TextBox(this.components);
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox2 = new kUI.TextBox(this.components);
-            this.textBox12 = new kUI.TextBox(this.components);
+            this.txtSrNo = new kUI.TextBox(this.components);
+            this.txtStore = new kUI.TextBox(this.components);
             this.label21 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new kUI.DataGridView();
-            this.txtCode = new kUI.TextBox(this.components);
-            this.label8 = new System.Windows.Forms.Label();
-            this.mnuImage = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuShow = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuShowA = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuShowI = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvItem = new kUI.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,17 +128,15 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.cutToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.copyToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.txtDocNo = new kUI.TextBox(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.mnuImage = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuShow = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuShowA = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuShowI = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -153,10 +146,10 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
             this.mnuImage.SuspendLayout();
             this.mnuShow.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -334,7 +327,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Panel2.Controls.Add(this.txtCode);
+            this.splitContainer1.Panel2.Controls.Add(this.txtDocNo);
             this.splitContainer1.Panel2.Controls.Add(this.label8);
             this.splitContainer1.Panel2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(8, 4, 8, 8);
@@ -444,6 +437,53 @@
             this.dgvList.SelectionChanged += new System.EventHandler(this.dgvList_SelectionChanged);
             this.dgvList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvList_KeyDown);
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Id";
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // colCode
+            // 
+            this.colCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colCode.DataPropertyName = "doc_no";
+            this.colCode.HeaderText = "Document No.";
+            this.colCode.Name = "colCode";
+            this.colCode.ReadOnly = true;
+            this.colCode.Width = 118;
+            // 
+            // colDescription
+            // 
+            this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colDescription.DataPropertyName = "trn_on";
+            dataGridViewCellStyle3.NullValue = null;
+            this.colDescription.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colDescription.HeaderText = "Date";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.ReadOnly = true;
+            this.colDescription.Width = 62;
+            // 
+            // colBarcode
+            // 
+            this.colBarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colBarcode.DataPropertyName = "originate_no";
+            dataGridViewCellStyle4.Format = "dd-MM-yy";
+            this.colBarcode.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colBarcode.HeaderText = "Originate No.";
+            this.colBarcode.Name = "colBarcode";
+            this.colBarcode.ReadOnly = true;
+            this.colBarcode.Width = 111;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.DataPropertyName = "reference";
+            this.Column2.HeaderText = "Reference";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
             // txtFind
             // 
             this.txtFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -475,7 +515,7 @@
             this.tabControl1.Location = new System.Drawing.Point(8, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(812, 480);
+            this.tabControl1.Size = new System.Drawing.Size(811, 480);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -489,20 +529,20 @@
             this.tabPage1.Controls.Add(this.btnSupplier);
             this.tabPage1.Controls.Add(this.txtSupplier);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
+            this.tabPage1.Controls.Add(this.dtpTrn);
             this.tabPage1.Controls.Add(this.glbNote);
             this.tabPage1.Controls.Add(this.txtNote);
             this.tabPage1.Controls.Add(this.groupLabel1);
             this.tabPage1.Controls.Add(this.glbGeneral);
-            this.tabPage1.Controls.Add(this.txtDescription2);
-            this.tabPage1.Controls.Add(this.txtDescription);
+            this.tabPage1.Controls.Add(this.txtOriginaateNo);
+            this.tabPage1.Controls.Add(this.txtReference);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.lblDescription);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(804, 450);
+            this.tabPage1.Size = new System.Drawing.Size(803, 450);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -618,15 +658,15 @@
             this.label2.Text = "Supplier";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dateTimePicker1
+            // dtpTrn
             // 
-            this.dateTimePicker1.CustomFormat = "ddd dd-MM-yy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(147, 75);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(230, 25);
-            this.dateTimePicker1.TabIndex = 30;
-            this.dateTimePicker1.TabOnEnter = true;
+            this.dtpTrn.CustomFormat = "ddd dd-MM-yy";
+            this.dtpTrn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpTrn.Location = new System.Drawing.Point(147, 75);
+            this.dtpTrn.Name = "dtpTrn";
+            this.dtpTrn.Size = new System.Drawing.Size(230, 25);
+            this.dtpTrn.TabIndex = 30;
+            this.dtpTrn.TabOnEnter = true;
             // 
             // glbNote
             // 
@@ -678,35 +718,35 @@
             this.glbGeneral.TabIndex = 0;
             this.glbGeneral.TabStop = false;
             // 
-            // txtDescription2
+            // txtOriginaateNo
             // 
-            this.txtDescription2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription2.Format = null;
-            this.txtDescription2.Location = new System.Drawing.Point(147, 107);
-            this.txtDescription2.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescription2.Name = "txtDescription2";
-            this.txtDescription2.Numeric = false;
-            this.txtDescription2.ReadOnly = true;
-            this.txtDescription2.Size = new System.Drawing.Size(230, 25);
-            this.txtDescription2.TabIndex = 5;
-            this.txtDescription2.TabOnEnter = true;
-            this.txtDescription2.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            this.txtDescription2.Leave += new System.EventHandler(this.txtCode_Leave);
+            this.txtOriginaateNo.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOriginaateNo.Format = null;
+            this.txtOriginaateNo.Location = new System.Drawing.Point(147, 107);
+            this.txtOriginaateNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtOriginaateNo.Name = "txtOriginaateNo";
+            this.txtOriginaateNo.Numeric = false;
+            this.txtOriginaateNo.ReadOnly = true;
+            this.txtOriginaateNo.Size = new System.Drawing.Size(230, 25);
+            this.txtOriginaateNo.TabIndex = 5;
+            this.txtOriginaateNo.TabOnEnter = true;
+            this.txtOriginaateNo.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtOriginaateNo.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
-            // txtDescription
+            // txtReference
             // 
-            this.txtDescription.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Format = null;
-            this.txtDescription.Location = new System.Drawing.Point(147, 43);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Numeric = false;
-            this.txtDescription.ReadOnly = true;
-            this.txtDescription.Size = new System.Drawing.Size(230, 25);
-            this.txtDescription.TabIndex = 4;
-            this.txtDescription.TabOnEnter = true;
-            this.txtDescription.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            this.txtDescription.Leave += new System.EventHandler(this.txtCode_Leave);
+            this.txtReference.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReference.Format = null;
+            this.txtReference.Location = new System.Drawing.Point(147, 43);
+            this.txtReference.Margin = new System.Windows.Forms.Padding(4);
+            this.txtReference.Name = "txtReference";
+            this.txtReference.Numeric = false;
+            this.txtReference.ReadOnly = true;
+            this.txtReference.Size = new System.Drawing.Size(230, 25);
+            this.txtReference.TabIndex = 4;
+            this.txtReference.TabOnEnter = true;
+            this.txtReference.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtReference.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
             // label9
             // 
@@ -752,28 +792,68 @@
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.comboBox1);
-            this.tabPage2.Controls.Add(this.cboType);
-            this.tabPage2.Controls.Add(this.textBox8);
-            this.tabPage2.Controls.Add(this.textBox13);
-            this.tabPage2.Controls.Add(this.textBox5);
-            this.tabPage2.Controls.Add(this.textBox6);
+            this.tabPage2.Controls.Add(this.cboCurrency);
+            this.tabPage2.Controls.Add(this.cboUnitMeasure);
+            this.tabPage2.Controls.Add(this.txtCost);
+            this.tabPage2.Controls.Add(this.txtBin);
+            this.tabPage2.Controls.Add(this.txtQty);
+            this.tabPage2.Controls.Add(this.txtFactor);
             this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.textBox12);
+            this.tabPage2.Controls.Add(this.txtSrNo);
+            this.tabPage2.Controls.Add(this.txtStore);
             this.tabPage2.Controls.Add(this.label21);
             this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.label20);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.dgvItem);
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(804, 450);
+            this.tabPage2.Size = new System.Drawing.Size(803, 450);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Items";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnNew2,
+            this.btnSave2,
+            this.btnDelete2});
+            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(81, 25);
+            this.toolStrip2.TabIndex = 43;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // btnNew2
+            // 
+            this.btnNew2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnNew2.Image = ((System.Drawing.Image)(resources.GetObject("btnNew2.Image")));
+            this.btnNew2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNew2.Name = "btnNew2";
+            this.btnNew2.Size = new System.Drawing.Size(23, 22);
+            this.btnNew2.Text = "&New";
+            // 
+            // btnSave2
+            // 
+            this.btnSave2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSave2.Image = ((System.Drawing.Image)(resources.GetObject("btnSave2.Image")));
+            this.btnSave2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSave2.Name = "btnSave2";
+            this.btnSave2.Size = new System.Drawing.Size(23, 22);
+            this.btnSave2.Text = "&Save";
+            // 
+            // btnDelete2
+            // 
+            this.btnDelete2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDelete2.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete2.Image")));
+            this.btnDelete2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete2.Name = "btnDelete2";
+            this.btnDelete2.Size = new System.Drawing.Size(23, 22);
+            this.btnDelete2.Text = "C&ut";
             // 
             // btnItem
             // 
@@ -871,83 +951,83 @@
             this.label6.Text = "Unit of measure";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // comboBox1
+            // cboCurrency
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Enabled = false;
-            this.comboBox1.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(567, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 25);
-            this.comboBox1.TabIndex = 36;
-            this.comboBox1.TabOnEnter = true;
-            this.comboBox1.Value = "";
+            this.cboCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCurrency.Enabled = false;
+            this.cboCurrency.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCurrency.FormattingEnabled = true;
+            this.cboCurrency.Location = new System.Drawing.Point(567, 42);
+            this.cboCurrency.Name = "cboCurrency";
+            this.cboCurrency.Size = new System.Drawing.Size(230, 25);
+            this.cboCurrency.TabIndex = 36;
+            this.cboCurrency.TabOnEnter = true;
+            this.cboCurrency.Value = "";
             // 
-            // cboType
+            // cboUnitMeasure
             // 
-            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboType.Enabled = false;
-            this.cboType.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboType.FormattingEnabled = true;
-            this.cboType.Location = new System.Drawing.Point(567, 73);
-            this.cboType.Name = "cboType";
-            this.cboType.Size = new System.Drawing.Size(230, 25);
-            this.cboType.TabIndex = 36;
-            this.cboType.TabOnEnter = true;
-            this.cboType.Value = "";
+            this.cboUnitMeasure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUnitMeasure.Enabled = false;
+            this.cboUnitMeasure.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboUnitMeasure.FormattingEnabled = true;
+            this.cboUnitMeasure.Location = new System.Drawing.Point(567, 73);
+            this.cboUnitMeasure.Name = "cboUnitMeasure";
+            this.cboUnitMeasure.Size = new System.Drawing.Size(230, 25);
+            this.cboUnitMeasure.TabIndex = 36;
+            this.cboUnitMeasure.TabOnEnter = true;
+            this.cboUnitMeasure.Value = "";
             // 
-            // textBox8
+            // txtCost
             // 
-            this.textBox8.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Format = null;
-            this.textBox8.Location = new System.Drawing.Point(147, 107);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Numeric = false;
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(230, 25);
-            this.textBox8.TabIndex = 32;
-            this.textBox8.TabOnEnter = true;
+            this.txtCost.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCost.Format = null;
+            this.txtCost.Location = new System.Drawing.Point(147, 107);
+            this.txtCost.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCost.Name = "txtCost";
+            this.txtCost.Numeric = false;
+            this.txtCost.ReadOnly = true;
+            this.txtCost.Size = new System.Drawing.Size(230, 25);
+            this.txtCost.TabIndex = 32;
+            this.txtCost.TabOnEnter = true;
             // 
-            // textBox13
+            // txtBin
             // 
-            this.textBox13.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Format = null;
-            this.textBox13.Location = new System.Drawing.Point(567, 171);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Numeric = false;
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(230, 25);
-            this.textBox13.TabIndex = 32;
-            this.textBox13.TabOnEnter = true;
+            this.txtBin.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBin.Format = null;
+            this.txtBin.Location = new System.Drawing.Point(567, 171);
+            this.txtBin.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBin.Name = "txtBin";
+            this.txtBin.Numeric = false;
+            this.txtBin.ReadOnly = true;
+            this.txtBin.Size = new System.Drawing.Size(230, 25);
+            this.txtBin.TabIndex = 32;
+            this.txtBin.TabOnEnter = true;
             // 
-            // textBox5
+            // txtQty
             // 
-            this.textBox5.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Format = null;
-            this.textBox5.Location = new System.Drawing.Point(147, 140);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Numeric = false;
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(230, 25);
-            this.textBox5.TabIndex = 32;
-            this.textBox5.TabOnEnter = true;
+            this.txtQty.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQty.Format = null;
+            this.txtQty.Location = new System.Drawing.Point(147, 140);
+            this.txtQty.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Numeric = false;
+            this.txtQty.ReadOnly = true;
+            this.txtQty.Size = new System.Drawing.Size(230, 25);
+            this.txtQty.TabIndex = 32;
+            this.txtQty.TabOnEnter = true;
             // 
-            // textBox6
+            // txtFactor
             // 
-            this.textBox6.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Format = null;
-            this.textBox6.Location = new System.Drawing.Point(567, 105);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Numeric = false;
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(230, 25);
-            this.textBox6.TabIndex = 32;
-            this.textBox6.TabOnEnter = true;
+            this.txtFactor.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFactor.Format = null;
+            this.txtFactor.Location = new System.Drawing.Point(567, 105);
+            this.txtFactor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFactor.Name = "txtFactor";
+            this.txtFactor.Numeric = false;
+            this.txtFactor.ReadOnly = true;
+            this.txtFactor.Size = new System.Drawing.Size(230, 25);
+            this.txtFactor.TabIndex = 32;
+            this.txtFactor.TabOnEnter = true;
             // 
             // label15
             // 
@@ -960,31 +1040,31 @@
             this.label15.Text = "Cost";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox2
+            // txtSrNo
             // 
-            this.textBox2.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Format = null;
-            this.textBox2.Location = new System.Drawing.Point(147, 173);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Numeric = false;
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(230, 25);
-            this.textBox2.TabIndex = 32;
-            this.textBox2.TabOnEnter = true;
+            this.txtSrNo.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSrNo.Format = null;
+            this.txtSrNo.Location = new System.Drawing.Point(147, 173);
+            this.txtSrNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSrNo.Name = "txtSrNo";
+            this.txtSrNo.Numeric = false;
+            this.txtSrNo.ReadOnly = true;
+            this.txtSrNo.Size = new System.Drawing.Size(230, 25);
+            this.txtSrNo.TabIndex = 32;
+            this.txtSrNo.TabOnEnter = true;
             // 
-            // textBox12
+            // txtStore
             // 
-            this.textBox12.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Format = null;
-            this.textBox12.Location = new System.Drawing.Point(567, 138);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Numeric = false;
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(230, 25);
-            this.textBox12.TabIndex = 32;
-            this.textBox12.TabOnEnter = true;
+            this.txtStore.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStore.Format = null;
+            this.txtStore.Location = new System.Drawing.Point(567, 138);
+            this.txtStore.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStore.Name = "txtStore";
+            this.txtStore.Numeric = false;
+            this.txtStore.ReadOnly = true;
+            this.txtStore.Size = new System.Drawing.Size(230, 25);
+            this.txtStore.TabIndex = 32;
+            this.txtStore.TabOnEnter = true;
             // 
             // label21
             // 
@@ -1041,18 +1121,18 @@
             this.label3.Text = "Serial no.";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dataGridView1
+            // dgvItem
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dgvItem.AllowUserToAddRows = false;
+            this.dgvItem.AllowUserToDeleteRows = false;
+            this.dgvItem.AllowUserToResizeRows = false;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.Honeydew;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvItem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvItem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvItem.BackgroundColor = System.Drawing.Color.White;
+            this.dgvItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1060,9 +1140,9 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvItem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -1080,145 +1160,22 @@
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Teal;
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView1.Location = new System.Drawing.Point(7, 206);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 35;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.Size = new System.Drawing.Size(790, 237);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellDoubleClick);
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dgvList_SelectionChanged);
-            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvList_KeyDown);
-            // 
-            // txtCode
-            // 
-            this.txtCode.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCode.Format = null;
-            this.txtCode.Location = new System.Drawing.Point(159, 8);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Numeric = false;
-            this.txtCode.ReadOnly = true;
-            this.txtCode.Size = new System.Drawing.Size(230, 25);
-            this.txtCode.TabIndex = 2;
-            this.txtCode.TabOnEnter = true;
-            this.txtCode.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
-            this.txtCode.Enter += new System.EventHandler(this.SwitchToEN_Enter);
-            this.txtCode.Leave += new System.EventHandler(this.txtCode_Leave);
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(16, 10);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(135, 18);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Document no.";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // mnuImage
-            // 
-            this.mnuImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuOpen,
-            this.mnuSaveAs});
-            this.mnuImage.Name = "mnuImage";
-            this.mnuImage.Size = new System.Drawing.Size(124, 48);
-            this.mnuImage.Opening += new System.ComponentModel.CancelEventHandler(this.mnuImage_Opening);
-            // 
-            // mnuOpen
-            // 
-            this.mnuOpen.Name = "mnuOpen";
-            this.mnuOpen.Size = new System.Drawing.Size(123, 22);
-            this.mnuOpen.Text = "Open";
-            this.mnuOpen.Click += new System.EventHandler(this.mnuOpen_Click);
-            // 
-            // mnuSaveAs
-            // 
-            this.mnuSaveAs.Name = "mnuSaveAs";
-            this.mnuSaveAs.Size = new System.Drawing.Size(123, 22);
-            this.mnuSaveAs.Text = "Save &As...";
-            this.mnuSaveAs.Click += new System.EventHandler(this.mnuSaveAs_Click);
-            // 
-            // mnuShow
-            // 
-            this.mnuShow.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuShowA,
-            this.mnuShowI});
-            this.mnuShow.Name = "contextMenuStrip1";
-            this.mnuShow.Size = new System.Drawing.Size(148, 48);
-            // 
-            // mnuShowA
-            // 
-            this.mnuShowA.Checked = true;
-            this.mnuShowA.CheckOnClick = true;
-            this.mnuShowA.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mnuShowA.Name = "mnuShowA";
-            this.mnuShowA.Size = new System.Drawing.Size(147, 22);
-            this.mnuShowA.Text = "Show Active";
-            this.mnuShowA.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
-            // 
-            // mnuShowI
-            // 
-            this.mnuShowI.CheckOnClick = true;
-            this.mnuShowI.Name = "mnuShowI";
-            this.mnuShowI.Size = new System.Drawing.Size(147, 22);
-            this.mnuShowI.Text = "Show Inactive";
-            this.mnuShowI.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Id";
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // colCode
-            // 
-            this.colCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colCode.DataPropertyName = "doc_no";
-            this.colCode.HeaderText = "Document No.";
-            this.colCode.Name = "colCode";
-            this.colCode.ReadOnly = true;
-            this.colCode.Width = 118;
-            // 
-            // colDescription
-            // 
-            this.colDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colDescription.DataPropertyName = "trn_on";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colDescription.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colDescription.HeaderText = "Date";
-            this.colDescription.Name = "colDescription";
-            this.colDescription.ReadOnly = true;
-            this.colDescription.Width = 62;
-            // 
-            // colBarcode
-            // 
-            this.colBarcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colBarcode.DataPropertyName = "originate_no";
-            dataGridViewCellStyle4.Format = "dd-MM-yy";
-            this.colBarcode.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colBarcode.HeaderText = "Originate No.";
-            this.colBarcode.Name = "colBarcode";
-            this.colBarcode.ReadOnly = true;
-            this.colBarcode.Width = 111;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.DataPropertyName = "reference";
-            this.Column2.HeaderText = "Reference";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.dgvItem.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvItem.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvItem.Location = new System.Drawing.Point(7, 206);
+            this.dgvItem.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvItem.MultiSelect = false;
+            this.dgvItem.Name = "dgvItem";
+            this.dgvItem.ReadOnly = true;
+            this.dgvItem.RowHeadersVisible = false;
+            this.dgvItem.RowHeadersWidth = 35;
+            this.dgvItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvItem.ShowEditingIcon = false;
+            this.dgvItem.Size = new System.Drawing.Size(790, 237);
+            this.dgvItem.TabIndex = 1;
+            this.dgvItem.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvList_CellDoubleClick);
+            this.dgvItem.SelectionChanged += new System.EventHandler(this.dgvList_SelectionChanged);
+            this.dgvItem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvList_KeyDown);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1314,107 +1271,81 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
-            // toolStrip2
+            // txtDocNo
             // 
-            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripButton,
-            this.openToolStripButton,
-            this.saveToolStripButton,
-            this.printToolStripButton,
-            this.toolStripSeparator2,
-            this.cutToolStripButton,
-            this.copyToolStripButton,
-            this.pasteToolStripButton,
-            this.toolStripSeparator3,
-            this.helpToolStripButton});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(208, 25);
-            this.toolStrip2.TabIndex = 43;
-            this.toolStrip2.Text = "toolStrip2";
+            this.txtDocNo.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDocNo.Format = null;
+            this.txtDocNo.Location = new System.Drawing.Point(159, 8);
+            this.txtDocNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDocNo.Name = "txtDocNo";
+            this.txtDocNo.Numeric = false;
+            this.txtDocNo.ReadOnly = true;
+            this.txtDocNo.Size = new System.Drawing.Size(230, 25);
+            this.txtDocNo.TabIndex = 2;
+            this.txtDocNo.TabOnEnter = true;
+            this.txtDocNo.TextChanged += new System.EventHandler(this.Dirty_TextChanged);
+            this.txtDocNo.Enter += new System.EventHandler(this.SwitchToEN_Enter);
+            this.txtDocNo.Leave += new System.EventHandler(this.txtCode_Leave);
             // 
-            // newToolStripButton
+            // label8
             // 
-            this.newToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.newToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripButton.Image")));
-            this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newToolStripButton.Name = "newToolStripButton";
-            this.newToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.newToolStripButton.Text = "&New";
+            this.label8.Font = new System.Drawing.Font("Noto Sans Khmer", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(16, 10);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(135, 18);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Document no.";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // openToolStripButton
+            // mnuImage
             // 
-            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
-            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.openToolStripButton.Text = "&Open";
+            this.mnuImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuOpen,
+            this.mnuSaveAs});
+            this.mnuImage.Name = "mnuImage";
+            this.mnuImage.Size = new System.Drawing.Size(124, 48);
+            this.mnuImage.Opening += new System.ComponentModel.CancelEventHandler(this.mnuImage_Opening);
             // 
-            // saveToolStripButton
+            // mnuOpen
             // 
-            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
-            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.saveToolStripButton.Text = "&Save";
+            this.mnuOpen.Name = "mnuOpen";
+            this.mnuOpen.Size = new System.Drawing.Size(123, 22);
+            this.mnuOpen.Text = "Open";
+            this.mnuOpen.Click += new System.EventHandler(this.mnuOpen_Click);
             // 
-            // printToolStripButton
+            // mnuSaveAs
             // 
-            this.printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.printToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripButton.Image")));
-            this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.printToolStripButton.Name = "printToolStripButton";
-            this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.printToolStripButton.Text = "&Print";
+            this.mnuSaveAs.Name = "mnuSaveAs";
+            this.mnuSaveAs.Size = new System.Drawing.Size(123, 22);
+            this.mnuSaveAs.Text = "Save &As...";
+            this.mnuSaveAs.Click += new System.EventHandler(this.mnuSaveAs_Click);
             // 
-            // toolStripSeparator2
+            // mnuShow
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.mnuShow.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuShowA,
+            this.mnuShowI});
+            this.mnuShow.Name = "contextMenuStrip1";
+            this.mnuShow.Size = new System.Drawing.Size(148, 48);
             // 
-            // cutToolStripButton
+            // mnuShowA
             // 
-            this.cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cutToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripButton.Image")));
-            this.cutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cutToolStripButton.Name = "cutToolStripButton";
-            this.cutToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.cutToolStripButton.Text = "C&ut";
+            this.mnuShowA.Checked = true;
+            this.mnuShowA.CheckOnClick = true;
+            this.mnuShowA.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnuShowA.Name = "mnuShowA";
+            this.mnuShowA.Size = new System.Drawing.Size(147, 22);
+            this.mnuShowA.Text = "Show Active";
+            this.mnuShowA.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
             // 
-            // copyToolStripButton
+            // mnuShowI
             // 
-            this.copyToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.copyToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripButton.Image")));
-            this.copyToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.copyToolStripButton.Name = "copyToolStripButton";
-            this.copyToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.copyToolStripButton.Text = "&Copy";
-            // 
-            // pasteToolStripButton
-            // 
-            this.pasteToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.pasteToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripButton.Image")));
-            this.pasteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.pasteToolStripButton.Name = "pasteToolStripButton";
-            this.pasteToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.pasteToolStripButton.Text = "&Paste";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // helpToolStripButton
-            // 
-            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
-            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.helpToolStripButton.Text = "He&lp";
+            this.mnuShowI.CheckOnClick = true;
+            this.mnuShowI.Name = "mnuShowI";
+            this.mnuShowI.Size = new System.Drawing.Size(147, 22);
+            this.mnuShowI.Text = "Show Inactive";
+            this.mnuShowI.CheckedChanged += new System.EventHandler(this.mnuShow_CheckedChanged);
             // 
             // frmReceipt
             // 
@@ -1446,11 +1377,11 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.mnuImage.ResumeLayout(false);
-            this.mnuShow.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).EndInit();
+            this.mnuImage.ResumeLayout(false);
+            this.mnuShow.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1484,13 +1415,13 @@
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Label label5;
-        private kUI.TextBox txtDescription;
-        private kUI.TextBox txtCode;
+        private kUI.TextBox txtReference;
+        private kUI.TextBox txtDocNo;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private kUI.GroupLabel glbNote;
-        private kUI.TextBox txtDescription2;
+        private kUI.TextBox txtOriginaateNo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripButton btnSelect;
         private System.Windows.Forms.ToolStripDropDownButton btnGoTo;
@@ -1499,13 +1430,13 @@
         private System.Windows.Forms.ContextMenuStrip mnuImage;
         private System.Windows.Forms.ToolStripMenuItem mnuOpen;
         private System.Windows.Forms.ToolStripMenuItem mnuSaveAs;
-        private kUI.DateTimePicker dateTimePicker1;
+        private kUI.DateTimePicker dtpTrn;
         private kUI.GroupLabel glbGeneral;
         private System.Windows.Forms.Label label9;
-        private kUI.DataGridView dataGridView1;
+        private kUI.DataGridView dgvItem;
         private System.Windows.Forms.Label label6;
-        private kUI.ComboBox cboType;
-        private kUI.TextBox textBox2;
+        private kUI.ComboBox cboUnitMeasure;
+        private kUI.TextBox txtSrNo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnItem;
         private System.Windows.Forms.Button btnLocation;
@@ -1513,15 +1444,15 @@
         private kUI.TextBox txtItem;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label4;
-        private kUI.TextBox textBox5;
+        private kUI.TextBox txtQty;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private kUI.ComboBox comboBox1;
-        private kUI.TextBox textBox8;
-        private kUI.TextBox textBox13;
-        private kUI.TextBox textBox6;
+        private kUI.ComboBox cboCurrency;
+        private kUI.TextBox txtCost;
+        private kUI.TextBox txtBin;
+        private kUI.TextBox txtFactor;
         private System.Windows.Forms.Label label15;
-        private kUI.TextBox textBox12;
+        private kUI.TextBox txtStore;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label20;
@@ -1551,16 +1482,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton newToolStripButton;
-        private System.Windows.Forms.ToolStripButton openToolStripButton;
-        private System.Windows.Forms.ToolStripButton saveToolStripButton;
-        private System.Windows.Forms.ToolStripButton printToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton cutToolStripButton;
-        private System.Windows.Forms.ToolStripButton copyToolStripButton;
-        private System.Windows.Forms.ToolStripButton pasteToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton helpToolStripButton;
+        private System.Windows.Forms.ToolStripButton btnNew2;
+        private System.Windows.Forms.ToolStripButton btnSave2;
+        private System.Windows.Forms.ToolStripButton btnDelete2;
     }
 }
 

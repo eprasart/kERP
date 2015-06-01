@@ -91,7 +91,7 @@ namespace kERP
 
         private void SetLabels()
         {
-            var prefix = "sm_user_";
+            //var prefix = "sm_user_";
             //btnResetPwd.Text = LabelFacade.Get("sys_button_reset_pwd", null) ?? btnResetPwd.Text;
 
             //lblCode.Text = colCode.HeaderText;
